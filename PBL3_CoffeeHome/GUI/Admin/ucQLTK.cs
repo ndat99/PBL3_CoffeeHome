@@ -198,6 +198,7 @@ namespace PBL3_CoffeeHome.GUI
                 _userBLL.ChangePassword(userSelected.UserID,userSelected.PasswordHash, "123456");
                 LoadData();
             }
+            //Testing
         }
     }
 }
