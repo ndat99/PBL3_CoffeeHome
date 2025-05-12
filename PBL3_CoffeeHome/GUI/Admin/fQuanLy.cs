@@ -7,15 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_CoffeeHome.DAL;
+using PBL3_CoffeeHome.BLL;
+using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.GUI
 {
     public partial class fQuanLy: Form
     {
         private Button activeButton;
-        public fQuanLy()
+        private User admin;
+
+        public fQuanLy(User user)
         {
             InitializeComponent();
+            admin = user;
+            txtName.Text = admin.UserName;
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -36,7 +43,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTTTK_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTTTK(), panelChiTiet);
+            LoadControlToPanel(new ucTTTK(admin), panelChiTiet);
             HighlightButton(btnTTTK);
         }
         private void btnQLTK_Click(object sender, EventArgs e)
@@ -70,6 +77,21 @@ namespace PBL3_CoffeeHome.GUI
             button.BackColor = Color.FromArgb(60, 62, 85);
             button.ForeColor = Color.White;
             activeButton = button;
+        }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void panelChiTiet_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
