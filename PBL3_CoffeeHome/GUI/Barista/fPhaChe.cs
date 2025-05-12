@@ -17,7 +17,7 @@ namespace PBL3_CoffeeHome.GUI
         public fPhaChe()
         {
             InitializeComponent();
-            txtName.Text = "Pha chế";
+            txtName.Text = "Tiến";
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
