@@ -228,7 +228,7 @@
             this.panelHeader.Location = new System.Drawing.Point(3, 2);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1666, 79);
+            this.panelHeader.Size = new System.Drawing.Size(1618, 79);
             this.panelHeader.TabIndex = 1;
             // 
             // txtName
@@ -259,7 +259,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.658009F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.34199F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1672, 963);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1624, 963);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panelChiTiet
@@ -267,14 +267,15 @@
             this.panelChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChiTiet.Location = new System.Drawing.Point(3, 86);
             this.panelChiTiet.Name = "panelChiTiet";
-            this.panelChiTiet.Size = new System.Drawing.Size(2083, 1093);
+            this.panelChiTiet.Size = new System.Drawing.Size(1618, 874);
             this.panelChiTiet.TabIndex = 2;
+            this.panelChiTiet.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChiTiet_Paint);
             // 
             // fQuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1972, 963);
+            this.ClientSize = new System.Drawing.Size(1924, 963);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelChucNang);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
