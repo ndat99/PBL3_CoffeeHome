@@ -35,18 +35,13 @@
             this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.cHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cVaiTro = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.cTDN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cGmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLuu = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnResetMK = new System.Windows.Forms.Button();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
             this.btnTaoTK = new System.Windows.Forms.Button();
             this.btnXoaTK = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +62,11 @@
             this.cBVaiTro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBVaiTro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBVaiTro.FormattingEnabled = true;
+            this.cBVaiTro.Items.AddRange(new object[] {
+            "All",
+            "Admin",
+            "Barista",
+            "Cashier"});
             this.cBVaiTro.Location = new System.Drawing.Point(134, 152);
             this.cBVaiTro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cBVaiTro.Name = "cBVaiTro";
@@ -75,6 +75,7 @@
             // 
             // dgvTaiKhoan
             // 
+            this.dgvTaiKhoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTaiKhoan.BackgroundColor = System.Drawing.Color.White;
             this.dgvTaiKhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTaiKhoan.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -88,12 +89,6 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTaiKhoan.ColumnHeadersHeight = 30;
-            this.dgvTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cHoTen,
-            this.cVaiTro,
-            this.cTDN,
-            this.cSDT,
-            this.cGmail});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -134,68 +129,6 @@
             this.label14.TabIndex = 100;
             this.label14.Text = "Quản lý tài khoản";
             // 
-            // cHoTen
-            // 
-            this.cHoTen.HeaderText = "Họ tên";
-            this.cHoTen.MinimumWidth = 6;
-            this.cHoTen.Name = "cHoTen";
-            this.cHoTen.Width = 215;
-            // 
-            // cVaiTro
-            // 
-            this.cVaiTro.HeaderText = "Vai trò";
-            this.cVaiTro.Items.AddRange(new object[] {
-            "Thu ngân",
-            "Pha chế",
-            "Quản lý"});
-            this.cVaiTro.MinimumWidth = 6;
-            this.cVaiTro.Name = "cVaiTro";
-            this.cVaiTro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cVaiTro.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.cVaiTro.Width = 125;
-            // 
-            // cTDN
-            // 
-            this.cTDN.HeaderText = "Tên đăng nhập";
-            this.cTDN.MinimumWidth = 6;
-            this.cTDN.Name = "cTDN";
-            this.cTDN.Width = 120;
-            // 
-            // cSDT
-            // 
-            this.cSDT.HeaderText = "SĐT";
-            this.cSDT.MinimumWidth = 6;
-            this.cSDT.Name = "cSDT";
-            this.cSDT.Width = 120;
-            // 
-            // cGmail
-            // 
-            this.cGmail.HeaderText = "Gmail";
-            this.cGmail.MinimumWidth = 6;
-            this.cGmail.Name = "cGmail";
-            this.cGmail.Width = 200;
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            this.btnLuu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLuu.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            this.btnLuu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(116)))), ((int)(((byte)(163)))));
-            this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Image = global::PBL3_CoffeeHome.Properties.Resources.Save;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.Location = new System.Drawing.Point(1090, 448);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(100, 38);
-            this.btnLuu.TabIndex = 108;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.UseVisualStyleBackColor = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
@@ -219,6 +152,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.TabIndex = 80;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnResetMK
             // 
@@ -239,6 +173,7 @@
             this.btnResetMK.Text = "Reset mật khẩu";
             this.btnResetMK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnResetMK.UseVisualStyleBackColor = false;
+            this.btnResetMK.Click += new System.EventHandler(this.btnResetMK_Click);
             // 
             // btnXemChiTiet
             // 
@@ -301,12 +236,33 @@
             this.btnXoaTK.Text = "Xóa tài khoản";
             this.btnXoaTK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoaTK.UseVisualStyleBackColor = false;
+            this.btnXoaTK.Click += new System.EventHandler(this.btnXoaTK_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.button1.Image = global::PBL3_CoffeeHome.Properties.Resources.Panel;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(1090, 450);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(192, 39);
+            this.button1.TabIndex = 101;
+            this.button1.Text = "Đổi chức vụ";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // ucQLTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -341,11 +297,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cHoTen;
-        private System.Windows.Forms.DataGridViewComboBoxColumn cVaiTro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTDN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cSDT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cGmail;
-        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button button1;
     }
 }

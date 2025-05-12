@@ -104,5 +104,16 @@ namespace PBL3_CoffeeHome.DAL.Repository
                            u.Email.Contains(searchTerm))
                 .ToList();
         }
+
+        public List<User> SearchUsers(string searchTerm, string role)
+        {
+            return _context.Users
+                .Where(u => (string.IsNullOrEmpty(searchTerm) ||
+                             u.UserName.Contains(searchTerm) ||
+                             u.FullName.Contains(searchTerm) ||
+                             u.Email.Contains(searchTerm)) &&
+                            u.Role.Contains(role))
+                .ToList();
+        }
     }
 }

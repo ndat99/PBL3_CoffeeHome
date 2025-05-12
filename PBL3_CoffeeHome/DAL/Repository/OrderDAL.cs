@@ -87,5 +87,24 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Include(o => o.OrderItems)
                 .ToList();
         }
+        // Lấy tất cả đơn hàng
+        public List<Order> GetAllOrders()
+        {
+            try
+            {
+                return _context.Orders
+                    .Include("OrderItems")
+                    .Include("OrderItems.MenuItem")
+                    .Include("User")
+                    .Include("Discount")
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy danh sách đơn hàng: " + ex.Message, ex);
+            }
+        }
+
+
     }
 }

@@ -60,6 +60,11 @@ namespace PBL3_CoffeeHome.BLL
             return _userDAL.GetUserById(userId);
         }
 
+        public User GetUserByName(string username)
+        {
+            return _userDAL.GetUserByName(username);
+        }
+
         public bool ChangePassword(string userId, string oldPassword, string newPassword)
         {
             var user = _userDAL.GetUserById(userId);
@@ -128,6 +133,111 @@ namespace PBL3_CoffeeHome.BLL
                 return true;
             }
             return false;
+        }
+
+        public List<User> SearchUsers(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return _userDAL.GetAllUsers(); 
+            }
+            return _userDAL.SearchUsers(searchTerm);
+        }
+
+        public List<User> SearchUsers(string searchTerm , string Role)
+        {
+            return _userDAL.SearchUsers(searchTerm,Role);
+        }
+
+        // Thêm các phương thức validation
+        public bool IsValidPhoneNumber(string phoneNumber)
+        {
+            if (string.IsNullOrEmpty(phoneNumber)) return true;
+            return phoneNumber.All(char.IsDigit);
+        }
+
+        public bool IsValidRole(string role)
+        {
+            string[] validRoles = { "Admin", "Cashier", "Barista" };
+            return validRoles.Contains(role);
+        }
+
+        public bool IsUsernameExists(string username)
+        {
+            return GetUserByName(username) != null;
+        }
+
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email)) return true; // Email không bắt buộc
+
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+
+                // Kiểm tra thêm các điều kiện cần thiết
+                var parts = email.Split('@');
+                var domain = parts[1];
+
+                // Kiểm tra domain không bắt đầu/kết thúc bằng dấu chấm
+                if (domain.StartsWith(".") || domain.EndsWith("."))
+                    return false;
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        // Validate tổng hợp
+        public void ValidateUserData(string username, string role, string phoneNumber, string email)
+        {
+            if (IsUsernameExists(username))
+            {
+                throw new ArgumentException("Tên đăng nhập đã tồn tại!");
+            }
+
+            if (!IsValidRole(role))
+            {
+                throw new ArgumentException("Vai trò phải là một trong các giá trị: Admin, Cashier, Barista!");
+            }
+
+            if (!IsValidPhoneNumber(phoneNumber))
+            {
+                throw new ArgumentException("Số điện thoại chỉ được chứa các chữ số!");
+            }
+
+            if(!IsValidEmail(email))
+            {
+                throw new ArgumentException("Email không hợp lệ!");
+            }
+        }
+
+        public string GenerateNewUserId()
+        {
+            try
+            {
+                var users = GetALlUsers();
+                if (!users.Any())
+                {
+                    return "USR001";
+                }
+
+                // Lấy số thứ tự lớn nhất hiện tại
+                var maxId = users
+                    .Select(u => int.Parse(u.UserID.Substring(3)))
+                    .Max();
+
+                // Tạo ID mới với số thứ tự tăng thêm 1
+                return $"USR{(maxId + 1):D3}";
+            }
+            catch (Exception)
+            {
+                throw new Exception("Không thể tạo mã người dùng mới!");
+            }
         }
     }
 }
