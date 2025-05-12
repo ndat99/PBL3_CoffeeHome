@@ -1,0 +1,265 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Web;
+using System.Windows.Forms;
+using PBL3_CoffeeHome.BLL;
+using PBL3_CoffeeHome.DTO.ViewModel;
+using PBL3_CoffeeHome.GUI.Admin;
+
+namespace PBL3_CoffeeHome.GUI
+{
+    public partial class ucKhoHang : UserControl
+    {
+
+        private readonly InventoryBLL _inventoryBLL;
+        private readonly InventoryTransactionBLL _transactionBLL;
+
+        private BindingList<InventoryDisplayDTO> _listDSNL;
+        private BindingList<ImportInventoryDTO> _listPhieuNhap;
+        public ucKhoHang()
+        {
+            InitializeComponent();
+            _inventoryBLL = new InventoryBLL();
+            _transactionBLL = new InventoryTransactionBLL();
+        }
+
+        
+        private void ucKhoHang_Load(object sender, EventArgs e)
+        {
+            TabDSNL();
+            TabNhapKho();
+        }
+
+        private void TabDSNL()
+        {
+            _listDSNL = new BindingList<InventoryDisplayDTO>();
+            dgvDSNL.DataSource = _listDSNL;
+
+            LoadCategory_tabDSNL();
+            LoadCountDSNL_tabDSNL();
+            LoadDSNL();
+        }
+
+
+        private void LoadCategory_tabDSNL()
+        {
+            cboDanhMucNL_tabDSNL.Items.Clear();
+            cboDanhMucNL_tabDSNL.Items.Insert(0, "Tất cả");
+            cboDanhMucNL_tabDSNL.Items.AddRange(_inventoryBLL.GetCategory().ToArray());
+            cboDanhMucNL_tabDSNL.SelectedIndex = 0;
+        }
+
+        private void LoadCountDSNL_tabDSNL()
+        {
+            btnLowStock_tabDSNL.Text = $"Tồn kho thấp: {_inventoryBLL.GetLowStock().Count}";
+            btnExpiring_tabDSNL.Text = $"Sắp hết hạn: {_inventoryBLL.GetExpiring(7).Count}";
+        }
+
+        private void LoadDSNL(string category = "Tất cả", string keyword = null)
+        {
+            List<InventoryDisplayDTO> items = _inventoryBLL.SearchInventory(category, keyword);
+            _listDSNL.Clear();
+            foreach (var item in items) _listDSNL.Add(item);
+        }
+
+
+
+        // tab DSNL
+        private void btnReset_tabDSNL_Click(object sender, EventArgs e)
+        {
+            cboDanhMucNL_tabDSNL.SelectedIndex = 0;
+            txtSearchNL_tabDSNL.Clear();
+            LoadDSNL();
+            LoadCountDSNL_tabDSNL();
+        }
+
+        private void btnSubmit_tabDSNL_Click(object sender, EventArgs e)
+        {
+            LoadDSNL(cboDanhMucNL_tabDSNL.SelectedItem.ToString(), txtSearchNL_tabDSNL.Text);
+        }
+
+        private void btnLowStock_tabDSNL_Click(object sender, EventArgs e)
+        {
+            List<InventoryDisplayDTO> lowStock = _inventoryBLL.GetLowStock();
+            _listDSNL.Clear();
+            foreach (var item in lowStock) _listDSNL.Add(item);
+        }
+
+        private void btnExpiring_tabDSNL_Click(object sender, EventArgs e)
+        {
+            List<InventoryDisplayDTO> expiring = _inventoryBLL.GetExpiring(7);
+            _listDSNL.Clear();
+            foreach (var item in expiring) _listDSNL.Add(item);
+        }
+
+        private void btnAddNL_TabDSNL_Click(object sender, EventArgs e)
+        {
+            var AdminForm = (fQuanLy)this.ParentForm;
+            AdminForm.LoadControlToPanel(new ucDetailNL(), AdminForm.panelChiTiet);
+        }
+
+        private void btnUpdateNL_tabDSNL_Click(object sender, EventArgs e)
+        {
+            if (dgvDSNL.SelectedRows.Count == 1)
+            {
+                var selectedItem = dgvDSNL.SelectedRows[0].DataBoundItem;
+                if (selectedItem == null) return;
+                var AdminForm = (fQuanLy)this.ParentForm;
+                AdminForm.LoadControlToPanel(new ucDetailNL(), AdminForm.panelChiTiet);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nguyên liệu để sửa.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnDeleteNL_tabDSNL_Click(object sender, EventArgs e)
+        {
+            if (dgvDSNL.SelectedRows.Count == 1)
+            {
+                var selectedItem = (InventoryDisplayDTO)dgvDSNL.SelectedRows[0].DataBoundItem;
+                if (selectedItem == null) return;
+                if (MessageBox.Show($"Bạn có chắc muốn xóa nguyên liệu '{selectedItem.Name}' không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (_inventoryBLL.DeleteInventory(selectedItem.ItemID))
+                    {
+                        MessageBox.Show("Xóa nguyên liệu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadDSNL(cboDanhMucNL_tabDSNL.SelectedItem.ToString(), txtSearchNL_tabDSNL.ToString());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa nguyên liệu thất bại. Nguyên liệu có thể đang được sử dụng hoặc có lỗi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nguyên liệu để xóa.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnLSGD_tabDSNL_Click(object sender, EventArgs e)
+        {
+            var AdminForm = (fQuanLy)this.ParentForm;
+            AdminForm.LoadControlToPanel(new ucDetailLSGD(), AdminForm.panelChiTiet);
+        }
+
+        private void btnKiemKeNL_tabDSNL_Click(object sender, EventArgs e)
+        {
+            var AdminForm = (fQuanLy)this.ParentForm;
+            AdminForm.LoadControlToPanel(new ucDetailDiemKho(), AdminForm.panelChiTiet);
+        }
+
+        // Tab Nhap Kho
+        private void TabNhapKho()
+        {
+            _listPhieuNhap = new BindingList<ImportInventoryDTO>();
+            dgvNhapKho.DataSource = _listPhieuNhap;
+
+
+            LoadCategory_TabNhapKho();
+            LoadNameInventory_TabNhapKho();
+
+        }
+
+        private void LoadCategory_TabNhapKho()
+        {
+            cboCategoryNL_tabNhapKho.Items.Clear();
+            cboCategoryNL_tabNhapKho.Items.Insert(0, "Tất cả");
+            cboCategoryNL_tabNhapKho.Items.AddRange(_inventoryBLL.GetCategory().ToArray());
+            cboCategoryNL_tabNhapKho.SelectedIndex = 0;
+        }
+
+        private void LoadNameInventory_TabNhapKho()
+        {
+            cboNameNL_tabNhapKho.Items.Clear();
+            {
+                string selectedCategory = cboCategoryNL_tabNhapKho.SelectedItem?.ToString();
+                var inventoryList = selectedCategory == "Tất cả" ? _inventoryBLL.GetAllInventory() : _inventoryBLL.GetInventoryByCategory(selectedCategory);
+
+                cboNameNL_tabNhapKho.Items.AddRange(inventoryList.Select(i => i.Name).ToArray());
+                cboNameNL_tabNhapKho.SelectedIndex = 0;
+            }
+        }
+
+        private void cboCategoryNL_tabNhapKho_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadNameInventory_TabNhapKho();
+        }
+
+        private void btnXacNhan_tabNhapKho_Click(object sender, EventArgs e)
+        {
+            if (cboNameNL_tabNhapKho.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn nguyên liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var selectName = cboNameNL_tabNhapKho.SelectedItem.ToString();
+            var inventoryItem = _inventoryBLL.GetAllInventory().FirstOrDefault(i => i.Name == selectName);
+            if (inventoryItem == null)
+            {
+                MessageBox.Show("Nguyên liệu không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (nudQuantityNL_tabNhapKho.Value <= 0)
+            {
+                MessageBox.Show("Số lượng nhập phải lớn hơn 0.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var newImportInventory = new ImportInventoryDTO
+            {
+                ItemID = inventoryItem.ItemID,
+                Name = inventoryItem.Name,
+                Category = inventoryItem.Category,
+                Quantity = nudQuantityNL_tabNhapKho.Value,
+                Unit = inventoryItem.Unit,
+                Price = nudCostPriceNL_tabNhapKho.Value,
+                ExpirationDate = dtpHSDNL_tabNhapKho.Value,
+                UserID = "USR001",
+                Note = txtGhiChu_tabNhapKho.Text
+            };
+
+            _listPhieuNhap.Add(newImportInventory);
+            MessageBox.Show("Thêm vào danh sách phiếu nhập thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnHoanTac_tabNhapKho_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuuPhieuNhap_tabNhapKho_Click(object sender, EventArgs e)
+        {
+            if (_listPhieuNhap.Count == 0)
+            {
+                MessageBox.Show("Danh sách phiếu nhập trống.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool success = true;
+            foreach (var item in _listPhieuNhap)
+            {
+                success &= _transactionBLL.StockIn(item.ItemID, item.Quantity, item.UserID, item.Price, item.ExpirationDate, item.Note);
+            }
+
+            if (success)
+            {
+                MessageBox.Show("Nhập kho thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _listPhieuNhap.Clear();
+                LoadDSNL(); 
+            }
+            else
+            {
+                MessageBox.Show("Nhập kho thất bại. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
+    }
+}
