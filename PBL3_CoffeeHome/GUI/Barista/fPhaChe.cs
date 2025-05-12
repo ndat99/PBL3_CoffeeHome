@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.GUI.Barista;
 
 namespace PBL3_CoffeeHome.GUI
 {
     public partial class fPhaChe: Form
     {
+        private User barista;
         private Button activeButton;
-        public fPhaChe()
+        public fPhaChe(User user)
         {
             InitializeComponent();
-            txtName.Text = "Tiến";
+            barista = user;
+            txtName.Text = barista.FullName;
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -41,7 +44,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnTTTK_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTTTK(), panelChiTiet);
+            LoadControlToPanel(new ucTTTK(barista), panelChiTiet);
             HighlightButton(btnTTTK);
         }
 
