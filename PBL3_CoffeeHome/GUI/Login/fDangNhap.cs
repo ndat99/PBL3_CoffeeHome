@@ -56,7 +56,7 @@ namespace PBL3_CoffeeHome.GUI
                         f1.ShowDialog();
                         break;
                     case "Barista":
-                        fPhaChe f2 = new fPhaChe();
+                        fPhaChe f2 = new fPhaChe(user);
                         this.Hide();
                         f2.ShowDialog();
                         break;
