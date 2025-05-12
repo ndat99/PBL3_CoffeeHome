@@ -49,6 +49,13 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
+        public MenuItems GetMenuItemByName(string name)
+        {
+            using (var db = new CoffeeDbContext())
+            {
+                return db.MenuItems.FirstOrDefault(m => m.Name == name && m.IsAvailable);
+            }
+        }
 
         // Cập nhật trạng thái của đơn hàng trong BaristaQueue
         public void UpdateOrderStatus(string orderId, string newStatus)
