@@ -32,7 +32,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnDonHang_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucDonHang(), panelChiTiet);
+            LoadControlToPanel(new ucDonHang(barista), panelChiTiet);
             HighlightButton(btnDonHang);
         }
 

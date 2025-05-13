@@ -17,11 +17,13 @@ namespace PBL3_CoffeeHome.GUI
     {
         private readonly MenuItemBLL _menuItemBLL;
         private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
-        public ucDonHang()
+        private User _barista;
+        public ucDonHang(User barista)
         {
             InitializeComponent();
             _menuItemBLL = new MenuItemBLL();
             _menuItemIngredientBLL = new MenuItemIngredientBLL();
+            _barista = barista;
             LoadOrdersToday();
             LoadOrderHistory(datePicker.Value);
             timerRefresh.Start();
@@ -34,6 +36,7 @@ namespace PBL3_CoffeeHome.GUI
 
             foreach (var order in orders)
             {
+                if (order == null) continue;
                 var item = new ListViewItem(new string[]
                 {
                     "",
@@ -56,11 +59,13 @@ namespace PBL3_CoffeeHome.GUI
             foreach (var order in orders)
             {
                 var completedQueue = order.BaristaQueues.FirstOrDefault();
+                var completedAt = completedQueue?.CompletedAt.HasValue == true
+                ? completedQueue.CompletedAt.Value.ToString("HH:mm"): "N/A";
                 var item = new ListViewItem(new string[]
                 {
                     "",
                     order.OrderID,
-                    completedQueue.CompletedAt.Value.ToString("HH:mm")
+                    completedAt
                 });
                 item.Tag = order;
                 item.ImageIndex = 1;
@@ -82,19 +87,13 @@ namespace PBL3_CoffeeHome.GUI
                 if (listDonHang.SelectedItems.Count > 0)
                 {
                     var selectedOrder = (Order)listDonHang.SelectedItems[0].Tag;
-                    _menuItemBLL.CompleteOrder(selectedOrder.OrderID);
-                }
-                else if (listLichSuDon.SelectedItems.Count > 0)
-                {
-                    var selectedOrder = (Order)listLichSuDon.SelectedItems[0].Tag;
-                    _menuItemBLL.IncompletedOrder(selectedOrder.OrderID);
+                    _menuItemBLL.CompleteOrder(selectedOrder.OrderID, _barista.UserID);
                 }
                 else
                 {
                     MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
                 LoadOrdersToday();
                 LoadOrderHistory(datePicker.Value);
             }
@@ -138,6 +137,7 @@ namespace PBL3_CoffeeHome.GUI
                 }
             }
         }
+
         private void dgvChiTietDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvChiTietDon.SelectedRows.Count > 0)

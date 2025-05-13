@@ -1,20 +1,26 @@
 ﻿using PBL3_CoffeeHome.DAL.Repository;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace PBL3_CoffeeHome.BLL
 {
     public class MenuItemBLL
     {
         private readonly MenuItemDAL _menuItemDAL;
+        private readonly InventoryTransactionDAL _inventoryTransactionBLL;
+        private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
 
         public MenuItemBLL()
         {
             _menuItemDAL = new MenuItemDAL();
+            _menuItemIngredientBLL = new MenuItemIngredientBLL();
+            _inventoryTransactionBLL = new InventoryTransactionDAL();
         }
         // Lấy danh sách tất cả đơn hàng
         public List<Order> GetOrders()
@@ -53,13 +59,22 @@ namespace PBL3_CoffeeHome.BLL
         }
 
         // Cập nhật trạng thái đơn hàng
-        public void CompleteOrder(string orderId)
+        public void CompleteOrder(string orderId, string userId)
         {
+            var order = _menuItemDAL.GetOrderById(orderId);
+
+            var orderItems = _menuItemDAL.GetOrderItemsByOrderId(orderId);
+            foreach (var orderItem in orderItems)
+            {
+                var ingredients = _menuItemIngredientBLL.GetMenuItemIngredient(orderItem.MenuItemID);
+                foreach (var ingredient in ingredients)
+                {
+                    decimal totalQty = ingredient.QuantityRequired * orderItem.Quantity;
+                    _inventoryTransactionBLL.StockOut(ingredient.ItemID, totalQty, userId, orderId,
+                        $"Xuất tự động cho đơn hàng");
+                }
+            }
             _menuItemDAL.UpdateOrderStatus(orderId, "Completed");
-        }
-        public void IncompletedOrder(string orderId)
-        {
-            _menuItemDAL.UpdateOrderStatus(orderId, "Incompleted");
         }
     }
 }
