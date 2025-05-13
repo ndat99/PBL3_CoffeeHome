@@ -26,7 +26,7 @@ namespace PBL3_CoffeeHome.GUI
             _transactionBLL = new InventoryTransactionBLL();
         }
 
-        
+
         private void ucKhoHang_Load(object sender, EventArgs e)
         {
             TabDSNL();
@@ -98,17 +98,17 @@ namespace PBL3_CoffeeHome.GUI
         private void btnAddNL_TabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucDetailNL(), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucDetailNL(null, false), AdminForm.panelChiTiet);
         }
 
         private void btnUpdateNL_tabDSNL_Click(object sender, EventArgs e)
         {
             if (dgvDSNL.SelectedRows.Count == 1)
             {
-                var selectedItem = dgvDSNL.SelectedRows[0].DataBoundItem;
+                var selectedItem = (InventoryDisplayDTO)dgvDSNL.SelectedRows[0].DataBoundItem;
                 if (selectedItem == null) return;
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucDetailNL(), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucDetailNL(selectedItem, true), AdminForm.panelChiTiet);
             }
             else
             {
@@ -150,7 +150,7 @@ namespace PBL3_CoffeeHome.GUI
         private void btnKiemKeNL_tabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucDetailDiemKho(), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucDetailKiemKho(), AdminForm.panelChiTiet);
         }
 
         // Tab Nhap Kho
@@ -252,7 +252,7 @@ namespace PBL3_CoffeeHome.GUI
             {
                 MessageBox.Show("Nhập kho thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _listPhieuNhap.Clear();
-                LoadDSNL(); 
+                LoadDSNL();
             }
             else
             {
@@ -260,6 +260,6 @@ namespace PBL3_CoffeeHome.GUI
             }
         }
 
-        
+
     }
 }

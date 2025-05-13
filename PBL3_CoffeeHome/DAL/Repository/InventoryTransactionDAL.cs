@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using PBL3_CoffeeHome.DTO;
 
@@ -159,26 +160,28 @@ namespace PBL3_CoffeeHome.DAL
                     dbContextTransaction.Commit();
                     return true;
                 }
-                catch
+                catch (Exception ex)
                 {
                     dbContextTransaction.Rollback();
+                    MessageBox.Show("Lỗi kiểm kê: " + ex.Message);
                     return false;
                 }
+
             }
         }
 
         private string GenerateTransactionID()
         {
-            string prefix = "TRX" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            string prefix = "TRX" + DateTime.Now.ToString("yyyyMMdd");
             string newId;
             int attempt = 0;
             do
             {
                 attempt++;
-                newId = prefix + attempt.ToString("D3");
-            } while (_db.InventoryTransactions.AsNoTracking().Any(t => t.TransactionID == newId) && attempt < 999);
+                newId = prefix + attempt.ToString("D4");
+            } while (_db.InventoryTransactions.AsNoTracking().Any(t => t.TransactionID == newId) && attempt < 9999);
 
-            if (attempt >= 999) throw new Exception("Could not generate a unique Transaction ID.");
+            if (attempt >= 9999) throw new Exception("Không thể tạo mã giao dịch.");
 
             return newId;
         }

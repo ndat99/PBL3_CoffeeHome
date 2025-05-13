@@ -30,40 +30,43 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.nudQuantity = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboUnit = new System.Windows.Forms.ComboBox();
             this.lblItemID = new System.Windows.Forms.Label();
             this.txtItemID = new System.Windows.Forms.TextBox();
             this.dtpExpirationDate = new System.Windows.Forms.DateTimePicker();
             this.lblName = new System.Windows.Forms.Label();
             this.lblExpirationDate = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.numCostPrice = new System.Windows.Forms.NumericUpDown();
+            this.nudCostPrice = new System.Windows.Forms.NumericUpDown();
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblCostPrice = new System.Windows.Forms.Label();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.lblQuantity = new System.Windows.Forms.Label();
             this.lblUnit = new System.Windows.Forms.Label();
-            this.numQuantity = new System.Windows.Forms.NumericUpDown();
             this.numMinQuantity = new System.Windows.Forms.NumericUpDown();
             this.lblMinQuantity = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCostPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinQuantity)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.76152F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.23848F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 444F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.45611F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.54389F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 399F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -82,31 +85,28 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.btnLuu);
+            this.panel1.Controls.Add(this.btnSubmit);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.lblItemID);
-            this.panel1.Controls.Add(this.txtItemID);
-            this.panel1.Controls.Add(this.dtpExpirationDate);
-            this.panel1.Controls.Add(this.lblName);
-            this.panel1.Controls.Add(this.lblExpirationDate);
-            this.panel1.Controls.Add(this.txtName);
-            this.panel1.Controls.Add(this.numCostPrice);
-            this.panel1.Controls.Add(this.lblCategory);
-            this.panel1.Controls.Add(this.lblCostPrice);
-            this.panel1.Controls.Add(this.cboCategory);
-            this.panel1.Controls.Add(this.lblQuantity);
-            this.panel1.Controls.Add(this.lblUnit);
-            this.panel1.Controls.Add(this.numQuantity);
-            this.panel1.Controls.Add(this.numMinQuantity);
-            this.panel1.Controls.Add(this.lblMinQuantity);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(428, 3);
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1.Location = new System.Drawing.Point(452, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(791, 868);
+            this.panel1.Size = new System.Drawing.Size(812, 868);
             this.panel1.TabIndex = 0;
+            // 
+            // nudQuantity
+            // 
+            this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudQuantity.Location = new System.Drawing.Point(478, 70);
+            this.nudQuantity.MaxLength = 10;
+            this.nudQuantity.Name = "nudQuantity";
+            this.nudQuantity.ReadOnly = true;
+            this.nudQuantity.Size = new System.Drawing.Size(210, 28);
+            this.nudQuantity.TabIndex = 147;
             // 
             // btnExit
             // 
@@ -118,7 +118,7 @@
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExit.Location = new System.Drawing.Point(477, 751);
+            this.btnExit.Location = new System.Drawing.Point(468, 768);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(127, 45);
@@ -127,200 +127,186 @@
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnLuu
+            // btnSubmit
             // 
-            this.btnLuu.BackColor = System.Drawing.Color.White;
-            this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLuu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnLuu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.Location = new System.Drawing.Point(228, 751);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(127, 45);
-            this.btnLuu.TabIndex = 145;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnSubmit.BackColor = System.Drawing.Color.White;
+            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSubmit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnSubmit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSubmit.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSubmit.Location = new System.Drawing.Point(244, 764);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(127, 45);
+            this.btnSubmit.TabIndex = 145;
+            this.btnSubmit.Text = "Lưu";
+            this.btnSubmit.UseVisualStyleBackColor = false;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(181, 39);
+            this.label1.Location = new System.Drawing.Point(135, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(423, 36);
+            this.label1.Size = new System.Drawing.Size(549, 36);
             this.label1.TabIndex = 39;
-            this.label1.Text = "Chi tiết thông tin nguyên liệu";
+            this.label1.Text = "CHI TIẾT THÔNG TIN NGUYÊN LIỆU";
             // 
-            // comboBox1
+            // cboUnit
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(568, 344);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 28);
-            this.comboBox1.TabIndex = 38;
+            this.cboUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUnit.FormattingEnabled = true;
+            this.cboUnit.Location = new System.Drawing.Point(135, 65);
+            this.cboUnit.Name = "cboUnit";
+            this.cboUnit.Size = new System.Drawing.Size(181, 30);
+            this.cboUnit.TabIndex = 38;
             // 
             // lblItemID
             // 
             this.lblItemID.AutoSize = true;
-            this.lblItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemID.Location = new System.Drawing.Point(51, 271);
+            this.lblItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblItemID.Location = new System.Drawing.Point(31, 69);
             this.lblItemID.Name = "lblItemID";
-            this.lblItemID.Size = new System.Drawing.Size(126, 20);
+            this.lblItemID.Size = new System.Drawing.Size(67, 22);
             this.lblItemID.TabIndex = 21;
-            this.lblItemID.Text = "Mã nguyên liệu:";
+            this.lblItemID.Text = "Mã NL:";
             // 
             // txtItemID
             // 
-            this.txtItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemID.Location = new System.Drawing.Point(183, 268);
+            this.txtItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtItemID.Location = new System.Drawing.Point(108, 63);
             this.txtItemID.MaxLength = 10;
             this.txtItemID.Name = "txtItemID";
             this.txtItemID.ReadOnly = true;
-            this.txtItemID.Size = new System.Drawing.Size(159, 27);
+            this.txtItemID.Size = new System.Drawing.Size(210, 28);
             this.txtItemID.TabIndex = 22;
             // 
             // dtpExpirationDate
             // 
-            this.dtpExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpExpirationDate.Location = new System.Drawing.Point(568, 512);
+            this.dtpExpirationDate.Location = new System.Drawing.Point(495, 141);
             this.dtpExpirationDate.Name = "dtpExpirationDate";
-            this.dtpExpirationDate.Size = new System.Drawing.Size(192, 27);
+            this.dtpExpirationDate.Size = new System.Drawing.Size(193, 28);
             this.dtpExpirationDate.TabIndex = 35;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(418, 268);
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(372, 63);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(131, 20);
+            this.lblName.Size = new System.Drawing.Size(75, 22);
             this.lblName.TabIndex = 23;
-            this.lblName.Text = "Tên nguyên liệu:";
+            this.lblName.Text = "Tên NL:";
             // 
             // lblExpirationDate
             // 
             this.lblExpirationDate.AutoSize = true;
-            this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpirationDate.Location = new System.Drawing.Point(419, 519);
+            this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExpirationDate.Location = new System.Drawing.Point(372, 144);
             this.lblExpirationDate.Name = "lblExpirationDate";
-            this.lblExpirationDate.Size = new System.Drawing.Size(109, 20);
+            this.lblExpirationDate.Size = new System.Drawing.Size(117, 22);
             this.lblExpirationDate.TabIndex = 34;
             this.lblExpirationDate.Text = "Hạn sử dụng:";
             // 
             // txtName
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(568, 261);
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(472, 57);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(206, 27);
+            this.txtName.Size = new System.Drawing.Size(216, 28);
             this.txtName.TabIndex = 24;
             // 
-            // numCostPrice
+            // nudCostPrice
             // 
-            this.numCostPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numCostPrice.Location = new System.Drawing.Point(183, 512);
-            this.numCostPrice.Maximum = new decimal(new int[] {
+            this.nudCostPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudCostPrice.Location = new System.Drawing.Point(135, 149);
+            this.nudCostPrice.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
-            this.numCostPrice.Name = "numCostPrice";
-            this.numCostPrice.Size = new System.Drawing.Size(150, 27);
-            this.numCostPrice.TabIndex = 33;
-            this.numCostPrice.ThousandsSeparator = true;
+            this.nudCostPrice.Name = "nudCostPrice";
+            this.nudCostPrice.Size = new System.Drawing.Size(181, 28);
+            this.nudCostPrice.TabIndex = 33;
+            this.nudCostPrice.ThousandsSeparator = true;
             // 
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(51, 347);
+            this.lblCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(31, 149);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(91, 20);
+            this.lblCategory.Size = new System.Drawing.Size(96, 22);
             this.lblCategory.TabIndex = 25;
             this.lblCategory.Text = "Danh mục:";
             // 
             // lblCostPrice
             // 
             this.lblCostPrice.AutoSize = true;
-            this.lblCostPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostPrice.Location = new System.Drawing.Point(51, 519);
+            this.lblCostPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostPrice.Location = new System.Drawing.Point(27, 149);
             this.lblCostPrice.Name = "lblCostPrice";
-            this.lblCostPrice.Size = new System.Drawing.Size(81, 20);
+            this.lblCostPrice.Size = new System.Drawing.Size(88, 22);
             this.lblCostPrice.TabIndex = 32;
             this.lblCostPrice.Text = "Giá nhập:";
             // 
             // cboCategory
             // 
-            this.cboCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(183, 347);
+            this.cboCategory.Location = new System.Drawing.Point(148, 141);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(150, 28);
+            this.cboCategory.Size = new System.Drawing.Size(170, 30);
             this.cboCategory.TabIndex = 26;
             // 
             // lblQuantity
             // 
             this.lblQuantity.AutoSize = true;
-            this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(51, 432);
+            this.lblQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantity.Location = new System.Drawing.Point(386, 73);
             this.lblQuantity.Name = "lblQuantity";
-            this.lblQuantity.Size = new System.Drawing.Size(79, 20);
+            this.lblQuantity.Size = new System.Drawing.Size(86, 22);
             this.lblQuantity.TabIndex = 27;
             this.lblQuantity.Text = "Số lượng:";
             // 
             // lblUnit
             // 
             this.lblUnit.AutoSize = true;
-            this.lblUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnit.Location = new System.Drawing.Point(419, 344);
+            this.lblUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnit.Location = new System.Drawing.Point(27, 73);
             this.lblUnit.Name = "lblUnit";
-            this.lblUnit.Size = new System.Drawing.Size(61, 20);
+            this.lblUnit.Size = new System.Drawing.Size(66, 22);
             this.lblUnit.TabIndex = 31;
             this.lblUnit.Text = "Đơn vị:";
-            // 
-            // numQuantity
-            // 
-            this.numQuantity.DecimalPlaces = 3;
-            this.numQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQuantity.Location = new System.Drawing.Point(183, 427);
-            this.numQuantity.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numQuantity.Name = "numQuantity";
-            this.numQuantity.ReadOnly = true;
-            this.numQuantity.Size = new System.Drawing.Size(150, 27);
-            this.numQuantity.TabIndex = 28;
             // 
             // numMinQuantity
             // 
             this.numMinQuantity.DecimalPlaces = 3;
-            this.numMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numMinQuantity.Location = new System.Drawing.Point(568, 427);
+            this.numMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numMinQuantity.Location = new System.Drawing.Point(560, 143);
             this.numMinQuantity.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numMinQuantity.Name = "numMinQuantity";
-            this.numMinQuantity.Size = new System.Drawing.Size(118, 27);
+            this.numMinQuantity.Size = new System.Drawing.Size(128, 28);
             this.numMinQuantity.TabIndex = 30;
             // 
             // lblMinQuantity
             // 
             this.lblMinQuantity.AutoSize = true;
-            this.lblMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinQuantity.Location = new System.Drawing.Point(419, 434);
+            this.lblMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinQuantity.Location = new System.Drawing.Point(386, 149);
             this.lblMinQuantity.Name = "lblMinQuantity";
-            this.lblMinQuantity.Size = new System.Drawing.Size(143, 20);
+            this.lblMinQuantity.Size = new System.Drawing.Size(154, 22);
             this.lblMinQuantity.TabIndex = 29;
             this.lblMinQuantity.Text = "Số lượng tối thiểu:";
             // 
@@ -330,6 +316,43 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(8, 8);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox1.Controls.Add(this.lblItemID);
+            this.groupBox1.Controls.Add(this.txtItemID);
+            this.groupBox1.Controls.Add(this.lblName);
+            this.groupBox1.Controls.Add(this.txtName);
+            this.groupBox1.Controls.Add(this.lblCategory);
+            this.groupBox1.Controls.Add(this.cboCategory);
+            this.groupBox1.Controls.Add(this.dtpExpirationDate);
+            this.groupBox1.Controls.Add(this.lblExpirationDate);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(55, 205);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(718, 208);
+            this.groupBox1.TabIndex = 148;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin cơ bản";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox2.Controls.Add(this.cboUnit);
+            this.groupBox2.Controls.Add(this.lblQuantity);
+            this.groupBox2.Controls.Add(this.nudQuantity);
+            this.groupBox2.Controls.Add(this.lblUnit);
+            this.groupBox2.Controls.Add(this.lblMinQuantity);
+            this.groupBox2.Controls.Add(this.nudCostPrice);
+            this.groupBox2.Controls.Add(this.lblCostPrice);
+            this.groupBox2.Controls.Add(this.numMinQuantity);
+            this.groupBox2.Location = new System.Drawing.Point(55, 486);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(718, 218);
+            this.groupBox2.TabIndex = 149;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thông tin sô lượng";
             // 
             // ucDetailNL
             // 
@@ -341,9 +364,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numCostPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCostPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMinQuantity)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,24 +379,26 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboUnit;
         private System.Windows.Forms.Label lblItemID;
         private System.Windows.Forms.TextBox txtItemID;
         private System.Windows.Forms.DateTimePicker dtpExpirationDate;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblExpirationDate;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.NumericUpDown numCostPrice;
+        private System.Windows.Forms.NumericUpDown nudCostPrice;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblCostPrice;
         private System.Windows.Forms.ComboBox cboCategory;
-        private System.Windows.Forms.Label lblQuantity;
         private System.Windows.Forms.Label lblUnit;
-        private System.Windows.Forms.NumericUpDown numQuantity;
         private System.Windows.Forms.NumericUpDown numMinQuantity;
         private System.Windows.Forms.Label lblMinQuantity;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox nudQuantity;
+        private System.Windows.Forms.Label lblQuantity;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

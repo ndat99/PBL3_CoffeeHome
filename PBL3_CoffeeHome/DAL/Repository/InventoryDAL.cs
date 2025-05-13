@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 
@@ -57,6 +58,11 @@ namespace PBL3_CoffeeHome.DAL
             return _db.Inventory.AsNoTracking().Select(c => c.Category).Distinct().OrderBy(c => c).ToList();
         }
 
+        public List<string> GetUnit()
+        {
+            return _db.Inventory.AsNoTracking().Select(c => c.Unit).Distinct().OrderBy(c => c).ToList();
+        }
+
         // Chuc nang
         public List<Inventory> SearchInventory(string cboCategory, string txtSearch)
         {
@@ -73,11 +79,12 @@ namespace PBL3_CoffeeHome.DAL
             return querySearch.ToList();
         }
 
-        public bool AddInventory(Inventory newInvnetory)
+        public bool AddInventory(Inventory newInventory)
         {
             try
             {
-                _db.Inventory.Add(newInvnetory);
+                newInventory.Quantity = 0;
+                _db.Inventory.Add(newInventory);
                 _db.SaveChanges();
                 return true;
             }
@@ -142,5 +149,22 @@ namespace PBL3_CoffeeHome.DAL
             return item != null && item.Quantity >= requiredQuantity;
         }
 
+        public string GenerateNewItemID()
+        {
+            string prefix = "INV";
+            string newId;
+            int attempt = 0;
+            do
+            {
+                attempt++;
+                newId = prefix + attempt.ToString("D4");
+            }
+            while (_db.Inventory.AsNoTracking().Any(i => i.ItemID == newId) && attempt < 9999);
+
+            if (attempt >= 9999)
+                throw new Exception("Không thể tạo mã nguyên liệu.");
+
+            return newId;
+        }
     }
 }
