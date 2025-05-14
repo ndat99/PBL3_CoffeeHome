@@ -10,9 +10,14 @@ namespace PBL3_CoffeeHome.BLL
     {
         private readonly BaristaQueueDAL _baristaQueueDAL;
 
+       // private readonly OrderBLL _orderBLL;
+
         public BaristaQueueBLL()
         {
             _baristaQueueDAL = new BaristaQueueDAL();
+
+          //  _orderBLL = new OrderBLL();
+
         }
 
         public BaristaQueue GetQueuesByQueueID(string queueId)

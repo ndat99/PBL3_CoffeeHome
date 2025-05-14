@@ -17,11 +17,14 @@ namespace PBL3_CoffeeHome.GUI
     {
         private readonly UserBLL _userBLL;
         private User _userSelected;
-        public fDetailTTTK()
+        public delegate void MyDel();
+        public MyDel d { get; set; }
+        public fDetailTTTK(MyDel d)
         {
             InitializeComponent();
             _userBLL = new UserBLL();
             txtDangNhapCuoi.Enabled = false;
+            this.d = d;
         }
         public fDetailTTTK(User userSelected)
         {
@@ -71,13 +74,11 @@ namespace PBL3_CoffeeHome.GUI
                     bool success = _userBLL.AddUser(newUser, "123456");
                     if (success)
                     {
-                        MessageBox.Show("Thêm tài khoản mới thành công!",
-                                      "Thông báo",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Information);
-                        ucQLTK uc = new ucQLTK();
-                        uc.LoadData();
-                        this.Close();                       
+                        MessageBox.Show("Thêm tài khoản thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        d();
+                        this.Close();
                     }
                     else
                     {

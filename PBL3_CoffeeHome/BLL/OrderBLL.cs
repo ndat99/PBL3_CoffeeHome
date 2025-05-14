@@ -13,15 +13,19 @@ namespace PBL3_CoffeeHome.BLL
     {
         private readonly OrderDAL _orderDAL;
         private readonly RevenueDAL _revenueDAL;
-        private readonly BaristaQueueBLL _baristaQueueBLL;
+        //private readonly BaristaQueueBLL _baristaQueueBLL;
 
         public OrderBLL()
         {
             _orderDAL = new OrderDAL();
             _revenueDAL = new RevenueDAL();
-            _baristaQueueBLL = new BaristaQueueBLL();
+           // _baristaQueueBLL = new BaristaQueueBLL();
         }
-
+        // Lấy danh sách đơn hàng của ngày hôm nay
+        public List<Order> GetOrdersAssignedToday(string status)
+        {
+            return _orderDAL.GetOrdersByStatus(status);
+        }
         // ProcessOrder
         public void ProcessOrder(string userId, int cardNumber, List<(string menuItemId, int quantity)> items, string discountId = null)
         {

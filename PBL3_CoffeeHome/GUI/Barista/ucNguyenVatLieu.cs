@@ -27,6 +27,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
 
         private void ucNguyenVatLieu_Load(object sender, EventArgs e)
         {
+            _listKiemke = new BindingList<InventoryCheckDTO>(); 
             LoadInventoryData();
         }
 
