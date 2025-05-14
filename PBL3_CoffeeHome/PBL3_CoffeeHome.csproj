@@ -137,11 +137,11 @@
     <Compile Include="GUI\Admin\ucQLTK.Designer.cs">
       <DependentUpon>ucQLTK.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucTongQuan.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="GUI\Admin\fDoiVaiTro.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Admin\ucTongQuan.Designer.cs">
-      <DependentUpon>ucTongQuan.cs</DependentUpon>
+    <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
+      <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
@@ -221,8 +221,17 @@
     <Compile Include="GUI\Login\ucTTTK.Designer.cs">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\ucLoiNhuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
+      <DependentUpon>ucLoiNhuan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Admin\fDoiVaiTro.resx">
+      <DependentUpon>fDoiVaiTro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailNL.resx">
       <DependentUpon>ucDetailNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucLoiNhuan.resx">
+      <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
@@ -356,6 +368,7 @@
     <Content Include="Resources\DangCheBien.png" />
     <Content Include="Resources\DangXuat.png" />
     <Content Include="Resources\DaPhucVu.png" />
+    <None Include="Resources\dollar.png" />
     <Content Include="Resources\DonHang.png" />
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Filter.png" />
@@ -376,7 +389,10 @@
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
     <Content Include="Resources\Reset.png" />
+    <None Include="Resources\salary.png" />
     <Content Include="Resources\SanPham.png" />
+    <None Include="Resources\save-money.png" />
+    <None Include="Resources\save-money1.png" />
     <Content Include="Resources\Save.png" />
     <Content Include="Resources\Sua1.png" />
     <None Include="Resources\tag.png" />

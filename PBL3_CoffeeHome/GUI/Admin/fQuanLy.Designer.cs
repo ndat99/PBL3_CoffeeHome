@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanLy));
             this.panelChucNang = new System.Windows.Forms.Panel();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panelChiTiet = new System.Windows.Forms.Panel();
+            this.btnLoiNhuan = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnKhoHang = new System.Windows.Forms.Button();
@@ -38,19 +43,16 @@
             this.btnThucDon = new System.Windows.Forms.Button();
             this.btnTaoDon = new System.Windows.Forms.Button();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panelChiTiet = new System.Windows.Forms.Panel();
             this.panelChucNang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelChucNang
             // 
             this.panelChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.panelChucNang.Controls.Add(this.btnLoiNhuan);
             this.panelChucNang.Controls.Add(this.btnDangXuat);
             this.panelChucNang.Controls.Add(this.btnThongKe);
             this.panelChucNang.Controls.Add(this.btnKhoHang);
@@ -65,6 +67,77 @@
             this.panelChucNang.Name = "panelChucNang";
             this.panelChucNang.Size = new System.Drawing.Size(300, 963);
             this.panelChucNang.TabIndex = 0;
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.panelHeader.Controls.Add(this.txtName);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelHeader.Location = new System.Drawing.Point(3, 2);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1618, 79);
+            this.panelHeader.TabIndex = 1;
+            // 
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.White;
+            this.txtName.Location = new System.Drawing.Point(1064, 18);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(203, 32);
+            this.txtName.TabIndex = 1;
+            this.txtName.Text = "Tên người dùng";
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panelHeader, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panelChiTiet, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(300, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.658009F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.34199F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1624, 963);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // panelChiTiet
+            // 
+            this.panelChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChiTiet.Location = new System.Drawing.Point(3, 86);
+            this.panelChiTiet.Name = "panelChiTiet";
+            this.panelChiTiet.Size = new System.Drawing.Size(1618, 874);
+            this.panelChiTiet.TabIndex = 2;
+            this.panelChiTiet.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChiTiet_Paint);
+            // 
+            // btnLoiNhuan
+            // 
+            this.btnLoiNhuan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.btnLoiNhuan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoiNhuan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLoiNhuan.FlatAppearance.BorderSize = 0;
+            this.btnLoiNhuan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoiNhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoiNhuan.ForeColor = System.Drawing.Color.White;
+            this.btnLoiNhuan.Image = global::PBL3_CoffeeHome.Properties.Resources.salary;
+            this.btnLoiNhuan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoiNhuan.Location = new System.Drawing.Point(0, 677);
+            this.btnLoiNhuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoiNhuan.Name = "btnLoiNhuan";
+            this.btnLoiNhuan.Size = new System.Drawing.Size(300, 94);
+            this.btnLoiNhuan.TabIndex = 8;
+            this.btnLoiNhuan.Text = "Lợi nhuận";
+            this.btnLoiNhuan.UseVisualStyleBackColor = false;
+            this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);
             // 
             // btnDangXuat
             // 
@@ -220,57 +293,6 @@
             this.picLogo.TabIndex = 1;
             this.picLogo.TabStop = false;
             // 
-            // panelHeader
-            // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.panelHeader.Controls.Add(this.txtName);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelHeader.Location = new System.Drawing.Point(3, 2);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1618, 79);
-            this.panelHeader.TabIndex = 1;
-            // 
-            // txtName
-            // 
-            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.White;
-            this.txtName.Location = new System.Drawing.Point(1064, 18);
-            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtName.Multiline = true;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(203, 32);
-            this.txtName.TabIndex = 1;
-            this.txtName.Text = "Tên người dùng";
-            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panelHeader, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panelChiTiet, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(300, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.658009F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.34199F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1624, 963);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // panelChiTiet
-            // 
-            this.panelChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChiTiet.Location = new System.Drawing.Point(3, 86);
-            this.panelChiTiet.Name = "panelChiTiet";
-            this.panelChiTiet.Size = new System.Drawing.Size(1618, 874);
-            this.panelChiTiet.TabIndex = 2;
-            this.panelChiTiet.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChiTiet_Paint);
-            // 
             // fQuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -285,10 +307,10 @@
             this.Text = "Coffee Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelChucNang.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -307,5 +329,6 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.Panel panelChiTiet;
+        private System.Windows.Forms.Button btnLoiNhuan;
     }
 }
