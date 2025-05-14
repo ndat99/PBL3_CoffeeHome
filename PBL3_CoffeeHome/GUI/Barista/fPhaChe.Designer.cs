@@ -47,7 +47,7 @@
             // 
             this.panelChiTiet.Location = new System.Drawing.Point(300, 76);
             this.panelChiTiet.Name = "panelChiTiet";
-            this.panelChiTiet.Size = new System.Drawing.Size(1624, 887);
+            this.panelChiTiet.Size = new System.Drawing.Size(1824, 887);
             this.panelChiTiet.TabIndex = 5;
             // 
             // panelChucNang

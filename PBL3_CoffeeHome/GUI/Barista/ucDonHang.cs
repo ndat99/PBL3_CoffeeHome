@@ -29,6 +29,7 @@ namespace PBL3_CoffeeHome.GUI
             LoadOrdersToday();
             LoadOrderHistory(datePicker.Value);
             timerRefresh.Start();
+            datePicker.Value = DateTime.Now.Date;
         }
         // Load danh sách đơn hàng hôm nay
         private void LoadOrdersToday()
@@ -91,7 +92,7 @@ namespace PBL3_CoffeeHome.GUI
                     var selectedOrder = (Order)listDonHang.SelectedItems[0].Tag;
                     var queue = selectedOrder.BaristaQueues
                                 .FirstOrDefault(q => q.OrderID == selectedOrder.OrderID);
-                    _menuItemBLL.CompleteOrder(selectedOrder.OrderID, queue.QueueID, _barista.UserID);
+                    _orderBLL.CompleteOrder(selectedOrder.OrderID, queue.QueueID, _barista.UserID);
                 }
                 else
                 {

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO.ViewModel;
+using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.GUI.Barista
 {
@@ -17,12 +18,14 @@ namespace PBL3_CoffeeHome.GUI.Barista
         private readonly InventoryTransactionBLL _transactionBLL;
         private readonly InventoryBLL _inventoryBLL;
         private BindingList<InventoryCheckDTO> _listKiemke;
-
-        public ucNguyenVatLieu()
+        private User _barista;
+        public ucNguyenVatLieu(User barista)
         {
             InitializeComponent();
             _transactionBLL = new InventoryTransactionBLL();
             _inventoryBLL = new InventoryBLL();
+            _listKiemke = new BindingList<InventoryCheckDTO>();
+            _barista = barista;
         }
 
         private void ucNguyenVatLieu_Load(object sender, EventArgs e)
@@ -98,11 +101,21 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 SystemQuantity = nudQuantityNL.Value,
                 ActualQuantity = nudQuantityThucTe.Value,
                 Unit = inventoryItem.Unit,
-                UserID = "USR001",
+                UserID = ,
                 Note = txtGhiChu.Text
             };
 
             _listKiemke.Add(newCheckInventory);
+            dgvListKiemKe.Rows.Add(
+                newCheckInventory.Name,
+                newCheckInventory.Category,
+                newCheckInventory.SystemQuantity,
+                newCheckInventory.ActualQuantity,
+                newCheckInventory.Unit,
+                newCheckInventory.UserID,
+                newCheckInventory.Note,
+                newCheckInventory.Difference
+            );
             MessageBox.Show("Thêm vào danh sách phiếu kiểm kê thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void btnHoanTac_Click(object sender, EventArgs e)

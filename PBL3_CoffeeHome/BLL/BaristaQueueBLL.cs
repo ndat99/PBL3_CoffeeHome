@@ -20,27 +20,9 @@ namespace PBL3_CoffeeHome.BLL
             return _baristaQueueDAL.GetQueueByQueueID(queueId);
         }
 
-        public bool AssignOrderToBarista(string orderId, string baristaId)
-        {
-            var queue = new BaristaQueue
-            {
-                QueueID = Guid.NewGuid().ToString().Substring(0, 10),
-                OrderID = orderId,
-                BaristaID = baristaId,
-                Status = "Pending",
-                AssignedAt = DateTime.Now
-            };
-
-            return _baristaQueueDAL.AddQueue(queue);
-        }
-
         public void UpdateQueueStatus(string queueId, string status)
         {
             _baristaQueueDAL.UpdateQueueStatus(queueId, status);
-        }
-        public List<BaristaQueue> GetPendingQueues()
-        {
-            return _baristaQueueDAL.GetQueuesByStatus("Pending");
         }
     }
 }
