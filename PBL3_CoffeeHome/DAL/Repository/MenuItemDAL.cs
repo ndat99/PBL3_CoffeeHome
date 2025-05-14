@@ -49,6 +49,15 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
+        public Order GetOrderById(string orderId)
+        {
+            using (var db = new CoffeeDbContext())
+            {
+                return db.Orders
+                    .Include(o => o.BaristaQueues)
+                    .FirstOrDefault(o => o.OrderID == orderId);
+            }
+        }
         public MenuItems GetMenuItemByName(string name)
         {
             using (var db = new CoffeeDbContext())

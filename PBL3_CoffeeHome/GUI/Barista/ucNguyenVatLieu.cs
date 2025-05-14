@@ -64,12 +64,11 @@ namespace PBL3_CoffeeHome.GUI.Barista
         {
             if (dgvStockOut.SelectedRows.Count == 1)
             {
-                txtNameNL.Text = dgvStockOut.SelectedRows[0].Cells["Name"].Value.ToString();
-                nudQuantityNL.Value = (decimal)dgvStockOut.SelectedRows[0].Cells["Quantity"].Value;
-                nudQuantityThucTe.Value = (decimal)dgvStockOut.SelectedRows[0].Cells["Quantity"].Value;
+                txtNameNL.Text = dgvStockOut.SelectedRows[0].Cells[0].Value.ToString();
+                nudQuantityNL.Value = (decimal)dgvStockOut.SelectedRows[0].Cells[1].Value;
+                nudQuantityThucTe.Value = (decimal)dgvStockOut.SelectedRows[0].Cells[1].Value;
             }
         }
-
         private void btnThemVaoDS_Click(object sender, EventArgs e)
         {
             var inventoryItem = _inventoryBLL.GetInventoryByName(txtNameNL.Text);
