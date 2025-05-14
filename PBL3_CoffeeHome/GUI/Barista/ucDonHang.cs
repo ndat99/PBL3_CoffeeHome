@@ -15,12 +15,14 @@ namespace PBL3_CoffeeHome.GUI
 {
     public partial class ucDonHang : UserControl
     {
+        private OrderBLL _orderBLL;
         private readonly MenuItemBLL _menuItemBLL;
         private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
         private User _barista;
         public ucDonHang(User barista)
         {
             InitializeComponent();
+            _orderBLL = new OrderBLL();
             _menuItemBLL = new MenuItemBLL();
             _menuItemIngredientBLL = new MenuItemIngredientBLL();
             _barista = barista;
@@ -32,7 +34,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrdersToday()
         {
             listDonHang.Items.Clear();
-            var orders = _menuItemBLL.GetOrdersAssignedToday("Incompleted").OrderByDescending(o => o.CreatedAt);
+            var orders = _orderBLL.GetOrdersAssignedToday("Incompleted").OrderByDescending(o => o.CreatedAt);
 
             foreach (var order in orders)
             {
@@ -53,7 +55,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listLichSuDon.Items.Clear();
-            var orders = _menuItemBLL.GetOrdersCompletedOnDate("Completed", selectedDate)
+            var orders = _orderBLL.GetOrdersCompletedOnDate("Completed", selectedDate)
                         .OrderByDescending(o => o.BaristaQueues.FirstOrDefault().CompletedAt);
 
             foreach (var order in orders)
@@ -87,7 +89,9 @@ namespace PBL3_CoffeeHome.GUI
                 if (listDonHang.SelectedItems.Count > 0)
                 {
                     var selectedOrder = (Order)listDonHang.SelectedItems[0].Tag;
-                    _menuItemBLL.CompleteOrder(selectedOrder.OrderID, _barista.UserID);
+                    var queue = selectedOrder.BaristaQueues
+                                .FirstOrDefault(q => q.OrderID == selectedOrder.OrderID);
+                    _menuItemBLL.CompleteOrder(selectedOrder.OrderID, queue.QueueID, _barista.UserID);
                 }
                 else
                 {
@@ -108,7 +112,7 @@ namespace PBL3_CoffeeHome.GUI
             if (listDonHang.SelectedItems.Count > 0)
             {
                 var selectedOrder = (Order)listDonHang.SelectedItems[0].Tag;
-                var orderItems = _menuItemBLL.GetOrderDetails(selectedOrder.OrderID);
+                var orderItems = _orderBLL.GetOrderMenuItem(selectedOrder.OrderID);
 
                 dgvChiTietDon.Rows.Clear();
                 foreach (var item in orderItems)
@@ -128,7 +132,7 @@ namespace PBL3_CoffeeHome.GUI
             if (listLichSuDon.SelectedItems.Count > 0)
             {
                 var selectedOrder = (Order)listLichSuDon.SelectedItems[0].Tag;
-                var orderItems = _menuItemBLL.GetOrderDetails(selectedOrder.OrderID);
+                var orderItems = _orderBLL.GetOrderMenuItem(selectedOrder.OrderID);
 
                 dgvChiTietDon.Rows.Clear();
                 foreach (var item in orderItems)

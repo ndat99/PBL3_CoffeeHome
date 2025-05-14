@@ -88,7 +88,6 @@ namespace PBL3_CoffeeHome.BLL
                     {
                         OrderID = orderId,
                         CreatedAt = DateTime.Now,
-                        Status = "Đã thanh toán",
                         CardNumber = cardNumber,
                         TotalAmount = total,
                         DiscountAmount = discountAmount,
@@ -128,43 +127,6 @@ namespace PBL3_CoffeeHome.BLL
             }
         }
 
-        // CancelOrder
-        public bool CancelOrder(string orderId)
-        {
-            var order = _orderDAL.GetOrderById(orderId);
-            if (order == null || order.Status == "Completed")
-                return false;
-
-            using (var context = new CoffeeDbContext())
-            {
-                try
-                {
-                    foreach (var item in order.OrderItems)
-                    {
-                        var ingredients = context.MenuItemIngredients
-                            .Where(i => i.MenuItemID == item.MenuItemID)
-                            .ToList();
-
-                        foreach (var ing in ingredients)
-                        {
-                            var inventoryItem = context.Inventory.Find(ing.ItemID);
-                            if (inventoryItem == null) continue;
-
-                            inventoryItem.Quantity += ing.QuantityRequired * item.Quantity;
-                        }
-                    }
-
-                    order.Status = "Cancelled";
-                    return _orderDAL.UpdateOrder(order);
-                }
-                catch (Exception ex)
-                {
-                    // Log lỗi hoặc xử lý ngoại lệ
-                    throw new Exception("Đã xảy ra lỗi khi hủy đơn hàng.", ex);
-                }
-            }
-        }
-
         // Lấy lịch sử đơn hàng để hiển thị
         public List<OrderHistory> GetOrderHistory()
         {
@@ -183,6 +145,17 @@ namespace PBL3_CoffeeHome.BLL
                 throw new Exception("Lỗi khi lấy lịch sử đơn hàng: " + ex.Message, ex);
             }
         }
+        // Lấy danh sách đơn hàng của ngày hôm nay
+        public List<Order> GetOrdersAssignedToday(string status)
+        {
+            return _orderDAL.GetOrdersAssignedToday(status);
+        }
+
+        // Lấy danh sách đơn hàng đã hoàn thành trong ngày được chọn
+        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
+        {
+            return _orderDAL.GetOrdersCompletedOnDate(status, selectedDate);
+        }
 
         // Lấy chi tiết đơn hàng để in hóa đơn
         public Order GetOrderDetails(string orderId)
@@ -196,7 +169,11 @@ namespace PBL3_CoffeeHome.BLL
                 throw new Exception($"Lỗi khi lấy chi tiết đơn hàng {orderId}: " + ex.Message, ex);
             }
         }
-
+        // Lấy chi tiết các món trong đơn hàng
+        public List<OrderItem> GetOrderMenuItem(string orderId)
+        {
+            return _orderDAL.GetOrderItemsByOrderId(orderId);
+        }
         // In hóa đơn (giả lập, có thể mở rộng để in thực tế)
         public void PrintOrder(string orderId)
         {

@@ -16,6 +16,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
         {
             _context = new CoffeeDbContext();
         }
+
         public List<Order> GetAllOrders()
         {
             return _context.Orders.ToList();
@@ -69,34 +70,13 @@ namespace PBL3_CoffeeHome.DAL.Repository
                     .FirstOrDefault(o => o.OrderID == orderId);
             }
         }
+
         public MenuItems GetMenuItemByName(string name)
         {
             using (var db = new CoffeeDbContext())
             {
                 return db.MenuItems.FirstOrDefault(m => m.Name == name && m.IsAvailable);
             }
-        }
-
-        // Cập nhật trạng thái của đơn hàng trong BaristaQueue
-        public void UpdateOrderStatus(string orderId, string newStatus)
-        {
-            var baristaQueues = _context.BaristaQueues
-                .Where(bq => bq.OrderID == orderId)
-                .ToList();
-
-            foreach (var queue in baristaQueues)
-            {
-                queue.Status = newStatus;
-                if (newStatus == "Completed")
-                {
-                    queue.CompletedAt = DateTime.Now;
-                }
-                else if (newStatus == "Incompleted")
-                {
-                    queue.CompletedAt = null;
-                }
-            }
-            _context.SaveChanges();
         }
     }
 }

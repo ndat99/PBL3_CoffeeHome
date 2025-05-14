@@ -12,6 +12,7 @@ namespace PBL3_CoffeeHome.GUI
 {
     public partial class ucTaoDon : UserControl
     {
+
         private MenuItemBLL _menuItemBLL = new MenuItemBLL();
         private MenuItemIngredientBLL _menuItemIngredientBLL = new MenuItemIngredientBLL();
         private InventoryBLL _inventoryBLL = new InventoryBLL();
@@ -29,6 +30,7 @@ namespace PBL3_CoffeeHome.GUI
             _listDataTable = new BindingList<OrderDisplayDTO>();
             dgvChiTietDon.DataSource = _listDataTable;
             _allMenuItems = _menuItemBLL.GetAllMenuItems();
+
             LoadComboBoxData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
@@ -142,8 +144,10 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
+
           //  var orders = _menuItemBLL.GetOrdersAssignedToday("Incompleted").OrderByDescending(o => o.CreatedAt);
             var orders = _orderBLL.GetOrdersAssignedToday("Incompleted").OrderByDescending(o => o.CreatedAt);
+
             foreach (var order in orders)
             {
                 if (order == null) continue;
@@ -163,8 +167,10 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDaHoanThanh.Items.Clear();
+
             var orders = _menuItemBLL.GetOrdersCompletedOnDate("Completed", selectedDate)
                         .OrderByDescending(o => o.BaristaQueues.FirstOrDefault().CompletedAt);
+
 
             foreach (var order in orders)
             {
@@ -617,6 +623,7 @@ namespace PBL3_CoffeeHome.GUI
                 Console.WriteLine($"Lỗi khi hủy đơn: {ex}");
             }
         }
+
 
     }
 
