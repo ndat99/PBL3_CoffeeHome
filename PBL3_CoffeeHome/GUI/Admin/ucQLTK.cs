@@ -16,12 +16,20 @@ namespace PBL3_CoffeeHome.GUI
     public partial class ucQLTK : UserControl
     {
         private readonly UserBLL _userBLL;
+        private BindingSource bindingSource;
+
         public ucQLTK()
         {
             InitializeComponent();
             _userBLL = new UserBLL();
+
+            bindingSource = new BindingSource();
+
             SetupDataGridView();
+            dgvTaiKhoan.DataSource = bindingSource;
+
             cBVaiTro.SelectedIndex = 0;
+
             LoadData();
         }
 
@@ -29,23 +37,17 @@ namespace PBL3_CoffeeHome.GUI
         {
             try
             {
-                // Tạm thời clear data source cũ
-                dgvTaiKhoan.DataSource = null;
-
-                // Load data mới
                 List<User> users = _userBLL.GetALlUsers();
-
-                // Kiểm tra null và empty
                 if (users != null && users.Any())
                 {
-                    dgvTaiKhoan.DataSource = users;
-                    // Refresh để chắc chắn hiển thị
-                    dgvTaiKhoan.Refresh();
+                    bindingSource.DataSource = users;
+                    bindingSource.ResetBindings(true);
                 }
                 else
                 {
                     MessageBox.Show("Không có dữ liệu người dùng!", "Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bindingSource.DataSource = null;
                 }
             }
             catch (Exception ex)
@@ -60,7 +62,17 @@ namespace PBL3_CoffeeHome.GUI
             // Tắt tự động tạo cột
             dgvTaiKhoan.AutoGenerateColumns = false;
 
-            // Thêm các cột mong muốn
+            // Không cho phép thêm hàng mới
+            dgvTaiKhoan.AllowUserToAddRows = false;
+
+            dgvTaiKhoan.ReadOnly = true;                        
+            dgvTaiKhoan.AllowUserToDeleteRows = false;
+            dgvTaiKhoan.MultiSelect = false;                    
+            dgvTaiKhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTaiKhoan.DataSourceChanged += (s, e) => dgvTaiKhoan.Refresh();
+
+
+            // Thiết lập các cột cho DataGridView
             dgvTaiKhoan.Columns.AddRange(new DataGridViewColumn[]
             {
             new DataGridViewTextBoxColumn
@@ -115,7 +127,8 @@ namespace PBL3_CoffeeHome.GUI
             List<User> searchResult;
 
             searchResult = _userBLL.SearchUsers(searchText);
-            dgvTaiKhoan.DataSource = searchResult;
+            bindingSource.DataSource = searchResult;
+            bindingSource.ResetBindings(false);
         }
 
         private void LoadData(string searchText, string selectedRole)
@@ -123,12 +136,13 @@ namespace PBL3_CoffeeHome.GUI
             List<User> searchResult;
 
             searchResult = _userBLL.SearchUsers(searchText,selectedRole);
-            dgvTaiKhoan.DataSource = searchResult;
+            bindingSource.DataSource = searchResult;
+            bindingSource.ResetBindings(false);
         }
 
         private void btnTaoTK_Click(object sender, EventArgs e)
         {
-            fDetailTTTK f = new fDetailTTTK() ;
+            fDetailTTTK f = new fDetailTTTK(LoadData) ;
             f.Show();
         }
 
@@ -198,7 +212,24 @@ namespace PBL3_CoffeeHome.GUI
                 _userBLL.ChangePassword(userSelected.UserID,userSelected.PasswordHash, "123456");
                 LoadData();
             }
-            //Testing
+        }
+
+        private void btnDoiVaiTro_Click(object sender, EventArgs e)
+        {
+            User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
+            if(userSelected == null)
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản để thay đổi vai trò!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            fDoiVaiTro f = new fDoiVaiTro(userSelected,LoadData);
+            f.Show();
+        }
+
+        private void ucQLTK_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

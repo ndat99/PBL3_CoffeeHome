@@ -42,21 +42,60 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return _context.RevenueDetails.ToList();
         }
 
-        //public List<(string ItemName, int TotalQuantity)> GetBestSellingProducts()
-        //{
-        //    var result = _context.RevenueDetails
-        //        .Where(rd => rd.Quantity.HasValue)
-        //        .GroupBy(rd => rd.ItemName)
-        //        .Select(g => new
-        //        {
-        //            ItemName = g.Key,
-        //            TotalQuantity = g.Sum(rd => rd.Quantity.Value)
-        //        })
-        //        .OrderByDescending(x => x.TotalQuantity)
-        //        .ToList();
+        // Lấy chi phí theo ngày
+        public decimal GetExpenseByDate(DateTime date)
+        {
+            try
+            {
+                var startDate = date.Date;
+                var endDate = date.Date.AddDays(1).AddSeconds(-1);
 
-        //    return result.Select(r => (r.ItemName, r.TotalQuantity)).ToList();
-        //}
+                var expense = _context.InventoryTransactions
+                    .Where(t => t.TransactionDate >= startDate &&
+                               t.TransactionDate < endDate &&
+                               t.Type == "Nhập")
+                    .Join(_context.Inventory,
+                          trans => trans.ItemID,
+                          inv => inv.ItemID,
+                          (trans, inv) => trans.Quantity * inv.CostPrice)  // Sử dụng CostPrice từ Inventory
+                    .DefaultIfEmpty(0)
+                    .Sum();
+
+                return expense;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetExpenseByDate: {ex.Message}");
+                return 0;
+            }
+        }
+
+        public decimal GetExpenseByMonth(int year, int month)
+        {
+            try
+            {
+                var startDate = new DateTime(year, month, 1);
+                var endDate = startDate.AddMonths(1);
+
+                var expense = _context.InventoryTransactions
+                    .Where(t => t.TransactionDate >= startDate &&
+                               t.TransactionDate < endDate &&
+                               t.Type==("Nhập"))
+                    .Join(_context.Inventory,
+                          trans => trans.ItemID,
+                          inv => inv.ItemID,
+                          (trans, inv) => trans.Quantity * inv.CostPrice)  // Sử dụng CostPrice từ Inventory
+                    .DefaultIfEmpty(0)
+                    .Sum();
+
+                return expense;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in GetExpenseByMonth: {ex.Message}");
+                return 0;
+            }
+        }
     }
 
 }
