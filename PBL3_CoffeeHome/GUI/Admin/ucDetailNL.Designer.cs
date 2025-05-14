@@ -138,18 +138,18 @@
             // nudQuantity
             // 
             this.nudQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudQuantity.Location = new System.Drawing.Point(545, 64);
+            this.nudQuantity.Location = new System.Drawing.Point(564, 64);
             this.nudQuantity.MaxLength = 10;
             this.nudQuantity.Name = "nudQuantity";
             this.nudQuantity.ReadOnly = true;
-            this.nudQuantity.Size = new System.Drawing.Size(205, 27);
+            this.nudQuantity.Size = new System.Drawing.Size(186, 27);
             this.nudQuantity.TabIndex = 147;
             // 
             // lblUnit
             // 
             this.lblUnit.AutoSize = true;
             this.lblUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnit.Location = new System.Drawing.Point(42, 73);
+            this.lblUnit.Location = new System.Drawing.Point(34, 71);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(61, 20);
             this.lblUnit.TabIndex = 31;
@@ -159,7 +159,7 @@
             // 
             this.lblMinQuantity.AutoSize = true;
             this.lblMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinQuantity.Location = new System.Drawing.Point(428, 149);
+            this.lblMinQuantity.Location = new System.Drawing.Point(428, 145);
             this.lblMinQuantity.Name = "lblMinQuantity";
             this.lblMinQuantity.Size = new System.Drawing.Size(143, 20);
             this.lblMinQuantity.TabIndex = 29;
@@ -183,7 +183,7 @@
             // 
             this.lblCostPrice.AutoSize = true;
             this.lblCostPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostPrice.Location = new System.Drawing.Point(27, 149);
+            this.lblCostPrice.Location = new System.Drawing.Point(31, 145);
             this.lblCostPrice.Name = "lblCostPrice";
             this.lblCostPrice.Size = new System.Drawing.Size(81, 20);
             this.lblCostPrice.TabIndex = 32;
@@ -193,14 +193,14 @@
             // 
             this.numMinQuantity.DecimalPlaces = 3;
             this.numMinQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numMinQuantity.Location = new System.Drawing.Point(577, 142);
+            this.numMinQuantity.Location = new System.Drawing.Point(599, 142);
             this.numMinQuantity.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numMinQuantity.Name = "numMinQuantity";
-            this.numMinQuantity.Size = new System.Drawing.Size(173, 27);
+            this.numMinQuantity.Size = new System.Drawing.Size(151, 27);
             this.numMinQuantity.TabIndex = 30;
             // 
             // groupBox1
@@ -235,11 +235,11 @@
             // txtItemID
             // 
             this.txtItemID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemID.Location = new System.Drawing.Point(114, 69);
+            this.txtItemID.Location = new System.Drawing.Point(134, 69);
             this.txtItemID.MaxLength = 10;
             this.txtItemID.Name = "txtItemID";
             this.txtItemID.ReadOnly = true;
-            this.txtItemID.Size = new System.Drawing.Size(204, 27);
+            this.txtItemID.Size = new System.Drawing.Size(184, 27);
             this.txtItemID.TabIndex = 22;
             // 
             // lblName
@@ -250,15 +250,15 @@
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(69, 20);
             this.lblName.TabIndex = 23;
-            this.lblName.Text = "Tên NL:";
+            this.lblName.Text = "Tên ngu";
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(517, 67);
+            this.txtName.Location = new System.Drawing.Point(545, 67);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(233, 27);
+            this.txtName.Size = new System.Drawing.Size(205, 27);
             this.txtName.TabIndex = 24;
             // 
             // lblCategory
@@ -275,9 +275,9 @@
             // 
             this.cboCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCategory.FormattingEnabled = true;
-            this.cboCategory.Location = new System.Drawing.Point(148, 150);
+            this.cboCategory.Location = new System.Drawing.Point(134, 145);
             this.cboCategory.Name = "cboCategory";
-            this.cboCategory.Size = new System.Drawing.Size(170, 28);
+            this.cboCategory.Size = new System.Drawing.Size(184, 28);
             this.cboCategory.TabIndex = 26;
             // 
             // dtpExpirationDate
@@ -293,7 +293,7 @@
             // 
             this.lblExpirationDate.AutoSize = true;
             this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpirationDate.Location = new System.Drawing.Point(431, 151);
+            this.lblExpirationDate.Location = new System.Drawing.Point(431, 145);
             this.lblExpirationDate.Name = "lblExpirationDate";
             this.lblExpirationDate.Size = new System.Drawing.Size(109, 20);
             this.lblExpirationDate.TabIndex = 34;

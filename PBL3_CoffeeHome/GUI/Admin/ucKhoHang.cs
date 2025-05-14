@@ -144,7 +144,7 @@ namespace PBL3_CoffeeHome.GUI
             }
         }
 
-        
+
         private void btnKiemKeNL_tabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
@@ -294,6 +294,21 @@ namespace PBL3_CoffeeHome.GUI
             {
                 _listLSGD.Add(item);
             }
+        }
+
+        private void btnSubmit_tabLSGD_Click(object sender, EventArgs e)
+        {
+            DateTime startDate = dateStart_TabLSGD.Value;
+            DateTime endDate = dateEnd_TabLSGD.Value;
+            string txtSearch = txtSearch_tabLSGD.Text;
+
+            _listLSGD.Clear();
+            List<TransactionDisplayDTO> items = _transactionBLL.SeaechTransaction(txtSearch, startDate, endDate);
+            foreach (var item in items)
+            {
+                _listLSGD.Add(item);
+            }
+
         }
     }
 }

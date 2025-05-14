@@ -38,18 +38,26 @@ namespace PBL3_CoffeeHome.BLL
                                   .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
-        public List<InventoryTransaction> GetinformationTransaction(string ItemID, DateTime transactionDate)
+        public List<InventoryTransaction> GetInformationTransaction(string ItemID, DateTime transactionDate)
         {
             return _transactionDAL.GetAllTransaction()
                                   .Where(t => t.ItemID == ItemID && t.TransactionDate.Date == transactionDate.Date)
                                   .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
-        public List<TransactionDisplayDTO> SeaechTransaction(string txtSearch,DateTime startDate, DateTime endDate)
+        public List<TransactionDisplayDTO> SeaechTransaction(string txtSearch, DateTime startDate, DateTime endDate)
         {
-            return _transactionDAL.GetAllTransactionDisplay()                                    
-                                  .Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate)
-                                  .OrderByDescending(t => t.TransactionDate).ToList();
+            var query = _transactionDAL.GetAllTransactionDisplay().Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate);
+
+            txtSearch = txtSearch.Trim().ToLower();
+            if (!string.IsNullOrWhiteSpace(txtSearch))
+            {
+                txtSearch = txtSearch.Trim().ToLower();
+                query = query.Where(t => t.ItemName.ToLower().Contains(txtSearch) ||
+                                        t.ItemID.ToLower().Contains(txtSearch));
+            }
+
+            return query.OrderByDescending(t => t.TransactionDate).ToList();
         }
 
         public List<TransactionStockOut> GetTransactionStockOut()
