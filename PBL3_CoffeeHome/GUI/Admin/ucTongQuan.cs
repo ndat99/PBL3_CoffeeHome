@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace PBL3_CoffeeHome.GUI.Admin
 {
-    public partial class ucDetailLSGD : UserControl
+    public partial class ucTongQuan : UserControl
     {
-        public ucDetailLSGD()
+        public ucTongQuan()
         {
             InitializeComponent();
         }
 
-        
+       
     }
 }

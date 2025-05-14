@@ -117,5 +117,57 @@ namespace PBL3_CoffeeHome.BLL
                 .Where(rd => !string.IsNullOrEmpty(rd.OrderID));
             return revenueDetails.Select(rd => rd.OrderID).Distinct().Count();
         }
+
+
+        // Lấy dữ liệu lợi nhuận theo ngày trong tháng
+        public List<(string ThoiGian, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>
+            GetProfitByDays(int year, int month)
+        {
+            // Sử dụng phương thức có sẵn để lấy doanh thu
+            var dailyRevenue = GetDailyRevenueInMonth(year, month);
+            var result = new List<(string, decimal, decimal, decimal)>();
+
+            foreach (var (day, doanhThu) in dailyRevenue)
+            {
+                var date = new DateTime(year, month, day);
+                // Chỉ cần thêm phần lấy chi phí
+                var chiPhi = _revenueDAL.GetExpenseByDate(date);
+
+                result.Add((
+                    date.ToString("dd/MM/yyyy"),
+                    doanhThu,
+                    chiPhi,
+                    doanhThu - chiPhi
+                ));
+            }
+
+            return result;
+        }
+
+
+
+        // Lấy dữ liệu lợi nhuận theo tháng trong năm
+        public List<(string ThoiGian, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>
+            GetProfitByMonths(int year)
+        {
+            // Sử dụng phương thức có sẵn để lấy doanh thu
+            var monthlyRevenue = GetMonthlyRevenueInYear(year);
+            var result = new List<(string, decimal, decimal, decimal)>();
+
+            foreach (var (month, doanhThu) in monthlyRevenue)
+            {
+                // Chỉ cần thêm phần lấy chi phí
+                var chiPhi = _revenueDAL.GetExpenseByMonth(year, month);
+
+                result.Add((
+                    $"Tháng {month}",
+                    doanhThu,
+                    chiPhi,
+                    doanhThu - chiPhi
+                ));
+            }
+
+            return result;
+        }
     }
 }
