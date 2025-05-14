@@ -34,7 +34,18 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(o => o.BaristaQueues.Any(bq => bq.Status == status && DbFunctions.TruncateTime(bq.AssignedAt) == today))
                 .ToList();
         }
+        public List<MenuItems> GetAllMenuItems()
+        {
+            using (var context = new CoffeeDbContext())
+            {
 
+                    var menuItems = context.MenuItems
+                        .ToList();
+                    Console.WriteLine($"[DAL] Đã lấy thành công {menuItems.Count} món từ cơ sở dữ liệu.");
+                    return menuItems;
+
+            }
+        }
         public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
         {
             return _context.Orders

@@ -71,6 +71,18 @@ namespace PBL3_CoffeeHome.BLL
             }
             _menuItemDAL.UpdateOrderStatus(orderId, "Completed");
         }
+        public MenuItems GetMenuItemByName(string name)
+        {
+            return _menuItemDAL.GetMenuItemByName(name);
+        }
+        public List<MenuItems> GetAllMenuItems()
+        {
+                var menuItems = _menuItemDAL.GetAllMenuItems();
+     
+
+                return menuItems;
+
+        }
         public void IncompletedOrder(string orderId)
         {
             _menuItemDAL.UpdateOrderStatus(orderId, "Incompleted");
