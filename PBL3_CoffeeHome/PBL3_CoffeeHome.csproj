@@ -113,11 +113,11 @@
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailDiemKho.cs">
+    <Compile Include="GUI\Admin\ucDetailKiemKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailDiemKho.Designer.cs">
-      <DependentUpon>ucDetailDiemKho.cs</DependentUpon>
+    <Compile Include="GUI\Admin\ucDetailKiemKho.Designer.cs">
+      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucDetailLSGD.cs">
       <SubType>UserControl</SubType>
@@ -235,8 +235,8 @@
     <EmbeddedResource Include="GUI\Admin\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Admin\ucDetailDiemKho.resx">
-      <DependentUpon>ucDetailDiemKho.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Admin\ucDetailKiemKho.resx">
+      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailLSGD.resx">
       <DependentUpon>ucDetailLSGD.cs</DependentUpon>
@@ -249,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucTongQuan.resx">
+      <DependentUpon>ucTongQuan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>

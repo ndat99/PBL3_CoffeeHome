@@ -12,13 +12,13 @@ using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.GUI.Admin
 {
-    public partial class ucDetailDiemKho : UserControl
+    public partial class ucDetailKiemKho : UserControl
     {
         private readonly InventoryTransactionBLL _transactionBLL;
         private readonly InventoryBLL _inventoryBLL;
         private BindingList<InventoryCheckDTO> _listKiemke;
 
-        public ucDetailDiemKho()
+        public ucDetailKiemKho()
         {
             InitializeComponent();
             _transactionBLL = new InventoryTransactionBLL();
@@ -36,12 +36,17 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private void LoadInventoryData(DateTime? fiterDate = null)
         {
             var transactions = _transactionBLL.GetTransactionStockOut();
-            if (fiterDate != null)
+            if (fiterDate == null)
+            {
+                fiterDate = DateTime.Now.Date;
+                transactions = transactions.Where(t => t.TransactionDate == fiterDate.Value.Date).ToList();
+            }
+            else
             {
                 transactions = transactions.Where(t => t.TransactionDate == fiterDate.Value.Date).ToList();
             }
-
             dgvStockOut.DataSource = transactions;
+            dgvStockOut.Columns["TransactionDate"].Visible = false;
         }
 
         private void dtpDSNLbyDate_ValueChanged(object sender, EventArgs e)
@@ -112,11 +117,14 @@ namespace PBL3_CoffeeHome.GUI.Admin
             bool success = true;
             foreach (var item in _listKiemke)
             {
+                MessageBox.Show($"ItemID: {item.ItemID}, UserID: {item.UserID}, Difference: {item.Difference}");
                 success &= _transactionBLL.AuditInventory(item.UserID, item.ItemID, item.Difference, item.Note);
             }
+
             if (success)
-            {
+            {   
                 MessageBox.Show("Kiểm kê kho thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadInventoryData();
                 _listKiemke.Clear();
             }
             else

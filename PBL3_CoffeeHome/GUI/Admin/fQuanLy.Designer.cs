@@ -305,6 +305,7 @@
             this.Name = "fQuanLy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelChucNang.ResumeLayout(false);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
