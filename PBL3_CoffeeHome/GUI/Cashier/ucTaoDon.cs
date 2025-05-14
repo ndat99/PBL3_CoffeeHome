@@ -53,7 +53,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDaHoanThanh.Items.Clear();
-            var orders = _menuItemBLL.GetOrdersCompletedOnDate("Completed", selectedDate);
+            var orders = _orderBLL.GetOrdersCompletedOnDate("Completed", selectedDate);
 
             foreach (var order in orders)
             {
