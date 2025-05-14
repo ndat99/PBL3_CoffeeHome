@@ -30,6 +30,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
 
         private void ucNguyenVatLieu_Load(object sender, EventArgs e)
         {
+            _listKiemke = new BindingList<InventoryCheckDTO>(); 
             LoadInventoryData();
         }
 
@@ -101,7 +102,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 SystemQuantity = nudQuantityNL.Value,
                 ActualQuantity = nudQuantityThucTe.Value,
                 Unit = inventoryItem.Unit,
-                UserID = ,
+                UserID = _barista.UserID,
                 Note = txtGhiChu.Text
             };
 

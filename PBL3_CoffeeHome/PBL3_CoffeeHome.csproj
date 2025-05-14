@@ -107,17 +107,18 @@
     <Compile Include="DTO\RevenueDetail.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
+    <Compile Include="DTO\ViewModel\OrderDTO.cs" />
     <Compile Include="GUI\Admin\fQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailDiemKho.cs">
+    <Compile Include="GUI\Admin\ucDetailKiemKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailDiemKho.Designer.cs">
-      <DependentUpon>ucDetailDiemKho.cs</DependentUpon>
+    <Compile Include="GUI\Admin\ucDetailKiemKho.Designer.cs">
+      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucDetailLSGD.cs">
       <SubType>UserControl</SubType>
@@ -136,6 +137,12 @@
     </Compile>
     <Compile Include="GUI\Admin\ucQLTK.Designer.cs">
       <DependentUpon>ucQLTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\fDoiVaiTro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
+      <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
@@ -215,13 +222,22 @@
     <Compile Include="GUI\Login\ucTTTK.Designer.cs">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\ucLoiNhuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
+      <DependentUpon>ucLoiNhuan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Admin\fDoiVaiTro.resx">
+      <DependentUpon>fDoiVaiTro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Admin\ucDetailDiemKho.resx">
-      <DependentUpon>ucDetailDiemKho.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Admin\ucDetailKiemKho.resx">
+      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailLSGD.resx">
       <DependentUpon>ucDetailLSGD.cs</DependentUpon>
@@ -229,8 +245,14 @@
     <EmbeddedResource Include="GUI\Admin\ucDetailNL.resx">
       <DependentUpon>ucDetailNL.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucLoiNhuan.resx">
+      <DependentUpon>ucLoiNhuan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucTongQuan.resx">
+      <DependentUpon>ucTongQuan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
@@ -347,6 +369,7 @@
     <Content Include="Resources\DangCheBien.png" />
     <Content Include="Resources\DangXuat.png" />
     <Content Include="Resources\DaPhucVu.png" />
+    <None Include="Resources\dollar.png" />
     <Content Include="Resources\DonHang.png" />
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Filter.png" />
@@ -367,7 +390,10 @@
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
     <Content Include="Resources\Reset.png" />
+    <None Include="Resources\salary.png" />
     <Content Include="Resources\SanPham.png" />
+    <None Include="Resources\save-money.png" />
+    <None Include="Resources\save-money1.png" />
     <Content Include="Resources\Save.png" />
     <Content Include="Resources\Sua1.png" />
     <None Include="Resources\tag.png" />
