@@ -14,11 +14,13 @@ namespace PBL3_CoffeeHome.GUI
 {
     public partial class ucTaoDon: UserControl
     {
+        private OrderBLL _orderBLL;
         private readonly MenuItemBLL _menuItemBLL;
         private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
         public ucTaoDon()
         {
             InitializeComponent();
+            _orderBLL = new OrderBLL();
             _menuItemBLL = new MenuItemBLL();
             _menuItemIngredientBLL = new MenuItemIngredientBLL();
             LoadComboBoxData();
@@ -33,7 +35,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
-            var orders = _menuItemBLL.GetOrdersAssignedToday("Incompleted");
+            var orders = _orderBLL.GetOrdersAssignedToday("Incompleted");
 
             foreach (var order in orders)
             {
@@ -90,6 +92,16 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Now.Date);
+        }
+
+        private void listDonHienCo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listDaHoanThanh_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
