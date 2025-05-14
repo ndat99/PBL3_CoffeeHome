@@ -40,8 +40,9 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
         public List<Order> GetOrdersByStatus(string status)
         {
+            var today = DateTime.Today;
             return _context.Orders
-                .Where(o => o.Status == status)
+                .Where(o => o.Status == status && DbFunctions.TruncateTime(o.CreatedAt) == today)
                 .Include(o => o.OrderItems)
                 .ToList();
         }

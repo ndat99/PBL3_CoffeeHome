@@ -52,11 +52,6 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _menuItemDAL.GetOrderItemsByOrderId(orderId);
         }
-        // Lấy thông tin món theo tên
-        public MenuItems GetMenuItemByName(string name)
-        {
-            return _menuItemDAL.GetMenuItemByName(name);
-        }
 
         // Cập nhật trạng thái đơn hàng
         public void CompleteOrder(string orderId, string userId)
@@ -75,6 +70,10 @@ namespace PBL3_CoffeeHome.BLL
                 }
             }
             _menuItemDAL.UpdateOrderStatus(orderId, "Completed");
+        }
+        public void IncompletedOrder(string orderId)
+        {
+            _menuItemDAL.UpdateOrderStatus(orderId, "Incompleted");
         }
     }
 }
