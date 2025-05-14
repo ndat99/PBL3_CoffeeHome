@@ -88,7 +88,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1647, 237);
+            this.panel1.Size = new System.Drawing.Size(1647, 236);
             this.panel1.TabIndex = 3;
             // 
             // tableLayoutPanel4
@@ -246,9 +246,9 @@
             // 
             this.panel5.Controls.Add(this.chartThongKe);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(10, 253);
+            this.panel5.Location = new System.Drawing.Point(10, 252);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1647, 611);
+            this.panel5.Size = new System.Drawing.Size(1647, 612);
             this.panel5.TabIndex = 4;
             // 
             // chartThongKe
@@ -259,7 +259,7 @@
             this.chartThongKe.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartThongKe.Legends.Add(legend1);
-            this.chartThongKe.Location = new System.Drawing.Point(146, 102);
+            this.chartThongKe.Location = new System.Drawing.Point(120, 93);
             this.chartThongKe.Name = "chartThongKe";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -269,7 +269,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Date;
             this.chartThongKe.Series.Add(series1);
-            this.chartThongKe.Size = new System.Drawing.Size(1446, 374);
+            this.chartThongKe.Size = new System.Drawing.Size(1446, 430);
             this.chartThongKe.TabIndex = 1;
             this.chartThongKe.Text = "chart1";
             // 

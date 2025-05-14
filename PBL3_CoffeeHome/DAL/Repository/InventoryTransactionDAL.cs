@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.DAL
 {
@@ -18,34 +19,32 @@ namespace PBL3_CoffeeHome.DAL
 
         public List<InventoryTransaction> GetAllTransaction()
         {
-            return _db.InventoryTransactions.AsNoTracking()
-                                            .Include(t => t.Inventory).Include(t => t.User)
-                                            .OrderByDescending(t => t.TransactionDate).ToList();
+            return  _db.InventoryTransactions.AsNoTracking()
+                                             .Include(t => t.Inventory).Include(t => t.User)
+                                             .ToList();
         }
 
-        public List<InventoryTransaction> GetTransactionByDateRange(DateTime startDate, DateTime endDate)
-        {
-            endDate = endDate.Date.AddDays(1).AddTicks(-1);
-            return _db.InventoryTransactions.AsNoTracking()
-                                            .Include(t => t.Inventory).Include(t => t.User)
-                                            .Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate).OrderByDescending(t => t.TransactionDate).ToList();
-        }
-
-        public List<InventoryTransaction> GetTranSactionByName(string name)
+        public List<TransactionDisplayDTO> GetAllTransactionDisplay()
         {
             return _db.InventoryTransactions.AsNoTracking()
-                                 .Include(t => t.Inventory)
-                                 .Where(t => t.Inventory.Name == name).OrderByDescending(t => t.TransactionDate).ToList();
-        }
-        public List<InventoryTransaction> GetTransactionByType(string type)
-        {
-            if (string.IsNullOrEmpty(type) || type == "Tất cả")
-            {
-                return GetAllTransaction();
-            }
-            return _db.InventoryTransactions.AsNoTracking()
-                                            .Include(t => t.Inventory).Include(t => t.User)
-                                            .Where(t => t.Type == type).OrderByDescending(t => t.TransactionDate).ToList();
+                .Include(t => t.Inventory).Include(t => t.User)
+                .GroupBy(t => new
+                {
+                    t.ItemID,
+                    Date = DbFunctions.TruncateTime(t.TransactionDate)
+                })
+                .Select(g => new TransactionDisplayDTO
+                {
+                    ItemID = g.Key.ItemID,
+                    TransactionDate = g.Key.Date.Value,
+                    ItemName = g.FirstOrDefault().Inventory.Name,
+                    Category = g.FirstOrDefault().Inventory.Category,
+                    Quantity = g.Sum(t => t.Quantity),
+                    Unit = g.FirstOrDefault().Inventory.Unit,
+                    Type = g.FirstOrDefault().Type,
+                    UserName = g.FirstOrDefault().User.FullName
+                })
+                .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
         public List<InventoryTransaction> GetTransactionStockOut()
@@ -60,17 +59,15 @@ namespace PBL3_CoffeeHome.DAL
         {
             if (quantity <= 0 || price <= 0)
             {
-                return false; // Số lượng hoặc giá không hợp lệ
+                return false;
             }
 
-            // Thêm logic kiểm tra tồn tại của itemID trong cơ sở dữ liệu
             var inventory = _db.Inventory.FirstOrDefault(i => i.ItemID == itemID);
             if (inventory == null)
             {
-                return false; // Không tìm thấy nguyên liệu
+                return false; 
             }
 
-            // Thực hiện nhập kho
             var transaction = new InventoryTransaction
             {
                 TransactionID = GenerateTransactionID(),
@@ -106,7 +103,7 @@ namespace PBL3_CoffeeHome.DAL
                         TransactionID = GenerateTransactionID(),
                         ItemID = itemID,
                         Quantity = quantity,
-                        Type = "Xuất",
+                        Type = "Xuất Kho",
                         TransactionDate = DateTime.Now,
                         UserID = userID,
                         OrderID = orderID,

@@ -21,7 +21,7 @@ namespace PBL3_CoffeeHome.DAL
         {
             return _db.Inventory.AsNoTracking().ToList();
         }
-
+        
         public Inventory GetInventoryByID(string itemID)
         {
             return _db.Inventory.AsNoTracking().FirstOrDefault(i => i.ItemID == itemID);
@@ -48,7 +48,7 @@ namespace PBL3_CoffeeHome.DAL
 
         public List<Inventory> GetExpiring(int days)
         {
-            var expiringDate = DateTime.Now.AddDays(7);
+            var expiringDate = DateTime.Now.AddDays(8).AddTicks(-1);
             var today = DateTime.Now.Date;
             return _db.Inventory.AsNoTracking().Where(i => i.ExpirationDate <= expiringDate && i.ExpirationDate >= today).OrderBy(c => c.ExpirationDate).ToList();
         }

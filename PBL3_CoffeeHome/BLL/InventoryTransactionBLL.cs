@@ -16,26 +16,40 @@ namespace PBL3_CoffeeHome.BLL
             _transactionDAL = new InventoryTransactionDAL();
         }
 
-        public List<TransactionDisplayDTO> GetAllTransactions()
+        public List<TransactionDisplayDTO> GetAllTransactionDisplay()
         {
-            var transactions = _transactionDAL.GetAllTransaction();
-            return transactions.Select(ToTransactionDisplayDTO).ToList();
+            return _transactionDAL.GetAllTransactionDisplay();
         }
 
-        public List<InventoryTransaction> GetTranSactionByName(string Name)
+        public List<string> GetTypeTransaction()
         {
-            return _transactionDAL.GetTranSactionByName(Name);
-        }
-        public List<TransactionDisplayDTO> GetTransactionsByDateRange(DateTime startDate, DateTime endDate)
-        {
-            var transactions = _transactionDAL.GetTransactionByDateRange(startDate, endDate);
-            return transactions.Select(ToTransactionDisplayDTO).ToList();
+            return _transactionDAL.GetAllTransactionDisplay()
+                      .Select(t => t.Type).Distinct().ToList();
         }
 
         public List<TransactionDisplayDTO> GetTransactionsByType(string type)
         {
-            var transactions = _transactionDAL.GetTransactionByType(type);
-            return transactions.Select(ToTransactionDisplayDTO).ToList();
+            if (string.IsNullOrEmpty(type) || type == "Tất cả")
+            {
+                return GetAllTransactionDisplay();
+            }
+            return _transactionDAL.GetAllTransactionDisplay()
+                                  .Where(t => t.Type == type)
+                                  .OrderByDescending(t => t.TransactionDate).ToList();
+        }
+
+        public List<InventoryTransaction> GetinformationTransaction(string ItemID, DateTime transactionDate)
+        {
+            return _transactionDAL.GetAllTransaction()
+                                  .Where(t => t.ItemID == ItemID && t.TransactionDate.Date == transactionDate.Date)
+                                  .OrderByDescending(t => t.TransactionDate).ToList();
+        }
+
+        public List<TransactionDisplayDTO> SeaechTransaction(string txtSearch,DateTime startDate, DateTime endDate)
+        {
+            return _transactionDAL.GetAllTransactionDisplay()                                    
+                                  .Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate)
+                                  .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
         public List<TransactionStockOut> GetTransactionStockOut()
@@ -52,7 +66,6 @@ namespace PBL3_CoffeeHome.BLL
         }
 
 
-
         public bool StockIn(string itemID, decimal quantity, string userID, decimal price, DateTime expirationDate, string note = "")
         {
             return _transactionDAL.StockIn(itemID, quantity, userID, price, expirationDate, note);
@@ -63,31 +76,10 @@ namespace PBL3_CoffeeHome.BLL
             return _transactionDAL.StockOut(itemID, quantity, userID, orderID, note);
         }
 
-
         public bool AuditInventory(string userID, string itemId, decimal quantityChange, string note)
         {
             return _transactionDAL.AuditInventory(userID, itemId, quantityChange, note);
         }
 
-
-        private TransactionDisplayDTO ToTransactionDisplayDTO(InventoryTransaction transaction)
-        {
-            if (transaction == null) return null;
-
-            return new TransactionDisplayDTO
-            {
-                TransactionID = transaction.TransactionID,
-                TransactionDate = transaction.TransactionDate,
-                ItemID = transaction.ItemID,
-                ItemName = transaction.Inventory?.Name,
-                Category = transaction.Inventory?.Category,
-                Quantity = transaction.Quantity,
-                Unit = transaction.Inventory?.Unit,
-                Type = transaction.Type,
-                UserID = transaction.UserID,
-                UserName = transaction.User.UserName,
-                Note = transaction.Note
-            };
-        }
     }
 }

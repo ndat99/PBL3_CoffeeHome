@@ -119,12 +119,6 @@
     <Compile Include="GUI\Admin\ucDetailKiemKho.Designer.cs">
       <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailLSGD.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Admin\ucDetailLSGD.Designer.cs">
-      <DependentUpon>ucDetailLSGD.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Admin\ucDetailNL.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -228,9 +222,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailKiemKho.resx">
       <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Admin\ucDetailLSGD.resx">
-      <DependentUpon>ucDetailLSGD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailNL.resx">
       <DependentUpon>ucDetailNL.cs</DependentUpon>
