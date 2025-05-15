@@ -1,88 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
-using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.GUI
 {
-    public partial class ucTaoDon : UserControl
+    public partial class ucTaoDon: UserControl
     {
-
-        private MenuItemBLL _menuItemBLL = new MenuItemBLL();
-        private MenuItemIngredientBLL _menuItemIngredientBLL = new MenuItemIngredientBLL();
-        private InventoryBLL _inventoryBLL = new InventoryBLL();
-        private OrderBLL _orderBLL = new OrderBLL();
-
-        private List<MenuItems> _allMenuItems;
-        private List<OrderItem> _currentOrderItems = new List<OrderItem>();
-        private BindingList<OrderDisplayDTO> _listDataTable;
-        private fThuNgan _parentForm;
-
-        public ucTaoDon(fThuNgan parentForm)
-        {
-            InitializeComponent();
-            _parentForm = parentForm;
-            _listDataTable = new BindingList<OrderDisplayDTO>();
-            dgvChiTietDon.DataSource = _listDataTable;
-            _allMenuItems = _menuItemBLL.GetAllMenuItems();
-
-            LoadComboBoxData();
-            LoadOrdersToday();
-            LoadOrderHistory(DateTime.Today);
-            timerRefresh.Start();
-
-            dgvChiTietDon.Columns["Name"].HeaderText = "Tên món";
-            dgvChiTietDon.Columns["Quantity"].HeaderText = "Số lượng";
-            dgvChiTietDon.Columns["CostPrice"].HeaderText = "Đơn giá";
-            dgvChiTietDon.Columns["TotalPrice"].HeaderText = "Thành tiền";
-            dgvChiTietDon.Columns["CostPrice"].DefaultCellStyle.Format = "N0";
-            dgvChiTietDon.Columns["TotalPrice"].DefaultCellStyle.Format = "N0";
-
-            listDonHienCo.View = View.Details;
-            listDonHienCo.Columns.Clear();
-            listDonHienCo.Columns.Add("clTrangThai", "Trạng thái", 100);
-            listDonHienCo.Columns.Add("clMaDon", "Mã đơn", 160);
-            listDonHienCo.Columns.Add("clGioTao", "Giờ tạo", 80);
-        }
-
+        private OrderBLL _orderBLL;
+        private readonly MenuItemBLL _menuItemBLL;
+        private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
         public ucTaoDon()
         {
-        }
-        // Tạo mã OrderItemID (mới thêm)
-        private string GenerateOrderItemID()
-        {
-            using (var context = new CoffeeDbContext())
-            {
-                int maxIdNumber = 0;
-                try
-                {
-                    var lastOrderItem = context.OrderItems
-                        .OrderByDescending(oi => oi.OrderItemID)
-                        .FirstOrDefault();
-
-                    if (lastOrderItem != null && lastOrderItem.OrderItemID.StartsWith("OI"))
-                    {
-                        string lastId = lastOrderItem.OrderItemID.Substring(2); // Lấy phần số (ví dụ: "044" từ "OI044")
-                        if (int.TryParse(lastId, out int number))
-                        {
-                            maxIdNumber = number;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Lỗi khi tạo OrderItemID: {ex.Message}");
-                    maxIdNumber = 0;
-                }
-
-                int newIdNumber = maxIdNumber + 1;
-                return "OI" + newIdNumber.ToString("D3"); // Ví dụ: OI045
-            }
+            InitializeComponent();
+            _orderBLL = new OrderBLL();
+            _menuItemBLL = new MenuItemBLL();
+            _menuItemIngredientBLL = new MenuItemIngredientBLL();
+            LoadComboBoxData();
+            LoadOrdersToday();
+            LoadOrderHistory(DateTime.Now.Date);
+            timerRefresh.Start();
         }
         private string GenerateOrderID(DateTime date)
         {
@@ -146,30 +90,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private void LoadComboBoxData()
         {
-            var categories = _allMenuItems.Select(i => i.Category).Distinct().ToList();
-            cBDanhMuc.Items.Clear();
-            cBDanhMuc.Items.AddRange(categories.ToArray());
 
-            if (categories.Count > 0)
-            {
-                cBDanhMuc.SelectedIndex = 0;
-                UpdateMonComboBox(categories[0]);
-            }
-        }
-        // làm mới 
-        private void ReloadData()
-        {
-            _listDataTable.Clear();
-            _currentOrderItems.Clear();
-            txtThanhTien.Text = "0";
-            txtGiamGia.Text = "0";
-            txtSoBan.Text = "0";
-            numSoLuong.Value = 1;
-            _allMenuItems = _menuItemBLL.GetAllMenuItems();
-
-            LoadComboBoxData();
-            LoadOrdersToday();
-            LoadOrderHistory(DateTime.Today);
         }
 
         // Load danh sách đơn hàng hôm nay
@@ -180,7 +101,6 @@ namespace PBL3_CoffeeHome.GUI
 
             foreach (var order in orders)
             {
-                if (order == null) continue;
                 var item = new ListViewItem(new string[]
                 {
                     "",
@@ -203,13 +123,11 @@ namespace PBL3_CoffeeHome.GUI
             foreach (var order in orders)
             {
                 var completedQueue = order.BaristaQueues.FirstOrDefault();
-                var completedAt = completedQueue?.CompletedAt.HasValue == true
-                ? completedQueue.CompletedAt.Value.ToString("HH:mm") : "N/A";
                 var item = new ListViewItem(new string[]
                 {
                     "",
                     order.OrderID,
-                    completedAt
+                    completedQueue.CompletedAt.Value.ToString("HH:mm")
                 });
                 item.Tag = order;
                 item.ImageIndex = 1;
@@ -320,165 +238,31 @@ namespace PBL3_CoffeeHome.GUI
             tong = tong * (100 - giamGia) / 100;
             return tong;
         }
+=======
+        private void btnBan_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            MessageBox.Show("Đang chọn " + btn.Text);
+        }
+
         private void btnLichSuDon_Click(object sender, EventArgs e)
         {
-            new fLichSuDonHang().Show();
+            fLichSuDonHang f = new fLichSuDonHang();
+            f.Show();
+        }
+        private void btnThemMon_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
             LoadOrdersToday();
-            LoadOrderHistory(DateTime.Today);
+            LoadOrderHistory(DateTime.Now.Date);
         }
 
-        private void cBDanhMuc_SelectedIndexChanged(object sender, EventArgs e)
+        private void listDonHienCo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedCategory = cBDanhMuc.SelectedItem?.ToString();
-            if (!string.IsNullOrEmpty(selectedCategory))
-            {
-                UpdateMonComboBox(selectedCategory);
-            }
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (dgvChiTietDon.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn món để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                var itemsToRemove = new List<OrderDisplayDTO>();
-                var orderItemsToRemove = new List<OrderItem>();
-
-                foreach (DataGridViewRow row in dgvChiTietDon.SelectedRows)
-                {
-                    string tenMon = row.Cells["Name"].Value?.ToString()?.Trim();
-                    if (string.IsNullOrEmpty(tenMon))
-                    {
-                        Console.WriteLine($"Tên món rỗng hoặc null tại hàng {row.Index}");
-                        continue;
-                    }
-                    var displayItem = _listDataTable.FirstOrDefault(x => x.Name?.Trim() == tenMon);
-                    if (displayItem != null)
-                    {
-                        itemsToRemove.Add(displayItem);
-                        Console.WriteLine($"Tìm thấy món trong _listDataTable: {tenMon}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Không tìm thấy món trong _listDataTable: {tenMon}");
-                    }
-
-                    var orderItem = _currentOrderItems.FirstOrDefault(x =>
-                        _allMenuItems.FirstOrDefault(m => m.MenuItemID == x.MenuItemID)?.Name?.Trim() == tenMon);
-                    if (orderItem != null)
-                    {
-                        orderItemsToRemove.Add(orderItem);
-                        Console.WriteLine($"Tìm thấy món trong _currentOrderItems: {tenMon}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Không tìm thấy món trong _currentOrderItems: {tenMon}");
-                    }
-                }
-
-                foreach (var item in itemsToRemove)
-                {
-                    _listDataTable.Remove(item);
-                }
-
-                foreach (var orderItem in orderItemsToRemove)
-                {
-                    _currentOrderItems.Remove(orderItem);
-                }
-
-                txtThanhTien.Text = TinhTongTien().ToString("N0");
-
-                dgvChiTietDon.Refresh();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Có lỗi xảy ra khi xóa món: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine($"Lỗi khi xóa món: {ex}");
-            }
-        }
-
-        private void btnThanhToan_Click_1(object sender, EventArgs e)
-        {
-            if (_listDataTable.Count == 0)
-            {
-                MessageBox.Show("Chưa có món nào trong đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int cardNumber = 0;
-            string soBanInput = txtSoBan.Text?.Trim();
-            if (string.IsNullOrEmpty(soBanInput))
-            {
-                MessageBox.Show("Vui lòng nhập số bàn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!int.TryParse(soBanInput, out cardNumber) || cardNumber <= 0)
-            {
-                MessageBox.Show("Số bàn phải là một số nguyên dương hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                string userId = null;
-                if (_parentForm != null && _parentForm.cashier != null && !string.IsNullOrEmpty(_parentForm.cashier.UserID))
-                {
-                    userId = _parentForm.cashier.UserID;
-                }
-                else
-                {
-                    MessageBox.Show("Không thể xác định thông tin người dùng hiện tại. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                string orderID = GenerateOrderID(DateTime.Now);
-
-                var orderItems = _currentOrderItems.Select(i => (i.MenuItemID, i.Quantity)).ToList();
-
-                using (var context = new CoffeeDbContext())
-                {
-                    decimal total = 0;
-                    List<OrderItem> orderItemList = new List<OrderItem>();
-
-                    foreach (var (menuItemId, quantity) in orderItems)
-                    {
-                        var menuItem = context.MenuItems.Find(menuItemId);
-                        if (menuItem == null || !menuItem.IsAvailable) continue;
-
-                        decimal subtotal = menuItem.Price * quantity;
-                        total += subtotal;
-
-                        orderItemList.Add(new OrderItem
-                        {
-                            OrderItemID = GenerateOrderItemID(),
-                            OrderID = orderID,
-                            MenuItemID = menuItemId,
-                            Quantity = quantity,
-                            Price = menuItem.Price,
-                            Subtotal = subtotal
-                        });
-                    }
-
-                    decimal discountAmount = 0;
-                    string discountId = null;
-                    if (!string.IsNullOrEmpty(discountId))
-                    {
-                        var discount = context.Discounts.Find(discountId);
-                        if (discount != null && total >= discount.MinOrderAmount)
-                            discountAmount = total * discount.Percentage;
-                    }
-
                     decimal finalAmount = total - discountAmount;
 
                     var newOrder = new Order
@@ -696,123 +480,6 @@ namespace PBL3_CoffeeHome.GUI
                 Console.WriteLine($"Lỗi khi hiển thị chi tiết đơn hàng đã hoàn thành: {ex}");
             }
         }
-        // xóa giao diện
-        //private void btnHuyDon_Click(object sender, EventArgs e)
-        //{
-        //    if (listDonHienCo.SelectedItems.Count == 0)
-        //    {
-        //        MessageBox.Show("Vui lòng chọn đơn hàng để hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    try
-        //    {
-        //        var itemsToRemove = new List<ListViewItem>();
-        //        foreach (ListViewItem item in listDonHienCo.SelectedItems)
-        //        {
-        //            if (item.Tag is Order order && order.Status == "Incompleted")
-        //            {
-        //                itemsToRemove.Add(item);
-        //                Console.WriteLine($"Đã thêm đơn {order.OrderID} vào danh sách xóa.");
-        //            }
-        //            else
-        //            {
-        //                Console.WriteLine($"Không thể hủy đơn {item.SubItems[1].Text} vì trạng thái không phải 'Incompleted'.");
-        //            }
-        //        }
-
-        //        foreach (var item in itemsToRemove)
-        //        {
-        //            listDonHienCo.Items.Remove(item);
-        //            Console.WriteLine($"Đã xóa đơn {item.SubItems[1].Text} khỏi listDonHienCo.");
-        //        }
-
-        //        if (itemsToRemove.Count == 0)
-        //        {
-        //            MessageBox.Show("Không có đơn nào được hủy vì không phải trạng thái 'Incompleted'.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show($"Đã hủy thành công {itemsToRemove.Count} đơn hàng.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Có lỗi xảy ra khi hủy đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        Console.WriteLine($"Lỗi khi hủy đơn: {ex}");
-        //    }
-        //}
-        //private void btnHuyDon_Click(object sender, EventArgs e)
-        //{
-        //    if (listDonHienCo.SelectedItems.Count == 0)
-        //    {
-        //        MessageBox.Show("Vui lòng chọn đơn hàng để hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return;
-        //    }
-
-        //    try
-        //    {
-        //        var itemsToRemove = new List<ListViewItem>();
-        //        using (var context = new CoffeeDbContext())
-        //        {
-        //            foreach (ListViewItem item in listDonHienCo.SelectedItems)
-        //            {
-        //                if (item.Tag is Order order )
-        //                {
-        //                    // Lấy OrderID của đơn hàng
-        //                    string orderId = order.OrderID;
-
-        //                    // Xóa các bản ghi liên quan trong bảng OrderItems
-        //                    var orderItems = context.OrderItems.Where(oi => oi.OrderID == orderId).ToList();
-        //                    context.OrderItems.RemoveRange(orderItems);
-
-        //                    // Xóa các bản ghi liên quan trong bảng BaristaQueues (nếu có)
-        //                    var baristaQueues = context.BaristaQueues.Where(bq => bq.OrderID == orderId).ToList();
-        //                    context.BaristaQueues.RemoveRange(baristaQueues);
-
-        //                    // Xóa đơn hàng trong bảng Orders
-        //                    var orderToRemove = context.Orders.Find(orderId);
-        //                    if (orderToRemove != null)
-        //                    {
-        //                        context.Orders.Remove(orderToRemove);
-        //                    }
-
-        //                    itemsToRemove.Add(item);
-        //                }
-        //                else
-        //                {
-        //                    Console.WriteLine($"Không thể hủy đơn {item.SubItems[1].Text} vì trạng thái không phải 'Incompleted'.");
-        //                }
-        //            }
-
-        //            // Lưu thay đổi vào cơ sở dữ liệu
-        //            context.SaveChanges();
-        //        }
-
-        //        // Xóa các mục khỏi listDonHienCo
-        //        foreach (var item in itemsToRemove)
-        //        {
-        //            listDonHienCo.Items.Remove(item);
-        //            Console.WriteLine($"Đã xóa đơn {item.SubItems[1].Text} khỏi listDonHienCo.");
-        //        }
-
-        //        if (itemsToRemove.Count == 0)
-        //        {
-        //            MessageBox.Show("Không có đơn nào được hủy vì không phải trạng thái 'Incompleted'.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show($"Đã hủy thành công {itemsToRemove.Count} đơn hàng.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Có lỗi xảy ra khi hủy đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        Console.WriteLine($"Lỗi khi hủy đơn: {ex}");
-        //    }
-        //}
-
-
     }
 
 }

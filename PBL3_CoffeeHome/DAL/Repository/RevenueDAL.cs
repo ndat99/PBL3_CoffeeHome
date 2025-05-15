@@ -80,7 +80,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 var expense = _context.InventoryTransactions
                     .Where(t => t.TransactionDate >= startDate &&
                                t.TransactionDate < endDate &&
-                               t.Type==("Nhập"))
+                               t.Type == ("Nhập"))
                     .Join(_context.Inventory,
                           trans => trans.ItemID,
                           inv => inv.ItemID,

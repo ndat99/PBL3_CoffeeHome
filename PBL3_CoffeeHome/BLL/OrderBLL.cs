@@ -13,13 +13,17 @@ namespace PBL3_CoffeeHome.BLL
     {
         private readonly OrderDAL _orderDAL;
         private readonly RevenueDAL _revenueDAL;
-        //private readonly BaristaQueueBLL _baristaQueueBLL;
+        private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
+        private readonly BaristaQueueBLL _baristaQueueBLL;
+        private readonly InventoryTransactionBLL _inventoryTransactionBLL;
 
         public OrderBLL()
         {
             _orderDAL = new OrderDAL();
             _revenueDAL = new RevenueDAL();
-           // _baristaQueueBLL = new BaristaQueueBLL();
+            _menuItemIngredientBLL = new MenuItemIngredientBLL();
+            _baristaQueueBLL = new BaristaQueueBLL();
+            _inventoryTransactionBLL = new InventoryTransactionBLL();
         }
 
         // ProcessOrder
@@ -193,6 +197,22 @@ namespace PBL3_CoffeeHome.BLL
             {
                 throw new Exception("Lỗi khi in hóa đơn: " + ex.Message, ex);
             }
+        }
+        // Cập nhật trạng thái đơn hàng
+        public void CompleteOrder(string orderId, string queueID, string userId)
+        {
+            var orderItems = _orderDAL.GetOrderItemsByOrderId(orderId);
+            foreach (var orderItem in orderItems)
+            {
+                var ingredients = _menuItemIngredientBLL.GetMenuItemIngredient(orderItem.MenuItemID);
+                foreach (var ingredient in ingredients)
+                {
+                    decimal totalQty = ingredient.QuantityRequired * orderItem.Quantity;
+                    _inventoryTransactionBLL.StockOut(ingredient.ItemID, totalQty, userId, orderId,
+                        $"Xuất tự động cho đơn hàng");
+                }
+            }
+            _baristaQueueBLL.UpdateQueueStatus(queueID, "Completed");
         }
     }
 

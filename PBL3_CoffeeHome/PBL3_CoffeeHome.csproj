@@ -403,6 +403,7 @@
     <Content Include="Resources\ThucDon1.png" />
     <Content Include="Resources\TimKiem.png" />
     <Content Include="Resources\TimKiemEnd.png" />
+    <None Include="Resources\transaction.png" />
     <Content Include="Resources\TTTK.png" />
     <Content Include="Resources\WhiteKey.png" />
     <Content Include="Resources\Xem.png" />

@@ -51,7 +51,7 @@ namespace PBL3_CoffeeHome.DAL
         {
             return _db.InventoryTransactions.AsNoTracking()
                                             .Include(t => t.Inventory).Include(t => t.User)
-                                            .Where(t => t.Type == "Xuất").OrderByDescending(t => t.TransactionDate).ToList();
+                                            .Where(t => t.Type == "Xuất Kho").OrderByDescending(t => t.TransactionDate).ToList();
         }
 
         // Chuc nang
