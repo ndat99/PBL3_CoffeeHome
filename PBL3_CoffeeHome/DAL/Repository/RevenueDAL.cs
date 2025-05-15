@@ -41,61 +41,197 @@ namespace PBL3_CoffeeHome.DAL.Repository
         {
             return _context.RevenueDetails.ToList();
         }
-
-        // Lấy chi phí theo ngày
-        public decimal GetExpenseByDate(DateTime date)
+    
+        // Lấy doanh thu hàng ngày trong tháng
+        public List<(int Day, decimal Total)> GetDailyRevenueInMonth(int year, int month)
         {
-            try
-            {
-                var startDate = date.Date;
-                var endDate = date.Date.AddDays(1).AddSeconds(-1);
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null && rd.Revenue.StartDate.Year == year && rd.Revenue.StartDate.Month == month);
 
-                var expense = _context.InventoryTransactions
-                    .Where(t => t.TransactionDate >= startDate &&
-                               t.TransactionDate < endDate &&
-                               t.Type == "Nhập")
-                    .Join(_context.Inventory,
-                          trans => trans.ItemID,
-                          inv => inv.ItemID,
-                          (trans, inv) => trans.Quantity * inv.CostPrice)  // Sử dụng CostPrice từ Inventory
-                    .DefaultIfEmpty(0)
-                    .Sum();
+            var dailyRevenue = revenueDetails
+                .GroupBy(rd => rd.Revenue.StartDate.Day)
+                .Select(g => new { Day = g.Key, Total = g.Sum(rd => rd.RevenueAmount) })
+                .OrderBy(g => g.Day)
+                .ToList();
 
-                return expense;
-            }
-            catch (Exception ex)
+            int daysInMonth = DateTime.DaysInMonth(year, month);
+            var result = new List<(int Day, decimal Total)>();
+            for (int i = 1; i <= daysInMonth; i++)
             {
-                Console.WriteLine($"Error in GetExpenseByDate: {ex.Message}");
-                return 0;
+                var dayData = dailyRevenue.FirstOrDefault(dr => dr.Day == i);
+                result.Add((i, dayData?.Total ?? 0));
             }
+
+            return result;
         }
 
-        public decimal GetExpenseByMonth(int year, int month)
+        // Lấy doanh thu hàng tháng trong năm
+        public List<(int Month, decimal Total)> GetMonthlyRevenueInYear(int year)
         {
-            try
-            {
-                var startDate = new DateTime(year, month, 1);
-                var endDate = startDate.AddMonths(1);
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null && rd.Revenue.StartDate.Year == year);
 
-                var expense = _context.InventoryTransactions
-                    .Where(t => t.TransactionDate >= startDate &&
-                               t.TransactionDate < endDate &&
-                               t.Type == ("Nhập"))
-                    .Join(_context.Inventory,
-                          trans => trans.ItemID,
-                          inv => inv.ItemID,
-                          (trans, inv) => trans.Quantity * inv.CostPrice)  // Sử dụng CostPrice từ Inventory
-                    .DefaultIfEmpty(0)
-                    .Sum();
+            var monthlyRevenue = revenueDetails
+                .GroupBy(rd => rd.Revenue.StartDate.Month)
+                .Select(g => new { Month = g.Key, Total = g.Sum(rd => rd.RevenueAmount) })
+                .OrderBy(g => g.Month)
+                .ToList();
 
-                return expense;
-            }
-            catch (Exception ex)
+            var result = new List<(int Month, decimal Total)>();
+            for (int i = 1; i <= 12; i++)
             {
-                Console.WriteLine($"Error in GetExpenseByMonth: {ex.Message}");
-                return 0;
+                var monthData = monthlyRevenue.FirstOrDefault(mr => mr.Month == i);
+                result.Add((i, monthData?.Total ?? 0));
             }
+
+            return result;
+        }
+
+        // Lấy danh sách sản phẩm bán chạy nhất 
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProducts()
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.ItemName));
+
+            var allProducts = revenueDetails
+                .GroupBy(rd => rd.ItemName)
+                .Select(g => new
+                {
+                    ItemName = g.Key,
+                    TotalQuantity = g.Sum(rd => rd.Quantity)
+                })
+                .OrderByDescending(g => g.TotalQuantity)
+                .ToList();
+
+            // Lấy top 5 sản phẩm
+            var topProducts = allProducts.Take(5).ToList();
+
+            // Tính tổng số lượng của các sản phẩm còn lại
+            int othersQuantity = allProducts.Skip(5).Sum(p => p.TotalQuantity);
+
+            // Tạo danh sách kết quả bao gồm top 5 và "Khác"
+            var result = topProducts.Select(p => (p.ItemName, p.TotalQuantity)).ToList();
+
+            if (othersQuantity > 0)
+            {
+                result.Add(("Khác", othersQuantity));
+            }
+
+            return result;
+        }
+        // Lấy danh sách sản phẩm bán chạy nhất theo năm
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByYear(int year)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.ItemName) && rd.Revenue != null && rd.Revenue.StartDate.Year == year);
+
+            var allProducts = revenueDetails
+                .GroupBy(rd => rd.ItemName)
+                .Select(g => new
+                {
+                    ItemName = g.Key,
+                    TotalQuantity = g.Sum(rd => rd.Quantity)
+                })
+                .OrderByDescending(g => g.TotalQuantity)
+                .ToList();
+
+            var topProducts = allProducts.Take(5).ToList();
+            int othersQuantity = allProducts.Skip(5).Sum(p => p.TotalQuantity);
+
+            var result = topProducts.Select(p => (p.ItemName, p.TotalQuantity)).ToList();
+            if (othersQuantity > 0)
+            {
+                result.Add(("Khác", othersQuantity));
+            }
+
+            return result;
+        }
+        // Lấy danh sách sản phẩm bán chạy nhất theo tháng
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByMonth(int year, int month)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.ItemName) && rd.Revenue != null &&
+                             rd.Revenue.StartDate.Year == year && rd.Revenue.StartDate.Month == month);
+
+            var allProducts = revenueDetails
+                .GroupBy(rd => rd.ItemName)
+                .Select(g => new
+                {
+                    ItemName = g.Key,
+                    TotalQuantity = g.Sum(rd => rd.Quantity)
+                })
+                .OrderByDescending(g => g.TotalQuantity)
+                .ToList();
+
+            var topProducts = allProducts.Take(5).ToList();
+            int othersQuantity = allProducts.Skip(5).Sum(p => p.TotalQuantity);
+
+            var result = topProducts.Select(p => (p.ItemName, p.TotalQuantity)).ToList();
+            if (othersQuantity > 0)
+            {
+                result.Add(("Khác", othersQuantity));
+            }
+
+            return result;
+        }
+        public decimal GetTotalRevenueByYear(int year)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null && rd.Revenue.StartDate.Year == year);
+            return revenueDetails.Sum(rd => rd.RevenueAmount);
+        }
+
+        // Tính tổng doanh thu theo tháng
+        public decimal GetTotalRevenueByMonth(int year, int month)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null && rd.Revenue.StartDate.Year == year && rd.Revenue.StartDate.Month == month);
+            return revenueDetails.Sum(rd => rd.RevenueAmount);
+        }
+        // Tính tổng số lượng sản phẩm đã bán
+        public int GetTotalProductsSold()
+        {
+            var revenueDetails = GetAllRevenueDetails();
+            return revenueDetails.Sum(rd => rd.Quantity);
+        }
+        // Tính tổng số lượng sản phẩm đã bán theo năm
+        public int GetTotalProductsSoldByYear(int year)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null && rd.Revenue.StartDate.Year == year);
+            return revenueDetails.Sum(rd => rd.Quantity);
+        }
+
+        // Tính tổng số lượng sản phẩm đã bán theo tháng
+        public int GetTotalProductsSoldByMonth(int year, int month)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null && rd.Revenue.StartDate.Year == year && rd.Revenue.StartDate.Month == month);
+            return revenueDetails.Sum(rd => rd.Quantity);
+        }
+
+        // Tính tổng lượng khách (dựa trên OrderID duy nhất)
+        public int GetTotalCustomers()
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.OrderID));
+            return revenueDetails.Select(rd => rd.OrderID).Distinct().Count();
+        }
+        // Tính tổng lượng khách theo năm (dựa trên OrderID duy nhất)
+        public int GetTotalCustomersByYear(int year)
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.OrderID) && rd.Revenue != null && rd.Revenue.StartDate.Year == year);
+            return revenueDetails.Select(rd => rd.OrderID).Distinct().Count();
+        }
+
+        public int GetTotalCustomersByMonth(int year, int month)
+        // Tính tổng lượng khách theo tháng (dựa trên OrderID duy nhất))
+        {
+            var revenueDetails = GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.OrderID) && rd.Revenue != null &&
+                             rd.Revenue.StartDate.Year == year && rd.Revenue.StartDate.Month == month);
+            return revenueDetails.Select(rd => rd.OrderID).Distinct().Count();
         }
     }
-
 }
