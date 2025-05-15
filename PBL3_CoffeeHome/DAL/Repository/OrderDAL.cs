@@ -44,7 +44,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Include(o => o.OrderItems)
                 .ToList();
         }
-        public List<Order> GetOrdersAssignedToday(string status)
+        public List<Order>  GetOrdersAssignedToday(string status)
         {
             var today = DateTime.Today;
             return _context.Orders
@@ -107,5 +107,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
+
     }
 }

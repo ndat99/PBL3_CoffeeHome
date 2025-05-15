@@ -1,4 +1,4 @@
-﻿using PBL3_CoffeeHome.DAL.Repository;
+using PBL3_CoffeeHome.DAL.Repository;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DAL;
 using System;
@@ -30,6 +30,19 @@ namespace PBL3_CoffeeHome.BLL
         public MenuItems GetMenuItemByName(string name)
         {
             return _menuItemDAL.GetMenuItemByName(name);
+        }
+        public List<MenuItems> GetAllMenuItems()
+        {
+                var menuItems = _menuItemDAL.GetAllMenuItems();
+     
+
+                return menuItems;
+
+        }
+        // Lấy danh sách đơn hàng đã hoàn thành trong ngày được chọn
+        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
+        {
+            return _menuItemDAL.GetOrdersCompletedOnDate(status, selectedDate);
         }
     }
 }
