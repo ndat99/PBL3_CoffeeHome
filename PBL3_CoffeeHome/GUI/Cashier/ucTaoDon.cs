@@ -20,14 +20,14 @@ namespace PBL3_CoffeeHome.GUI
 
         private List<MenuItems> _allMenuItems;
         private List<OrderItem> _currentOrderItems = new List<OrderItem>();
-        private BindingList<OrderDisplayDTO> _listDataTable;
+        private BindingList<OrderDisplayDTO> _listChiTietDon;
         private User cashier;
 
         public ucTaoDon(User user)
         {
             InitializeComponent();
-            _listDataTable = new BindingList<OrderDisplayDTO>();
-            dgvChiTietDon.DataSource = _listDataTable;
+            _listChiTietDon = new BindingList<OrderDisplayDTO>();
+            dgvChiTietDon.DataSource = _listChiTietDon;
             _allMenuItems = _menuItemBLL.GetAllMenuItems();
             cashier = user;
             LoadComboBoxData();
@@ -145,7 +145,7 @@ namespace PBL3_CoffeeHome.GUI
         // làm mới 
         private void ReloadData()
         {
-            _listDataTable.Clear();
+            _listChiTietDon.Clear();
             _currentOrderItems.Clear();
             txtThanhTien.Text = "0";
             txtGiamGia.Text = "0";
@@ -262,7 +262,7 @@ namespace PBL3_CoffeeHome.GUI
                     existingItem.Quantity = soLuongMoi;
                     existingItem.Subtotal = existingItem.Quantity * selectedItem.Price;
 
-                    var existingDisplay = _listDataTable.FirstOrDefault(x => x.Name == selectedItem.Name);
+                    var existingDisplay = _listChiTietDon.FirstOrDefault(x => x.Name == selectedItem.Name);
                     if (existingDisplay != null)
                     {
                         existingDisplay.Quantity = soLuongMoi;
@@ -280,7 +280,7 @@ namespace PBL3_CoffeeHome.GUI
                     };
                     _currentOrderItems.Add(newOrderItem);
 
-                    _listDataTable.Add(new OrderDisplayDTO
+                    _listChiTietDon.Add(new OrderDisplayDTO
                     {
                         Name = selectedItem.Name,
                         Quantity = soLuongThem,
@@ -300,7 +300,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private decimal TinhTongTien()
         {
-            decimal tong = _listDataTable.Sum(x => x.TotalPrice);
+            decimal tong = _listChiTietDon.Sum(x => x.TotalPrice);
             int giamGia = 0;
             int.TryParse(txtGiamGia.Text, out giamGia);
             tong = tong * (100 - giamGia) / 100;
@@ -347,15 +347,15 @@ namespace PBL3_CoffeeHome.GUI
                         Console.WriteLine($"Tên món rỗng hoặc null tại hàng {row.Index}");
                         continue;
                     }
-                    var displayItem = _listDataTable.FirstOrDefault(x => x.Name?.Trim() == tenMon);
+                    var displayItem = _listChiTietDon.FirstOrDefault(x => x.Name?.Trim() == tenMon);
                     if (displayItem != null)
                     {
                         itemsToRemove.Add(displayItem);
-                        Console.WriteLine($"Tìm thấy món trong _listDataTable: {tenMon}");
+                        Console.WriteLine($"Tìm thấy món trong _listChiTietDon: {tenMon}");
                     }
                     else
                     {
-                        Console.WriteLine($"Không tìm thấy món trong _listDataTable: {tenMon}");
+                        Console.WriteLine($"Không tìm thấy món trong _listChiTietDon: {tenMon}");
                     }
 
                     var orderItem = _currentOrderItems.FirstOrDefault(x =>
@@ -373,7 +373,7 @@ namespace PBL3_CoffeeHome.GUI
 
                 foreach (var item in itemsToRemove)
                 {
-                    _listDataTable.Remove(item);
+                    _listChiTietDon.Remove(item);
                 }
 
                 foreach (var orderItem in orderItemsToRemove)
@@ -395,7 +395,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnThanhToan_Click_1(object sender, EventArgs e)
         {
-            if (_listDataTable.Count == 0)
+            if (_listChiTietDon.Count == 0)
             {
                 MessageBox.Show("Chưa có món nào trong đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -525,20 +525,20 @@ namespace PBL3_CoffeeHome.GUI
                     if (orderItems == null || !orderItems.Any())
                     {
                         MessageBox.Show("Đơn hàng này không có món nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _listDataTable.Clear(); // Xóa dữ liệu hiện tại trong dgvChiTietDon
+                        _listChiTietDon.Clear(); // Xóa dữ liệu hiện tại trong dgvChiTietDon
                         txtThanhTien.Text = "0";
                         txtGiamGia.Text = "0";
                         txtSoBan.Text = "0";
                         return;
                     }
 
-                    // Xóa dữ liệu cũ trong _listDataTable
-                    _listDataTable.Clear();
+                    // Xóa dữ liệu cũ trong _listChiTietDon
+                    _listChiTietDon.Clear();
 
-                    // Thêm các món vào _listDataTable để hiển thị trên dgvChiTietDon
+                    // Thêm các món vào _listChiTietDon để hiển thị trên dgvChiTietDon
                     foreach (var item in orderItems)
                     {
-                        _listDataTable.Add(new OrderDisplayDTO
+                        _listChiTietDon.Add(new OrderDisplayDTO
                         {
                             Name = item.MenuItem.Name,
                             Quantity = item.Quantity,
@@ -569,7 +569,7 @@ namespace PBL3_CoffeeHome.GUI
                 else
                 {
                     // Nếu không có đơn hàng nào được chọn, xóa dữ liệu trong dgvChiTietDon
-                    _listDataTable.Clear();
+                    _listChiTietDon.Clear();
                     txtThanhTien.Text = "0";
                     txtGiamGia.Text = "0";
                     txtSoBan.Text = "0";
@@ -606,17 +606,17 @@ namespace PBL3_CoffeeHome.GUI
                     if (orderItems == null || !orderItems.Any())
                     {
                         MessageBox.Show("Đơn hàng này không có món nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        _listDataTable.Clear(); // Xóa dữ liệu hiện tại trong dgvChiTietDon
+                        _listChiTietDon.Clear(); // Xóa dữ liệu hiện tại trong dgvChiTietDon
                         txtThanhTien.Text = "0";
                         txtGiamGia.Text = "0";
                         txtSoBan.Text = "0";
                         return;
                     }
 
-                    // Xóa dữ liệu cũ trong _listDataTable
-                    _listDataTable.Clear();
+                    // Xóa dữ liệu cũ trong _listChiTietDon
+                    _listChiTietDon.Clear();
 
-                    // Thêm các món vào _listDataTable để hiển thị trên dgvChiTietDon
+                    // Thêm các món vào _listChiTietDon để hiển thị trên dgvChiTietDon
                     foreach (var item in orderItems)
                     {
                         if (item.MenuItem == null)
@@ -625,7 +625,7 @@ namespace PBL3_CoffeeHome.GUI
                             continue;
                         }
 
-                        _listDataTable.Add(new OrderDisplayDTO
+                        _listChiTietDon.Add(new OrderDisplayDTO
                         {
                             Name = item.MenuItem.Name,
                             Quantity = item.Quantity,
@@ -656,7 +656,7 @@ namespace PBL3_CoffeeHome.GUI
                 else
                 {
                     // Nếu không có đơn hàng nào được chọn, xóa dữ liệu trong dgvChiTietDon
-                    _listDataTable.Clear();
+                    _listChiTietDon.Clear();
                     txtThanhTien.Text = "0";
                     txtGiamGia.Text = "0";
                     txtSoBan.Text = "0";
