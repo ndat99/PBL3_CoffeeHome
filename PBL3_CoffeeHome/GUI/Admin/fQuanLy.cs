@@ -33,7 +33,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTaoDon(), panelChiTiet);
+            LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
             HighlightButton(btnTaoDon);
         }
         private void btnThucDon_Click(object sender, EventArgs e)

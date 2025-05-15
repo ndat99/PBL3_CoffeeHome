@@ -10,14 +10,13 @@ using System.Windows.Forms;
 using PBL3_CoffeeHome.DAL;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace PBL3_CoffeeHome.GUI
 {
     public partial class fThuNgan : Form
     {
-        private Button activeButton;
         private User cashier;
+        private Button activeButton;
         public fThuNgan(User user)
         {
             InitializeComponent();
@@ -39,8 +38,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
-            var ucTaoDon = new ucTaoDon(this);
-            LoadControlToPanel(ucTaoDon, panelChiTiet);
+            LoadControlToPanel(new ucTaoDon(cashier), panelChiTiet);
             HighlightButton(btnTaoDon);
         }
         private void btnTTTK_Click(object sender, EventArgs e)

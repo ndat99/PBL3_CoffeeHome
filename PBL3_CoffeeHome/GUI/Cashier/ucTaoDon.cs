@@ -21,16 +21,15 @@ namespace PBL3_CoffeeHome.GUI
         private List<MenuItems> _allMenuItems;
         private List<OrderItem> _currentOrderItems = new List<OrderItem>();
         private BindingList<OrderDisplayDTO> _listDataTable;
-        private fThuNgan _parentForm;
+        private User cashier;
 
-        public ucTaoDon(fThuNgan parentForm)
+        public ucTaoDon(User user)
         {
             InitializeComponent();
-            _parentForm = parentForm;
             _listDataTable = new BindingList<OrderDisplayDTO>();
             dgvChiTietDon.DataSource = _listDataTable;
             _allMenuItems = _menuItemBLL.GetAllMenuItems();
-
+            cashier = user;
             LoadComboBoxData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
@@ -50,10 +49,6 @@ namespace PBL3_CoffeeHome.GUI
             listDonHienCo.Columns.Add("clGioTao", "Giờ tạo", 80);
         }
 
-        public ucTaoDon()
-        {
-        }
-        // Tạo mã OrderItemID (mới thêm)
         private List<string> GenerateOrderItemIDs(int count)
         {
             List<string> ids = new List<string>();
@@ -423,16 +418,6 @@ namespace PBL3_CoffeeHome.GUI
             try
             {
                 string userId = null;
-                if (_parentForm != null && _parentForm.cashier != null && !string.IsNullOrEmpty(_parentForm.cashier.UserID))
-                {
-                    userId = _parentForm.cashier.UserID;
-                }
-                else
-                {
-                    MessageBox.Show("Không thể xác định thông tin người dùng hiện tại. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 string orderID = GenerateOrderID(DateTime.Now);
 
                 var orderItems = _currentOrderItems.Select(i => (i.MenuItemID, i.Quantity)).ToList();
