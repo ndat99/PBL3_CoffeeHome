@@ -17,12 +17,14 @@ namespace PBL3_CoffeeHome.GUI
     {
         private Button activeButton;
         private User admin;
+        private UserBLL _userBLL;
 
         public fQuanLy(User user)
         {
             InitializeComponent();
             admin = user;
             txtName.Text = admin.UserName;
+            _userBLL = new UserBLL();   
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -65,7 +67,14 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Bạn có chắn chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            DialogResult result = MessageBox.Show("Bạn có chắn chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (result == DialogResult.Yes)
+            {
+                admin.LastLoginAt = DateTime.Now; ;
+                _userBLL.UpdateUser(admin);
+                Application.Restart();
+            }
         }
         private void HighlightButton(Button button)
         {
