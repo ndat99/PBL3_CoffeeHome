@@ -48,6 +48,7 @@ namespace PBL3_CoffeeHome.BLL
             var user = _userDAL.GetUserByName(username);
             if (user != null && user.IsActive && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
+                user.LastLoginAt = DateTime.Now;
                 _userDAL.UpdateUser(user);
                 return user;
             }
