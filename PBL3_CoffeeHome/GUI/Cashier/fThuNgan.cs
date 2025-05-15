@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using PBL3_CoffeeHome.DAL;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace PBL3_CoffeeHome.GUI
 {
-    public partial class fThuNgan: Form
+    public partial class fThuNgan : Form
     {
         private Button activeButton;
         private User cashier;
@@ -26,6 +27,12 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void LoadControlToPanel(UserControl control, Panel panel)
         {
+            if (panel == null)
+            {
+                MessageBox.Show("Panel không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             panel.Controls.Clear();
             control.Dock = DockStyle.Fill;
             panel.Controls.Add(control);
@@ -33,7 +40,8 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTaoDon(), panelChiTiet);
+            var ucTaoDon = new ucTaoDon(this);
+            LoadControlToPanel(ucTaoDon, panelChiTiet);
             HighlightButton(btnTaoDon);
         }
         private void btnTTTK_Click(object sender, EventArgs e)

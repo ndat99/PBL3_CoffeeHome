@@ -49,14 +49,14 @@ namespace PBL3_CoffeeHome.GUI
         private void btnOK_Click(object sender, EventArgs e)
         {
             //Kiểm tra đang tạo User mới hay xem thông tin
-            if(_userSelected != null)
+            if (_userSelected != null)
             {
                 this.Close();
                 return;
             }
             try
             {
-                _userBLL.ValidateUserData(txtTDN.Text,txtVaiTro.Text,txtSDT.Text,txtGmail.Text);
+                _userBLL.ValidateUserData(txtTDN.Text, txtVaiTro.Text, txtSDT.Text, txtGmail.Text);
 
                 User newUser = new User
                 {

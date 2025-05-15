@@ -296,7 +296,7 @@
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(132, 27);
             this.datePicker.TabIndex = 112;
-            this.datePicker.Value = new System.DateTime(2025, 5, 13, 0, 0, 0, 0);
+            this.datePicker.Value = new System.DateTime(2025, 5, 14, 0, 0, 0, 0);
             this.datePicker.ValueChanged += new System.EventHandler(this.datePicker_ValueChanged);
             // 
             // label6

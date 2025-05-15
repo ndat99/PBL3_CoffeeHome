@@ -107,6 +107,7 @@
     <Compile Include="DTO\RevenueDetail.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
+    <Compile Include="DTO\ViewModel\OrderDTO.cs" />
     <Compile Include="GUI\Admin\fQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,6 +386,7 @@
     <Content Include="Resources\Money.png" />
     <Content Include="Resources\NguyenVatLieu.png" />
     <Content Include="Resources\Panel.png" />
+    <None Include="Resources\Panel_yellow.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
@@ -402,6 +404,7 @@
     <Content Include="Resources\ThucDon1.png" />
     <Content Include="Resources\TimKiem.png" />
     <Content Include="Resources\TimKiemEnd.png" />
+    <None Include="Resources\transaction.png" />
     <Content Include="Resources\TTTK.png" />
     <Content Include="Resources\WhiteKey.png" />
     <Content Include="Resources\Xem.png" />
