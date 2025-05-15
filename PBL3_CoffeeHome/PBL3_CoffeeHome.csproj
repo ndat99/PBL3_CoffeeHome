@@ -227,6 +227,11 @@
     <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505151312226_thiensama.cs" />
+    <Compile Include="Migrations\202505151312226_thiensama.Designer.cs">
+      <DependentUpon>202505151312226_thiensama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\Admin\fDoiVaiTro.resx">
@@ -291,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505151312226_thiensama.resx">
+      <DependentUpon>202505151312226_thiensama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

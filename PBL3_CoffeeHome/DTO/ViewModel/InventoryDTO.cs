@@ -73,6 +73,16 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
         public DateTime? TransactionDate { get; set; }
     }
 
+    public class TransactionStockIn
+    {
+        public string Name { get; set; }
+        public decimal Quantity { get; set; }
+        public string Unit { get; set; }
+        public DateTime? TransactionDate { get; set; }
+        public decimal TransactionPrice { get; set; }
+    }
+
+
     //kiểm kê kho
     public class InventoryCheckDTO
     {

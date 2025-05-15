@@ -7,15 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_CoffeeHome.DAL;
+using PBL3_CoffeeHome.BLL;
+using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.GUI
 {
     public partial class fThuNgan: Form
     {
         private Button activeButton;
-        public fThuNgan()
+        private User cashier;
+        public fThuNgan(User user)
         {
             InitializeComponent();
+            cashier = user;
         }
         private void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -31,7 +36,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTTTK_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTTTK(), panelChiTiet);
+            LoadControlToPanel(new ucTTTK(cashier), panelChiTiet);
             HighlightButton(btnTTTK);
         }
         private void btnDangXuat_Click(object sender, EventArgs e)

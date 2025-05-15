@@ -97,7 +97,7 @@ namespace PBL3_CoffeeHome.GUI
         private void btnLoiNhuan_Click(object sender, EventArgs e)
         {
             LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
-            HighlightButton(btnThongKe);
+            HighlightButton(btnLoiNhuan);
         }
     }
 }

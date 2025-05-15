@@ -73,6 +73,36 @@ namespace PBL3_CoffeeHome.BLL
                                   }).OrderBy(d => d.TransactionDate).ToList();
         }
 
+        public List<TransactionStockIn> GetTransactionStockIn()
+        {
+            return _transactionDAL.GetTransactionStockIn ()
+                                  .GroupBy(i => new { i.TransactionDate.Date,i.Inventory.Name,i.TransactionPrice })
+                                  .Select(g => new TransactionStockIn
+                                  {
+                                      Name = g.Key.Name,
+                                      Quantity = g.Sum(i => i.Quantity),
+                                      TransactionDate = g.Key.Date,
+                                      TransactionPrice = g.Key.TransactionPrice,
+                                  }).OrderBy(d => d.TransactionDate).ToList();
+        }
+
+        public decimal TotalTransactionPriceInDate(DateTime date)
+        {
+            return GetTransactionStockIn()
+                .Where(t => t.TransactionDate == date)
+                .Sum(t => t.Quantity * t.TransactionPrice);
+        }
+
+        public decimal TotalTransactionPriceInMonth(int year, int month)
+        {
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1);
+
+            return GetTransactionStockIn()
+                .Where(t => t.TransactionDate >= startDate && t.TransactionDate < endDate)
+                .Sum(t => t.Quantity * t.TransactionPrice); 
+        }
+
 
         public bool StockIn(string itemID, decimal quantity, string userID, decimal price, DateTime expirationDate, string note = "")
         {
