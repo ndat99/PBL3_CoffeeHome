@@ -16,48 +16,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
         {
             _context = new CoffeeDbContext();
         }
-        public List<Order> GetAllOrders()
-        {
-            return _context.Orders.ToList();
-        }
-        // Lấy danh sách đơn hàng có trạng thái "Incompleted"
-        public List<Order> GetOrdersWithStatus(string status)
-        {
-            return _context.Orders
-                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status))
-                .ToList();
-        }
-        public List<Order> GetOrdersAssignedToday(string status)
-        {
-            var today = DateTime.Today;
-            return _context.Orders
-                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status && DbFunctions.TruncateTime(bq.AssignedAt) == today))
-                .ToList();
-        }
-
-        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
-        {
-            return _context.Orders
-                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status && DbFunctions.TruncateTime(bq.CompletedAt) == DbFunctions.TruncateTime(selectedDate)))
-                .ToList();
-        }
-
-        // Lấy chi tiết các món trong đơn hàng
-        public List<OrderItem> GetOrderItemsByOrderId(string orderId)
-        {
-            return _context.OrderItems
-                .Where(oi => oi.OrderID == orderId)
-                .ToList();
-        }
-        public Order GetOrderById(string orderId)
-        {
-            using (var db = new CoffeeDbContext())
-            {
-                return db.Orders
-                    .Include(o => o.BaristaQueues)
-                    .FirstOrDefault(o => o.OrderID == orderId);
-            }
-        }
         public MenuItems GetMenuItemByName(string name)
         {
             using (var db = new CoffeeDbContext())
@@ -65,27 +23,22 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 return db.MenuItems.FirstOrDefault(m => m.Name == name && m.IsAvailable);
             }
         }
-
-        // Cập nhật trạng thái của đơn hàng trong BaristaQueue
-        public void UpdateOrderStatus(string orderId, string newStatus)
+        public MenuItems GetMenuItemByID(string id)
         {
-            var baristaQueues = _context.BaristaQueues
-                .Where(bq => bq.OrderID == orderId)
-                .ToList();
-
-            foreach (var queue in baristaQueues)
+            using (var db = new CoffeeDbContext())
             {
-                queue.Status = newStatus;
-                if (newStatus == "Completed")
-                {
-                    queue.CompletedAt = DateTime.Now;
-                }
-                else if (newStatus == "Incompleted")
-                {
-                    queue.CompletedAt = null;
-                }
+                return db.MenuItems.FirstOrDefault(m => m.MenuItemID == id && m.IsAvailable);
             }
-            _context.SaveChanges();
+        }
+        public List<MenuItems> GetAllMenuItems()
+        {
+            using (var db = new CoffeeDbContext())
+            {
+                return db.MenuItems
+                    .Include(m => m.MenuItemIngredients.Select(mi => mi.Inventory))
+                    .Where(m => m.IsAvailable)
+                    .ToList();
+            }
         }
     }
 }

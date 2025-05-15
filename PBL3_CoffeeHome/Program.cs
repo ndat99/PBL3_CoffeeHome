@@ -1,4 +1,5 @@
-﻿using PBL3_CoffeeHome.GUI;
+﻿using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;

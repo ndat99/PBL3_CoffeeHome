@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using PBL3_CoffeeHome.DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PBL3_CoffeeHome.DAL.Repository
 {
@@ -14,12 +16,9 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _context = new CoffeeDbContext();
         }
 
-        public List<BaristaQueue> GetQueuesByBarista(string baristaId)
+        public BaristaQueue GetQueueByQueueID(string queueId)
         {
-            return _context.BaristaQueues
-                .Where(q => q.BaristaID == baristaId && q.Status != "Completed")
-                .OrderBy(q => q.AssignedAt)
-                .ToList();
+            return _context.BaristaQueues.FirstOrDefault(q => q.QueueID == queueId);
         }
 
         public bool AddQueue(BaristaQueue queue)
@@ -35,42 +34,17 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 return false;
             }
         }
-
-        public bool UpdateQueue(BaristaQueue queue)
-        {
-            try
-            {
-                var existingQueue = _context.BaristaQueues.Find(queue.QueueID);
-                if (existingQueue == null) return false;
-
-                _context.Entry(existingQueue).CurrentValues.SetValues(queue);
-                _context.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public bool UpdateQueueStatus(string queueId, string status)
         {
-            try
-            {
-                var queue = _context.BaristaQueues.Find(queueId);
-                if (queue == null) return false;
+            var queue = _context.BaristaQueues.Find(queueId);
+            if (queue == null) return false;
 
-                queue.Status = status;
-                if (status == "Completed")
-                    queue.CompletedAt = DateTime.Now;
+            queue.Status = status;
+            if (status == "Completed")
+                queue.CompletedAt = DateTime.Now;
 
-                _context.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            _context.SaveChanges();
+            return true;
         }
 
         public List<BaristaQueue> GetQueuesByStatus(string status)
