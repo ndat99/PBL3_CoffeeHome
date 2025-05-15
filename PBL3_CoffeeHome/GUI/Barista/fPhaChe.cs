@@ -41,7 +41,10 @@ namespace PBL3_CoffeeHome.GUI
             LoadControlToPanel(new ucNguyenVatLieu(barista), panelChiTiet);
             HighlightButton(btnNguyenVatLieu);
         }
-
+        private void btnLichSuGiaoDich_Click(object sender, EventArgs e)
+        {
+            HighlightButton(btnLichSuGiaoDich);
+        }
         private void btnTTTK_Click(object sender, EventArgs e)
         {
             LoadControlToPanel(new ucTTTK(barista), panelChiTiet);

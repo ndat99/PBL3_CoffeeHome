@@ -34,7 +34,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             LoadInventoryData();
         }
 
-        private void LoadInventoryData(DateTime? filterDate = null)
+        public void LoadInventoryData(DateTime? filterDate = null)
         {
             var transactions = _transactionBLL.GetTransactionStockOut();
             if(filterDate == null) 
@@ -69,7 +69,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             if (dgvStockOut.SelectedRows.Count == 1)
             {
                 txtNameNL.Text = dgvStockOut.SelectedRows[0].Cells[0].Value.ToString();
-                nudQuantityNL.Value = (decimal)dgvStockOut.SelectedRows[0].Cells[1].Value;
+                txtQuantityNL.Text = dgvStockOut.SelectedRows[0].Cells[1].Value.ToString();
                 nudQuantityThucTe.Value = (decimal)dgvStockOut.SelectedRows[0].Cells[1].Value;
             }
         }
@@ -88,7 +88,8 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 return;
             }
 
-            if (nudQuantityNL.Value - nudQuantityThucTe.Value == 0)
+            decimal quantityNL = decimal.Parse(txtQuantityNL.Text);
+            if (quantityNL - nudQuantityThucTe.Value == 0)
             {
                 MessageBox.Show("Không có sự thay đổi về số lượng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -99,7 +100,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 ItemID = inventoryItem.ItemID,
                 Name = inventoryItem.Name,
                 Category = inventoryItem.Category,
-                SystemQuantity = nudQuantityNL.Value,
+                SystemQuantity = quantityNL,
                 ActualQuantity = nudQuantityThucTe.Value,
                 Unit = inventoryItem.Unit,
                 UserID = _barista.UserID,
@@ -141,6 +142,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             {
                 MessageBox.Show("Kiểm kê kho thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _listKiemke.Clear();
+                dgvListKiemKe.Rows.Clear();
             }
             else
             {

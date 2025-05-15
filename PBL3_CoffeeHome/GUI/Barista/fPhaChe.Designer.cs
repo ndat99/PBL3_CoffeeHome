@@ -31,16 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fPhaChe));
             this.panelChiTiet = new System.Windows.Forms.Panel();
             this.panelChucNang = new System.Windows.Forms.Panel();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnTTTK = new System.Windows.Forms.Button();
+            this.btnLichSuGiaoDich = new System.Windows.Forms.Button();
             this.btnNguyenVatLieu = new System.Windows.Forms.Button();
             this.btnDonHang = new System.Windows.Forms.Button();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.panelChucNang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelChiTiet
@@ -55,6 +56,7 @@
             this.panelChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.panelChucNang.Controls.Add(this.btnDangXuat);
             this.panelChucNang.Controls.Add(this.btnTTTK);
+            this.panelChucNang.Controls.Add(this.btnLichSuGiaoDich);
             this.panelChucNang.Controls.Add(this.btnNguyenVatLieu);
             this.panelChucNang.Controls.Add(this.btnDonHang);
             this.panelChucNang.Controls.Add(this.picLogo);
@@ -64,6 +66,31 @@
             this.panelChucNang.Name = "panelChucNang";
             this.panelChucNang.Size = new System.Drawing.Size(300, 963);
             this.panelChucNang.TabIndex = 0;
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.panelHeader.Controls.Add(this.txtName);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(300, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1624, 79);
+            this.panelHeader.TabIndex = 6;
+            // 
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.White;
+            this.txtName.Location = new System.Drawing.Point(1385, 23);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(203, 32);
+            this.txtName.TabIndex = 1;
+            this.txtName.Text = "Tên người dùng";
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnDangXuat
             // 
@@ -96,7 +123,7 @@
             this.btnTTTK.ForeColor = System.Drawing.Color.White;
             this.btnTTTK.Image = global::PBL3_CoffeeHome.Properties.Resources.TTTK;
             this.btnTTTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTTTK.Location = new System.Drawing.Point(0, 301);
+            this.btnTTTK.Location = new System.Drawing.Point(0, 395);
             this.btnTTTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTTTK.Name = "btnTTTK";
             this.btnTTTK.Size = new System.Drawing.Size(300, 94);
@@ -104,6 +131,26 @@
             this.btnTTTK.Text = "   Thông tin tài khoản";
             this.btnTTTK.UseVisualStyleBackColor = false;
             this.btnTTTK.Click += new System.EventHandler(this.btnTTTK_Click);
+            // 
+            // btnLichSuGiaoDich
+            // 
+            this.btnLichSuGiaoDich.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.btnLichSuGiaoDich.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLichSuGiaoDich.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLichSuGiaoDich.FlatAppearance.BorderSize = 0;
+            this.btnLichSuGiaoDich.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLichSuGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLichSuGiaoDich.ForeColor = System.Drawing.Color.White;
+            this.btnLichSuGiaoDich.Image = global::PBL3_CoffeeHome.Properties.Resources.transaction;
+            this.btnLichSuGiaoDich.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLichSuGiaoDich.Location = new System.Drawing.Point(0, 301);
+            this.btnLichSuGiaoDich.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLichSuGiaoDich.Name = "btnLichSuGiaoDich";
+            this.btnLichSuGiaoDich.Size = new System.Drawing.Size(300, 94);
+            this.btnLichSuGiaoDich.TabIndex = 7;
+            this.btnLichSuGiaoDich.Text = "  Lịch sử giao dịch";
+            this.btnLichSuGiaoDich.UseVisualStyleBackColor = false;
+            this.btnLichSuGiaoDich.Click += new System.EventHandler(this.btnLichSuGiaoDich_Click);
             // 
             // btnNguyenVatLieu
             // 
@@ -157,31 +204,6 @@
             this.picLogo.TabIndex = 1;
             this.picLogo.TabStop = false;
             // 
-            // panelHeader
-            // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.panelHeader.Controls.Add(this.txtName);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(300, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1624, 79);
-            this.panelHeader.TabIndex = 6;
-            // 
-            // txtName
-            // 
-            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.White;
-            this.txtName.Location = new System.Drawing.Point(1090, 16);
-            this.txtName.Multiline = true;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(203, 32);
-            this.txtName.TabIndex = 1;
-            this.txtName.Text = "Tên người dùng";
-            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // fPhaChe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -196,9 +218,9 @@
             this.Text = "Coffee Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelChucNang.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -214,5 +236,6 @@
         private System.Windows.Forms.Button btnDangXuat;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnLichSuGiaoDich;
     }
 }
