@@ -9,18 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.GUI.Barista;
+using PBL3_CoffeeHome.BLL;
+using PBL3_CoffeeHome.DAL;
 
 namespace PBL3_CoffeeHome.GUI
 {
-    public partial class fPhaChe: Form
+    public partial class fPhaChe : Form
     {
         private User barista;
         private Button activeButton;
+        private readonly UserBLL _userBLL;
         public fPhaChe(User user)
         {
             InitializeComponent();
             barista = user;
             txtName.Text = barista.FullName;
+            _userBLL = new UserBLL();
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -53,7 +57,14 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Bạn có chắn chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            DialogResult result = MessageBox.Show("Bạn có chắn chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (result == DialogResult.Yes)
+            {
+                barista.LastLoginAt = DateTime.Now;
+                _userBLL.UpdateUser(barista);
+                Application.Restart();
+            }
         }
         private void HighlightButton(Button button)
         {
