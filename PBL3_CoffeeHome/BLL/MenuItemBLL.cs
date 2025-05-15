@@ -31,18 +31,15 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _menuItemDAL.GetMenuItemByName(name);
         }
+        public MenuItems GetMenuItemByID(string id)
+        {
+            return _menuItemDAL.GetMenuItemByID(id);
+        }
         public List<MenuItems> GetAllMenuItems()
         {
-                var menuItems = _menuItemDAL.GetAllMenuItems();
-     
+            var menuItems = _menuItemDAL.GetAllMenuItems();
+            return menuItems;
 
-                return menuItems;
-
-        }
-        // Lấy danh sách đơn hàng đã hoàn thành trong ngày được chọn
-        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
-        {
-            return _menuItemDAL.GetOrdersCompletedOnDate(status, selectedDate);
         }
     }
 }

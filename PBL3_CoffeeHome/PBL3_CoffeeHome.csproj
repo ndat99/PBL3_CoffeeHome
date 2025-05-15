@@ -386,6 +386,7 @@
     <Content Include="Resources\Money.png" />
     <Content Include="Resources\NguyenVatLieu.png" />
     <Content Include="Resources\Panel.png" />
+    <None Include="Resources\Panel_yellow.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
