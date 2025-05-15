@@ -61,9 +61,15 @@ namespace PBL3_CoffeeHome.BLL
                 return menuItems;
 
         }
-        public void IncompletedOrder(string orderId)
+
+        // Lấy danh sách đơn hàng đã hoàn thành trong ngày được chọn
+        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
         {
-            _menuItemDAL.UpdateOrderStatus(orderId, "Incompleted");
+            return _menuItemDAL.GetOrdersCompletedOnDate(status, selectedDate);
         }
+        //public void IncompletedOrder(string orderId)
+        //{
+        //    _menuItemDAL.UpdateOrderStatus(orderId, "Incompleted");
+        //}
     }
 }

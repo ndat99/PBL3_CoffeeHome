@@ -39,13 +39,12 @@ namespace PBL3_CoffeeHome.DAL.Repository
         }
         public List<Order> GetOrdersByBaristaQueueStatus(string status)
         {
-            var today = DateTime.Today;
-            return _context.Orders.Where(o => o.Status == status && DbFunctions.TruncateTime(o.CreatedAt) == today)
-
+            return _context.Orders
+                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status))
                 .Include(o => o.OrderItems)
                 .ToList();
         }
-        public List<Order> GetOrdersAssignedToday(string status)
+        public List<Order>  GetOrdersAssignedToday(string status)
         {
             var today = DateTime.Today;
             return _context.Orders
@@ -108,5 +107,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
+
     }
 }
