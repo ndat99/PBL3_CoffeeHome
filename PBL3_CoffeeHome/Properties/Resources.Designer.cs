@@ -163,6 +163,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dollar {
+            get {
+                object obj = ResourceManager.GetObject("dollar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DonHang {
             get {
                 object obj = ResourceManager.GetObject("DonHang", resourceCulture);
@@ -323,6 +333,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Panel_yellow {
+            get {
+                object obj = ResourceManager.GetObject("Panel_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pen1 {
             get {
                 object obj = ResourceManager.GetObject("Pen1", resourceCulture);
@@ -353,6 +373,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap salary {
+            get {
+                object obj = ResourceManager.GetObject("salary", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SanPham {
             get {
                 object obj = ResourceManager.GetObject("SanPham", resourceCulture);
@@ -366,6 +396,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap Save {
             get {
                 object obj = ResourceManager.GetObject("Save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_money1 {
+            get {
+                object obj = ResourceManager.GetObject("save-money1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +476,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap TimKiemEnd {
             get {
                 object obj = ResourceManager.GetObject("TimKiemEnd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap transaction {
+            get {
+                object obj = ResourceManager.GetObject("transaction", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

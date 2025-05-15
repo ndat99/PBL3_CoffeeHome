@@ -29,8 +29,10 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
                     return "Hết hàng";
                 if (Quantity <= MinimumQuantity)
                     return "Sắp hết";
-                if (DaysUntilExpiration <= 7)
+                if (DaysUntilExpiration >= 0 && DaysUntilExpiration <= 7)
                     return "Sắp hết hạn";
+                if (DaysUntilExpiration < 0)
+                    return "Đã hêt hạn";
                 return "Còn hàng";
             }
         }
@@ -53,31 +55,14 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
     //giao dịch kho
     public class TransactionDisplayDTO
     {
-        public string TransactionID { get; set; }
-        public DateTime TransactionDate { get; set; }
         public string ItemID { get; set; }
         public string ItemName { get; set; }
         public string Category { get; set; }
         public decimal Quantity { get; set; }
         public string Unit { get; set; }
         public string Type { get; set; }
-        public string UserID { get; set; }
         public string UserName { get; set; }
-        public string Note { get; set; }
-
-        public string TypeDisplay
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case "Nhập": return "Nhập kho";
-                    case "Xuất": return "Xuất kho";
-                    case "Điều chỉnh": return "Điều chỉnh";
-                    default: return Type;
-                }
-            }
-        }
+        public DateTime TransactionDate { get; set; }
     }
     //ds Xuuat kho nhom theo ten
     public class TransactionStockOut
@@ -87,6 +72,16 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
         public string Unit { get; set; }
         public DateTime? TransactionDate { get; set; }
     }
+
+    public class TransactionStockIn
+    {
+        public string Name { get; set; }
+        public decimal Quantity { get; set; }
+        public string Unit { get; set; }
+        public DateTime? TransactionDate { get; set; }
+        public decimal TransactionPrice { get; set; }
+    }
+
 
     //kiểm kê kho
     public class InventoryCheckDTO

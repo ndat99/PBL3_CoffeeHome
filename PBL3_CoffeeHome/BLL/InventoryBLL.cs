@@ -59,14 +59,33 @@ namespace PBL3_CoffeeHome.BLL
             return _inventoryDAL.GetCategory();
         }
 
+        public List<string> GetUnit()
+        {
+            return _inventoryDAL.GetUnit();
+        }
+
         //Chuc nang
         public List<InventoryDisplayDTO> SearchInventory(string cboCategory, string txtSearch)
         {
             var inventoryList = _inventoryDAL.SearchInventory(cboCategory, txtSearch);
             return inventoryList.Select(InventoryDisplay).ToList();
         }
+        public bool AddInventory(Inventory newInventory)
+        {   
+            if (newInventory == null)  return false;
+            if (string.IsNullOrEmpty(newInventory.ItemID))
+            {
+                newInventory.ItemID = _inventoryDAL.GenerateNewItemID();
+            }
+            var existingInventory = _inventoryDAL.GetInventoryByID(newInventory.ItemID);
+            if (existingInventory != null)
+            {
+                return false; 
+            }
+            return _inventoryDAL.AddInventory(newInventory);
+        }
 
-        public bool UpdateInventory(InventoryDisplayDTO inventoryDTO)
+        public bool UpdateInventory(Inventory inventoryDTO)
         {
             if (inventoryDTO == null || string.IsNullOrEmpty(inventoryDTO.ItemID))
             {
@@ -122,6 +141,11 @@ namespace PBL3_CoffeeHome.BLL
                 Unit = item.Unit
             }).ToList();
 
+        }
+
+        public string GenerateNewItemID()
+        {
+            return _inventoryDAL.GenerateNewItemID();
         }
 
         private InventoryDisplayDTO InventoryDisplay(Inventory inventory)

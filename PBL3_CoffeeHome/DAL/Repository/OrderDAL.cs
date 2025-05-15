@@ -37,32 +37,27 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Include(o => o.Discount)
                 .FirstOrDefault(o => o.OrderID == orderId);
         }
-
-        public List<Order> GetOrdersByStatus(string status)
+        public List<Order> GetOrdersByBaristaQueueStatus(string status)
         {
             return _context.Orders
-                .Where(o => o.Status == status)
+                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status))
                 .Include(o => o.OrderItems)
                 .ToList();
         }
-
-        public bool UpdateOrderStatus(string orderId, string status)
+        public List<Order>  GetOrdersAssignedToday(string status)
         {
-            try
-            {
-                var order = _context.Orders.Find(orderId);
-                if (order == null) return false;
-
-                order.Status = status;
-                _context.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            var today = DateTime.Today;
+            return _context.Orders
+                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status) &&
+                    DbFunctions.TruncateTime(o.CreatedAt) == today)
+                .ToList();
         }
-
+        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
+        {
+            return _context.Orders
+                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status && DbFunctions.TruncateTime(bq.CompletedAt) == DbFunctions.TruncateTime(selectedDate)))
+                .ToList();
+        }
         public bool UpdateOrder(Order order)
         {
             try
@@ -105,6 +100,27 @@ namespace PBL3_CoffeeHome.DAL.Repository
             }
         }
 
+        // Lấy chi tiết các món trong đơn hàng
+        public List<OrderItem> GetOrderItemsByOrderId(string orderId)
+        {
+            return _context.OrderItems
+                .Where(oi => oi.OrderID == orderId)
+                .ToList();
+        }
+        private string GenerateOrderID()
+        {
+            string prefix = "ORD" + DateTime.Now.ToString("yyyyMMdd");
+            string newId;
+            int attempt = 0;
+            do
+            {
+                attempt++;
+                newId = prefix + attempt.ToString("D3");
+            } while (_context.Orders.AsNoTracking().Any(o => o.OrderID == newId) && attempt < 999);
 
+            if (attempt >= 999) throw new Exception("Không thể tạo mã đơn.");
+
+            return newId;
+        }
     }
 }

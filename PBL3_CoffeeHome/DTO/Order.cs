@@ -13,7 +13,6 @@ namespace PBL3_CoffeeHome.DTO
             OrderItems = new HashSet<OrderItem>();
             BaristaQueues = new HashSet<BaristaQueue>();
             CreatedAt = DateTime.Now;
-            Status = "Pending";
             DiscountAmount = 0;
         }
 
@@ -23,10 +22,6 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         public DateTime CreatedAt { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Status { get; set; } // Pending, In Progress, Completed
 
         [Required]
         [Range(1, 9999)]
