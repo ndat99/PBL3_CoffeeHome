@@ -26,8 +26,11 @@ namespace PBL3_CoffeeHome.GUI
         private void SetupComboBoxes()
         {
             cbNam.Items.Clear();
-            int currentYear = DateTime.Now.Year;
-            for (int year = 2020; year <= currentYear; year++)
+
+            // Lấy danh sách năm có dữ liệu từ RevenueBLL
+            var years = _revenueBLL.GetAllYearsWithData(); 
+
+            foreach (var year in years.OrderBy(y => y))
             {
                 cbNam.Items.Add(year);
             }

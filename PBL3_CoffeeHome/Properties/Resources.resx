@@ -127,9 +127,6 @@
   <data name="ThongKe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThongKe1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save-money" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save-money.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Xem" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Xem1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -214,6 +211,9 @@
   <data name="ChiTiet" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ChiTiet1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="transaction" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transaction.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Frame1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frame1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -247,10 +247,13 @@
   <data name="ThucDon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ThucDon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dollar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dollar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save-money1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save-money1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dollar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dollar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Panel_yellow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Panel_yellow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

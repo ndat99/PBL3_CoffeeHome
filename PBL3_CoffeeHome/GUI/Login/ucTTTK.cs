@@ -58,17 +58,6 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            User updatedUser = new User
-            {
-                UserID = _user.UserID,
-                UserName = _user.UserName,
-                FullName = txtHoTen.Text,
-                PhoneNumber = txtSDT.Text,
-                Email = txtGmail.Text,
-                Role = _user.Role,
-                IsActive = _user.IsActive,
-                PasswordHash = _user.PasswordHash,
-            };
             try
             {
                 if (!_userBLL.IsValidPhoneNumber(txtSDT.Text))
@@ -84,10 +73,15 @@ namespace PBL3_CoffeeHome.GUI
                     throw new ArgumentException("Không được để trống các thông tin cần thiết");
                 }
 
-                _userBLL.UpdateUser(updatedUser);
+                _user.FullName = txtHoTen.Text;
+                _user.PhoneNumber = txtSDT.Text;
+                _user.Email = txtGmail.Text;
+                _userBLL.UpdateUser(_user);
+
                 txtHoTen.Enabled = false;
                 txtSDT.Enabled = false;
                 txtGmail.Enabled = false;
+                this.ParentForm.Refresh();
             }
             catch (ArgumentException ex)
             {

@@ -51,7 +51,7 @@ namespace PBL3_CoffeeHome.GUI
                 switch (user.Role)
                 {
                     case "Cashier":
-                        fThuNgan f1 = new fThuNgan();
+                        fThuNgan f1 = new fThuNgan(user);
                         this.Hide();
                         f1.ShowDialog();
                         break;
