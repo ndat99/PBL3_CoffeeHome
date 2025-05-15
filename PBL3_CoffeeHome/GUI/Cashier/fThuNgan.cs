@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.ApplicationServices;
+using PBL3_CoffeeHome.DAL;
+using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
-using User = PBL3_CoffeeHome.DTO.User;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace PBL3_CoffeeHome.GUI
 {
     public partial class fThuNgan : Form
     {
-        public User cashier;
-        //public PBL3_CoffeeHome.DTO.User cashier { get; set; }
         private Button activeButton;
+        private User cashier;
         public fThuNgan(User user)
         {
             InitializeComponent();
@@ -45,12 +45,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTTTK_Click(object sender, EventArgs e)
         {
-            if (panelChiTiet == null)
-            {
-                MessageBox.Show("Panel chi tiết chưa được khởi tạo!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            LoadControlToPanel(new ucTTTK(), panelChiTiet);
+            LoadControlToPanel(new ucTTTK(cashier), panelChiTiet);
             HighlightButton(btnTTTK);
         }
         private void btnDangXuat_Click(object sender, EventArgs e)
