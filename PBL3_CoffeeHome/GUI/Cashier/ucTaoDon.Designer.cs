@@ -65,7 +65,6 @@
             this.dgvChiTietDon = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
-            this.txtOrderID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -133,7 +132,7 @@
             this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnThem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThem.Location = new System.Drawing.Point(386, 151);
+            this.btnThem.Location = new System.Drawing.Point(444, 151);
             this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(93, 28);
@@ -197,7 +196,7 @@
             this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSalmon;
             this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(113)))), ((int)(((byte)(74)))));
             this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoa.Location = new System.Drawing.Point(504, 151);
+            this.btnXoa.Location = new System.Drawing.Point(562, 151);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(93, 28);
@@ -412,6 +411,7 @@
             // 
             // dgvChiTietDon
             // 
+            this.dgvChiTietDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvChiTietDon.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvChiTietDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvChiTietDon.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -441,7 +441,7 @@
             this.dgvChiTietDon.RowHeadersWidth = 51;
             this.dgvChiTietDon.RowTemplate.Height = 24;
             this.dgvChiTietDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvChiTietDon.Size = new System.Drawing.Size(599, 429);
+            this.dgvChiTietDon.Size = new System.Drawing.Size(685, 429);
             this.dgvChiTietDon.TabIndex = 132;
             // 
             // label6
@@ -462,7 +462,7 @@
             this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Location = new System.Drawing.Point(621, 149);
+            this.btnClear.Location = new System.Drawing.Point(679, 149);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(85, 30);
@@ -471,18 +471,10 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // txtOrderID
-            // 
-            this.txtOrderID.Location = new System.Drawing.Point(328, 27);
-            this.txtOrderID.Name = "txtOrderID";
-            this.txtOrderID.Size = new System.Drawing.Size(163, 22);
-            this.txtOrderID.TabIndex = 135;
-            // 
             // ucTaoDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtOrderID);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgvChiTietDon);
@@ -558,6 +550,5 @@
         private System.Windows.Forms.Panel panelChiTiet;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.TextBox txtOrderID;
     }
 }

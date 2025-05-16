@@ -417,7 +417,7 @@ namespace PBL3_CoffeeHome.GUI
 
             try
             {
-                string userId = null;
+                string userId = cashier.UserID;
                 string orderID = GenerateOrderID(DateTime.Now);
 
                 var orderItems = _currentOrderItems.Select(i => (i.MenuItemID, i.Quantity)).ToList();
