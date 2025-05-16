@@ -104,6 +104,7 @@
             this.cbNam.Name = "cbNam";
             this.cbNam.Size = new System.Drawing.Size(112, 28);
             this.cbNam.TabIndex = 101;
+            this.cbNam.SelectedIndexChanged += new System.EventHandler(this.cbNam_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -183,6 +184,7 @@
             this.cbThongKeTheo.Name = "cbThongKeTheo";
             this.cbThongKeTheo.Size = new System.Drawing.Size(112, 28);
             this.cbThongKeTheo.TabIndex = 114;
+            this.cbThongKeTheo.SelectedIndexChanged += new System.EventHandler(this.cbThongKeTheo_SelectedIndexChanged);
             // 
             // panelTongLuongKhach
             // 

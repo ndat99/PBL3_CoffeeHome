@@ -116,6 +116,12 @@
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\fThemMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fThemMon.Designer.cs">
+      <DependentUpon>fThemMon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Admin\ucDetailKiemKho.cs">
       <SubType>UserControl</SubType>
     </Compile>
