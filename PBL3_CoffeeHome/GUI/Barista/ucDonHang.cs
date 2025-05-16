@@ -89,14 +89,19 @@ namespace PBL3_CoffeeHome.GUI
             {
                 if (listDonHang.SelectedItems.Count > 0)
                 {
-                    var selectedOrder = (Order)listDonHang.SelectedItems[0].Tag;
-                    var queue = selectedOrder.BaristaQueues
-                                .FirstOrDefault(q => q.OrderID == selectedOrder.OrderID);
-                    _orderBLL.CompleteOrder(selectedOrder.OrderID, queue.QueueID, _barista.UserID);
+                    DialogResult result = MessageBox.Show("Bạn có chắn chắn muốn chuyển trạng thái?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        var selectedOrder = (Order)listDonHang.SelectedItems[0].Tag;
+                        var queue = selectedOrder.BaristaQueues
+                                    .FirstOrDefault(q => q.OrderID == selectedOrder.OrderID);
+                        _orderBLL.CompleteOrder(selectedOrder.OrderID, queue.QueueID, _barista.UserID);
+                    }
+                    else return;
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 LoadOrdersToday();

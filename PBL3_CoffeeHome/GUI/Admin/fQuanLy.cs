@@ -13,7 +13,7 @@ using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.GUI
 {
-    public partial class fQuanLy: Form
+    public partial class fQuanLy : Form
     {
         private Button activeButton;
         private User admin;
@@ -23,7 +23,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             InitializeComponent();
             admin = user;
-            txtName.Text = admin.UserName;
+            txtName.Text = admin.FullName;
             _userBLL = new UserBLL();
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
@@ -35,7 +35,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnTaoDon_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTaoDon(), panelChiTiet);
+            LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
             HighlightButton(btnTaoDon);
         }
         private void btnThucDon_Click(object sender, EventArgs e)
@@ -92,10 +92,9 @@ namespace PBL3_CoffeeHome.GUI
         {
 
         }
-
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panelChiTiet_Paint(object sender, PaintEventArgs e)

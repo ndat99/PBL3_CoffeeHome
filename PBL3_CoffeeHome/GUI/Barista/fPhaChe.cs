@@ -14,7 +14,7 @@ using PBL3_CoffeeHome.DAL;
 
 namespace PBL3_CoffeeHome.GUI
 {
-    public partial class fPhaChe: Form
+    public partial class fPhaChe : Form
     {
         private User barista;
         private Button activeButton;
