@@ -28,21 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "2510271804",
-            "18/04/2025 10:27",
-            "42.000"}, 0);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "0510241804",
-            "18/04/2025 10:24",
-            "75.000"}, 0);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
-            "1710181804",
-            "18/04/2025 10:18",
-            "80.000"}, 1);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fLichSuDonHang));
             this.label10 = new System.Windows.Forms.Label();
-            this.dateDotNhap = new System.Windows.Forms.DateTimePicker();
+            this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.listDonHang = new System.Windows.Forms.ListView();
             this.cMaDon = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cThoiGian = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,15 +48,15 @@
             this.label10.TabIndex = 108;
             this.label10.Text = "Ngày";
             // 
-            // dateDotNhap
+            // datePicker
             // 
-            this.dateDotNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDotNhap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDotNhap.Location = new System.Drawing.Point(88, 26);
-            this.dateDotNhap.Name = "dateDotNhap";
-            this.dateDotNhap.Size = new System.Drawing.Size(132, 27);
-            this.dateDotNhap.TabIndex = 107;
-            this.dateDotNhap.Value = new System.DateTime(2025, 4, 18, 7, 34, 0, 0);
+            this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePicker.Location = new System.Drawing.Point(88, 26);
+            this.datePicker.Name = "datePicker";
+            this.datePicker.Size = new System.Drawing.Size(132, 27);
+            this.datePicker.TabIndex = 107;
+            this.datePicker.Value = new System.DateTime(2025, 4, 18, 7, 34, 0, 0);
             // 
             // listDonHang
             // 
@@ -80,22 +68,9 @@
             this.listDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listDonHang.FullRowSelect = true;
             this.listDonHang.HideSelection = false;
-            listViewItem1.Checked = true;
-            listViewItem1.StateImageIndex = 1;
-            listViewItem1.Tag = "";
-            listViewItem2.Checked = true;
-            listViewItem2.StateImageIndex = 1;
-            listViewItem2.Tag = "";
-            listViewItem3.Checked = true;
-            listViewItem3.StateImageIndex = 1;
-            listViewItem3.Tag = "";
-            this.listDonHang.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
             this.listDonHang.Location = new System.Drawing.Point(37, 76);
             this.listDonHang.Name = "listDonHang";
-            this.listDonHang.Size = new System.Drawing.Size(536, 339);
+            this.listDonHang.Size = new System.Drawing.Size(592, 339);
             this.listDonHang.TabIndex = 110;
             this.listDonHang.UseCompatibleStateImageBehavior = false;
             this.listDonHang.View = System.Windows.Forms.View.Details;
@@ -103,7 +78,7 @@
             // cMaDon
             // 
             this.cMaDon.Text = "Mã đơn";
-            this.cMaDon.Width = 120;
+            this.cMaDon.Width = 150;
             // 
             // cThoiGian
             // 
@@ -129,7 +104,7 @@
             this.btnInHoaDon.ForeColor = System.Drawing.Color.Black;
             this.btnInHoaDon.Image = global::PBL3_CoffeeHome.Properties.Resources.In;
             this.btnInHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInHoaDon.Location = new System.Drawing.Point(424, 429);
+            this.btnInHoaDon.Location = new System.Drawing.Point(480, 432);
             this.btnInHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInHoaDon.Name = "btnInHoaDon";
             this.btnInHoaDon.Size = new System.Drawing.Size(149, 60);
@@ -142,11 +117,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 513);
+            this.ClientSize = new System.Drawing.Size(668, 513);
             this.Controls.Add(this.listDonHang);
             this.Controls.Add(this.btnInHoaDon);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateDotNhap);
+            this.Controls.Add(this.datePicker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -161,7 +136,7 @@
 
         #endregion
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateDotNhap;
+        private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button btnInHoaDon;
         private System.Windows.Forms.ListView listDonHang;
         private System.Windows.Forms.ColumnHeader cMaDon;
