@@ -43,10 +43,6 @@ namespace PBL3_CoffeeHome.GUI
             cbThang.SelectedIndex = -1;
             cbThang.Enabled = false;
 
-            // Gắn sự kiện
-            cbThongKeTheo.SelectedIndexChanged += cbThongKeTheo_SelectedIndexChanged;
-            cbNam.SelectedIndexChanged += cbNam_SelectedIndexChanged;
-            btnLoc.Click += btnLoc_Click;
         }
 
         private void cbThongKeTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,12 +57,18 @@ namespace PBL3_CoffeeHome.GUI
             string mode = cbThongKeTheo.SelectedItem.ToString();
             if (mode == "Tháng")
             {
-                cbThang.Enabled = false;
                 cbThang.Items.Clear();
+                cbThang.Enabled = false;
+
             }
             else if (mode == "Ngày")
             {
+                cbThang.Items.Clear();
                 cbThang.Enabled = true;
+                for (int month = 1; month <= 12; month++)
+                {
+                    cbThang.Items.Add(month.ToString());
+                }
             }
         }
 
@@ -84,21 +86,47 @@ namespace PBL3_CoffeeHome.GUI
         {
             try
             {
+                txtTongDT.Text = "$0";
+                txtTongSP.Text = "0";
+                txtTongKH.Text = "0";
                 // Xóa dữ liệu cũ trong biểu đồ
                 chartDoanhThu.Series["Series1"].Points.Clear();
-                // chartSanPham.Series["CaPheDen"].Points.Clear();
+                chartSanPham.Series.Clear();
+                chartSanPham.Legends.Clear();
 
-                // Cập nhật tổng Series1, sản phẩm đã bán, và lượng khách
-                decimal totalRevenue = _revenueBLL.GetTotalRevenue();
-                int totalProductsSold = _revenueBLL.GetTotalProductsSold();
-                int totalCustomers = _revenueBLL.GetTotalCustomers();
+                // Cập nhật tổng doanh thu, sản phẩm đã bán, và lượng khách theo thời gian đã chọn
+                decimal totalRevenue;
+                int totalProductsSold;
+                int totalCustomers;
+                List<(string ItemName, int TotalQuantity)> topProducts;
 
-                // Hiển thị trên giao diện trong các panel
+                if (mode == "Ngày" && month.HasValue)
+                {
+                    totalRevenue = _revenueBLL.GetTotalRevenueByMonth(year, month.Value);
+                    totalProductsSold = _revenueBLL.GetTotalProductsSoldByMonth(year, month.Value);
+                    totalCustomers = _revenueBLL.GetTotalCustomersByMonth(year, month.Value);
+                    topProducts = _revenueBLL.GetTopSellingProductsByMonth(year, month.Value);
+
+                }
+                else if (mode == "Tháng")
+                {
+                    totalRevenue = _revenueBLL.GetTotalRevenueByYear(year);
+                    totalProductsSold = _revenueBLL.GetTotalProductsSoldByYear(year);
+                    totalCustomers = _revenueBLL.GetTotalCustomersByYear(year);
+                    topProducts = _revenueBLL.GetTopSellingProductsByYear(year);
+
+                }
+                else
+                {
+                    throw new ArgumentException("Chế độ thống kê không hợp lệ.");
+                }
+
+                //// Hiển thị trên giao diện trong các panel
                 txtTongDT.Text = $"${totalRevenue:N0}";
                 txtTongSP.Text = totalProductsSold.ToString();
                 txtTongKH.Text = totalCustomers.ToString();
 
-                // Xử lý Series1 theo ngày hoặc tháng
+                // Xử lý biểu đồ doanh thu theo ngày hoặc tháng
                 if (mode == "Ngày" && month.HasValue)
                 {
                     var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
@@ -117,23 +145,19 @@ namespace PBL3_CoffeeHome.GUI
                 }
 
                 // Xử lý sản phẩm bán chạy nhất - Biểu đồ tròn
-                // Xóa dữ liệu cũ
-                chartSanPham.Series.Clear();
-                chartSanPham.Legends.Clear();
-
                 // Tạo legend (chú thích) ở phía dưới
                 Legend legend = new Legend
                 {
                     Name = "ProductLegend",
                     Docking = Docking.Bottom,
                     Alignment = StringAlignment.Center,
-                    LegendStyle = LegendStyle.Table, // Sử dụng Table để hiển thị linh hoạt hơn
+                    LegendStyle = LegendStyle.Table,
                     Font = new Font("Arial", 9, FontStyle.Regular),
                     Title = "TOP SẢN PHẨM BÁN CHẠY",
                     TitleFont = new Font("Arial", 10, FontStyle.Bold),
                     BorderColor = Color.LightGray,
-                    IsTextAutoFit = false, // Tắt tự động điều chỉnh kích thước chữ
-                    MaximumAutoSize = 60 // Tăng không gian dành cho legend
+                    IsTextAutoFit = false,
+                    MaximumAutoSize = 60
                 };
                 chartSanPham.Legends.Add(legend);
 
@@ -143,32 +167,23 @@ namespace PBL3_CoffeeHome.GUI
                     Name = "TopProducts",
                     ChartType = SeriesChartType.Pie,
                     IsValueShownAsLabel = true,
-                    Label = "#PERCENT{P0}", // Hiển thị phần trăm
+                    Label = "#PERCENT{P0}",
                     Font = new Font("Arial", 9, FontStyle.Bold),
                     LabelForeColor = Color.White,
                     BorderWidth = 1,
                     Legend = "ProductLegend"
                 };
 
-                // Lấy dữ liệu top sản phẩm từ BLL
-                var topProducts = new RevenueBLL().GetTopSellingProducts();
-
-                // Kiểm tra dữ liệu
-                if (!topProducts.Any())
-                {
-                    chartSanPham.Titles.Add(new Title("Không có dữ liệu sản phẩm", Docking.Top, new Font("Arial", 12, FontStyle.Bold), Color.Red));
-                    return;
-                }
 
                 // Màu sắc cho các phần
                 Color[] colors = {
-        Color.FromArgb(65, 140, 240),  // Xanh dương
-        Color.FromArgb(252, 180, 65),  // Cam
-        Color.FromArgb(70, 190, 100),  // Xanh lá
-        Color.FromArgb(240, 80, 110),  // Đỏ
-        Color.FromArgb(170, 110, 210), // Tím
-        Color.FromArgb(150, 150, 150)  // Xám (cho phần Khác)
-    };
+            Color.FromArgb(65, 140, 240),   // Xanh dương
+            Color.FromArgb(252, 180, 65),   // Cam
+            Color.FromArgb(70, 190, 100),   // Xanh lá
+            Color.FromArgb(240, 80, 110),   // Đỏ
+            Color.FromArgb(170, 110, 210),  // Tím
+            Color.FromArgb(150, 150, 150)   // Xám (cho phần Khác)
+        };
 
                 int colorIndex = 0;
                 foreach (var product in topProducts)
@@ -177,7 +192,7 @@ namespace PBL3_CoffeeHome.GUI
                     point.SetValueXY(product.ItemName, product.TotalQuantity);
                     point.Color = colors[colorIndex++ % colors.Length];
                     point.LegendText = $"{product.ItemName} ({product.TotalQuantity})";
-                    point.ToolTip = product.ItemName; // Hiển thị tên đầy đủ khi hover
+                    point.ToolTip = product.ItemName;
 
                     // Định dạng đặc biệt cho phần "Khác"
                     if (product.ItemName == "Khác")
@@ -192,15 +207,18 @@ namespace PBL3_CoffeeHome.GUI
                 chartSanPham.Series.Add(pieSeries);
 
                 // Tùy chỉnh hiển thị
-                pieSeries["PieLabelStyle"] = "Inside"; // Nhãn nằm bên trong
+                pieSeries["PieLabelStyle"] = "Inside";
                 pieSeries["PieDrawingStyle"] = "Concave";
                 chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = true;
                 chartSanPham.ChartAreas[0].Area3DStyle.Inclination = 30;
+                chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50);
 
-                // Điều chỉnh kích thước để dành chỗ cho legend
-                chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50); // Giảm chiều cao để dành chỗ cho legend
+                // Thêm tiêu đề cho biểu đồ sản phẩm
+                //chartSanPham.Titles.Clear();
+                //chartSanPham.Titles.Add(new Title(
+                //    mode == "Ngày" ? $"Top Sản Phẩm Bán Chạy - Tháng {month.Value}/{year}" : $"Top Sản Phẩm Bán Chạy - Năm {year}",
+                //    Docking.Top, new Font("Arial", 12, FontStyle.Bold), Color.Black));
             }
-            
             catch (Exception ex)
             {
                 MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -236,7 +254,5 @@ namespace PBL3_CoffeeHome.GUI
 
             CalculateRevenueStatistics(mode, year, month);
         }
-
-       
     }
 }

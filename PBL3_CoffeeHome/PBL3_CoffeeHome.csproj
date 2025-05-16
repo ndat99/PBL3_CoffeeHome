@@ -83,8 +83,10 @@
     <Compile Include="BLL\InventoryTransactionBLL.cs" />
     <Compile Include="BLL\MenuItemIngredientBLL.cs" />
     <Compile Include="BLL\OrderBLL.cs" />
+    <Compile Include="BLL\OrderItemsBLL.cs" />
     <Compile Include="BLL\RevenueBLL.cs" />
     <Compile Include="BLL\UserBLL.cs" />
+    <Compile Include="DAL\Repository\OrderItemsDAL.cs" />
     <Compile Include="DAL\Repository\UserDAL.cs" />
     <Compile Include="DAL\CoffeeDbContext.cs" />
     <Compile Include="DAL\Repository\BaristaQueueDAL.cs" />
@@ -113,6 +115,12 @@
     </Compile>
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\fThemMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fThemMon.Designer.cs">
+      <DependentUpon>fThemMon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucDetailKiemKho.cs">
       <SubType>UserControl</SubType>
@@ -143,6 +151,12 @@
     </Compile>
     <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\ucTongQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucTongQuan.Designer.cs">
+      <DependentUpon>ucTongQuan.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
@@ -386,6 +400,7 @@
     <Content Include="Resources\Money.png" />
     <Content Include="Resources\NguyenVatLieu.png" />
     <Content Include="Resources\Panel.png" />
+    <None Include="Resources\Panel_yellow.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />

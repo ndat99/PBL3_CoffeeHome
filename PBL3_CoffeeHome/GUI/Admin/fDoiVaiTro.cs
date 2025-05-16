@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PBL3_CoffeeHome.DAL;
-using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.GUI

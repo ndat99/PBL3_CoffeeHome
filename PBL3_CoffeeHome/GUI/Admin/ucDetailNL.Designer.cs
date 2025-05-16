@@ -248,17 +248,17 @@
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(431, 70);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(69, 20);
+            this.lblName.Size = new System.Drawing.Size(126, 20);
             this.lblName.TabIndex = 23;
-            this.lblName.Text = "Tên ngu";
+            this.lblName.Text = "Tên nguyên liệu";
             // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(545, 67);
+            this.txtName.Location = new System.Drawing.Point(564, 67);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(205, 27);
+            this.txtName.Size = new System.Drawing.Size(186, 27);
             this.txtName.TabIndex = 24;
             // 
             // lblCategory

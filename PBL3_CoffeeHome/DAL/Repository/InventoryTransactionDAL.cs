@@ -24,6 +24,8 @@ namespace PBL3_CoffeeHome.DAL
                                              .ToList();
         }
 
+      
+
         public List<TransactionDisplayDTO> GetAllTransactionDisplay()
         {
             return _db.InventoryTransactions.AsNoTracking()
@@ -52,6 +54,13 @@ namespace PBL3_CoffeeHome.DAL
             return _db.InventoryTransactions.AsNoTracking()
                                             .Include(t => t.Inventory).Include(t => t.User)
                                             .Where(t => t.Type == "Xuất Kho").OrderByDescending(t => t.TransactionDate).ToList();
+        }
+
+        public List<InventoryTransaction> GetTransactionStockIn()
+        {
+            return _db.InventoryTransactions.AsNoTracking()
+                                            .Include(t => t.Inventory).Include(t => t.User)
+                                            .Where(t => t.Type.Contains("Nhập")).OrderByDescending(t => t.TransactionDate).ToList();
         }
 
         // Chuc nang

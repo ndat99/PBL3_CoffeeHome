@@ -107,6 +107,20 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
+        private string GenerateOrderID()
+        {
+            string prefix = "ORD" + DateTime.Now.ToString("yyyyMMdd");
+            string newId;
+            int attempt = 0;
+            do
+            {
+                attempt++;
+                newId = prefix + attempt.ToString("D3");
+            } while (_context.Orders.AsNoTracking().Any(o => o.OrderID == newId) && attempt < 999);
 
+            if (attempt >= 999) throw new Exception("Không thể tạo mã đơn.");
+
+            return newId;
+        }
     }
 }
