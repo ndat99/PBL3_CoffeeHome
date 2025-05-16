@@ -41,5 +41,70 @@ namespace PBL3_CoffeeHome.BLL
             return menuItems;
 
         }
+
+        public List<String> GetAllMenuCategory()
+        {
+            var menuCategories = _menuItemDAL.GetAllMenuCategory();
+            return menuCategories;
+        }
+        public List<MenuItems> SearchMenuItems(string searchTerm)
+        {
+            return _menuItemDAL.SearchMenuItems(searchTerm);
+        }
+        public List<MenuItems> SearchMenuItems(string searchTerm, string category)
+        {
+            return _menuItemDAL.SearchMenuItems(searchTerm, category);
+        }
+        public void AddMenuItem(MenuItems menuItem)
+        {
+            try
+            {
+                _menuItemDAL.AddMenuItem(menuItem);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi thêm món ăn: " + ex.Message, ex);
+            }
+        }
+        public void DeleteMenuItem(string id)
+        {
+            try
+            {
+                _menuItemDAL.DeleteMenuItem(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi xóa món ăn: " + ex.Message, ex);
+            }
+        }
+        public string GenerateNewMenuItemsId()
+        {
+            try
+            {
+                var menuItems = GetAllMenuItems();
+
+                if (!menuItems.Any())
+                {
+                    return "MENU001";
+                }
+
+                // Lọc ra những ID hợp lệ bắt đầu bằng "MENU" và có hậu tố số
+                var validIds = menuItems
+                    .Where(u => !string.IsNullOrEmpty(u.MenuItemID) &&
+                                u.MenuItemID.StartsWith("MENU") &&
+                                u.MenuItemID.Length == 7 &&
+                                int.TryParse(u.MenuItemID.Substring(4), out _))
+                    .Select(u => int.Parse(u.MenuItemID.Substring(4)));
+
+                int maxId = validIds.Any() ? validIds.Max() : 0;
+
+                return $"MENU{(maxId + 1):D3}";
+            }
+            catch (Exception)
+            {
+                throw new Exception("Không thể tạo mã món mới!");
+            }
+        }
+
     }
 }
