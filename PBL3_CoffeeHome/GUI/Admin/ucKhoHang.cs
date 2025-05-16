@@ -188,6 +188,7 @@ namespace PBL3_CoffeeHome.GUI
             LoadNameInventory_TabNhapKho();
         }
 
+       
         private void btnXacNhan_tabNhapKho_Click(object sender, EventArgs e)
         {
             if (cboNameNL_tabNhapKho.SelectedItem == null)
@@ -266,6 +267,18 @@ namespace PBL3_CoffeeHome.GUI
 
             LoadLSGD();
             LoadCBB();
+            LoadNgayGD();
+        }
+
+        private void LoadNgayGD(string type = null)
+        {
+            dgvNgayGD.Rows.Clear();
+            List<DateTime> items = _transactionBLL.GetTransactionsByType(type).Select(t => t.TransactionDate).Distinct().ToList();
+            
+            foreach (var item in items)
+            {
+                dgvNgayGD.Rows.Add(item.ToString("dd/MM/yyyy"));
+            }
         }
 
         private void LoadLSGD()
@@ -287,15 +300,26 @@ namespace PBL3_CoffeeHome.GUI
         }
 
         private void cboType_tabLSGD_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {   
+            
             _listLSGD.Clear();
             List<TransactionDisplayDTO> items = _transactionBLL.GetTransactionsByType(cboType_tabLSGD.SelectedItem.ToString());
             foreach (var item in items)
             {
                 _listLSGD.Add(item);
             }
-        }
 
+            LoadNgayGD(cboType_tabLSGD.SelectedItem.ToString());
+        }
+        private void dateEnd_TabLSGD_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateEnd_TabLSGD.Value < dateStart_TabLSGD.Value)
+            {
+                MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateEnd_TabLSGD.Value = dateStart_TabLSGD.Value;
+                return;
+            }
+        }
         private void btnSubmit_tabLSGD_Click(object sender, EventArgs e)
         {
             DateTime startDate = dateStart_TabLSGD.Value;
@@ -308,7 +332,29 @@ namespace PBL3_CoffeeHome.GUI
             {
                 _listLSGD.Add(item);
             }
+        }
+        private void btnReset_tabLSGD_Click(object sender, EventArgs e)
+        {
+            txtSearch_tabLSGD.Clear();
+            LoadLSGD();
+        }
 
+        private void btnDetailTransaction_tabLSGD_Click(object sender, EventArgs e)
+        {
+            if (dgvLSGD.SelectedRows.Count == 1)
+            {
+                var selectedItem = (TransactionDisplayDTO)dgvLSGD.SelectedRows[0].DataBoundItem;
+                if (selectedItem == null) return;
+                var transactionDate = selectedItem.TransactionDate.Date;
+                var itemID = selectedItem.ItemID;
+
+                var AdminForm = (fQuanLy)this.ParentForm;
+                AdminForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate), AdminForm.panelChiTiet);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một giao dịch để xem chi tiết.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

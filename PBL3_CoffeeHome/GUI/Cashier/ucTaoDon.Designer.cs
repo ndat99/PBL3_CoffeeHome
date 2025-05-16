@@ -555,7 +555,6 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Timer timerRefresh;
         private System.Windows.Forms.DataGridView dgvChiTietDon;
-        private System.Windows.Forms.Panel panelChiTiet;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtOrderID;

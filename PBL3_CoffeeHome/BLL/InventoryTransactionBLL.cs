@@ -45,6 +45,7 @@ namespace PBL3_CoffeeHome.BLL
                                   .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
+
         public List<TransactionDisplayDTO> SeaechTransaction(string txtSearch, DateTime startDate, DateTime endDate)
         {
             var query = _transactionDAL.GetAllTransactionDisplay().Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate);

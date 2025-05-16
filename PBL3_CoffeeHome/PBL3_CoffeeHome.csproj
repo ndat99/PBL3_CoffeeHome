@@ -146,6 +146,12 @@
     <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\ucTongQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucTongQuan.Designer.cs">
+      <DependentUpon>ucTongQuan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>

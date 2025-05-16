@@ -24,6 +24,8 @@ namespace PBL3_CoffeeHome.DAL
                                              .ToList();
         }
 
+      
+
         public List<TransactionDisplayDTO> GetAllTransactionDisplay()
         {
             return _db.InventoryTransactions.AsNoTracking()
