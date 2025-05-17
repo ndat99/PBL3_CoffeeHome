@@ -9,7 +9,7 @@ namespace PBL3_CoffeeHome.DTO
     public class OrderItem
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string OrderItemID { get; set; }
 
         [Required]
@@ -19,11 +19,11 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         [ForeignKey("MenuItem")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string MenuItemID { get; set; }
 
         [Required]
-        [Range(1, 99)]
+        [Range(1, 999)]
         public int Quantity { get; set; }
 
         [Required]

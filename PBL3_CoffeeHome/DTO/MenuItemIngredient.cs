@@ -9,17 +9,17 @@ namespace PBL3_CoffeeHome.DTO
     public class MenuItemIngredient
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string Id { get; set; }
 
         [Required]
         [ForeignKey("MenuItem")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string MenuItemID { get; set; }
 
         [Required]
         [ForeignKey("Inventory")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string ItemID { get; set; }
 
         [Required]

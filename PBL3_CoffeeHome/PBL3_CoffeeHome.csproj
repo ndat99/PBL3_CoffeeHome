@@ -85,8 +85,10 @@
     <Compile Include="BLL\OrderBLL.cs" />
     <Compile Include="BLL\OrderItemsBLL.cs" />
     <Compile Include="BLL\RevenueBLL.cs" />
+    <Compile Include="BLL\RevenueDetailsBLL.cs" />
     <Compile Include="BLL\UserBLL.cs" />
     <Compile Include="DAL\Repository\OrderItemsDAL.cs" />
+    <Compile Include="DAL\Repository\RevenueDetailsDAL.cs" />
     <Compile Include="DAL\Repository\UserDAL.cs" />
     <Compile Include="DAL\CoffeeDbContext.cs" />
     <Compile Include="DAL\Repository\BaristaQueueDAL.cs" />
@@ -249,6 +251,11 @@
     <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505171105002_create.cs" />
+    <Compile Include="Migrations\202505171105002_create.Designer.cs">
+      <DependentUpon>202505171105002_create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\Admin\fCongThuc.resx">
@@ -316,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505171105002_create.resx">
+      <DependentUpon>202505171105002_create.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

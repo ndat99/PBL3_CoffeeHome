@@ -12,7 +12,8 @@ namespace PBL3_CoffeeHome.BLL
     public class OrderBLL
     {
         private readonly OrderDAL _orderDAL;
-        private readonly RevenueDAL _revenueDAL;
+        private readonly RevenueBLL _revenueBLL;
+        private readonly RevenueDetailsBLL _revenueDetailsBLL;
         private readonly MenuItemIngredientBLL _menuItemIngredientBLL;
         private readonly BaristaQueueBLL _baristaQueueBLL;
         private readonly InventoryTransactionBLL _inventoryTransactionBLL;
@@ -20,7 +21,8 @@ namespace PBL3_CoffeeHome.BLL
         public OrderBLL()
         {
             _orderDAL = new OrderDAL();
-            _revenueDAL = new RevenueDAL();
+            _revenueBLL = new RevenueBLL();
+            _revenueDetailsBLL = new RevenueDetailsBLL();
             _menuItemIngredientBLL = new MenuItemIngredientBLL();
             _baristaQueueBLL = new BaristaQueueBLL();
             _inventoryTransactionBLL = new InventoryTransactionBLL();
@@ -100,24 +102,24 @@ namespace PBL3_CoffeeHome.BLL
                     _orderDAL.AddOrderItems(orderItems);
 
                     // Ghi doanh thu chi tiết
-                    Revenue revenue = _revenueDAL.GetCurrentRevenuePeriod();
-                    if (revenue != null)
-                    {
-                        foreach (var oi in orderItems)
-                        {
-                            _revenueDAL.AddRevenueDetail(new RevenueDetail
-                            {
-                                DetailID = Guid.NewGuid().ToString(),
-                                RevenueID = revenue.RevenueID,
-                                OrderID = order.OrderID,
-                                ItemName = context.MenuItems.Find(oi.MenuItemID)?.Name,
-                                Quantity = oi.Quantity,
-                                RevenueAmount = oi.Subtotal
-                            });
-                        }
+                    //Revenue revenue = _revenueDAL.GetCurrentRevenuePeriod();
+                    //if (revenue != null)
+                    //{
+                    //    foreach (var oi in orderItems)
+                    //    {
+                    //        _revenueDAL.AddRevenueDetail(new RevenueDetail
+                    //        {
+                    //            DetailID = Guid.NewGuid().ToString(),
+                    //            RevenueID = revenue.RevenueID,
+                    //            OrderID = order.OrderID,
+                    //            ItemName = context.MenuItems.Find(oi.MenuItemID)?.Name,
+                    //            Quantity = oi.Quantity,
+                    //            RevenueAmount = oi.Subtotal
+                    //        });
+                    //    }
 
-                        _revenueDAL.UpdateTotalRevenue(revenue.RevenueID, finalAmount);
-                    }
+                    //    _revenueDAL.UpdateTotalRevenue(revenue.RevenueID, finalAmount);
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -199,7 +201,7 @@ namespace PBL3_CoffeeHome.BLL
             }
         }
         // Cập nhật trạng thái đơn hàng
-        public void CompleteOrder(string orderId, string queueID, string userId)
+        public void CompleteOrder(string orderId, string queueID, string baristaId)
         {
             var orderItems = _orderDAL.GetOrderItemsByOrderId(orderId);
             foreach (var orderItem in orderItems)
@@ -208,11 +210,16 @@ namespace PBL3_CoffeeHome.BLL
                 foreach (var ingredient in ingredients)
                 {
                     decimal totalQty = ingredient.QuantityRequired * orderItem.Quantity;
-                    _inventoryTransactionBLL.StockOut(ingredient.ItemID, totalQty, userId, orderId,
+                    _inventoryTransactionBLL.StockOut(ingredient.ItemID, totalQty, baristaId, orderId,
                         $"Xuất tự động cho đơn hàng");
                 }
+
+                string revenueId = "RVE" + DateTime.Now.ToString("yyyyMMDD");
+                decimal totalExpense = 0;
+                _revenueBLL.AddRevenue(revenueId, orderItem.Subtotal, totalExpense);
+                _revenueDetailsBLL.AddRevenueDetails(orderItem, revenueId, orderItem.MenuItemID, orderItem.Subtotal);
             }
-            _baristaQueueBLL.UpdateQueueStatus(queueID, "Completed");
+            _baristaQueueBLL.UpdateQueueStatus(queueID, baristaId, "Completed");
         }
     }
 

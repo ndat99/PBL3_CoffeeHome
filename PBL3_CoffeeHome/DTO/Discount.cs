@@ -14,7 +14,7 @@ namespace PBL3_CoffeeHome.DTO
         }
 
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string DiscountID { get; set; }
 
         [Required]
@@ -29,7 +29,6 @@ namespace PBL3_CoffeeHome.DTO
         public decimal MinOrderAmount { get; set; }
 
         public DateTime? EffectiveDate { get; set; }
-
 
         public virtual ICollection<Order> Orders { get; set; }
     }

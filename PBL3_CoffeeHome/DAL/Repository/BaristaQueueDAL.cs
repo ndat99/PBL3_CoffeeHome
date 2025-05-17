@@ -34,14 +34,17 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 return false;
             }
         }
-        public bool UpdateQueueStatus(string queueId, string status)
+        public bool UpdateQueueStatus(string queueId, string baristaId, string status)
         {
             var queue = _context.BaristaQueues.Find(queueId);
             if (queue == null) return false;
 
             queue.Status = status;
             if (status == "Completed")
+            {
                 queue.CompletedAt = DateTime.Now;
+                queue.BaristaID = baristaId;
+            }
 
             _context.SaveChanges();
             return true;

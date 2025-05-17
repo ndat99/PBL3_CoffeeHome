@@ -25,9 +25,9 @@ namespace PBL3_CoffeeHome.BLL
             return _baristaQueueDAL.GetQueueByQueueID(queueId);
         }
 
-        public void UpdateQueueStatus(string queueId, string status)
+        public void UpdateQueueStatus(string queueId, string baristaId, string status)
         {
-            _baristaQueueDAL.UpdateQueueStatus(queueId, status);
+            _baristaQueueDAL.UpdateQueueStatus(queueId, baristaId, status);
         }
     }
 }

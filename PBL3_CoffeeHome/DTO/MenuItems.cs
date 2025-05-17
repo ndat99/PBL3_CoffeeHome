@@ -15,7 +15,7 @@ namespace PBL3_CoffeeHome.DTO
         }
 
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string MenuItemID { get; set; }
 
         [Required]
