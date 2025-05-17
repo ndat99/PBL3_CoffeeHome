@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -85,6 +86,25 @@ namespace PBL3_CoffeeHome.DAL.Repository
             {
                 _context.MenuItems.Remove(item);
                 _context.SaveChanges();
+            }
+        }
+
+        public void UpdateMenuItem(MenuItems updatedItem)
+        {
+            var existingItem = _context.MenuItems.Find(updatedItem.MenuItemID);
+            if (existingItem != null)
+            {
+                // Cập nhật các trường thông tin
+                existingItem.Name = updatedItem.Name;
+                existingItem.Category = updatedItem.Category;
+                existingItem.Price = updatedItem.Price;
+                existingItem.IsAvailable = updatedItem.IsAvailable;
+
+                _context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Không tìm thấy món ăn để cập nhật.");
             }
         }
     }

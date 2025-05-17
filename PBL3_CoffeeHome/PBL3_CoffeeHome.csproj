@@ -108,8 +108,15 @@
     <Compile Include="DTO\Revenue.cs" />
     <Compile Include="DTO\RevenueDetail.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="DTO\ViewModel\IngredientView.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
     <Compile Include="DTO\ViewModel\OrderDTO.cs" />
+    <Compile Include="GUI\Admin\fCongThuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fCongThuc.Designer.cs">
+      <DependentUpon>fCongThuc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Admin\fQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +251,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Admin\fCongThuc.resx">
+      <DependentUpon>fCongThuc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fDoiVaiTro.resx">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </EmbeddedResource>
