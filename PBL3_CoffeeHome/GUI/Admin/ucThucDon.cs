@@ -137,7 +137,9 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-
+            MenuItems menuItems = dgvThucDon.CurrentRow.DataBoundItem as MenuItems;
+            fCongThuc f = new fCongThuc(menuItems);
+            f.Show();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
