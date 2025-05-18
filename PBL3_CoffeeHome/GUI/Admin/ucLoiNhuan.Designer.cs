@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chartLoiNhuan = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbNam = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -59,19 +59,19 @@
             // 
             // chartLoiNhuan
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartLoiNhuan.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartLoiNhuan.Legends.Add(legend2);
-            this.chartLoiNhuan.Location = new System.Drawing.Point(32, 122);
+            chartArea1.Name = "ChartArea1";
+            this.chartLoiNhuan.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartLoiNhuan.Legends.Add(legend1);
+            this.chartLoiNhuan.Location = new System.Drawing.Point(63, 135);
             this.chartLoiNhuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartLoiNhuan.Name = "chartLoiNhuan";
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartLoiNhuan.Series.Add(series2);
-            this.chartLoiNhuan.Size = new System.Drawing.Size(1316, 483);
+            series1.ChartArea = "ChartArea1";
+            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartLoiNhuan.Series.Add(series1);
+            this.chartLoiNhuan.Size = new System.Drawing.Size(1413, 578);
             this.chartLoiNhuan.TabIndex = 1;
             this.chartLoiNhuan.Text = "chart1";
             // 
@@ -79,7 +79,7 @@
             // 
             this.cbNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNam.FormattingEnabled = true;
-            this.cbNam.Location = new System.Drawing.Point(365, 65);
+            this.cbNam.Location = new System.Drawing.Point(565, 78);
             this.cbNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbNam.Name = "cbNam";
             this.cbNam.Size = new System.Drawing.Size(112, 28);
@@ -100,7 +100,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(305, 68);
+            this.label6.Location = new System.Drawing.Point(505, 81);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 20);
             this.label6.TabIndex = 115;
@@ -114,7 +114,7 @@
             this.panelTongLuongKhach.Controls.Add(this.pictureBox3);
             this.panelTongLuongKhach.Controls.Add(this.label5);
             this.panelTongLuongKhach.Controls.Add(this.txtTongChi);
-            this.panelTongLuongKhach.Location = new System.Drawing.Point(378, 633);
+            this.panelTongLuongKhach.Location = new System.Drawing.Point(493, 757);
             this.panelTongLuongKhach.Name = "panelTongLuongKhach";
             this.panelTongLuongKhach.Size = new System.Drawing.Size(270, 89);
             this.panelTongLuongKhach.TabIndex = 113;
@@ -160,9 +160,9 @@
             this.panelTongSanPham.Controls.Add(this.pictureBox2);
             this.panelTongSanPham.Controls.Add(this.label3);
             this.panelTongSanPham.Controls.Add(this.txtTongLoiNhuan);
-            this.panelTongSanPham.Location = new System.Drawing.Point(734, 633);
+            this.panelTongSanPham.Location = new System.Drawing.Point(921, 757);
             this.panelTongSanPham.Name = "panelTongSanPham";
-            this.panelTongSanPham.Size = new System.Drawing.Size(329, 89);
+            this.panelTongSanPham.Size = new System.Drawing.Size(270, 89);
             this.panelTongSanPham.TabIndex = 112;
             // 
             // pictureBox2
@@ -206,7 +206,7 @@
             this.panelTongDoanhThu.Controls.Add(this.pictureBox1);
             this.panelTongDoanhThu.Controls.Add(this.label1);
             this.panelTongDoanhThu.Controls.Add(this.txtTongDT);
-            this.panelTongDoanhThu.Location = new System.Drawing.Point(32, 633);
+            this.panelTongDoanhThu.Location = new System.Drawing.Point(63, 757);
             this.panelTongDoanhThu.Name = "panelTongDoanhThu";
             this.panelTongDoanhThu.Size = new System.Drawing.Size(270, 89);
             this.panelTongDoanhThu.TabIndex = 111;
@@ -257,7 +257,7 @@
             this.btnLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoc.Image = global::PBL3_CoffeeHome.Properties.Resources.Filter;
             this.btnLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLoc.Location = new System.Drawing.Point(734, 63);
+            this.btnLoc.Location = new System.Drawing.Point(765, 76);
             this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoc.Name = "btnLoc";
             this.btnLoc.Size = new System.Drawing.Size(95, 32);
@@ -281,7 +281,7 @@
             this.Controls.Add(this.chartLoiNhuan);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucLoiNhuan";
-            this.Size = new System.Drawing.Size(1351, 799);
+            this.Size = new System.Drawing.Size(1576, 949);
             this.Load += new System.EventHandler(this.ucLoiNhuan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartLoiNhuan)).EndInit();
             this.panelTongLuongKhach.ResumeLayout(false);

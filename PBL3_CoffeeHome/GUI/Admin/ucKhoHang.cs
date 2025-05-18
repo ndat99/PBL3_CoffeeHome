@@ -320,6 +320,7 @@ namespace PBL3_CoffeeHome.GUI
             _listLSGD = new BindingList<TransactionDisplayDTO>();
             dgvLSGD.DataSource = _listLSGD;
 
+            dateStart_TabLSGD.Value = dateEnd_TabLSGD.Value = DateTime.Today;
             LoadLSGD();
             LoadCBB();
             LoadNgayGD();
