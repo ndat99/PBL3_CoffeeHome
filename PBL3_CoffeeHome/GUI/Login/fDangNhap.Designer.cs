@@ -33,7 +33,6 @@
             this.txtTDN = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,18 +83,6 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Tên đăng nhập";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.linkLabel1.Location = new System.Drawing.Point(267, 139);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(103, 16);
-            this.linkLabel1.TabIndex = 12;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Quên mật khẩu?";
-            // 
             // btnDangNhap
             // 
             this.btnDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(125)))), ((int)(((byte)(169)))));
@@ -109,7 +96,7 @@
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Image = global::PBL3_CoffeeHome.Properties.Resources.WhiteKey;
             this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDangNhap.Location = new System.Drawing.Point(227, 177);
+            this.btnDangNhap.Location = new System.Drawing.Point(227, 162);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(147, 32);
@@ -140,7 +127,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(619, 247);
             this.Controls.Add(this.btnDangNhap);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.textMK);
             this.Controls.Add(this.txtTDN);
             this.Controls.Add(this.label2);
@@ -166,7 +152,6 @@
         private System.Windows.Forms.TextBox txtTDN;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button btnDangNhap;
     }
 }

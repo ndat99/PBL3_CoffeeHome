@@ -37,7 +37,6 @@
             this.imageTrangThai = new System.Windows.Forms.ImageList(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkTrangThai = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listDonHang = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,7 +69,9 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
+            this.btnChuyenTrangThai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -92,7 +93,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(318, 424);
+            this.label5.Location = new System.Drawing.Point(358, 424);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 16);
             this.label5.TabIndex = 20;
@@ -102,36 +103,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(318, 456);
+            this.label4.Location = new System.Drawing.Point(358, 456);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 16);
             this.label4.TabIndex = 19;
             this.label4.Text = "Chưa hoàn thành";
-            // 
-            // checkTrangThai
-            // 
-            this.checkTrangThai.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkTrangThai.AutoSize = true;
-            this.checkTrangThai.BackColor = System.Drawing.Color.White;
-            this.checkTrangThai.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkTrangThai.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.checkTrangThai.FlatAppearance.CheckedBackColor = System.Drawing.Color.Silver;
-            this.checkTrangThai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkTrangThai.Location = new System.Drawing.Point(586, 424);
-            this.checkTrangThai.Name = "checkTrangThai";
-            this.checkTrangThai.Size = new System.Drawing.Size(150, 30);
-            this.checkTrangThai.TabIndex = 24;
-            this.checkTrangThai.Text = "Chuyển trạng thái";
-            this.checkTrangThai.UseVisualStyleBackColor = false;
-            this.checkTrangThai.CheckedChanged += new System.EventHandler(this.checkTrangThai_CheckedChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(964, 55);
+            this.label2.Location = new System.Drawing.Point(1004, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 29);
             this.label2.TabIndex = 26;
@@ -147,9 +130,9 @@
             this.listDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listDonHang.FullRowSelect = true;
             this.listDonHang.HideSelection = false;
-            this.listDonHang.Location = new System.Drawing.Point(280, 115);
+            this.listDonHang.Location = new System.Drawing.Point(37, 8);
             this.listDonHang.Name = "listDonHang";
-            this.listDonHang.Size = new System.Drawing.Size(456, 276);
+            this.listDonHang.Size = new System.Drawing.Size(517, 276);
             this.listDonHang.SmallImageList = this.imageTrangThai;
             this.listDonHang.TabIndex = 27;
             this.listDonHang.UseCompatibleStateImageBehavior = false;
@@ -166,7 +149,7 @@
             // 
             this.columnHeader2.Text = "Mã đơn";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 140;
+            this.columnHeader2.Width = 170;
             // 
             // columnHeader3
             // 
@@ -201,7 +184,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvChiTietDon.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChiTietDon.EnableHeadersVisualStyles = false;
-            this.dgvChiTietDon.Location = new System.Drawing.Point(926, 107);
+            this.dgvChiTietDon.Location = new System.Drawing.Point(966, 107);
             this.dgvChiTietDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvChiTietDon.Name = "dgvChiTietDon";
             this.dgvChiTietDon.RowHeadersVisible = false;
@@ -245,7 +228,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(278, 501);
+            this.label3.Location = new System.Drawing.Point(264, 501);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 29);
             this.label3.TabIndex = 109;
@@ -261,9 +244,9 @@
             this.listLichSuDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listLichSuDon.FullRowSelect = true;
             this.listLichSuDon.HideSelection = false;
-            this.listLichSuDon.Location = new System.Drawing.Point(280, 558);
+            this.listLichSuDon.Location = new System.Drawing.Point(269, 558);
             this.listLichSuDon.Name = "listLichSuDon";
-            this.listLichSuDon.Size = new System.Drawing.Size(456, 276);
+            this.listLichSuDon.Size = new System.Drawing.Size(507, 276);
             this.listLichSuDon.SmallImageList = this.imageTrangThai;
             this.listLichSuDon.TabIndex = 110;
             this.listLichSuDon.UseCompatibleStateImageBehavior = false;
@@ -280,7 +263,7 @@
             // 
             this.columnHeader7.Text = "Mã đơn";
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader7.Width = 140;
+            this.columnHeader7.Width = 170;
             // 
             // columnHeader8
             // 
@@ -292,7 +275,7 @@
             // 
             this.datePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePicker.Location = new System.Drawing.Point(604, 503);
+            this.datePicker.Location = new System.Drawing.Point(644, 503);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(132, 27);
             this.datePicker.TabIndex = 112;
@@ -304,7 +287,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.YellowGreen;
-            this.label6.Location = new System.Drawing.Point(746, 227);
+            this.label6.Location = new System.Drawing.Point(786, 227);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(248, 38);
             this.label6.TabIndex = 113;
@@ -315,7 +298,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(968, 501);
+            this.label7.Location = new System.Drawing.Point(1008, 501);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(121, 29);
             this.label7.TabIndex = 117;
@@ -326,7 +309,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(278, 55);
+            this.label1.Location = new System.Drawing.Point(264, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 29);
             this.label1.TabIndex = 25;
@@ -336,18 +319,19 @@
             // 
             this.panel3.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(250, 550);
+            this.panel3.Location = new System.Drawing.Point(232, 550);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(517, 295);
+            this.panel3.Size = new System.Drawing.Size(575, 295);
             this.panel3.TabIndex = 111;
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(250, 107);
+            this.panel1.Controls.Add(this.listDonHang);
+            this.panel1.Location = new System.Drawing.Point(232, 107);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(517, 295);
+            this.panel1.Size = new System.Drawing.Size(575, 295);
             this.panel1.TabIndex = 107;
             // 
             // pictureBox3
@@ -355,7 +339,7 @@
             this.pictureBox3.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.ChuaHoanThanh;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(285, 451);
+            this.pictureBox3.Location = new System.Drawing.Point(325, 451);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(27, 27);
@@ -368,7 +352,7 @@
             this.pictureBox1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.DaHoanThanh;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(285, 419);
+            this.pictureBox1.Location = new System.Drawing.Point(325, 419);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(27, 27);
@@ -379,7 +363,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::PBL3_CoffeeHome.Properties.Resources.line;
-            this.pictureBox2.Location = new System.Drawing.Point(1158, 327);
+            this.pictureBox2.Location = new System.Drawing.Point(1198, 327);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 300);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -389,7 +373,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox4.Location = new System.Drawing.Point(244, 31);
+            this.pictureBox4.Location = new System.Drawing.Point(230, 31);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(199, 78);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -399,7 +383,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox5.Location = new System.Drawing.Point(244, 477);
+            this.pictureBox5.Location = new System.Drawing.Point(230, 477);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(199, 78);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -409,7 +393,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox6.Location = new System.Drawing.Point(926, 31);
+            this.pictureBox6.Location = new System.Drawing.Point(966, 31);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(199, 78);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -419,7 +403,7 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox7.Location = new System.Drawing.Point(926, 477);
+            this.pictureBox7.Location = new System.Drawing.Point(966, 477);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(199, 78);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -454,7 +438,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCongThuc.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCongThuc.EnableHeadersVisualStyles = false;
-            this.dgvCongThuc.Location = new System.Drawing.Point(926, 550);
+            this.dgvCongThuc.Location = new System.Drawing.Point(966, 550);
             this.dgvCongThuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvCongThuc.Name = "dgvCongThuc";
             this.dgvCongThuc.ReadOnly = true;
@@ -498,22 +482,32 @@
             this.timerRefresh.Interval = 30000;
             this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             // 
+            // btnChuyenTrangThai
+            // 
+            this.btnChuyenTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChuyenTrangThai.Location = new System.Drawing.Point(632, 424);
+            this.btnChuyenTrangThai.Name = "btnChuyenTrangThai";
+            this.btnChuyenTrangThai.Size = new System.Drawing.Size(175, 36);
+            this.btnChuyenTrangThai.TabIndex = 123;
+            this.btnChuyenTrangThai.Text = "Chuyển trạng thái";
+            this.btnChuyenTrangThai.UseVisualStyleBackColor = true;
+            this.btnChuyenTrangThai.Click += new System.EventHandler(this.btnChuyenTrangThai_Click);
+            // 
             // ucDonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnChuyenTrangThai);
             this.Controls.Add(this.dgvCongThuc);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.listLichSuDon);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listDonHang);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.dgvChiTietDon);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkTrangThai);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox3);
@@ -528,6 +522,7 @@
             this.Name = "ucDonHang";
             this.Size = new System.Drawing.Size(1671, 1000);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -547,7 +542,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ImageList imageTrangThai;
-        private System.Windows.Forms.CheckBox checkTrangThai;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListView listDonHang;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -578,5 +572,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDonVi;
         private System.Windows.Forms.Timer timerRefresh;
+        private System.Windows.Forms.Button btnChuyenTrangThai;
     }
 }

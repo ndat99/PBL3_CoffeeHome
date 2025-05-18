@@ -43,7 +43,6 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
     {
         public string ItemID { get; set; }
         public string Name { get; set; }
-        public string Category { get; set; }
         public decimal Quantity { get; set; }
         public string Unit { get; set; }
         public decimal Price { get; set; }
@@ -57,13 +56,27 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
     {
         public string ItemID { get; set; }
         public string ItemName { get; set; }
-        public string Category { get; set; }
         public decimal Quantity { get; set; }
         public string Unit { get; set; }
+        public decimal Price { get; set; }
         public string Type { get; set; }
         public string UserName { get; set; }
         public DateTime TransactionDate { get; set; }
     }
+
+    public class TransactionInformationDTO
+    {
+        public string TransactionID { get; set; }
+        public string ItemName { get; set; }
+        public string Category { get; set; }
+        public decimal Quantity { get; set; }
+        public string Unit { get; set; }
+        public decimal TransactionPrice { get; set; }
+        public string FullName { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public string Note { get; set; }
+    }
+
     //ds Xuuat kho nhom theo ten
     public class TransactionStockOut
     {

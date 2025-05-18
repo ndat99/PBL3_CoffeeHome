@@ -46,7 +46,7 @@
             // 
             this.txtVaiTro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVaiTro.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVaiTro.Location = new System.Drawing.Point(205, 324);
+            this.txtVaiTro.Location = new System.Drawing.Point(205, 299);
             this.txtVaiTro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtVaiTro.Name = "txtVaiTro";
             this.txtVaiTro.Size = new System.Drawing.Size(217, 27);
@@ -56,7 +56,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(17, 322);
+            this.label6.Location = new System.Drawing.Point(17, 297);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(135, 25);
             this.label6.TabIndex = 21;
@@ -94,7 +94,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 24);
+            this.label7.Location = new System.Drawing.Point(17, 34);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(145, 25);
             this.label7.TabIndex = 28;
@@ -108,7 +108,7 @@
             this.btnOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(349, 623);
+            this.btnOK.Location = new System.Drawing.Point(329, 432);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(93, 28);
@@ -130,7 +130,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(17, 400);
+            this.label4.Location = new System.Drawing.Point(17, 375);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 25);
             this.label4.TabIndex = 119;
@@ -143,7 +143,7 @@
             "Admin",
             "Barista",
             "Cashier"});
-            this.cbVaiTroMoi.Location = new System.Drawing.Point(205, 400);
+            this.cbVaiTroMoi.Location = new System.Drawing.Point(205, 375);
             this.cbVaiTroMoi.Name = "cbVaiTroMoi";
             this.cbVaiTroMoi.Size = new System.Drawing.Size(217, 24);
             this.cbVaiTroMoi.TabIndex = 120;
@@ -163,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 662);
+            this.ClientSize = new System.Drawing.Size(463, 493);
             this.Controls.Add(this.cbVaiTroMoi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);

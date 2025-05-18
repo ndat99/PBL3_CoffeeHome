@@ -18,9 +18,11 @@ namespace PBL3_CoffeeHome.BLL
         {
             _revenueDAL = new RevenueDAL();
             _inventoryTransactionBLL = new InventoryTransactionBLL();
-
         }
-
+        public void AddRevenue(string revenueID, decimal totalRevenue, decimal totalExpense)
+        {
+            _revenueDAL.AddRevenue(revenueID, totalRevenue, totalExpense);
+        }
         // Lấy dữ liệu doanh thu hàng ngày trong tháng
         public List<(int Day, decimal Total)> GetDailyRevenueInMonth(int year, int month)
         {
@@ -42,32 +44,7 @@ namespace PBL3_CoffeeHome.BLL
             return _revenueDAL.GetTotalRevenueByYear(year);
         }
 
-        // Lấy danh sách sản phẩm bán chạy nhất
-        public List<(string ItemName, int TotalQuantity)> GetTopSellingProducts()
-        {
-            return _revenueDAL.GetTopSellingProducts();
-        }
-        // Lấy danh sách sản phẩm bán chạy nhất theo năm
-        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByYear(int year)
-        {
-            return _revenueDAL.GetTopSellingProductsByYear(year);
-        }
-        // Tổng số lượng sản phẩm bán chạy nhất trong năm
-        public int GetTotalProductsSoldByYear(int year)
-        {
-            return _revenueDAL.GetTotalProductsSoldByYear(year);
-        }
 
-        // Lấy danh sách sản phẩm bán chạy nhất theo tháng
-        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByMonth(int year, int month)
-        {
-            return _revenueDAL.GetTopSellingProductsByMonth(year, month);
-        }
-        // Tổng số lượng sản phẩm bán chạy nhất trong tháng
-        public int GetTotalProductsSoldByMonth(int year, int month)
-        {
-            return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
-        }
         // Tính tổng doanh thu
         public decimal GetTotalRevenue()
         {
@@ -97,6 +74,7 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _revenueDAL.GetTotalCustomersByYear(year);
         }
+
         // Lấy dữ liệu lợi nhuận theo tháng trong năm
         public List<(string ThoiGian, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>
             GetProfitByMonths(int year)
@@ -107,7 +85,7 @@ namespace PBL3_CoffeeHome.BLL
 
             foreach (var (month, doanhThu) in monthlyRevenue)
             {
-                var chiPhi = _inventoryTransactionBLL.TotalTransactionPriceInMonth(year, month);
+                var chiPhi = _revenueDAL.GetExpenseByMonth(year, month);
 
                 result.Add((
                     $"Tháng {month}",
@@ -123,13 +101,32 @@ namespace PBL3_CoffeeHome.BLL
         //Tìm năm có doanh thu
         public List<int> GetAllYearsWithData()
         {
-            // Lấy tất cả năm có dữ liệu Revenue
             return _revenueDAL.GetAllRevenueDetails()
-                .Where(rd => rd.Revenue != null)
-                .Select(rd => rd.Revenue.StartDate.Year)
-                .Distinct()
-                .OrderBy(y => y)
-                .ToList();
+        .Where(rd => rd.Revenue != null)
+        .Select(rd => rd.Revenue.RevenueDate.Year)
+        .Distinct()
+        .OrderBy(y => y)
+        .ToList();
+        }
+
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByYear(int year)
+        {
+            return _revenueDAL.GetTopSellingProductsByYear(year);
+        }
+
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByMonth(int year, int month)
+        {
+            return _revenueDAL.GetTopSellingProductsByMonth(year, month);
+        }
+
+        public int GetTotalProductsSoldByYear(int year)
+        {
+            return _revenueDAL.GetTotalProductsSoldByYear(year);
+        }
+
+        public int GetTotalProductsSoldByMonth(int year, int month)
+        {
+            return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
         }
     }
 }

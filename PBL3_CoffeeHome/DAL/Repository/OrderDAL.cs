@@ -3,23 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using PBL3_CoffeeHome.DTO;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace PBL3_CoffeeHome.DAL.Repository
 {
     public class OrderDAL
     {
         private readonly CoffeeDbContext _context;
+        private readonly OrderItemsDAL _orderItemsDAL;
+        private readonly BaristaQueueDAL _baristaQueueDAL;
 
         public OrderDAL()
         {
+            _orderItemsDAL = new OrderItemsDAL();
+            _baristaQueueDAL = new BaristaQueueDAL();
             _context = new CoffeeDbContext();
         }
 
         // Giữ nguyên các phương thức hiện có
-        public void AddOrder(Order order)
+        public void AddOrder(string OrderID, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId, string discountId)
         {
+            List<OrderItem> orderItems = _orderItemsDAL.GetOrderItemsByOrderID(OrderID);
+            foreach (OrderItem item in orderItems)
+            {
+                totalAmount += item.Subtotal;
+            }
+
+            var order = new Order
+            {
+                OrderID = OrderID,
+                CreatedAt = createdAt,
+                CardNumber = cardNumber,
+                TotalAmount = totalAmount,
+                DiscountAmount = discountAmount,
+                FinalAmount = totalAmount - discountAmount,
+                UserID = userId,
+                DiscountID = discountId,
+            };
             _context.Orders.Add(order);
             _context.SaveChanges();
+
+            _baristaQueueDAL.AddBaristaQueue(OrderID, createdAt);
+        }
+
+        public string GenerateOrderID()
+        {
+            string newId = "OR" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            if (_context.OrderItems.AsNoTracking().Any(oi => oi.OrderItemID == newId))
+            {
+                newId = "OR" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            }
+            return newId;
         }
 
         public void AddOrderItems(List<OrderItem> items)
@@ -42,20 +76,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return _context.Orders
                 .Where(o => o.BaristaQueues.Any(bq => bq.Status == status))
                 .Include(o => o.OrderItems)
-                .ToList();
-        }
-        public List<Order>  GetOrdersAssignedToday(string status)
-        {
-            var today = DateTime.Today;
-            return _context.Orders
-                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status) &&
-                    DbFunctions.TruncateTime(o.CreatedAt) == today)
-                .ToList();
-        }
-        public List<Order> GetOrdersCompletedOnDate(string status, DateTime selectedDate)
-        {
-            return _context.Orders
-                .Where(o => o.BaristaQueues.Any(bq => bq.Status == status && DbFunctions.TruncateTime(bq.CompletedAt) == DbFunctions.TruncateTime(selectedDate)))
                 .ToList();
         }
         public bool UpdateOrder(Order order)
@@ -107,20 +127,20 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
-        private string GenerateOrderID()
-        {
-            string prefix = "ORD" + DateTime.Now.ToString("yyyyMMdd");
-            string newId;
-            int attempt = 0;
-            do
-            {
-                attempt++;
-                newId = prefix + attempt.ToString("D3");
-            } while (_context.Orders.AsNoTracking().Any(o => o.OrderID == newId) && attempt < 999);
+        //private string GenerateOrderID()
+        //{
+        //    string prefix = "ORD" + DateTime.Now.ToString("yyyyMMdd");
+        //    string newId;
+        //    int attempt = 0;
+        //    do
+        //    {
+        //        attempt++;
+        //        newId = prefix + attempt.ToString("D3");
+        //    } while (_context.Orders.AsNoTracking().Any(o => o.OrderID == newId) && attempt < 999);
 
-            if (attempt >= 999) throw new Exception("Không thể tạo mã đơn.");
+        //    if (attempt >= 999) throw new Exception("Không thể tạo mã đơn.");
 
-            return newId;
-        }
+        //    return newId;
+        //}
     }
 }

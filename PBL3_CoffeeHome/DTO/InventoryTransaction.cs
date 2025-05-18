@@ -14,7 +14,7 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         [ForeignKey("Inventory")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string ItemID { get; set; }
 
         [Required]
@@ -24,7 +24,7 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         [StringLength(50)]
-        public string Type { get; set; } // "Nhập", "Xuất", "Điều chỉnh"
+        public string Type { get; set; } // "Nhập kho", "Xuất kho", "Điều chỉnh"
 
         public DateTime? ExpirationDate { get; set; }
         [Required]
@@ -32,11 +32,11 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         [ForeignKey("User")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string UserID { get; set; }
 
         [StringLength(20)]
-        public string OrderID { get; set; } // Nếu liên quan đến Order
+        public string OrderID { get; set; } 
 
         [StringLength(500)]
         public string Note { get; set; }

@@ -36,11 +36,11 @@ namespace PBL3_CoffeeHome.DTO
         public decimal FinalAmount { get; set; }
 
         [ForeignKey("User")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string UserID { get; set; }
 
         [ForeignKey("Discount")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string DiscountID { get; set; }
 
         public virtual User User { get; set; }

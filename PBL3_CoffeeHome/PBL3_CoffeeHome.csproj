@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BaristaQueueBLL.cs" />
-    <Compile Include="BLL\DiscoutBLL.cs" />
+    <Compile Include="BLL\DiscountBLL.cs" />
     <Compile Include="BLL\MenuItemBLL.cs" />
     <Compile Include="BLL\InventoryBLL.cs" />
     <Compile Include="BLL\InventoryTransactionBLL.cs" />
@@ -85,8 +85,10 @@
     <Compile Include="BLL\OrderBLL.cs" />
     <Compile Include="BLL\OrderItemsBLL.cs" />
     <Compile Include="BLL\RevenueBLL.cs" />
+    <Compile Include="BLL\RevenueDetailsBLL.cs" />
     <Compile Include="BLL\UserBLL.cs" />
     <Compile Include="DAL\Repository\OrderItemsDAL.cs" />
+    <Compile Include="DAL\Repository\RevenueDetailsDAL.cs" />
     <Compile Include="DAL\Repository\UserDAL.cs" />
     <Compile Include="DAL\CoffeeDbContext.cs" />
     <Compile Include="DAL\Repository\BaristaQueueDAL.cs" />
@@ -108,13 +110,26 @@
     <Compile Include="DTO\Revenue.cs" />
     <Compile Include="DTO\RevenueDetail.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="DTO\ViewModel\IngredientView.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
     <Compile Include="DTO\ViewModel\OrderDTO.cs" />
+    <Compile Include="GUI\Admin\fCongThuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fCongThuc.Designer.cs">
+      <DependentUpon>fCongThuc.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Admin\fQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\fThemMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fThemMon.Designer.cs">
+      <DependentUpon>fThemMon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucDetailKiemKho.cs">
       <SubType>UserControl</SubType>
@@ -146,6 +161,18 @@
     <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\ucTongQuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucTongQuan.Designer.cs">
+      <DependentUpon>ucTongQuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Barista\ucLichSuHangHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Barista\ucLichSuHangHoa.Designer.cs">
+      <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,12 +190,6 @@
     </Compile>
     <Compile Include="GUI\Admin\ucThucDon.Designer.cs">
       <DependentUpon>ucThucDon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Barista\fLichSuBaoCao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Barista\fLichSuBaoCao.Designer.cs">
-      <DependentUpon>fLichSuBaoCao.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Barista\fPhaChe.cs">
       <SubType>Form</SubType>
@@ -232,17 +253,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Admin\fCongThuc.resx">
+      <DependentUpon>fCongThuc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fDoiVaiTro.resx">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\fThemMon.resx">
+      <DependentUpon>fThemMon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailKiemKho.resx">
       <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailLSGD.resx">
       <DependentUpon>ucDetailLSGD.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailNL.resx">
       <DependentUpon>ucDetailNL.cs</DependentUpon>
@@ -256,6 +284,9 @@
     <EmbeddedResource Include="GUI\Admin\ucTongQuan.resx">
       <DependentUpon>ucTongQuan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Barista\ucLichSuHangHoa.resx">
+      <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,9 +298,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucThucDon.resx">
       <DependentUpon>ucThucDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Barista\fLichSuBaoCao.resx">
-      <DependentUpon>fLichSuBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Barista\fPhaChe.resx">
       <DependentUpon>fPhaChe.cs</DependentUpon>

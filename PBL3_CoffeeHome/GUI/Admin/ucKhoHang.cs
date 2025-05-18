@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
+using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DTO.ViewModel;
 using PBL3_CoffeeHome.GUI.Admin;
 
@@ -20,9 +21,21 @@ namespace PBL3_CoffeeHome.GUI
         private BindingList<InventoryDisplayDTO> _listDSNL;
         private BindingList<ImportInventoryDTO> _listPhieuNhap;
         private BindingList<TransactionDisplayDTO> _listLSGD;
-        public ucKhoHang()
+
+        private User _user;
+        public ucKhoHang(User user)
         {
             InitializeComponent();
+            _inventoryBLL = new InventoryBLL();
+            _transactionBLL = new InventoryTransactionBLL();
+            _user = user;
+        }
+
+        public ucKhoHang(int TabIndex)
+        {
+            InitializeComponent();
+            tabControlMain.SelectedIndex = TabIndex;
+
             _inventoryBLL = new InventoryBLL();
             _transactionBLL = new InventoryTransactionBLL();
         }
@@ -63,9 +76,12 @@ namespace PBL3_CoffeeHome.GUI
 
         private void LoadDSNL(string category = "Tất cả", string keyword = null)
         {
-            List<InventoryDisplayDTO> items = _inventoryBLL.SearchInventory(category, keyword);
+            List<InventoryDisplayDTO> items = _inventoryBLL.SearchInventory(category, keyword).Select(_inventoryBLL.InventoryDisplay).ToList();
             _listDSNL.Clear();
-            foreach (var item in items) _listDSNL.Add(item);
+            foreach (var item in items)
+            {
+                _listDSNL.Add(item);
+            }
         }
 
         private void btnReset_tabDSNL_Click(object sender, EventArgs e)
@@ -86,14 +102,14 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnLowStock_tabDSNL_Click(object sender, EventArgs e)
         {
-            List<InventoryDisplayDTO> lowStock = _inventoryBLL.GetLowStock();
+            List<InventoryDisplayDTO> lowStock = _inventoryBLL.GetLowStock().Select(_inventoryBLL.InventoryDisplay).ToList();
             _listDSNL.Clear();
             foreach (var item in lowStock) _listDSNL.Add(item);
         }
 
         private void btnExpiring_tabDSNL_Click(object sender, EventArgs e)
         {
-            List<InventoryDisplayDTO> expiring = _inventoryBLL.GetExpiring(7);
+            List<InventoryDisplayDTO> expiring = _inventoryBLL.GetExpiring(7).Select(_inventoryBLL.InventoryDisplay).ToList();
             _listDSNL.Clear();
             foreach (var item in expiring) _listDSNL.Add(item);
         }
@@ -144,7 +160,6 @@ namespace PBL3_CoffeeHome.GUI
             }
         }
 
-
         private void btnKiemKeNL_tabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
@@ -157,10 +172,9 @@ namespace PBL3_CoffeeHome.GUI
             _listPhieuNhap = new BindingList<ImportInventoryDTO>();
             dgvNhapKho.DataSource = _listPhieuNhap;
 
-
             LoadCategory_TabNhapKho();
             LoadNameInventory_TabNhapKho();
-
+            LoadUnit_tabNhapKho();
         }
 
         private void LoadCategory_TabNhapKho()
@@ -174,20 +188,41 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadNameInventory_TabNhapKho()
         {
             cboNameNL_tabNhapKho.Items.Clear();
-            {
-                string selectedCategory = cboCategoryNL_tabNhapKho.SelectedItem?.ToString();
-                var inventoryList = selectedCategory == "Tất cả" ? _inventoryBLL.GetAllInventory() : _inventoryBLL.GetInventoryByCategory(selectedCategory);
+            string selectedCategory = cboCategoryNL_tabNhapKho.SelectedItem?.ToString();
+            var inventoryList = selectedCategory == "Tất cả" ? _inventoryBLL.GetAllInventory() : _inventoryBLL.GetInventoryByCategory(selectedCategory);
 
-                cboNameNL_tabNhapKho.Items.AddRange(inventoryList.Select(i => i.Name).ToArray());
-                cboNameNL_tabNhapKho.SelectedIndex = 0;
-            }
+            cboNameNL_tabNhapKho.Items.AddRange(inventoryList.Select(i => i.Name).ToArray());
+            cboNameNL_tabNhapKho.SelectedIndex = 0;
         }
 
+        private void LoadUnit_tabNhapKho()
+        {
+            cboDonVi_TabNhapKho.Items.Clear();
+            cboDonVi_TabNhapKho.Items.AddRange(_inventoryBLL.GetUnit().ToArray());
+
+            var selectedName = cboNameNL_tabNhapKho.SelectedItem.ToString();
+            var inventoryItem = _inventoryBLL.GetAllInventory().FirstOrDefault(i => i.Name == selectedName);
+            cboDonVi_TabNhapKho.SelectedItem = inventoryItem.Unit;
+        }
+
+        private void cboNameNL_tabNhapKho_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUnit_tabNhapKho();
+        }
         private void cboCategoryNL_tabNhapKho_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadNameInventory_TabNhapKho();
         }
 
+        private void dtpHSDNL_tabNhapKho_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpHSDNL_tabNhapKho.Value.Date <= DateTime.Now.Date)
+            {
+                MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpHSDNL_tabNhapKho.Value = DateTime.Now.AddDays(1);
+                return;
+            }
+        }
         private void btnXacNhan_tabNhapKho_Click(object sender, EventArgs e)
         {
             if (cboNameNL_tabNhapKho.SelectedItem == null)
@@ -210,26 +245,47 @@ namespace PBL3_CoffeeHome.GUI
                 return;
             }
 
-            var newImportInventory = new ImportInventoryDTO
+            var existingItem = _listPhieuNhap.FirstOrDefault(t => t.Name == selectName);
+            if (existingItem == null)
             {
-                ItemID = inventoryItem.ItemID,
-                Name = inventoryItem.Name,
-                Category = inventoryItem.Category,
-                Quantity = nudQuantityNL_tabNhapKho.Value,
-                Unit = inventoryItem.Unit,
-                Price = nudCostPriceNL_tabNhapKho.Value,
-                ExpirationDate = dtpHSDNL_tabNhapKho.Value,
-                UserID = "USR001",
-                Note = txtGhiChu_tabNhapKho.Text
-            };
+                var newImportInventory = new ImportInventoryDTO
+                {
+                    ItemID = inventoryItem.ItemID,
+                    Name = inventoryItem.Name,
+                    Quantity = nudQuantityNL_tabNhapKho.Value,
+                    Unit = inventoryItem.Unit,
+                    Price = nudCostPriceNL_tabNhapKho.Value,
+                    ExpirationDate = dtpHSDNL_tabNhapKho.Value,
+                    UserID = _user.UserID,
+                    Note = txtGhiChu_tabNhapKho.Text
+                };
 
-            _listPhieuNhap.Add(newImportInventory);
-            MessageBox.Show("Thêm vào danh sách phiếu nhập thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _listPhieuNhap.Add(newImportInventory);
+                MessageBox.Show("Thêm vào danh sách phiếu nhập thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                existingItem.Quantity += nudQuantityNL_tabNhapKho.Value;
+                dgvNhapKho.Refresh();
+                MessageBox.Show("Cập nhật và danh sách phiếu nhập thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnHoanTac_tabNhapKho_Click(object sender, EventArgs e)
         {
-
+            if (dgvNhapKho.SelectedRows.Count == 1)
+            {
+                var selectedItem = (ImportInventoryDTO)dgvNhapKho.SelectedRows[0].DataBoundItem;
+                if (selectedItem == null) return;
+                if (MessageBox.Show($"Bạn có muốn hoàn tác.'{selectedItem.Name}' không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _listPhieuNhap.Remove(selectedItem);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nguyên liệu để xóa.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnLuuPhieuNhap_tabNhapKho_Click(object sender, EventArgs e)
@@ -264,17 +320,32 @@ namespace PBL3_CoffeeHome.GUI
             _listLSGD = new BindingList<TransactionDisplayDTO>();
             dgvLSGD.DataSource = _listLSGD;
 
+            dateStart_TabLSGD.Value = dateEnd_TabLSGD.Value = DateTime.Today;
             LoadLSGD();
             LoadCBB();
+            LoadNgayGD();
         }
+
+
 
         private void LoadLSGD()
         {
-            List<TransactionDisplayDTO> items = _transactionBLL.GetAllTransactionDisplay();
+            List<TransactionDisplayDTO> items = _transactionBLL.GetAllTransaction();
             _listLSGD.Clear();
             foreach (var item in items)
             {
                 _listLSGD.Add(item);
+            }
+        }
+
+        private void LoadNgayGD(string type = null)
+        {
+            dgvNgayGD.Rows.Clear();
+            List<DateTime> items = _transactionBLL.GetTransactionsByType(type).Select(t => t.TransactionDate).Distinct().ToList();
+
+            foreach (var item in items)
+            {
+                dgvNgayGD.Rows.Add(item.ToString("dd/MM/yyyy"));
             }
         }
 
@@ -288,14 +359,25 @@ namespace PBL3_CoffeeHome.GUI
 
         private void cboType_tabLSGD_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             _listLSGD.Clear();
             List<TransactionDisplayDTO> items = _transactionBLL.GetTransactionsByType(cboType_tabLSGD.SelectedItem.ToString());
             foreach (var item in items)
             {
                 _listLSGD.Add(item);
             }
-        }
 
+            LoadNgayGD(cboType_tabLSGD.SelectedItem.ToString());
+        }
+        private void dateEnd_TabLSGD_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateEnd_TabLSGD.Value < dateStart_TabLSGD.Value)
+            {
+                MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dateEnd_TabLSGD.Value = dateStart_TabLSGD.Value;
+                return;
+            }
+        }
         private void btnSubmit_tabLSGD_Click(object sender, EventArgs e)
         {
             DateTime startDate = dateStart_TabLSGD.Value;
@@ -308,7 +390,30 @@ namespace PBL3_CoffeeHome.GUI
             {
                 _listLSGD.Add(item);
             }
-
         }
+        private void btnReset_tabLSGD_Click(object sender, EventArgs e)
+        {
+            txtSearch_tabLSGD.Clear();
+            LoadLSGD();
+        }
+
+        private void btnDetailTransaction_tabLSGD_Click(object sender, EventArgs e)
+        {
+            if (dgvLSGD.SelectedRows.Count == 1)
+            {
+                var selectedItem = (TransactionDisplayDTO)dgvLSGD.SelectedRows[0].DataBoundItem;
+                if (selectedItem == null) return;
+                var transactionDate = selectedItem.TransactionDate.Date;
+                var itemID = selectedItem.ItemID;
+
+                var AdminForm = (fQuanLy)this.ParentForm;
+                AdminForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate), AdminForm.panelChiTiet);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một giao dịch để xem chi tiết.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }

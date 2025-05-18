@@ -10,18 +10,15 @@ namespace PBL3_CoffeeHome.BLL
     public class InventoryBLL
     {
         private readonly InventoryDAL _inventoryDAL;
-        private readonly InventoryTransactionDAL _transactionDAL;
 
         public InventoryBLL()
         {
             _inventoryDAL = new InventoryDAL();
-            _transactionDAL = new InventoryTransactionDAL();
         }
 
-        public List<InventoryDisplayDTO> GetAllInventory()
+        public List<Inventory> GetAllInventory()
         {
-            var inventoryList = _inventoryDAL.GetAllInventory();
-            return inventoryList.Select(InventoryDisplay).ToList();
+            return _inventoryDAL.GetAllInventory();
         }
 
         public Inventory GetInventoryByID(string itemID)
@@ -36,22 +33,19 @@ namespace PBL3_CoffeeHome.BLL
             return _inventoryDAL.GetInventoryByName(name);
         }
 
-        public List<InventoryDisplayDTO> GetInventoryByCategory(string category)
+        public List<Inventory> GetInventoryByCategory(string category)
         {
-            var inventoryList = _inventoryDAL.GetInventoryByCategory(category);
-            return inventoryList.Select(InventoryDisplay).ToList();
+            return _inventoryDAL.GetInventoryByCategory(category);
         }
 
-        public List<InventoryDisplayDTO> GetLowStock()
+        public List<Inventory> GetLowStock()
         {
-            var expiringItem = _inventoryDAL.GetLowStock();
-            return expiringItem.Select(InventoryDisplay).ToList();
+            return _inventoryDAL.GetLowStock();
         }
 
-        public List<InventoryDisplayDTO> GetExpiring(int days)
+        public List<Inventory> GetExpiring(int days)
         {
-            var expiringItem = _inventoryDAL.GetExpiring(days);
-            return expiringItem.Select(InventoryDisplay).ToList();
+            return _inventoryDAL.GetExpiring(days);
         }
 
         public List<string> GetCategory()
@@ -65,14 +59,13 @@ namespace PBL3_CoffeeHome.BLL
         }
 
         //Chuc nang
-        public List<InventoryDisplayDTO> SearchInventory(string cboCategory, string txtSearch)
+        public List<Inventory> SearchInventory(string cboCategory, string txtSearch)
         {
-            var inventoryList = _inventoryDAL.SearchInventory(cboCategory, txtSearch);
-            return inventoryList.Select(InventoryDisplay).ToList();
+            return _inventoryDAL.SearchInventory(cboCategory, txtSearch);
         }
         public bool AddInventory(Inventory newInventory)
-        {   
-            if (newInventory == null)  return false;
+        {
+            if (newInventory == null) return false;
             if (string.IsNullOrEmpty(newInventory.ItemID))
             {
                 newInventory.ItemID = _inventoryDAL.GenerateNewItemID();
@@ -80,7 +73,7 @@ namespace PBL3_CoffeeHome.BLL
             var existingInventory = _inventoryDAL.GetInventoryByID(newInventory.ItemID);
             if (existingInventory != null)
             {
-                return false; 
+                return false;
             }
             return _inventoryDAL.AddInventory(newInventory);
         }
@@ -126,29 +119,12 @@ namespace PBL3_CoffeeHome.BLL
             return _inventoryDAL.CheckStockAvailability(itemID, requiredQuantity);
         }
 
-        // Kiem ke
-        public List<InventoryCheckDTO> GetInventoryAuditing()
-        {
-            List<Inventory> inventoryList = _inventoryDAL.GetAllInventory();
-
-            return inventoryList.Select(item => new InventoryCheckDTO
-            {
-                ItemID = item.ItemID,
-                Name = item.Name,
-                Category = item.Category,
-                SystemQuantity = item.Quantity,
-                ActualQuantity = item.Quantity,
-                Unit = item.Unit
-            }).ToList();
-
-        }
-
         public string GenerateNewItemID()
         {
             return _inventoryDAL.GenerateNewItemID();
         }
 
-        private InventoryDisplayDTO InventoryDisplay(Inventory inventory)
+        public InventoryDisplayDTO InventoryDisplay(Inventory inventory)
         {
             if (inventory == null) return null;
 
