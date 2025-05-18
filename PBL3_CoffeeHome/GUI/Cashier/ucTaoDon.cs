@@ -38,7 +38,6 @@ namespace PBL3_CoffeeHome.GUI
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
-            dgvChiTietDon.DataSource = _listChiTietDon;
         }
         public void LoadData()
         {
@@ -178,6 +177,13 @@ namespace PBL3_CoffeeHome.GUI
             };
 
             _listChiTietDon.Add(item);
+
+            dgvChiTietDon.Rows.Add(
+                item.Name,
+                item.Quantity,
+                item.CostPrice.ToString("N0"),
+                (item.CostPrice * item.Quantity).ToString("N0")
+            );
         }
 
         //private decimal TinhTongTien()
