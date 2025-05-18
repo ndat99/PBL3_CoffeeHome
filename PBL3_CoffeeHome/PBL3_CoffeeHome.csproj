@@ -167,6 +167,12 @@
     <Compile Include="GUI\Admin\ucTongQuan.Designer.cs">
       <DependentUpon>ucTongQuan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Barista\ucLichSuHangHoa.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Barista\ucLichSuHangHoa.Designer.cs">
+      <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucTongQuan.resx">
       <DependentUpon>ucTongQuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Barista\ucLichSuHangHoa.resx">
+      <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>

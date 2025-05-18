@@ -169,6 +169,7 @@
             this.Name = "fThuNgan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelChucNang.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);

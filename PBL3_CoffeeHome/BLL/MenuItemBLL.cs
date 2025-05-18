@@ -39,7 +39,6 @@ namespace PBL3_CoffeeHome.BLL
         {
             var menuItems = _menuItemDAL.GetAllMenuItems();
             return menuItems;
-
         }
 
         public List<String> GetAllMenuCategory()

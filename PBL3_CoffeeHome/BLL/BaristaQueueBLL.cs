@@ -19,7 +19,14 @@ namespace PBL3_CoffeeHome.BLL
           //  _orderBLL = new OrderBLL();
 
         }
-
+        public List<BaristaQueue> GetQueueAssignedToday(string status)
+        {
+            return _baristaQueueDAL.GetQueueAssignedToday(status);
+        }
+        public List<BaristaQueue> GetQueueCompletedOnDate(string status, DateTime selectedDate)
+        {
+            return _baristaQueueDAL.GetQueueCompletedOnDate(status, selectedDate);
+        }
         public BaristaQueue GetQueuesByQueueID(string queueId)
         {
             return _baristaQueueDAL.GetQueueByQueueID(queueId);
