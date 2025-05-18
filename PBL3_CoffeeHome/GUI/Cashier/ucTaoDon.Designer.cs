@@ -66,12 +66,12 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.dgvChiTietDon = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.cTenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -152,7 +152,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(113, 701);
+            this.label7.Location = new System.Drawing.Point(597, 103);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 20);
             this.label7.TabIndex = 18;
@@ -189,7 +189,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(259, 701);
+            this.label8.Location = new System.Drawing.Point(743, 103);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(24, 20);
             this.label8.TabIndex = 22;
@@ -223,7 +223,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(617, 105);
+            this.label9.Location = new System.Drawing.Point(136, 701);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 20);
             this.label9.TabIndex = 25;
@@ -234,7 +234,7 @@
             this.txtSoBan.BackColor = System.Drawing.Color.White;
             this.txtSoBan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSoBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoBan.Location = new System.Drawing.Point(689, 96);
+            this.txtSoBan.Location = new System.Drawing.Point(208, 692);
             this.txtSoBan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoBan.Name = "txtSoBan";
             this.txtSoBan.Size = new System.Drawing.Size(75, 34);
@@ -299,7 +299,7 @@
             // 
             // txtGiamGia
             // 
-            this.txtGiamGia.Location = new System.Drawing.Point(195, 701);
+            this.txtGiamGia.Location = new System.Drawing.Point(679, 103);
             this.txtGiamGia.Name = "txtGiamGia";
             this.txtGiamGia.Size = new System.Drawing.Size(58, 22);
             this.txtGiamGia.TabIndex = 103;
@@ -475,6 +475,30 @@
             this.dgvChiTietDon.Size = new System.Drawing.Size(685, 429);
             this.dgvChiTietDon.TabIndex = 132;
             // 
+            // cTenMon
+            // 
+            this.cTenMon.HeaderText = "Tên món";
+            this.cTenMon.MinimumWidth = 6;
+            this.cTenMon.Name = "cTenMon";
+            // 
+            // cSoLuong
+            // 
+            this.cSoLuong.HeaderText = "Số lượng";
+            this.cSoLuong.MinimumWidth = 6;
+            this.cSoLuong.Name = "cSoLuong";
+            // 
+            // cDonGia
+            // 
+            this.cDonGia.HeaderText = "Đơn giá";
+            this.cDonGia.MinimumWidth = 6;
+            this.cDonGia.Name = "cDonGia";
+            // 
+            // cThanhTien
+            // 
+            this.cThanhTien.HeaderText = "Thành tiền";
+            this.cThanhTien.MinimumWidth = 6;
+            this.cThanhTien.Name = "cThanhTien";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -500,30 +524,6 @@
             this.btnClear.TabIndex = 134;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
-            // 
-            // cTenMon
-            // 
-            this.cTenMon.HeaderText = "Tên món";
-            this.cTenMon.MinimumWidth = 6;
-            this.cTenMon.Name = "cTenMon";
-            // 
-            // cSoLuong
-            // 
-            this.cSoLuong.HeaderText = "Số lượng";
-            this.cSoLuong.MinimumWidth = 6;
-            this.cSoLuong.Name = "cSoLuong";
-            // 
-            // cDonGia
-            // 
-            this.cDonGia.HeaderText = "Đơn giá";
-            this.cDonGia.MinimumWidth = 6;
-            this.cDonGia.Name = "cDonGia";
-            // 
-            // cThanhTien
-            // 
-            this.cThanhTien.HeaderText = "Thành tiền";
-            this.cThanhTien.MinimumWidth = 6;
-            this.cThanhTien.Name = "cThanhTien";
             // 
             // ucTaoDon
             // 
@@ -559,7 +559,7 @@
             this.Controls.Add(this.btnThem);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucTaoDon";
-            this.Size = new System.Drawing.Size(1578, 799);
+            this.Size = new System.Drawing.Size(1641, 992);
             this.Load += new System.EventHandler(this.ucTaoDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
