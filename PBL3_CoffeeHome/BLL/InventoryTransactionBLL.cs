@@ -31,9 +31,9 @@ namespace PBL3_CoffeeHome.BLL
             return _transactionDAL.GetTransactionByType(type);
         }
 
-        public List<InventoryTransaction> GetDetailTransaction(string ItemID, DateTime transactionDate)
+        public List<InventoryTransaction> GetDetailTransaction(string ItemID, DateTime transactionDate, string Type)
         {
-            return _transactionDAL.GetDetailTransaction(ItemID, transactionDate);
+            return _transactionDAL.GetDetailTransaction(ItemID, transactionDate, Type);
         }
 
 

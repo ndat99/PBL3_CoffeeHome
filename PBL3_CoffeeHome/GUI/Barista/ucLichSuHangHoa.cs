@@ -105,9 +105,11 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 
                 var transactionDate = selectedItem.TransactionDate.Date;
                 var itemID = selectedItem.ItemID;
+                var type = selectedItem.Type;
+                string user = "barista";
 
                 var BaristaForm = (fPhaChe)this.ParentForm;
-                BaristaForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate), BaristaForm.panelChiTiet);
+                BaristaForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate, type, user), BaristaForm.panelChiTiet);
             }
             else
             {

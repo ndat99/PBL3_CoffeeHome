@@ -388,6 +388,7 @@
     <None Include="Resources\Add1.png" />
     <Content Include="Resources\Alert.png" />
     <Content Include="Resources\Avatar.png" />
+    <None Include="Resources\back.png" />
     <Content Include="Resources\BaoCao.png" />
     <Content Include="Resources\Cancel.png" />
     <Content Include="Resources\ChiTiet.png" />

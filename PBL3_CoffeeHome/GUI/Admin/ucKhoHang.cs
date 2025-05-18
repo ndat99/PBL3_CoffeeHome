@@ -405,9 +405,11 @@ namespace PBL3_CoffeeHome.GUI
                 if (selectedItem == null) return;
                 var transactionDate = selectedItem.TransactionDate.Date;
                 var itemID = selectedItem.ItemID;
+                var type = selectedItem.Type;
+                string user = "admin";
 
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate, type, user), AdminForm.panelChiTiet);
             }
             else
             {
