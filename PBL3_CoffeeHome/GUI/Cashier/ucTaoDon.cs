@@ -175,7 +175,6 @@ namespace PBL3_CoffeeHome.GUI
                 Quantity = (int)numSoLuong.Value,
                 CostPrice = _menuItemBLL.GetMenuItemByName(cBMon.SelectedItem.ToString()).Price,
             };
-
             _listChiTietDon.Add(item);
 
             dgvChiTietDon.Rows.Add(
