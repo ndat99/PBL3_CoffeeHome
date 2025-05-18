@@ -61,7 +61,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnKhoHang_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucKhoHang(admin), panelChiTiet);
+            LoadControlToPanel(new ucKhoHang(admin.UserID), panelChiTiet);
             HighlightButton(btnKhoHang);
         }
 

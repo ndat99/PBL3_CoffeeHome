@@ -72,7 +72,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
                 Name = txtName.Text.Trim(),
                 Category = cboCategory.SelectedItem.ToString(),
                 Unit = cboUnit.SelectedItem.ToString(),
-
+                Quantity = 0,
                 MinimumQuantity = numMinQuantity.Value,
                 CostPrice = nudCostPrice.Value,
                 ExpirationDate = dtpExpirationDate.Value

@@ -22,13 +22,13 @@ namespace PBL3_CoffeeHome.GUI
         private BindingList<ImportInventoryDTO> _listPhieuNhap;
         private BindingList<TransactionDisplayDTO> _listLSGD;
 
-        private User _user;
-        public ucKhoHang(User user)
+        string _userID;
+        public ucKhoHang(string userID)
         {
             InitializeComponent();
             _inventoryBLL = new InventoryBLL();
             _transactionBLL = new InventoryTransactionBLL();
-            _user = user;
+            _userID = userID;
         }
 
         public ucKhoHang(int TabIndex)
@@ -256,7 +256,7 @@ namespace PBL3_CoffeeHome.GUI
                     Unit = inventoryItem.Unit,
                     Price = nudCostPriceNL_tabNhapKho.Value,
                     ExpirationDate = dtpHSDNL_tabNhapKho.Value,
-                    UserID = _user.UserID,
+                    UserID = _userID,
                     Note = txtGhiChu_tabNhapKho.Text
                 };
 

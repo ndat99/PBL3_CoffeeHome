@@ -246,7 +246,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(431, 70);
+            this.lblName.Location = new System.Drawing.Point(415, 70);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(126, 20);
             this.lblName.TabIndex = 23;
@@ -293,7 +293,7 @@
             // 
             this.lblExpirationDate.AutoSize = true;
             this.lblExpirationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExpirationDate.Location = new System.Drawing.Point(431, 145);
+            this.lblExpirationDate.Location = new System.Drawing.Point(415, 145);
             this.lblExpirationDate.Name = "lblExpirationDate";
             this.lblExpirationDate.Size = new System.Drawing.Size(109, 20);
             this.lblExpirationDate.TabIndex = 34;
