@@ -191,12 +191,6 @@
     <Compile Include="GUI\Admin\ucThucDon.Designer.cs">
       <DependentUpon>ucThucDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Barista\fLichSuBaoCao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Barista\fLichSuBaoCao.Designer.cs">
-      <DependentUpon>fLichSuBaoCao.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Barista\fPhaChe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,9 +297,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucThucDon.resx">
       <DependentUpon>ucThucDon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Barista\fLichSuBaoCao.resx">
-      <DependentUpon>fLichSuBaoCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Barista\fPhaChe.resx">
       <DependentUpon>fPhaChe.cs</DependentUpon>

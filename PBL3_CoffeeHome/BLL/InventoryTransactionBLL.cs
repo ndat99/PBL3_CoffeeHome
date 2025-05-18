@@ -16,49 +16,30 @@ namespace PBL3_CoffeeHome.BLL
             _transactionDAL = new InventoryTransactionDAL();
         }
 
-        public List<TransactionDisplayDTO> GetAllTransactionDisplay()
+        public List<TransactionDisplayDTO> GetAllTransaction()
         {
-            return _transactionDAL.GetAllTransactionDisplay();
+            return _transactionDAL.GetAllTransaction();
         }
 
         public List<string> GetTypeTransaction()
         {
-            return _transactionDAL.GetAllTransactionDisplay()
-                      .Select(t => t.Type).Distinct().ToList();
+            return _transactionDAL.GetTypeTransaction();
         }
 
         public List<TransactionDisplayDTO> GetTransactionsByType(string type)
         {
-            if (string.IsNullOrEmpty(type) || type == "Tất cả")
-            {
-                return GetAllTransactionDisplay();
-            }
-            return _transactionDAL.GetAllTransactionDisplay()
-                                  .Where(t => t.Type == type)
-                                  .OrderByDescending(t => t.TransactionDate).ToList();
+            return _transactionDAL.GetTransactionByType(type);
         }
 
-        public List<InventoryTransaction> GetInformationTransaction(string ItemID, DateTime transactionDate)
+        public List<InventoryTransaction> GetDetailTransaction(string ItemID, DateTime transactionDate)
         {
-            return _transactionDAL.GetAllTransaction()
-                                  .Where(t => t.ItemID == ItemID && t.TransactionDate.Date == transactionDate.Date)
-                                  .OrderByDescending(t => t.TransactionDate).ToList();
+            return _transactionDAL.GetDetailTransaction(ItemID, transactionDate);
         }
 
 
         public List<TransactionDisplayDTO> SeaechTransaction(string txtSearch, DateTime startDate, DateTime endDate)
         {
-            var query = _transactionDAL.GetAllTransactionDisplay().Where(t => t.TransactionDate >= startDate && t.TransactionDate <= endDate);
-
-            txtSearch = txtSearch.Trim().ToLower();
-            if (!string.IsNullOrWhiteSpace(txtSearch))
-            {
-                txtSearch = txtSearch.Trim().ToLower();
-                query = query.Where(t => t.ItemName.ToLower().Contains(txtSearch) ||
-                                        t.ItemID.ToLower().Contains(txtSearch));
-            }
-
-            return query.OrderByDescending(t => t.TransactionDate).ToList();
+            return _transactionDAL.SeaechTransaction(txtSearch, startDate, endDate);
         }
 
         public List<TransactionStockOut> GetTransactionStockOut()
@@ -76,8 +57,8 @@ namespace PBL3_CoffeeHome.BLL
 
         public List<TransactionStockIn> GetTransactionStockIn()
         {
-            return _transactionDAL.GetTransactionStockIn ()
-                                  .GroupBy(i => new { i.TransactionDate.Date,i.Inventory.Name,i.TransactionPrice })
+            return _transactionDAL.GetTransactionStockIn()
+                                  .GroupBy(i => new { i.TransactionDate.Date, i.Inventory.Name, i.TransactionPrice })
                                   .Select(g => new TransactionStockIn
                                   {
                                       Name = g.Key.Name,
@@ -101,7 +82,7 @@ namespace PBL3_CoffeeHome.BLL
 
             return GetTransactionStockIn()
                 .Where(t => t.TransactionDate >= startDate && t.TransactionDate < endDate)
-                .Sum(t => t.Quantity * t.TransactionPrice); 
+                .Sum(t => t.Quantity * t.TransactionPrice);
         }
 
 

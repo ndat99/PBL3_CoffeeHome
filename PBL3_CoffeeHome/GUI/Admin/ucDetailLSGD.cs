@@ -18,7 +18,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private readonly InventoryTransactionBLL _inventoryTransactionBLL;
 
         private string _itemID;
-        private DateTime  _transactionID;
+        private DateTime _transactionID;
         private BindingList<TransactionInformationDTO> _listDetailTransaction;
 
         public ucDetailLSGD(string Item, DateTime transactionDate)
@@ -31,19 +31,19 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void ucDetailLSGD_Load(object sender, EventArgs e)
         {
-            dgvDetailTransaction.DataSource = _listDetailTransaction;
+            _listDetailTransaction = new BindingList<TransactionInformationDTO>();
 
             LoadData();
         }
 
         private void LoadData()
         {
-            List<InventoryTransaction> items = _inventoryTransactionBLL.GetInformationTransaction(_itemID, _transactionID);
+            List<InventoryTransaction> items = _inventoryTransactionBLL.GetDetailTransaction(_itemID, _transactionID);
             if (items != null)
             {
                 foreach (var item in items)
                 {
-                    dgvDetailTransaction.Rows.Add(item.Inventory.Name, item.Inventory.Category, item.Quantity, item.Inventory.Unit, item.TransactionPrice, item.User.FullName, item.TransactionDate, item.Note);
+                    dgvDetailTransaction.Rows.Add(item.Inventory.Name, item.Quantity, item.Inventory.Unit, item.TransactionPrice.ToString("N0"), item.User.FullName, item.TransactionDate, item.Note);
                 }
             }
             else
@@ -56,7 +56,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private void btnExit_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucKhoHang(), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucKhoHang(2), AdminForm.panelChiTiet);
         }
     }
 }

@@ -48,14 +48,14 @@ namespace PBL3_CoffeeHome.GUI.Admin
             {
                 txtItemID.Text = _inventoryBLL.GenerateNewItemID();
                 dtpExpirationDate.Value = DateTime.Now.AddMonths(1);
-                nudQuantity.Text = "0";
+                nudQuantity.Visible = false;
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucKhoHang(), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucKhoHang(0), AdminForm.panelChiTiet);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             {
                 MessageBox.Show("Lưu thông tin nguyên liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucKhoHang(), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucKhoHang(0), AdminForm.panelChiTiet);
             }
             else
             {
@@ -98,6 +98,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
             }
         }
 
-       
+
     }
 }
