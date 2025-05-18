@@ -27,17 +27,33 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            MenuItems menuItem = new MenuItems
+            try
             {
-                MenuItemID = _menuItemBLL.GenerateNewMenuItemsId(),
-                Name = txtTenMon.Text,
-                Price = decimal.Parse(txtGia.Text),
-                Category = txtDanhMuc.Text,
-                IsAvailable = true,
-            };
-            _menuItemBLL.AddMenuItem(menuItem);
-            d();
-            this.Close();
+                MenuItems menuItem = new MenuItems
+                {
+                    MenuItemID = _menuItemBLL.GenerateNewMenuItemsId(),
+                    Name = txtTenMon.Text,
+                    Price = decimal.Parse(txtGia.Text),
+                    Category = txtDanhMuc.Text,
+                    IsAvailable = true,
+                };
+                _menuItemBLL.AddMenuItem(menuItem);
+                d();
+                this.Close();
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Định dạng không hợp lệ: " + fe.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (NullReferenceException ne)
+            {
+                MessageBox.Show("Thiếu dữ liệu : " + ne.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

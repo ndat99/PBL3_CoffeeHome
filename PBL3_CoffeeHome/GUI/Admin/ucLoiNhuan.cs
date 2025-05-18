@@ -34,7 +34,7 @@ namespace PBL3_CoffeeHome.GUI
             {
                 cbNam.Items.Add(year);
             }
-            cbNam.SelectedIndex = -1;
+            cbNam.SelectedIndex = 0;
         }
 
         private void SetupChart()
