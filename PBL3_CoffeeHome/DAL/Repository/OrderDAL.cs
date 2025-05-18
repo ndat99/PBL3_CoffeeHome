@@ -21,7 +21,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
         }
 
         // Giữ nguyên các phương thức hiện có
-        public void AddOrder(string OrderID, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId)
+        public void AddOrder(string OrderID, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId, string discountId)
         {
             List<OrderItem> orderItems = _orderItemsDAL.GetOrderItemsByOrderID(OrderID);
             foreach (OrderItem item in orderItems)
@@ -38,6 +38,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 DiscountAmount = discountAmount,
                 FinalAmount = totalAmount - discountAmount,
                 UserID = userId,
+                DiscountID = discountId,
             };
             _context.Orders.Add(order);
             _context.SaveChanges();

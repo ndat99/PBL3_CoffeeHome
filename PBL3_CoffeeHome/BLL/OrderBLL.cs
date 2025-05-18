@@ -28,10 +28,11 @@ namespace PBL3_CoffeeHome.BLL
             _baristaQueueBLL = new BaristaQueueBLL();
             _inventoryTransactionBLL = new InventoryTransactionBLL();
         }
-        public void AddOrder(string orderId, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId)
+        public void AddOrder(string orderId, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId, string discountId)
         {
-            _orderDAL.AddOrder(orderId, createdAt, cardNumber, totalAmount, discountAmount, finalAmount, userId);
+            _orderDAL.AddOrder(orderId, createdAt, cardNumber, totalAmount, discountAmount, finalAmount, userId,discountId);
         }
+
         public string GenerateOrderID()
         {
             return _orderDAL.GenerateOrderID();

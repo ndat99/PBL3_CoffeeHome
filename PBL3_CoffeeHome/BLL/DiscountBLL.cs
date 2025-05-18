@@ -8,10 +8,10 @@ using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.BLL
 {
-    public class DiscoutBLL
+    public class DiscountBLL
     {
         private readonly DiscountDAL _discountDAL;
-        public DiscoutBLL()
+        public DiscountBLL()
         {
             _discountDAL = new DiscountDAL();
         }
@@ -25,6 +25,7 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _discountDAL.GetDiscountByEffectiveDate(effectiveDate);
         }
+
 
         public bool AddDiscount(Discount discount)
         {
