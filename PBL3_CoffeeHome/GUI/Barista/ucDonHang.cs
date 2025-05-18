@@ -82,8 +82,8 @@ namespace PBL3_CoffeeHome.GUI
             fLichSuDonHang f = new fLichSuDonHang();
             f.Show();
         }
-
-        private void checkTrangThai_CheckedChanged(object sender, EventArgs e)
+        // Ấn nút để hoàn thành đơn hàng
+        private void btnChuyenTrangThai_Click(object sender, EventArgs e)
         {
             try
             {
@@ -112,6 +112,7 @@ namespace PBL3_CoffeeHome.GUI
                 MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         // Hiển thị chi tiết đơn hàng
         private void listDonHang_SelectedIndexChanged(object sender, EventArgs e)
         {

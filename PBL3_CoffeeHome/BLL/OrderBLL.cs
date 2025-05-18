@@ -206,16 +206,18 @@ namespace PBL3_CoffeeHome.BLL
             var orderItems = _orderDAL.GetOrderItemsByOrderId(orderId);
             foreach (var orderItem in orderItems)
             {
+                decimal totalExpense = 0;
                 var ingredients = _menuItemIngredientBLL.GetMenuItemIngredient(orderItem.MenuItemID);
                 foreach (var ingredient in ingredients)
                 {
                     decimal totalQty = ingredient.QuantityRequired * orderItem.Quantity;
                     _inventoryTransactionBLL.StockOut(ingredient.ItemID, totalQty, baristaId, orderId,
                         $"Xuất tự động cho đơn hàng");
+                    decimal totalCost = ingredient.Inventory.CostPrice * totalQty;
+                    totalExpense += totalCost;
                 }
 
-                string revenueId = "RVE" + DateTime.Now.ToString("yyyyMMDD");
-                decimal totalExpense = 0;
+                string revenueId = "RVE" + DateTime.Now.ToString("yyyyMMdd");
                 _revenueBLL.AddRevenue(revenueId, orderItem.Subtotal, totalExpense);
                 _revenueDetailsBLL.AddRevenueDetails(orderItem, revenueId, orderItem.MenuItemID, orderItem.Subtotal);
             }
