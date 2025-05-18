@@ -39,7 +39,6 @@ namespace PBL3_CoffeeHome.BLL
         {
             var menuItems = _menuItemDAL.GetAllMenuItems();
             return menuItems;
-
         }
 
         public List<String> GetAllMenuCategory()
@@ -106,5 +105,16 @@ namespace PBL3_CoffeeHome.BLL
             }
         }
 
+        public void UpdateMenuItem(MenuItems item)
+        {
+            try
+            {
+                _menuItemDAL.UpdateMenuItem(item);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật món ăn: " + ex.Message);
+            }
+        }
     }
 }

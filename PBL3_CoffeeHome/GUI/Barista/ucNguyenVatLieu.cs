@@ -106,15 +106,15 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 UserID = _barista.UserID,
                 Note = txtGhiChu.Text
             };
-
             _listKiemke.Add(newCheckInventory);
+
             dgvListKiemKe.Rows.Add(
                 newCheckInventory.Name,
                 newCheckInventory.Category,
                 newCheckInventory.SystemQuantity,
                 newCheckInventory.ActualQuantity,
                 newCheckInventory.Unit,
-                newCheckInventory.UserID,
+                _barista.FullName,
                 newCheckInventory.Note,
                 newCheckInventory.Difference
             );
@@ -122,7 +122,17 @@ namespace PBL3_CoffeeHome.GUI.Barista
         }
         private void btnHoanTac_Click(object sender, EventArgs e)
         {
-
+            if (dgvListKiemKe.SelectedRows.Count == 1)
+            {
+                int index = dgvListKiemKe.SelectedRows[0].Index;
+                _listKiemke.RemoveAt(index);
+                dgvListKiemKe.Rows.RemoveAt(index);
+                MessageBox.Show("Hoàn tác thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một dòng để hoàn tác.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -138,9 +148,11 @@ namespace PBL3_CoffeeHome.GUI.Barista
             {
                 success &= _transactionBLL.AuditInventory(item.UserID, item.ItemID, item.Difference, item.Note);
             }
+
             if (success)
             {
                 MessageBox.Show("Kiểm kê kho thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadInventoryData();
                 _listKiemke.Clear();
                 dgvListKiemKe.Rows.Clear();
             }

@@ -1,7 +1,15 @@
 ﻿using System.ComponentModel;
 
 namespace PBL3_CoffeeHome.DTO.ViewModel
-{   // cập nhật giao diện đơn hàng khi giá trị thay đổi
+{
+    public class OrderDetailDTO
+    {
+        public string Name { get; set; }
+        public int Quantity { get; set; }
+        public decimal CostPrice { get; set; }
+    }
+
+    // cập nhật giao diện đơn hàng khi giá trị thay đổi
     public class OrderDisplayDTO : INotifyPropertyChanged
     {
         private string _name;

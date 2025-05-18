@@ -9,7 +9,7 @@ namespace PBL3_CoffeeHome.DTO
     public class RevenueDetail
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string DetailID { get; set; }
 
         [Required]
@@ -23,8 +23,8 @@ namespace PBL3_CoffeeHome.DTO
         public string OrderID { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string ItemName { get; set; }
+        [StringLength(20)]
+        public string MenuItemID { get; set; }
 
         [Required]
         [Range(1, 999)]
@@ -32,6 +32,8 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         public decimal RevenueAmount { get; set; }
+        [Required]
+        public DateTime RevenueDetailDate { get; set; }
 
         public virtual Revenue Revenue { get; set; }
         public virtual Order Order { get; set; }
