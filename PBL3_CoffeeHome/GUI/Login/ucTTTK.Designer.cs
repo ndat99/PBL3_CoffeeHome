@@ -184,7 +184,7 @@
             this.txtMKmoi1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKmoi1.Name = "txtMKmoi1";
             this.txtMKmoi1.Size = new System.Drawing.Size(151, 27);
-            this.txtMKmoi1.TabIndex = 104;
+            this.txtMKmoi1.TabIndex = 15;
             // 
             // txtMKmoi2
             // 
@@ -194,7 +194,7 @@
             this.txtMKmoi2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKmoi2.Name = "txtMKmoi2";
             this.txtMKmoi2.Size = new System.Drawing.Size(151, 27);
-            this.txtMKmoi2.TabIndex = 105;
+            this.txtMKmoi2.TabIndex = 16;
             // 
             // label9
             // 
@@ -222,7 +222,7 @@
             this.btnDoiMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoiMK.Name = "btnDoiMK";
             this.btnDoiMK.Size = new System.Drawing.Size(151, 32);
-            this.btnDoiMK.TabIndex = 21;
+            this.btnDoiMK.TabIndex = 17;
             this.btnDoiMK.Text = "Đổi mật khẩu";
             this.btnDoiMK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDoiMK.UseVisualStyleBackColor = false;
@@ -244,7 +244,7 @@
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(100, 38);
-            this.btnSua.TabIndex = 15;
+            this.btnSua.TabIndex = 12;
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSua.UseVisualStyleBackColor = false;
@@ -331,7 +331,7 @@
             this.txtMKCu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKCu.Name = "txtMKCu";
             this.txtMKCu.Size = new System.Drawing.Size(151, 27);
-            this.txtMKCu.TabIndex = 112;
+            this.txtMKCu.TabIndex = 14;
             // 
             // ucTTTK
             // 

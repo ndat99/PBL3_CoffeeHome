@@ -45,8 +45,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtSoBan = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnLichSuDon = new System.Windows.Forms.Button();
-            this.btnThanhToan = new System.Windows.Forms.Button();
             this.listDaHoanThanh = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,11 +54,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.dgvChiTietDon = new System.Windows.Forms.DataGridView();
             this.cTenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,10 +63,16 @@
             this.cThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnLichSuDon = new System.Windows.Forms.Button();
+            this.btnThanhToan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -216,7 +216,6 @@
             this.txtSoBan.Name = "txtSoBan";
             this.txtSoBan.Size = new System.Drawing.Size(75, 34);
             this.txtSoBan.TabIndex = 26;
-            this.txtSoBan.Text = "0";
             this.txtSoBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
@@ -229,50 +228,6 @@
             this.label14.Size = new System.Drawing.Size(278, 38);
             this.label14.TabIndex = 102;
             this.label14.Text = "Tạo đơn hàng mới";
-            // 
-            // btnLichSuDon
-            // 
-            this.btnLichSuDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(193)))), ((int)(((byte)(248)))));
-            this.btnLichSuDon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLichSuDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLichSuDon.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnLichSuDon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            this.btnLichSuDon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(116)))), ((int)(((byte)(163)))));
-            this.btnLichSuDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLichSuDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSuDon.Image = global::PBL3_CoffeeHome.Properties.Resources.LichSu;
-            this.btnLichSuDon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLichSuDon.Location = new System.Drawing.Point(1196, 447);
-            this.btnLichSuDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLichSuDon.Name = "btnLichSuDon";
-            this.btnLichSuDon.Size = new System.Drawing.Size(202, 39);
-            this.btnLichSuDon.TabIndex = 47;
-            this.btnLichSuDon.Text = "Lịch sử đơn hàng";
-            this.btnLichSuDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLichSuDon.UseVisualStyleBackColor = false;
-            this.btnLichSuDon.Click += new System.EventHandler(this.btnLichSuDon_Click);
-            // 
-            // btnThanhToan
-            // 
-            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
-            this.btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThanhToan.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThanhToan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
-            this.btnThanhToan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(143)))), ((int)(((byte)(95)))));
-            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.ForeColor = System.Drawing.Color.Black;
-            this.btnThanhToan.Image = global::PBL3_CoffeeHome.Properties.Resources.In;
-            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThanhToan.Location = new System.Drawing.Point(634, 710);
-            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(149, 60);
-            this.btnThanhToan.TabIndex = 23;
-            this.btnThanhToan.Text = "Tạo đơn \n    và \nThanh toán";
-            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThanhToan.UseVisualStyleBackColor = false;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
             // 
             // listDaHoanThanh
             // 
@@ -358,15 +313,6 @@
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader3.Width = 115;
             // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(881, 113);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(579, 295);
-            this.panel1.TabIndex = 126;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -377,35 +323,6 @@
             this.label5.Size = new System.Drawing.Size(141, 29);
             this.label5.TabIndex = 124;
             this.label5.Text = "Đơn hiện có";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox4.Location = new System.Drawing.Point(875, 37);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(199, 78);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 130;
-            this.pictureBox4.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(878, 502);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(582, 295);
-            this.panel3.TabIndex = 129;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox5.Location = new System.Drawing.Point(872, 429);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(222, 78);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 131;
-            this.pictureBox5.TabStop = false;
             // 
             // dgvChiTietDon
             // 
@@ -498,6 +415,88 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Location = new System.Drawing.Point(881, 113);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(579, 295);
+            this.panel1.TabIndex = 126;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
+            this.pictureBox4.Location = new System.Drawing.Point(875, 37);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(199, 78);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 130;
+            this.pictureBox4.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel3.Location = new System.Drawing.Point(878, 502);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(582, 295);
+            this.panel3.TabIndex = 129;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
+            this.pictureBox5.Location = new System.Drawing.Point(872, 429);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(222, 78);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 131;
+            this.pictureBox5.TabStop = false;
+            // 
+            // btnLichSuDon
+            // 
+            this.btnLichSuDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(193)))), ((int)(((byte)(248)))));
+            this.btnLichSuDon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLichSuDon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLichSuDon.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnLichSuDon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            this.btnLichSuDon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(116)))), ((int)(((byte)(163)))));
+            this.btnLichSuDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLichSuDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLichSuDon.Image = global::PBL3_CoffeeHome.Properties.Resources.LichSu;
+            this.btnLichSuDon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLichSuDon.Location = new System.Drawing.Point(1196, 447);
+            this.btnLichSuDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLichSuDon.Name = "btnLichSuDon";
+            this.btnLichSuDon.Size = new System.Drawing.Size(202, 39);
+            this.btnLichSuDon.TabIndex = 47;
+            this.btnLichSuDon.Text = "Lịch sử đơn hàng";
+            this.btnLichSuDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLichSuDon.UseVisualStyleBackColor = false;
+            this.btnLichSuDon.Click += new System.EventHandler(this.btnLichSuDon_Click);
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
+            this.btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThanhToan.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThanhToan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
+            this.btnThanhToan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(143)))), ((int)(((byte)(95)))));
+            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.ForeColor = System.Drawing.Color.Black;
+            this.btnThanhToan.Image = global::PBL3_CoffeeHome.Properties.Resources.In;
+            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThanhToan.Location = new System.Drawing.Point(634, 710);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(149, 60);
+            this.btnThanhToan.TabIndex = 23;
+            this.btnThanhToan.Text = "Tạo đơn \n    và \nThanh toán";
+            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThanhToan.UseVisualStyleBackColor = false;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
+            // 
             // ucTaoDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -532,9 +531,9 @@
             this.Size = new System.Drawing.Size(1641, 992);
             this.Load += new System.EventHandler(this.ucTaoDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

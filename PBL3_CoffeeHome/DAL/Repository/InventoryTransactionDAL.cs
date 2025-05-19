@@ -52,10 +52,10 @@ namespace PBL3_CoffeeHome.DAL
                                       .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
-        public List<InventoryTransaction> GetDetailTransaction(string itemID, DateTime transactionDate)
+        public List<InventoryTransaction> GetDetailTransaction(string itemID, DateTime transactionDate, string Type)
         {
             return _db.InventoryTransactions.AsNoTracking().Include(t => t.Inventory).Include(t => t.User)
-                                            .Where(t => t.ItemID == itemID && DbFunctions.TruncateTime(t.TransactionDate) == transactionDate.Date)
+                                            .Where(t => t.ItemID == itemID && t.Type == Type && DbFunctions.TruncateTime(t.TransactionDate) == transactionDate.Date)
                                             .OrderByDescending(t => t.TransactionDate).ToList();
         }
 
