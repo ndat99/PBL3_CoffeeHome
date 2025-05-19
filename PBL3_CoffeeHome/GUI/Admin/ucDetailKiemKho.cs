@@ -103,7 +103,20 @@ namespace PBL3_CoffeeHome.GUI.Admin
         }
         private void btnHoanTac_Click(object sender, EventArgs e)
         {
-
+            if (dgvListKiemKe.SelectedRows.Count == 1)
+            {
+                var selectedItem = (InventoryCheckDTO)dgvListKiemKe.SelectedRows[0].DataBoundItem;
+                if (selectedItem == null) return;
+                if (MessageBox.Show($"Bạn có muốn hoàn tác.'{selectedItem.Name}' không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _listKiemke.Remove(selectedItem);
+                    MessageBox.Show("Hoàn tác thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một nguyên liệu.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -122,9 +135,10 @@ namespace PBL3_CoffeeHome.GUI.Admin
             }
 
             if (success)
-            {   
+            {
                 MessageBox.Show("Kiểm kê kho thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadInventoryData();
+                var AdminForm = (fQuanLy)this.ParentForm;
+                AdminForm.LoadControlToPanel(new ucKhoHang(0), AdminForm.panelChiTiet);
                 _listKiemke.Clear();
             }
             else
@@ -136,7 +150,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private void btnExit_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucKhoHang(), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucKhoHang(0), AdminForm.panelChiTiet);
         }
 
 

@@ -43,7 +43,6 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
     {
         public string ItemID { get; set; }
         public string Name { get; set; }
-        public string Category { get; set; }
         public decimal Quantity { get; set; }
         public string Unit { get; set; }
         public decimal Price { get; set; }
@@ -57,9 +56,9 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
     {
         public string ItemID { get; set; }
         public string ItemName { get; set; }
-        public string Category { get; set; }
         public decimal Quantity { get; set; }
         public string Unit { get; set; }
+        public decimal Price { get; set; }
         public string Type { get; set; }
         public string UserName { get; set; }
         public DateTime TransactionDate { get; set; }

@@ -21,7 +21,7 @@ namespace PBL3_CoffeeHome.BLL
             _menuItemDAL = new MenuItemDAL();
             _orderDAL = new OrderDAL();
         }
-        // Lấy danh sách đơn hàng có trạng thái "Incompleted"
+        // Lấy danh sách đơn hàng có trạng thái "Incomplete"
         public List<Order> GetOrdersWithStatus(string status)
         {
             return _orderDAL.GetOrdersByBaristaQueueStatus(status);
@@ -39,7 +39,6 @@ namespace PBL3_CoffeeHome.BLL
         {
             var menuItems = _menuItemDAL.GetAllMenuItems();
             return menuItems;
-
         }
 
         public List<String> GetAllMenuCategory()

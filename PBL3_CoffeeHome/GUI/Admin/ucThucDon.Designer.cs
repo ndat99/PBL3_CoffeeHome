@@ -48,6 +48,7 @@
             // 
             // dgvThucDon
             // 
+            this.dgvThucDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvThucDon.BackgroundColor = System.Drawing.Color.White;
             this.dgvThucDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvThucDon.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -70,21 +71,21 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvThucDon.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvThucDon.EnableHeadersVisualStyles = false;
-            this.dgvThucDon.Location = new System.Drawing.Point(293, 208);
+            this.dgvThucDon.Location = new System.Drawing.Point(157, 208);
             this.dgvThucDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvThucDon.Name = "dgvThucDon";
             this.dgvThucDon.RowHeadersVisible = false;
             this.dgvThucDon.RowHeadersWidth = 51;
             this.dgvThucDon.RowTemplate.Height = 30;
             this.dgvThucDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThucDon.Size = new System.Drawing.Size(635, 542);
+            this.dgvThucDon.Size = new System.Drawing.Size(1080, 620);
             this.dgvThucDon.TabIndex = 62;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(290, 107);
+            this.label4.Location = new System.Drawing.Point(481, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 20);
             this.label4.TabIndex = 71;
@@ -95,7 +96,7 @@
             this.cBDanhMuc1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBDanhMuc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cBDanhMuc1.FormattingEnabled = true;
-            this.cBDanhMuc1.Location = new System.Drawing.Point(412, 101);
+            this.cBDanhMuc1.Location = new System.Drawing.Point(603, 111);
             this.cBDanhMuc1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cBDanhMuc1.Name = "cBDanhMuc1";
             this.cBDanhMuc1.Size = new System.Drawing.Size(210, 28);
@@ -105,10 +106,10 @@
             // 
             this.txtTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(686, 97);
+            this.txtTimKiem.Location = new System.Drawing.Point(937, 107);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(215, 30);
+            this.txtTimKiem.Size = new System.Drawing.Size(272, 30);
             this.txtTimKiem.TabIndex = 80;
             // 
             // label14
@@ -134,7 +135,7 @@
             this.btnLoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoc.Image = global::PBL3_CoffeeHome.Properties.Resources.Filter;
             this.btnLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLoc.Location = new System.Drawing.Point(828, 149);
+            this.btnLoc.Location = new System.Drawing.Point(1136, 159);
             this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoc.Name = "btnLoc";
             this.btnLoc.Size = new System.Drawing.Size(101, 32);
@@ -149,7 +150,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiemEnd;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(897, 97);
+            this.pictureBox2.Location = new System.Drawing.Point(1205, 107);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -161,7 +162,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiem;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(655, 97);
+            this.pictureBox1.Location = new System.Drawing.Point(908, 107);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
@@ -180,7 +181,7 @@
             this.btnThemMon.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnThemMon.Image = global::PBL3_CoffeeHome.Properties.Resources.Add;
             this.btnThemMon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThemMon.Location = new System.Drawing.Point(968, 205);
+            this.btnThemMon.Location = new System.Drawing.Point(1288, 208);
             this.btnThemMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemMon.Name = "btnThemMon";
             this.btnThemMon.Size = new System.Drawing.Size(144, 39);
@@ -201,7 +202,7 @@
             this.btnXoa.ForeColor = System.Drawing.Color.Red;
             this.btnXoa.Image = global::PBL3_CoffeeHome.Properties.Resources.Cancel;
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXoa.Location = new System.Drawing.Point(968, 328);
+            this.btnXoa.Location = new System.Drawing.Point(1288, 331);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(144, 39);
@@ -222,7 +223,7 @@
             this.btnSua.ForeColor = System.Drawing.Color.Orange;
             this.btnSua.Image = global::PBL3_CoffeeHome.Properties.Resources.Edit;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.Location = new System.Drawing.Point(968, 268);
+            this.btnSua.Location = new System.Drawing.Point(1288, 271);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(144, 39);
@@ -249,7 +250,7 @@
             this.Controls.Add(this.btnSua);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucThucDon";
-            this.Size = new System.Drawing.Size(1351, 799);
+            this.Size = new System.Drawing.Size(1563, 919);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -13,31 +13,31 @@ namespace PBL3_CoffeeHome.GUI
 {
     public partial class fLichSuDonHang: Form
     {
-        private readonly OrderBLL _orderBLL;
+        private readonly BaristaQueueBLL _baristaQueueBLL;
         public fLichSuDonHang()
         {
             InitializeComponent();
-            _orderBLL = new OrderBLL();
+            _baristaQueueBLL = new BaristaQueueBLL();
             datePicker.Value = DateTime.Now.Date;
             LoadOrderHistory(datePicker.Value.Date);
         }
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDonHang.Items.Clear();
-            var orders = _orderBLL.GetOrdersCompletedOnDate("Completed", selectedDate)
-                        .OrderByDescending(o => o.BaristaQueues.FirstOrDefault().CompletedAt);
+            var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
+                        .OrderByDescending(bq => bq.CompletedAt);
 
-            foreach (var order in orders)
+            foreach (var queue in queues)
             {
-                var completedQueue = order.BaristaQueues.FirstOrDefault();
-                var completedAt = completedQueue?.CompletedAt.HasValue == true
-                ? completedQueue.CompletedAt.Value.ToString("HH:mm") : "N/A";
                 var item = new ListViewItem(new string[]
                 {
-                    order.OrderID,
-                    completedAt,
-                    order.TotalAmount.ToString("N0") + " VNĐ",
+                    queue.OrderID,
+                    queue.CompletedAt.Value.ToString("HH:mm"),
+                    queue.Order.TotalAmount.ToString("N0") + "VND"
                 });
+                item.Tag = queue;
+                item.ImageIndex = 1;
+
                 listDonHang.Items.Add(item);
             }
         }

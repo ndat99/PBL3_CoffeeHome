@@ -18,13 +18,13 @@ namespace PBL3_CoffeeHome.DTO
         public string RevenueID { get; set; }
 
         [Required]
-        public DateTime StartDate { get; set; }
-
-        [Required]
-        public DateTime EndDate { get; set; }
+        public DateTime RevenueDate { get; set; }
 
         [Required]
         public decimal TotalRevenue { get; set; }
+        [Required]
+        public decimal TotalExpense { get; set; }
+
 
         public virtual ICollection<RevenueDetail> RevenueDetails { get; set; }
     }

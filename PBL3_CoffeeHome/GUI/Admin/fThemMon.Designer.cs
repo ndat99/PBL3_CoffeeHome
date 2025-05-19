@@ -43,7 +43,7 @@
             // 
             this.txtGia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGia.Location = new System.Drawing.Point(155, 375);
+            this.txtGia.Location = new System.Drawing.Point(155, 147);
             this.txtGia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(287, 27);
@@ -53,7 +53,7 @@
             // 
             this.txtDanhMuc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDanhMuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDanhMuc.Location = new System.Drawing.Point(155, 236);
+            this.txtDanhMuc.Location = new System.Drawing.Point(155, 86);
             this.txtDanhMuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDanhMuc.Name = "txtDanhMuc";
             this.txtDanhMuc.Size = new System.Drawing.Size(287, 27);
@@ -63,7 +63,7 @@
             // 
             this.txtTenMon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTenMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenMon.Location = new System.Drawing.Point(155, 105);
+            this.txtTenMon.Location = new System.Drawing.Point(155, 26);
             this.txtTenMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenMon.Name = "txtTenMon";
             this.txtTenMon.Size = new System.Drawing.Size(287, 27);
@@ -73,7 +73,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(23, 377);
+            this.label5.Location = new System.Drawing.Point(22, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 25);
             this.label5.TabIndex = 20;
@@ -83,7 +83,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(14, 238);
+            this.label4.Location = new System.Drawing.Point(22, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(101, 25);
             this.label4.TabIndex = 19;
@@ -93,7 +93,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 353);
+            this.label3.Location = new System.Drawing.Point(14, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 25);
             this.label3.TabIndex = 18;
@@ -115,7 +115,7 @@
             this.btnOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(349, 623);
+            this.btnOK.Location = new System.Drawing.Point(349, 209);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(93, 28);
@@ -128,7 +128,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(22, 103);
+            this.label9.Location = new System.Drawing.Point(22, 24);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 25);
             this.label9.TabIndex = 121;
@@ -138,7 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 662);
+            this.ClientSize = new System.Drawing.Size(463, 261);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtGia);

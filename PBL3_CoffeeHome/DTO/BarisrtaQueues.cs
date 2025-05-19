@@ -9,7 +9,7 @@ namespace PBL3_CoffeeHome.DTO
     public class BaristaQueue
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string QueueID { get; set; }
 
         [Required]
@@ -17,14 +17,13 @@ namespace PBL3_CoffeeHome.DTO
         [StringLength(20)]
         public string OrderID { get; set; }
 
-        [Required]
         [ForeignKey("User")]
-        [StringLength(10)]
+        [StringLength(20)]
         public string BaristaID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Status { get; set; } // "Pending", "In Progress", "Completed"
+        public string Status { get; set; } // "Incomplete", "Complete"
 
         [Required]
         public DateTime AssignedAt { get; set; }
