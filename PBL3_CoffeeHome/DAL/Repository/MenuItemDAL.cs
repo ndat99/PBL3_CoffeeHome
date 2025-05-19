@@ -25,13 +25,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 return db.MenuItems.FirstOrDefault(m => m.Name == name && m.IsAvailable);
             }
         }
-        public MenuItems GetMenuItemByID(string id)
-        {
-            using (var db = new CoffeeDbContext())
-            {
-                return db.MenuItems.FirstOrDefault(m => m.MenuItemID == id && m.IsAvailable);
-            }
-        }
+        
         public List<MenuItems> GetAllMenuItems()
         {
             using (var db = new CoffeeDbContext())

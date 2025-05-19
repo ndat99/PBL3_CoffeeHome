@@ -36,20 +36,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
         {
             using (var context = new CoffeeDbContext())
             {
-                //DateTime today = DateTime.Now.Date;
-                //var revenue = context.Revenues.FirstOrDefault(r => r.RevenueID == revenueId);
-                //if (revenue == null)
-                //{
-                //    revenue = new Revenue
-                //    {
-                //        RevenueID = revenueId,
-                //        RevenueDate = today,
-                //        TotalRevenue = 0,
-                //        TotalExpense = 0
-                //    };
-                //    context.Revenues.Add(revenue);
-                //}
-
                 var revenueDetail = new RevenueDetail
                 {
                     DetailID = GenerateRevenueDetailId(),

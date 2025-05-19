@@ -212,12 +212,6 @@ namespace PBL3_CoffeeHome.GUI
                 chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = true;
                 chartSanPham.ChartAreas[0].Area3DStyle.Inclination = 30;
                 chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50);
-
-                // Thêm tiêu đề cho biểu đồ sản phẩm
-                //chartSanPham.Titles.Clear();
-                //chartSanPham.Titles.Add(new Title(
-                //    mode == "Ngày" ? $"Top Sản Phẩm Bán Chạy - Tháng {month.Value}/{year}" : $"Top Sản Phẩm Bán Chạy - Năm {year}",
-                //    Docking.Top, new Font("Arial", 12, FontStyle.Bold), Color.Black));
             }
             catch (Exception ex)
             {

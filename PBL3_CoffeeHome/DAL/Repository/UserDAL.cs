@@ -15,7 +15,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _context = new CoffeeDbContext();
         }
 
-        // Giữ nguyên các phương thức hiện có
+        // Các phương thức cơ bản
         public List<User> GetAllUsers()
         {
             return _context.Users.ToList();
@@ -76,7 +76,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             }
         }
 
-        // Thêm các phương thức mới
         public User GetUserById(string userId)
         {
             return _context.Users
