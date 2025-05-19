@@ -21,11 +21,12 @@ namespace PBL3_CoffeeHome.DAL
         {
             return _db.Inventory.AsNoTracking().ToList();
         }
-        
+
         public Inventory GetInventoryByID(string itemID)
         {
             return _db.Inventory.AsNoTracking().FirstOrDefault(i => i.ItemID == itemID);
         }
+
 
         public Inventory GetInventoryByName(string name)
         {
@@ -48,7 +49,7 @@ namespace PBL3_CoffeeHome.DAL
 
         public List<Inventory> GetExpiring(int days)
         {
-            var expiringDate = DateTime.Now.AddDays(8).AddTicks(-1);
+            var expiringDate = DateTime.Now.AddDays(days).AddTicks(-1);
             var today = DateTime.Now.Date;
             return _db.Inventory.AsNoTracking().Where(i => i.ExpirationDate <= expiringDate && i.ExpirationDate >= today).OrderBy(c => c.ExpirationDate).ToList();
         }
@@ -157,11 +158,11 @@ namespace PBL3_CoffeeHome.DAL
             do
             {
                 attempt++;
-                newId = prefix + attempt.ToString("D4");
+                newId = prefix + attempt.ToString("D3");
             }
-            while (_db.Inventory.AsNoTracking().Any(i => i.ItemID == newId) && attempt < 9999);
+            while (_db.Inventory.AsNoTracking().Any(i => i.ItemID == newId) && attempt < 999);
 
-            if (attempt >= 9999)
+            if (attempt >= 999)
                 throw new Exception("Không thể tạo mã nguyên liệu.");
 
             return newId;

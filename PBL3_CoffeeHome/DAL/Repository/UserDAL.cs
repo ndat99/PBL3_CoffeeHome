@@ -25,7 +25,10 @@ namespace PBL3_CoffeeHome.DAL.Repository
         {
             return _context.Users.FirstOrDefault(u => u.UserName == _name);
         }
-
+        public User GetUserByUsername(string _username)
+        {
+            return _context.Users.FirstOrDefault(u => u.UserName == _username);
+        }
         public void AddUser(User _user)
         {
             try
