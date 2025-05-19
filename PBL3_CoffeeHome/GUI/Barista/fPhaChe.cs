@@ -62,6 +62,7 @@ namespace PBL3_CoffeeHome.GUI
 
             if (result == DialogResult.Yes)
             {
+                barista.IsActive = false;
                 barista.LastLoginAt = DateTime.Now;
                 _userBLL.UpdateUser(barista);
                 Application.Restart();

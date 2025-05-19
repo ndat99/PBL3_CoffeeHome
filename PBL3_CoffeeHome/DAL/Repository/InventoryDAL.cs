@@ -143,13 +143,6 @@ namespace PBL3_CoffeeHome.DAL
         {
             return _db.MenuItemIngredients.Any(m => m.ItemID == ItemID);
         }
-
-        public bool CheckStockAvailability(string itemID, decimal requiredQuantity)
-        {
-            var item = GetInventoryByID(itemID);
-            return item != null && item.Quantity >= requiredQuantity;
-        }
-
         public string GenerateNewItemID()
         {
             string prefix = "INV";

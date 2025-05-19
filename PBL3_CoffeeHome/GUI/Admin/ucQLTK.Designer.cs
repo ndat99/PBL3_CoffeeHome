@@ -51,7 +51,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(528, 146);
+            this.label2.Location = new System.Drawing.Point(570, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 20);
             this.label2.TabIndex = 43;
@@ -67,7 +67,7 @@
             "Admin",
             "Barista",
             "Cashier"});
-            this.cBVaiTro.Location = new System.Drawing.Point(618, 143);
+            this.cBVaiTro.Location = new System.Drawing.Point(660, 135);
             this.cBVaiTro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cBVaiTro.Name = "cBVaiTro";
             this.cBVaiTro.Size = new System.Drawing.Size(188, 28);
@@ -98,21 +98,21 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTaiKhoan.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTaiKhoan.EnableHeadersVisualStyles = false;
-            this.dgvTaiKhoan.Location = new System.Drawing.Point(61, 196);
+            this.dgvTaiKhoan.Location = new System.Drawing.Point(103, 188);
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowHeadersVisible = false;
             this.dgvTaiKhoan.RowHeadersWidth = 51;
             this.dgvTaiKhoan.RowTemplate.Height = 30;
             this.dgvTaiKhoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(1107, 616);
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(1107, 639);
             this.dgvTaiKhoan.TabIndex = 61;
             // 
             // txtTimKiem
             // 
             this.txtTimKiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(925, 140);
+            this.txtTimKiem.Location = new System.Drawing.Point(967, 132);
             this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(215, 30);
@@ -140,7 +140,7 @@
             this.btnDoiVaiTro.ForeColor = System.Drawing.Color.MidnightBlue;
             this.btnDoiVaiTro.Image = global::PBL3_CoffeeHome.Properties.Resources.Panel;
             this.btnDoiVaiTro.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDoiVaiTro.Location = new System.Drawing.Point(1215, 441);
+            this.btnDoiVaiTro.Location = new System.Drawing.Point(1257, 433);
             this.btnDoiVaiTro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoiVaiTro.Name = "btnDoiVaiTro";
             this.btnDoiVaiTro.Size = new System.Drawing.Size(192, 39);
@@ -155,7 +155,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiemEnd;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(1136, 140);
+            this.pictureBox2.Location = new System.Drawing.Point(1178, 132);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(32, 32);
@@ -167,7 +167,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiem;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(894, 140);
+            this.pictureBox1.Location = new System.Drawing.Point(936, 132);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
@@ -186,7 +186,7 @@
             this.btnResetMK.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnResetMK.Image = global::PBL3_CoffeeHome.Properties.Resources.Reset;
             this.btnResetMK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnResetMK.Location = new System.Drawing.Point(1215, 377);
+            this.btnResetMK.Location = new System.Drawing.Point(1257, 369);
             this.btnResetMK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnResetMK.Name = "btnResetMK";
             this.btnResetMK.Size = new System.Drawing.Size(192, 39);
@@ -207,7 +207,7 @@
             this.btnXemChiTiet.ForeColor = System.Drawing.Color.MediumPurple;
             this.btnXemChiTiet.Image = global::PBL3_CoffeeHome.Properties.Resources.Xem;
             this.btnXemChiTiet.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXemChiTiet.Location = new System.Drawing.Point(1215, 257);
+            this.btnXemChiTiet.Location = new System.Drawing.Point(1257, 249);
             this.btnXemChiTiet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXemChiTiet.Name = "btnXemChiTiet";
             this.btnXemChiTiet.Size = new System.Drawing.Size(192, 39);
@@ -228,7 +228,7 @@
             this.btnTaoTK.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnTaoTK.Image = global::PBL3_CoffeeHome.Properties.Resources.Add;
             this.btnTaoTK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTaoTK.Location = new System.Drawing.Point(1215, 196);
+            this.btnTaoTK.Location = new System.Drawing.Point(1257, 188);
             this.btnTaoTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaoTK.Name = "btnTaoTK";
             this.btnTaoTK.Size = new System.Drawing.Size(192, 39);
@@ -249,7 +249,7 @@
             this.btnXoaTK.ForeColor = System.Drawing.Color.Red;
             this.btnXoaTK.Image = global::PBL3_CoffeeHome.Properties.Resources.Cancel;
             this.btnXoaTK.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnXoaTK.Location = new System.Drawing.Point(1215, 316);
+            this.btnXoaTK.Location = new System.Drawing.Point(1257, 308);
             this.btnXoaTK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoaTK.Name = "btnXoaTK";
             this.btnXoaTK.Size = new System.Drawing.Size(192, 39);
@@ -263,11 +263,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.btnDoiVaiTro);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.dgvTaiKhoan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cBVaiTro);
@@ -275,9 +274,10 @@
             this.Controls.Add(this.btnXemChiTiet);
             this.Controls.Add(this.btnTaoTK);
             this.Controls.Add(this.btnXoaTK);
+            this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucQLTK";
-            this.Size = new System.Drawing.Size(1443, 799);
+            this.Size = new System.Drawing.Size(1584, 946);
             this.Load += new System.EventHandler(this.ucQLTK_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -16,30 +16,9 @@ namespace PBL3_CoffeeHome.BLL
             _discountDAL = new DiscountDAL();
         }
 
-        public List<decimal> GetPrecentageDiscount()
-        {
-            return _discountDAL.GetPrecentageDiscount();
-        }
-
         public Discount GetDiscountByEffectiveDate(DateTime effectiveDate)
         {
             return _discountDAL.GetDiscountByEffectiveDate(effectiveDate);
-        }
-
-
-        public bool AddDiscount(Discount discount)
-        {
-            return _discountDAL.AddDiscount(discount);
-        }
-
-        public bool UpdateDiscount(Discount discount)
-        {
-            return _discountDAL.UpdateDiscount(discount);
-        }
-
-        public bool DeleteDiscount(string discountID)
-        {
-            return _discountDAL.DeleteDiscount(discountID);
         }
     }
 }

@@ -37,22 +37,17 @@ namespace PBL3_CoffeeHome.GUI
 
             _allMenuItems = _menuItemBLL.GetAllMenuItems(); 
             _cashier = user;
-            //LoadComboBoxData();
+
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
             timerRefresh.Start();
-            LoadData();
+            LoadCBBName();
         }
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
         }
-        public void LoadData()
-        {
-            //LoadMenuItems();
-            //LoadOrderItems();
-            LoadCBBName();
-        }
+
         public void LoadCBBName()
         {
             cBDanhMuc.Items.Clear();
@@ -72,6 +67,7 @@ namespace PBL3_CoffeeHome.GUI
         private void ReloadData()
         {
             _listChiTietDon.Clear();
+            dgvChiTietDon.Rows.Clear();
             txtThanhTien.Text = "0";
             txtSoBan.Text = "0";
             numSoLuong.Value = 1;
@@ -80,8 +76,6 @@ namespace PBL3_CoffeeHome.GUI
             LoadCBBName();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
-            _listChiTietDon.Clear();
-            dgvChiTietDon.Rows.Clear();
         }
 
         // Load danh sách đơn hàng hôm nay
@@ -260,7 +254,7 @@ namespace PBL3_CoffeeHome.GUI
 
             ShowBill(orderId);
 
-            _listChiTietDon.Clear();
+            ReloadData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
 
@@ -277,7 +271,7 @@ namespace PBL3_CoffeeHome.GUI
                                  $"Mã đơn hàng: {order.OrderID}\n" +
                                  $"Ngày tạo: {order.CreatedAt:dd/MM/yyyy HH:mm}\n" +
                                  $"Số bàn: {order.CardNumber}\n" +
-                                 $"Nhân viên: {_cashier.UserID}\n\n" +
+                                 $"Nhân viên: {_cashier.FullName}\n\n" +
                                  "----- Danh sách món -----\n";
             foreach (var item in order.OrderItems)
             {

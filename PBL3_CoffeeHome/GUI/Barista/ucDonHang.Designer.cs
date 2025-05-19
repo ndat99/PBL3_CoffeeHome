@@ -93,7 +93,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(358, 424);
+            this.label5.Location = new System.Drawing.Point(303, 424);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 16);
             this.label5.TabIndex = 20;
@@ -103,7 +103,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(358, 456);
+            this.label4.Location = new System.Drawing.Point(303, 456);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 16);
             this.label4.TabIndex = 19;
@@ -130,9 +130,9 @@
             this.listDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listDonHang.FullRowSelect = true;
             this.listDonHang.HideSelection = false;
-            this.listDonHang.Location = new System.Drawing.Point(37, 8);
+            this.listDonHang.Location = new System.Drawing.Point(29, 8);
             this.listDonHang.Name = "listDonHang";
-            this.listDonHang.Size = new System.Drawing.Size(517, 276);
+            this.listDonHang.Size = new System.Drawing.Size(525, 276);
             this.listDonHang.SmallImageList = this.imageTrangThai;
             this.listDonHang.TabIndex = 27;
             this.listDonHang.UseCompatibleStateImageBehavior = false;
@@ -228,7 +228,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(264, 501);
+            this.label3.Location = new System.Drawing.Point(260, 501);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 29);
             this.label3.TabIndex = 109;
@@ -244,9 +244,9 @@
             this.listLichSuDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listLichSuDon.FullRowSelect = true;
             this.listLichSuDon.HideSelection = false;
-            this.listLichSuDon.Location = new System.Drawing.Point(269, 558);
+            this.listLichSuDon.Location = new System.Drawing.Point(255, 558);
             this.listLichSuDon.Name = "listLichSuDon";
-            this.listLichSuDon.Size = new System.Drawing.Size(507, 276);
+            this.listLichSuDon.Size = new System.Drawing.Size(521, 276);
             this.listLichSuDon.SmallImageList = this.imageTrangThai;
             this.listLichSuDon.TabIndex = 110;
             this.listLichSuDon.UseCompatibleStateImageBehavior = false;
@@ -309,7 +309,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(264, 55);
+            this.label1.Location = new System.Drawing.Point(260, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 29);
             this.label1.TabIndex = 25;
@@ -319,9 +319,9 @@
             // 
             this.panel3.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(232, 550);
+            this.panel3.Location = new System.Drawing.Point(226, 550);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(575, 295);
+            this.panel3.Size = new System.Drawing.Size(581, 295);
             this.panel3.TabIndex = 111;
             // 
             // panel1
@@ -329,9 +329,9 @@
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Frame1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.listDonHang);
-            this.panel1.Location = new System.Drawing.Point(232, 107);
+            this.panel1.Location = new System.Drawing.Point(226, 107);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(575, 295);
+            this.panel1.Size = new System.Drawing.Size(581, 295);
             this.panel1.TabIndex = 107;
             // 
             // pictureBox3
@@ -339,7 +339,7 @@
             this.pictureBox3.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.ChuaHoanThanh;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(325, 451);
+            this.pictureBox3.Location = new System.Drawing.Point(270, 451);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(27, 27);
@@ -352,7 +352,7 @@
             this.pictureBox1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.DaHoanThanh;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(325, 419);
+            this.pictureBox1.Location = new System.Drawing.Point(270, 419);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(27, 27);
@@ -373,7 +373,7 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox4.Location = new System.Drawing.Point(230, 31);
+            this.pictureBox4.Location = new System.Drawing.Point(226, 31);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(199, 78);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -383,7 +383,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::PBL3_CoffeeHome.Properties.Resources.tag;
-            this.pictureBox5.Location = new System.Drawing.Point(230, 477);
+            this.pictureBox5.Location = new System.Drawing.Point(226, 477);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(199, 78);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

@@ -52,7 +52,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
         private string GenerateOrderItemsID()
         {
-            string prefix = "OI";
+            string prefix = "OI" + DateTime.Now.ToString("yyyyMMdd");
             string newId;
             int attempt = 0;
             do
