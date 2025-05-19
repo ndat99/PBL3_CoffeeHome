@@ -59,7 +59,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             listLichSuDon.Items.Clear();
             var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
-                        .OrderByDescending(bq => bq.CompletedAt);
+                        .OrderByDescending(bq => bq.CompletedAt).ToList();
 
             foreach (var queue in queues)
             {
@@ -92,7 +92,7 @@ namespace PBL3_CoffeeHome.GUI
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 LoadOrdersToday();
