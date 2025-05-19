@@ -76,13 +76,15 @@ namespace PBL3_CoffeeHome.GUI
             LoadCBBName();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
+            _listChiTietDon.Clear();
+            dgvChiTietDon.Rows.Clear();
         }
 
         // Load danh sách đơn hàng hôm nay
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incompleted").OrderByDescending(bq => bq.AssignedAt);
+            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderByDescending(bq => bq.AssignedAt);
 
             foreach (var queue in queues)
             {
@@ -103,7 +105,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDaHoanThanh.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Completed", selectedDate)
+            var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
                         .OrderByDescending(bq => bq.CompletedAt);
 
             foreach (var queue in queues)
@@ -134,7 +136,6 @@ namespace PBL3_CoffeeHome.GUI
             }
             return true;
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             int soLuong = (int)numSoLuong.Value;
@@ -358,16 +359,10 @@ namespace PBL3_CoffeeHome.GUI
             // Xóa dữ liệu trong _listChiTietDon để tránh xung đột
             _listChiTietDon.Clear();
         }
-
-
-       
-
         private void btnClear_Click(object sender, EventArgs e)
         {
             ReloadData();
         }
-
-     
     }
 
 }

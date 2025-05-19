@@ -24,7 +24,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDonHang.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Completed", selectedDate)
+            var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
                         .OrderByDescending(bq => bq.CompletedAt);
 
             foreach (var queue in queues)

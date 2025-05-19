@@ -100,7 +100,7 @@ namespace PBL3_CoffeeHome.BLL
                 _revenueBLL.AddRevenue(revenueId, orderItem.Subtotal, totalExpense);
                 _revenueDetailsBLL.AddRevenueDetails(orderItem, revenueId, orderItem.MenuItemID, orderItem.Subtotal);
             }
-            _baristaQueueBLL.UpdateQueueStatus(queueID, baristaId, "Completed");
+            _baristaQueueBLL.UpdateQueueStatus(queueID, baristaId, "Complete");
         }
     }
 

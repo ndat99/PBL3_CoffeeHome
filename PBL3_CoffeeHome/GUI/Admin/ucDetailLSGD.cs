@@ -4,46 +4,51 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DTO.ViewModel;
+using PBL3_CoffeeHome.GUI.Barista;
 
 namespace PBL3_CoffeeHome.GUI.Admin
 {
     public partial class ucDetailLSGD : UserControl
     {
         private readonly InventoryTransactionBLL _inventoryTransactionBLL;
-
         private string _itemID;
-        private DateTime  _transactionID;
+        private string _type;
+        private DateTime _transactionID;
+        private string _user;
         private BindingList<TransactionInformationDTO> _listDetailTransaction;
 
-        public ucDetailLSGD(string Item, DateTime transactionDate)
+        public ucDetailLSGD(string Item, DateTime transactionDate, string Type, string user)
         {
             InitializeComponent();
             _inventoryTransactionBLL = new InventoryTransactionBLL();
             _itemID = Item;
             _transactionID = transactionDate;
+            _type = Type;
+            _user = user;
         }
 
         private void ucDetailLSGD_Load(object sender, EventArgs e)
         {
-            dgvDetailTransaction.DataSource = _listDetailTransaction;
+            _listDetailTransaction = new BindingList<TransactionInformationDTO>();
 
             LoadData();
         }
 
         private void LoadData()
         {
-            List<InventoryTransaction> items = _inventoryTransactionBLL.GetInformationTransaction(_itemID, _transactionID);
+            List<InventoryTransaction> items = _inventoryTransactionBLL.GetDetailTransaction(_itemID, _transactionID, _type);
             if (items != null)
             {
                 foreach (var item in items)
                 {
-                    dgvDetailTransaction.Rows.Add(item.Inventory.Name, item.Inventory.Category, item.Quantity, item.Inventory.Unit, item.TransactionPrice, item.User.FullName, item.TransactionDate, item.Note);
+                    dgvDetailTransaction.Rows.Add(item.Inventory.Name, item.Quantity, item.Inventory.Unit, item.TransactionPrice.ToString("N0"), item.User.FullName, item.TransactionDate, item.Note);
                 }
             }
             else
@@ -51,12 +56,18 @@ namespace PBL3_CoffeeHome.GUI.Admin
                 MessageBox.Show("Không có thông tin giao dịch nào.");
             }
         }
-
-
         private void btnExit_Click(object sender, EventArgs e)
         {
-            var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucKhoHang(), AdminForm.panelChiTiet);
+            if (_user == "admin")
+            {
+                var AdminForm = (fQuanLy)this.ParentForm;
+                AdminForm.LoadControlToPanel(new ucKhoHang(2), AdminForm.panelChiTiet);
+            }
+            else if (_user == "barista")
+            {
+                var BaristaForm = (fPhaChe)this.ParentForm;
+                BaristaForm.LoadControlToPanel(new ucLichSuHangHoa(), BaristaForm.panelChiTiet);
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             InitializeComponent();
             _userBLL = new UserBLL();
+            this.AcceptButton = btnDangNhap;
         }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {

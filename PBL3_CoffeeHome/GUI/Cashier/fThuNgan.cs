@@ -22,6 +22,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             InitializeComponent();
             cashier = user;
+            txtName.Text = cashier.FullName;
             _userBLL = new UserBLL();
         }
         private void LoadControlToPanel(UserControl control, Panel panel)

@@ -40,7 +40,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
             {
                 QueueID = GenerateQueueID(),
                 OrderID = orderId,
-                Status = "Incompleted",
+                Status = "Incomplete",
                 AssignedAt = createdAt
             };
 
@@ -53,7 +53,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
             if (queue == null) return false;
 
             queue.Status = status;
-            if (status == "Completed")
+            if (status == "Complete")
             {
                 queue.CompletedAt = DateTime.Now;
                 queue.BaristaID = baristaId;
