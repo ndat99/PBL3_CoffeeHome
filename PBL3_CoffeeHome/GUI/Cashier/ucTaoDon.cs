@@ -76,8 +76,6 @@ namespace PBL3_CoffeeHome.GUI
             LoadCBBName();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
-            _listChiTietDon.Clear();
-            dgvChiTietDon.Rows.Clear();
         }
 
         // Load danh sách đơn hàng hôm nay
