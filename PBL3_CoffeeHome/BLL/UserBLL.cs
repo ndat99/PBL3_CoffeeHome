@@ -54,6 +54,10 @@ namespace PBL3_CoffeeHome.BLL
             }
             return null;
         }
+        public User GetUserById(string userId)
+        {
+            return _userDAL.GetUserByID(userId);
+        }
         public User GetUserByUsername(string username)
         {
             return _userDAL.GetUserByUsername(username);
