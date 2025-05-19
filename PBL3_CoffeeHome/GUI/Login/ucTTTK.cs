@@ -122,6 +122,7 @@ namespace PBL3_CoffeeHome.GUI
                                   "Thông báo",
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Information);
+                    Application.Restart();
                 }
                 else
                 {

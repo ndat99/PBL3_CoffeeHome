@@ -37,21 +37,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
             }
             _context.SaveChanges();
         }
-        public Revenue GetCurrentRevenuePeriod()
-        {
-            DateTime today = DateTime.Today;
-            return _context.Revenues.FirstOrDefault(r => r.RevenueDate == today);
-        }
-
-        public void UpdateTotalRevenue(string revenueID, decimal amount)
-        {
-            var revenue = _context.Revenues.Find(revenueID);
-            if (revenue != null)
-            {
-                revenue.TotalRevenue += amount;
-                _context.SaveChanges();
-            }
-        }
+       
 
         public List<RevenueDetail> GetAllRevenueDetails()
         {
@@ -158,14 +144,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Sum(rd => rd.Quantity);
         }
 
-        public int GetTotalCustomers()
-        {
-            return GetAllRevenueDetails()
-                .Where(rd => !string.IsNullOrEmpty(rd.OrderID))
-                .Select(rd => rd.OrderID)
-                .Distinct()
-                .Count();
-        }
 
         public int GetTotalCustomersByYear(int year)
         {
