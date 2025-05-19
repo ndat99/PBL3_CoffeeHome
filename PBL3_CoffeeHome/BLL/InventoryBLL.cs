@@ -112,13 +112,6 @@ namespace PBL3_CoffeeHome.BLL
             return _inventoryDAL.DeleteInventory(itemID);
         }
 
-        // Kiểm tra xem số lượng hàng tồn có đủ cho yêu cầu không
-        public bool CheckStockAvailability(string itemID, decimal requiredQuantity)
-        {
-            if (string.IsNullOrEmpty(itemID) || requiredQuantity < 0) return false;
-            return _inventoryDAL.CheckStockAvailability(itemID, requiredQuantity);
-        }
-
         public string GenerateNewItemID()
         {
             return _inventoryDAL.GenerateNewItemID();

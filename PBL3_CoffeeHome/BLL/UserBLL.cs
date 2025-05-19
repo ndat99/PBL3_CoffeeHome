@@ -46,17 +46,17 @@ namespace PBL3_CoffeeHome.BLL
         public User Login(string username, string password)
         {
             var user = _userDAL.GetUserByName(username);
-            if (user != null && user.IsActive && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+            if (user != null && BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
+                user.IsActive = true;
                 _userDAL.UpdateUser(user);
                 return user;
             }
             return null;
         }
-
         public User GetUserById(string userId)
         {
-            return _userDAL.GetUserById(userId);
+            return _userDAL.GetUserByID(userId);
         }
         public User GetUserByUsername(string username)
         {
@@ -79,48 +79,7 @@ namespace PBL3_CoffeeHome.BLL
             return false;
         }
 
-        public List<User> GetUsersByRole(string role)
-        {
-            return _userDAL.GetUsersByRole(role);
-        }
-
-        public bool DeactivateUser(string userId)
-        {
-            var user = _userDAL.GetUserById(userId);
-            if (user != null)
-            {
-                user.IsActive = false;
-                _userDAL.UpdateUser(user);
-                return true;
-            }
-            return false;
-        }
-
-        public bool ActivateUser(string userId)
-        {
-            var user = _userDAL.GetUserById(userId);
-            if (user != null)
-            {
-                user.IsActive = true;
-                _userDAL.UpdateUser(user);
-                return true;
-            }
-            return false;
-        }
-
-        public bool UpdateUserInfo(string userId, string fullName, string email, string phone)
-        {
-            var user = _userDAL.GetUserById(userId);
-            if (user != null)
-            {
-                user.FullName = fullName;
-                user.Email = email;
-                user.PhoneNumber = phone;
-                _userDAL.UpdateUser(user);
-                return true;
-            }
-            return false;
-        }
+        
 
         public bool ChangeUserRole(string userId, string newRole)
         {
@@ -171,8 +130,6 @@ namespace PBL3_CoffeeHome.BLL
 
         public bool IsValidEmail(string email)
         {
-            if (string.IsNullOrEmpty(email)) return true; // Email không bắt buộc
-
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);

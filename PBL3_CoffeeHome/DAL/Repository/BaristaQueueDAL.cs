@@ -63,13 +63,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return true;
         }
 
-        public List<BaristaQueue> GetQueuesByStatus(string status)
-        {
-            return _context.BaristaQueues
-                .Where(q => q.Status == status)
-                .OrderBy(q => q.AssignedAt)
-                .ToList();
-        }
         private string GenerateQueueID()
         {
             string newId = "BQ" + DateTime.Now.ToString("yyyyMMddHHmmss");

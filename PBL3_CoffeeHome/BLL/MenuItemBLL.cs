@@ -21,20 +21,13 @@ namespace PBL3_CoffeeHome.BLL
             _menuItemDAL = new MenuItemDAL();
             _orderDAL = new OrderDAL();
         }
-        // Lấy danh sách đơn hàng có trạng thái "Incomplete"
-        public List<Order> GetOrdersWithStatus(string status)
-        {
-            return _orderDAL.GetOrdersByBaristaQueueStatus(status);
-        }
+        
         // Lấy thông tin món theo tên
         public MenuItems GetMenuItemByName(string name)
         {
             return _menuItemDAL.GetMenuItemByName(name);
         }
-        public MenuItems GetMenuItemByID(string id)
-        {
-            return _menuItemDAL.GetMenuItemByID(id);
-        }
+        
         public List<MenuItems> GetAllMenuItems()
         {
             var menuItems = _menuItemDAL.GetAllMenuItems();

@@ -44,27 +44,6 @@ namespace PBL3_CoffeeHome.BLL
             return _revenueDAL.GetTotalRevenueByYear(year);
         }
 
-
-        // Tính tổng doanh thu
-        public decimal GetTotalRevenue()
-        {
-            var revenueDetails = _revenueDAL.GetAllRevenueDetails()
-                .Where(rd => rd.Revenue != null);
-            return revenueDetails.Sum(rd => rd.RevenueAmount);
-        }
-
-        // Tính tổng số lượng sản phẩm đã bán
-        public int GetTotalProductsSold()
-        {
-            return _revenueDAL.GetTotalProductsSold();
-        }
-
-        // Tính tổng lượng khách (dựa trên OrderID duy nhất)
-        public int GetTotalCustomers()
-        {
-            return _revenueDAL.GetTotalCustomers();
-        }
-        // Tính tổng lượng khách trong tháng
         public int GetTotalCustomersByMonth(int year, int month)
         {
             return _revenueDAL.GetTotalCustomersByMonth(year, month);
