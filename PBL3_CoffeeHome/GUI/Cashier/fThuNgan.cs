@@ -54,6 +54,7 @@ namespace PBL3_CoffeeHome.GUI
 
             if (result == DialogResult.Yes)
             {
+                cashier.IsActive = false;
                 cashier.LastLoginAt = DateTime.Now;
                 _userBLL.UpdateUser(cashier);
                 Application.Restart();

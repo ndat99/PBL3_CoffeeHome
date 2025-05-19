@@ -16,68 +16,12 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _db = new CoffeeDbContext();
         }
 
-        public List<decimal> GetPrecentageDiscount()
-        {
-            return _db.Discounts.AsNoTracking().Select(d => d.Percentage).OrderBy(t => t).ToList();
-        }
-
         public Discount GetDiscountByEffectiveDate(DateTime effectiveDate)
         {// lấy ngày, tháng
             return _db.Discounts.AsNoTracking()
      .FirstOrDefault(d => d.EffectiveDate.HasValue &&
          d.EffectiveDate.Value.Month == effectiveDate.Month &&
          d.EffectiveDate.Value.Day == effectiveDate.Day);
-        }
-
-        public bool AddDiscount(Discount discount)
-        {
-            try
-            {
-                _db.Discounts.Add(discount);
-                _db.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool UpdateDiscount(Discount discount)
-        {
-            try
-            {
-                var existingDiscount = _db.Discounts.Find(discount.DiscountID);
-                if (existingDiscount == null) return false;
-
-                _db.Entry(existingDiscount).CurrentValues.SetValues(discount);
-                _db.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool DeleteDiscount(string discountID)
-        {
-            try
-            {
-                var existingDiscount = _db.Discounts.Find(discountID);
-                if (existingDiscount != null)
-                {
-                    _db.Discounts.Remove(existingDiscount);
-                    _db.SaveChanges();
-                    return true;
-                }
-
-                return false;
-            }
-            catch
-            {
-                return false;
-            }
         }
     }
 }

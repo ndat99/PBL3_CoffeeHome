@@ -55,30 +55,7 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _orderDAL.GetOrderItemsByOrderId(orderId);
         }
-        // In hóa đơn (giả lập, có thể mở rộng để in thực tế)
-        public void PrintOrder(string orderId)
-        {
-            try
-            {
-                var order = GetOrderDetails(orderId);
-                if (order == null)
-                    throw new Exception($"Không tìm thấy đơn hàng {orderId}");
-
-                // Logic in hóa đơn (giả lập)
-                Console.WriteLine($"In hóa đơn cho đơn hàng {orderId}:");
-                Console.WriteLine($"Thời gian: {order.CreatedAt}");
-                Console.WriteLine($"Tổng tiền: {order.FinalAmount}");
-                Console.WriteLine("Chi tiết:");
-                foreach (var item in order.OrderItems)
-                {
-                    Console.WriteLine($"- {item.MenuItem.Name}: {item.Quantity} x {item.Price} = {item.Subtotal}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi khi in hóa đơn: " + ex.Message, ex);
-            }
-        }
+        
         // Cập nhật trạng thái đơn hàng
         public void CompleteOrder(string orderId, string queueID, string baristaId)
         {
@@ -104,13 +81,5 @@ namespace PBL3_CoffeeHome.BLL
         }
     }
 
-
-    // Lớp mô hình hiển thị lịch sử đơn hàng
-    public class OrderHistory
-    {
-        public string OrderId { get; set; }
-        public DateTime OrderDate { get; set; }
-        public decimal TotalAmount { get; set; }
-    }
 }
 
