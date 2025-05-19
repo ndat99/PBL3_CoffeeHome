@@ -37,22 +37,17 @@ namespace PBL3_CoffeeHome.GUI
 
             _allMenuItems = _menuItemBLL.GetAllMenuItems(); 
             _cashier = user;
-            //LoadComboBoxData();
+
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
             timerRefresh.Start();
-            LoadData();
+            LoadCBBName();
         }
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
         }
-        public void LoadData()
-        {
-            //LoadMenuItems();
-            //LoadOrderItems();
-            LoadCBBName();
-        }
+
         public void LoadCBBName()
         {
             cBDanhMuc.Items.Clear();
@@ -72,6 +67,7 @@ namespace PBL3_CoffeeHome.GUI
         private void ReloadData()
         {
             _listChiTietDon.Clear();
+            dgvChiTietDon.Rows.Clear();
             txtThanhTien.Text = "0";
             txtSoBan.Text = "0";
             numSoLuong.Value = 1;
@@ -139,16 +135,6 @@ namespace PBL3_CoffeeHome.GUI
             return true;
         }
 
-        //private void SetUpChiTietDon(OrderDetailDTO item)
-        //{
-        //    if ()
-        //    dgvChiTietDon.Rows.Add(
-        //        item.Name,
-        //        item.Quantity,
-        //        item.CostPrice.ToString("N0"),
-        //        (item.CostPrice * item.Quantity).ToString("N0")
-        //    );
-        //}
         private void btnThem_Click(object sender, EventArgs e)
         {
             int soLuong = (int)numSoLuong.Value;
@@ -197,14 +183,6 @@ namespace PBL3_CoffeeHome.GUI
                 );
             }
         }
-        //private decimal TinhTongTien()
-        //{
-        //    decimal tong = _listChiTietDon.Sum(x => x.TotalPrice);
-        //    int giamGia = 0;
-        //    int.TryParse(txtGiamGia.Text, out giamGia);
-        //    tong = tong * (100 - giamGia) / 100;
-        //    return tong;
-        //}
         private void btnLichSuDon_Click(object sender, EventArgs e)
         {
             new fLichSuDonHang().Show();
@@ -277,7 +255,7 @@ namespace PBL3_CoffeeHome.GUI
 
             ShowBill(orderId);
 
-            _listChiTietDon.Clear();
+            ReloadData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
 
@@ -294,7 +272,7 @@ namespace PBL3_CoffeeHome.GUI
                                  $"Mã đơn hàng: {order.OrderID}\n" +
                                  $"Ngày tạo: {order.CreatedAt:dd/MM/yyyy HH:mm}\n" +
                                  $"Số bàn: {order.CardNumber}\n" +
-                                 $"Nhân viên: {_cashier.UserID}\n\n" +
+                                 $"Nhân viên: {_cashier.FullName}\n\n" +
                                  "----- Danh sách món -----\n";
             foreach (var item in order.OrderItems)
             {
