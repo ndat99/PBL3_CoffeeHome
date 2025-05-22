@@ -83,7 +83,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderByDescending(bq => bq.AssignedAt);
+            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderBy(bq => bq.AssignedAt);
 
             foreach (var queue in queues)
             {
@@ -105,7 +105,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             listDaHoanThanh.Items.Clear();
             var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
-                        .OrderByDescending(bq => bq.CompletedAt);
+                        .OrderBy(bq => bq.CompletedAt);
 
             foreach (var queue in queues)
             {

@@ -31,7 +31,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             listDonHang.Items.Clear();
             var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
-                        .OrderByDescending(bq => bq.CompletedAt);
+                        .OrderBy(bq => bq.CompletedAt);
 
             foreach (var queue in queues)
             {
