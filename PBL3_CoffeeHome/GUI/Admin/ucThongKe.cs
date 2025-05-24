@@ -21,7 +21,7 @@ namespace PBL3_CoffeeHome.GUI
             InitializeComponent();
             _revenueBLL = new RevenueBLL();
 
-            // Khởi tạo dữ liệu cho các combobox
+
             cbThongKeTheo.Items.Clear();
             cbThongKeTheo.Items.AddRange(new string[] { "Ngày", "Tháng" });
             cbThongKeTheo.SelectedIndex = -1;
@@ -89,12 +89,11 @@ namespace PBL3_CoffeeHome.GUI
                 txtTongDT.Text = "$0";
                 txtTongSP.Text = "0";
                 txtTongKH.Text = "0";
-                // Xóa dữ liệu cũ trong biểu đồ
+
                 chartDoanhThu.Series["Series1"].Points.Clear();
                 chartSanPham.Series.Clear();
                 chartSanPham.Legends.Clear();
 
-                // Cập nhật tổng doanh thu, sản phẩm đã bán, và lượng khách theo thời gian đã chọn
                 decimal totalRevenue;
                 int totalProductsSold;
                 int totalCustomers;
@@ -121,12 +120,12 @@ namespace PBL3_CoffeeHome.GUI
                     throw new ArgumentException("Chế độ thống kê không hợp lệ.");
                 }
 
-                //// Hiển thị trên giao diện trong các panel
+
                 txtTongDT.Text = $"${totalRevenue:N0}";
                 txtTongSP.Text = totalProductsSold.ToString();
                 txtTongKH.Text = totalCustomers.ToString();
 
-                // Xử lý biểu đồ doanh thu theo ngày hoặc tháng
+
                 if (mode == "Ngày" && month.HasValue)
                 {
                     var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
@@ -144,8 +143,7 @@ namespace PBL3_CoffeeHome.GUI
                     }
                 }
 
-                // Xử lý sản phẩm bán chạy nhất - Biểu đồ tròn
-                // Tạo legend (chú thích) ở phía dưới
+
                 Legend legend = new Legend
                 {
                     Name = "ProductLegend",
@@ -161,7 +159,6 @@ namespace PBL3_CoffeeHome.GUI
                 };
                 chartSanPham.Legends.Add(legend);
 
-                // Tạo series biểu đồ tròn
                 Series pieSeries = new Series
                 {
                     Name = "TopProducts",
@@ -175,14 +172,14 @@ namespace PBL3_CoffeeHome.GUI
                 };
 
 
-                // Màu sắc cho các phần
+ 
                 Color[] colors = {
-            Color.FromArgb(65, 140, 240),   // Xanh dương
-            Color.FromArgb(252, 180, 65),   // Cam
-            Color.FromArgb(70, 190, 100),   // Xanh lá
-            Color.FromArgb(240, 80, 110),   // Đỏ
-            Color.FromArgb(170, 110, 210),  // Tím
-            Color.FromArgb(150, 150, 150)   // Xám (cho phần Khác)
+            Color.FromArgb(65, 140, 240),   
+            Color.FromArgb(252, 180, 65),   
+            Color.FromArgb(70, 190, 100),   
+            Color.FromArgb(240, 80, 110),   
+            Color.FromArgb(170, 110, 210),  
+            Color.FromArgb(150, 150, 150)   
         };
 
                 int colorIndex = 0;
@@ -194,7 +191,6 @@ namespace PBL3_CoffeeHome.GUI
                     point.LegendText = $"{product.ItemName} ({product.TotalQuantity})";
                     point.ToolTip = product.ItemName;
 
-                    // Định dạng đặc biệt cho phần "Khác"
                     if (product.ItemName == "Khác")
                     {
                         point.Color = Color.LightGray;
@@ -206,7 +202,6 @@ namespace PBL3_CoffeeHome.GUI
 
                 chartSanPham.Series.Add(pieSeries);
 
-                // Tùy chỉnh hiển thị
                 pieSeries["PieLabelStyle"] = "Inside";
                 pieSeries["PieDrawingStyle"] = "Concave";
                 chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = true;
