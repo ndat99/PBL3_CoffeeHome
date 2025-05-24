@@ -13,7 +13,7 @@ namespace PBL3_CoffeeHome.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202505201140243_InitialCreate"; }
+            get { return "202505240217214_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

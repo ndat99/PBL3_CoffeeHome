@@ -251,9 +251,9 @@
     <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202505201140243_InitialCreate.cs" />
-    <Compile Include="Migrations\202505201140243_InitialCreate.Designer.cs">
-      <DependentUpon>202505201140243_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202505240217214_InitialCreate.cs" />
+    <Compile Include="Migrations\202505240217214_InitialCreate.Designer.cs">
+      <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -328,8 +328,8 @@
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202505201140243_InitialCreate.resx">
-      <DependentUpon>202505201140243_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202505240217214_InitialCreate.resx">
+      <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

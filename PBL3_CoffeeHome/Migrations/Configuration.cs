@@ -12,6 +12,8 @@
         {
             AutomaticMigrationsEnabled = false;
         }
+
+
         protected override void Seed(PBL3_CoffeeHome.CoffeeDbContext context)
         {
             try
