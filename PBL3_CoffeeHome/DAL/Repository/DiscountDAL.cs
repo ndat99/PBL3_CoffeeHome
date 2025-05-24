@@ -17,7 +17,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
         }
 
         public Discount GetDiscountByEffectiveDate(DateTime effectiveDate)
-        {// lấy ngày, tháng
+        {
             return _db.Discounts.AsNoTracking()
          .FirstOrDefault(d => d.EffectiveDate.HasValue &&
          d.EffectiveDate.Value.Month == effectiveDate.Month &&
