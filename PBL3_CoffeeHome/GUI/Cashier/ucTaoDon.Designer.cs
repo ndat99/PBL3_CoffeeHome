@@ -324,6 +324,12 @@
             this.label5.TabIndex = 124;
             this.label5.Text = "Đơn hiện có";
             // 
+            // timerRefresh
+            // 
+            this.timerRefresh.Enabled = true;
+            this.timerRefresh.Interval = 3000;
+            this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
+            // 
             // dgvChiTietDon
             // 
             this.dgvChiTietDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
