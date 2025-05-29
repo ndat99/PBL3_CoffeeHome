@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
@@ -253,14 +254,14 @@ namespace PBL3_CoffeeHome.GUI
                 _orderItemsBLL.AddOrderItems(orderId, item.Name, item.Quantity, item.CostPrice);
             }
 
-            ShowBill(orderId);
-
+            InBill(orderId);
+            MessageBox.Show("Tạo đơn thành công", "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
             ReloadData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
 
         }
-        private void ShowBill(string orderId)
+        private void InBill(string orderId)
         {
             var order = _orderBLL.GetOrderDetails(orderId);
             if (order == null)
@@ -268,24 +269,54 @@ namespace PBL3_CoffeeHome.GUI
                 MessageBox.Show("Không tìm thấy đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string billMessage = "===== HÓA ĐƠN =====\n\n" +
-                                 $"Mã đơn hàng: {order.OrderID}\n" +
-                                 $"Ngày tạo: {order.CreatedAt:dd/MM/yyyy HH:mm}\n" +
-                                 $"Số bàn: {order.CardNumber}\n" +
-                                 $"Nhân viên: {_cashier.FullName}\n\n" +
-                                 "----- Danh sách món -----\n";
-            foreach (var item in order.OrderItems)
+
+            string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+            string billFolderPath = Path.Combine(projectPath, "Bill");
+            string fileName = "bill_" + order.OrderID + ".txt";
+            string filePath = Path.Combine(billFolderPath, fileName);
+            try
             {
-                billMessage += $"{item.MenuItem.Name} x {item.Quantity}: {item.Price * item.Quantity:N0} VNĐ\n";
+                using (StreamWriter writer = new StreamWriter(filePath, true, System.Text.Encoding.UTF8))
+                {
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine("             HÓA ĐƠN THANH TOÁN           ");
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine($"Mã đơn hàng: {order.OrderID}");
+                    writer.WriteLine($"Ngày tạo: {order.CreatedAt:dd/MM/yyyy HH:mm}");
+                    writer.WriteLine($"Số bàn: {order.CardNumber}");
+                    writer.WriteLine($"Nhân viên: {_cashier.FullName}");
+                    writer.WriteLine(new string('-', 45));
+                    writer.WriteLine("Danh sách món:".PadRight(45));
+                    writer.WriteLine(new string('-', 45));
+                    writer.WriteLine($"{"Tên món".PadRight(20)}{"SL".PadRight(5)}{"Đơn giá".PadRight(10)}{"Thành tiền"}");
+
+                    foreach (var item in order.OrderItems)
+                    {
+                        string tenMon = item.MenuItem.Name.Length > 18 ? item.MenuItem.Name.Substring(0, 15) + "..." : item.MenuItem.Name;
+                        string soLuong = item.Quantity.ToString();
+                        string donGia = item.Price.ToString("N0");
+                        string thanhTien = (item.Price * item.Quantity).ToString("N0");
+                        writer.WriteLine($"{tenMon.PadRight(20)}{soLuong.PadRight(5)}{donGia.PadRight(10)}{thanhTien}");
+                    }
+
+                    writer.WriteLine(new string('-', 45));
+                    writer.WriteLine($"Tổng tiền:".PadRight(30) + $"{order.TotalAmount:N0} VNĐ");
+                    writer.WriteLine($"Giảm giá:".PadRight(30) + $"{(order.Discount != null ? order.Discount.Name : "Không")}");
+                    writer.WriteLine($"Tiền giảm:".PadRight(30) + $"{order.DiscountAmount:N0} VNĐ");
+                    writer.WriteLine($"Tiền cuối cùng:".PadRight(30) + $"{order.FinalAmount:N0} VNĐ");
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine("    Cảm ơn quý khách đã sử dụng dịch vụ!");
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine();
+                }
+
             }
-            billMessage += $"\nTổng tiền: {order.TotalAmount:N0} VNĐ\n" +
-                           $"Giảm giá: {(order.Discount != null ? order.Discount.Name : "Không")}\n"+   
-                           $"Tiền giảm: {order.DiscountAmount:N0} VNĐ\n" +
-                           $"Tiền cuối cùng: {order.FinalAmount:N0} VNĐ\n\n" +
-                           "Cảm ơn quý khách đã sử dụng dịch vụ!";
-            // Hiển thị hóa đơn
-            MessageBox.Show(billMessage, "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu hóa đơn vào file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void listDonHienCo_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Kiểm tra nếu không có mục nào được chọn

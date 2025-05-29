@@ -15,7 +15,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _context = new CoffeeDbContext();
         }
 
-        // Các phương thức cơ bản
         public List<User> GetAllUsers()
         {
             return _context.Users.ToList();
