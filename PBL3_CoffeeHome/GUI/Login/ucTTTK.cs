@@ -141,9 +141,9 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void ucTTTK_Load(object sender, EventArgs e)
         {
-            MakeButtonRounded(btnSua, 10);
-            MakeButtonRounded(btnLuu, 10);
-            MakeButtonRounded(btnDoiMK, 10);
+            MakeButtonRounded(btnSua, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLuu, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnDoiMK, 10, Color.FromArgb(180, 180, 180));
         }
     }
 }

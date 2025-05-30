@@ -1,4 +1,4 @@
-﻿namespace PBL3_CoffeeHome.GUI.Login
+﻿namespace PBL3_CoffeeHome.GUI.UI
 {
     partial class RoundedTextBox
     {

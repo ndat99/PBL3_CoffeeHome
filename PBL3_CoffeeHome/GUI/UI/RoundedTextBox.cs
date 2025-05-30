@@ -171,6 +171,37 @@ public class RoundedTextBox : UserControl
             }
         }
     }
+    public override Font Font
+    {
+        get => textBox.Font;
+        set
+        {
+            textBox.Font = value;
+            base.Font = value;
+            UpdateTextBoxSize();
+        }
+    }
+    public HorizontalAlignment TextAlign
+    {
+        get => textBox.TextAlign;
+        set => textBox.TextAlign = value;
+    }
+
+    public override Color ForeColor
+    {
+        get => textBox.ForeColor;
+        set => textBox.ForeColor = Color.Black;
+    }
+
+    public override Color BackColor
+    {
+        get => textBox.BackColor;
+        set
+        {
+            textBox.BackColor = Color.White;
+            Invalidate();
+        }
+    }
 
     public TextBox InnerTextBox => textBox;  // Truy cập TextBox bên trong nếu cần
 }

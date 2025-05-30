@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,6 +48,12 @@ namespace PBL3_CoffeeHome.GUI
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
+            MakeButtonRounded(btnThem, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnXoa, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnClear, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnThanhToan, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLichSuDon, 10, Color.FromArgb(180, 180, 180));
+
         }
 
         public void LoadCBBName()
