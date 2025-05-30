@@ -26,7 +26,6 @@ namespace PBL3_CoffeeHome.GUI
             _baristaQueueBLL = new BaristaQueueBLL();
             _userBLL = new UserBLL();
             datePicker.Value = DateTime.Now.Date;
-            LoadOrderHistory(datePicker.Value.Date);
         }
         private void LoadOrderHistory(DateTime selectedDate)
         {
@@ -122,6 +121,13 @@ namespace PBL3_CoffeeHome.GUI
             {
                 MessageBox.Show($"Lỗi khi lưu hóa đơn vào file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void fLichSuDonHang_Load(object sender, EventArgs e)
+        {
+            LoadOrderHistory(datePicker.Value.Date);
+            MakeButtonRounded(btnInHoaDon, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLoc, 10, Color.FromArgb(180, 180, 180));
         }
     }
 }

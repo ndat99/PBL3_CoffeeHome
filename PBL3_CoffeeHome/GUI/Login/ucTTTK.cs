@@ -28,6 +28,8 @@ namespace PBL3_CoffeeHome.GUI
             _userBLL = new UserBLL();
             _user = updatedUser;
 
+            txtName.Text = _user.FullName;
+
             txtHoTen.Text = _user.FullName;
             txtHoTen.Enabled = false;
 

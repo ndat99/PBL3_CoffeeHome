@@ -51,6 +51,9 @@ namespace PBL3_CoffeeHome.GUI
             this.panel2 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtDNCuoi = new RoundedTextBox();
             this.txtVaiTro = new RoundedTextBox();
             this.txtGmail = new RoundedTextBox();
@@ -60,7 +63,6 @@ namespace PBL3_CoffeeHome.GUI
             this.txtMKmoi2 = new RoundedTextBox();
             this.txtTDN = new RoundedTextBox();
             this.txtMKCu = new RoundedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -71,7 +73,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(525, 232);
+            this.label1.Location = new System.Drawing.Point(537, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 28);
             this.label1.TabIndex = 0;
@@ -93,7 +95,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(525, 419);
+            this.label5.Location = new System.Drawing.Point(537, 419);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 28);
             this.label5.TabIndex = 4;
@@ -104,7 +106,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(525, 517);
+            this.label6.Location = new System.Drawing.Point(537, 517);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 28);
             this.label6.TabIndex = 5;
@@ -148,7 +150,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(525, 616);
+            this.label2.Location = new System.Drawing.Point(537, 616);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(183, 28);
             this.label2.TabIndex = 108;
@@ -177,7 +179,7 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.Image = global::PBL3_CoffeeHome.Properties.Resources.Save;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.Location = new System.Drawing.Point(707, 720);
+            this.btnLuu.Location = new System.Drawing.Point(719, 720);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(110, 38);
@@ -222,7 +224,7 @@ namespace PBL3_CoffeeHome.GUI
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.Image = global::PBL3_CoffeeHome.Properties.Resources.Pen1;
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSua.Location = new System.Drawing.Point(530, 720);
+            this.btnSua.Location = new System.Drawing.Point(542, 720);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(110, 38);
@@ -249,7 +251,7 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(420, 91);
+            this.panel1.Location = new System.Drawing.Point(432, 91);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(515, 727);
             this.panel1.TabIndex = 121;
@@ -260,7 +262,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(121, 23);
+            this.label3.Location = new System.Drawing.Point(130, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(255, 38);
             this.label3.TabIndex = 122;
@@ -280,7 +282,7 @@ namespace PBL3_CoffeeHome.GUI
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.btnDoiMK);
-            this.panel2.Location = new System.Drawing.Point(1042, 91);
+            this.panel2.Location = new System.Drawing.Point(1051, 91);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(551, 472);
             this.panel2.TabIndex = 122;
@@ -308,13 +310,50 @@ namespace PBL3_CoffeeHome.GUI
             this.label7.TabIndex = 12;
             this.label7.Text = "Tên đăng nhập";
             // 
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.SystemColors.Control;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.DimGray;
+            this.txtName.Location = new System.Drawing.Point(36, 451);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(376, 36);
+            this.txtName.TabIndex = 123;
+            this.txtName.Text = "Tên người dùng";
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label12.Location = new System.Drawing.Point(125, 477);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 45);
+            this.label12.TabIndex = 124;
+            this.label12.Text = "•";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label13.Location = new System.Drawing.Point(147, 489);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(156, 28);
+            this.label13.TabIndex = 125;
+            this.label13.Text = "Đang hoạt động";
+            // 
             // txtDNCuoi
             // 
             this.txtDNCuoi.BackColor = System.Drawing.Color.White;
             this.txtDNCuoi.BorderColor = System.Drawing.Color.Silver;
             this.txtDNCuoi.BorderRadius = 10;
             this.txtDNCuoi.BorderSize = 2;
-            this.txtDNCuoi.Location = new System.Drawing.Point(530, 647);
+            this.txtDNCuoi.Location = new System.Drawing.Point(542, 647);
             this.txtDNCuoi.Name = "txtDNCuoi";
             this.txtDNCuoi.Padding = new System.Windows.Forms.Padding(6);
             this.txtDNCuoi.Size = new System.Drawing.Size(287, 40);
@@ -327,7 +366,7 @@ namespace PBL3_CoffeeHome.GUI
             this.txtVaiTro.BorderColor = System.Drawing.Color.Silver;
             this.txtVaiTro.BorderRadius = 10;
             this.txtVaiTro.BorderSize = 2;
-            this.txtVaiTro.Location = new System.Drawing.Point(530, 548);
+            this.txtVaiTro.Location = new System.Drawing.Point(542, 548);
             this.txtVaiTro.Name = "txtVaiTro";
             this.txtVaiTro.Padding = new System.Windows.Forms.Padding(6);
             this.txtVaiTro.Size = new System.Drawing.Size(287, 40);
@@ -340,7 +379,7 @@ namespace PBL3_CoffeeHome.GUI
             this.txtGmail.BorderColor = System.Drawing.Color.Silver;
             this.txtGmail.BorderRadius = 10;
             this.txtGmail.BorderSize = 2;
-            this.txtGmail.Location = new System.Drawing.Point(530, 450);
+            this.txtGmail.Location = new System.Drawing.Point(542, 450);
             this.txtGmail.Name = "txtGmail";
             this.txtGmail.Padding = new System.Windows.Forms.Padding(6);
             this.txtGmail.Size = new System.Drawing.Size(287, 40);
@@ -353,7 +392,7 @@ namespace PBL3_CoffeeHome.GUI
             this.txtSDT.BorderColor = System.Drawing.Color.Silver;
             this.txtSDT.BorderRadius = 10;
             this.txtSDT.BorderSize = 2;
-            this.txtSDT.Location = new System.Drawing.Point(530, 359);
+            this.txtSDT.Location = new System.Drawing.Point(542, 359);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Padding = new System.Windows.Forms.Padding(6);
             this.txtSDT.Size = new System.Drawing.Size(287, 40);
@@ -366,7 +405,7 @@ namespace PBL3_CoffeeHome.GUI
             this.txtHoTen.BorderColor = System.Drawing.Color.Silver;
             this.txtHoTen.BorderRadius = 10;
             this.txtHoTen.BorderSize = 2;
-            this.txtHoTen.Location = new System.Drawing.Point(530, 263);
+            this.txtHoTen.Location = new System.Drawing.Point(542, 263);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Padding = new System.Windows.Forms.Padding(6);
             this.txtHoTen.Size = new System.Drawing.Size(287, 40);
@@ -425,24 +464,13 @@ namespace PBL3_CoffeeHome.GUI
             this.txtMKCu.TabIndex = 118;
             this.txtMKCu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.textBox1.Location = new System.Drawing.Point(36, 451);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(376, 36);
-            this.textBox1.TabIndex = 123;
-            this.textBox1.Text = "Tên người dùng";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // ucTTTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.txtDNCuoi);
             this.Controls.Add(this.txtVaiTro);
             this.Controls.Add(this.txtGmail);
@@ -529,6 +557,8 @@ namespace PBL3_CoffeeHome.GUI
             return path;
         }
 
-        private TextBox textBox1;
+        private TextBox txtName;
+        private Label label12;
+        private Label label13;
     }
 }
