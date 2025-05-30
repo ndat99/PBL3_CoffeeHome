@@ -44,11 +44,6 @@ namespace PBL3_CoffeeHome.GUI
             txtDNCuoi.Enabled = false;
         }
 
-        private void ucTTTK_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             txtHoTen.Enabled = true;
@@ -143,6 +138,12 @@ namespace PBL3_CoffeeHome.GUI
                               MessageBoxButtons.OK,
                               MessageBoxIcon.Error);
             }
+        }
+        private void ucTTTK_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnSua, 10);
+            MakeButtonRounded(btnLuu, 10);
+            MakeButtonRounded(btnDoiMK, 10);
         }
     }
 }
