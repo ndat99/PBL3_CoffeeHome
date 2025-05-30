@@ -14,7 +14,7 @@ public class RoundedTextBox : UserControl
     {
         InitializeTextBox();
         this.Resize += RoundedTextBox_Resize;
-        this.BackColor = Color.Transparent;
+        this.BackColor = Color.White;
         this.DoubleBuffered = true;
     }
 
@@ -26,10 +26,10 @@ public class RoundedTextBox : UserControl
         textBox.Multiline = false;
         textBox.Font = new Font("Segoe UI", 12F);
 
-        // Cách này để TextBox fill hết vùng bên trong UserControl
+        // Fill textBox với UserControl
         textBox.Dock = DockStyle.Fill;
 
-        // Đặt padding cho UserControl bằng borderSize để tạo khoảng cách cho viền
+        // Đặt padding cho textBox
         this.Padding = new Padding(6);
 
         this.Controls.Add(textBox);
@@ -107,21 +107,7 @@ public class RoundedTextBox : UserControl
         return path;
     }
 
-    // Override Dispose đúng chuẩn
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-        {
-            if (textBox != null)
-            {
-                textBox.Dispose();
-                textBox = null;
-            }
-        }
-        base.Dispose(disposing);
-    }
-
-    // Properties cho người dùng set/get
+    // Properties cho set/get
 
     public override string Text
     {
@@ -189,19 +175,30 @@ public class RoundedTextBox : UserControl
 
     public override Color ForeColor
     {
-        get => textBox.ForeColor;
-        set => textBox.ForeColor = Color.Black;
+        get => base.ForeColor;
+        set
+        {
+            base.ForeColor = value;
+            if (textBox != null)
+                textBox.ForeColor = value;
+        }
     }
+
 
     public override Color BackColor
     {
-        get => textBox.BackColor;
+        get => base.BackColor;
         set
         {
-            textBox.BackColor = Color.White;
+            base.BackColor = value;
+            if (textBox != null)
+            {
+                textBox.BackColor = value;
+            }
             Invalidate();
         }
     }
 
-    public TextBox InnerTextBox => textBox;  // Truy cập TextBox bên trong nếu cần
+
+    public TextBox InnerTextBox => textBox;  // Truy cập TextBox bên trong
 }
