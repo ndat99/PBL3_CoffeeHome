@@ -178,7 +178,7 @@ namespace PBL3_CoffeeHome.GUI
             // picAvatar
             // 
             this.picAvatar.Image = ((System.Drawing.Image)(resources.GetObject("picAvatar.Image")));
-            this.picAvatar.Location = new System.Drawing.Point(102, 41);
+            this.picAvatar.Location = new System.Drawing.Point(87, 41);
             this.picAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.Size = new System.Drawing.Size(200, 180);
