@@ -422,6 +422,7 @@
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Filter.png" />
     <None Include="Resources\Frame1.png" />
+    <None Include="Resources\Frame11.png" />
     <Content Include="Resources\icon.png" />
     <Content Include="Resources\In.png" />
     <Content Include="Resources\Key.png" />
@@ -439,6 +440,8 @@
     <None Include="Resources\panelTTTK_1.png" />
     <None Include="Resources\panelTTTK_2.png" />
     <None Include="Resources\Panel.png" />
+    <None Include="Resources\panelKiemKe_1.png" />
+    <None Include="Resources\panelKiemKe_2.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />

@@ -32,6 +32,10 @@ namespace PBL3_CoffeeHome.GUI.Barista
         {
             _listKiemke = new BindingList<InventoryCheckDTO>(); 
             LoadInventoryData();
+            MakeButtonRounded(btnThucHienKiemKe, 10, Color.Orange);
+            MakeButtonRounded(btnThemVaoDS, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnHoanTac, 10, Color.OrangeRed);
+            MakeButtonRounded(btnLuu, 10, Color.Black);
         }
 
         public void LoadInventoryData(DateTime? filterDate = null)
