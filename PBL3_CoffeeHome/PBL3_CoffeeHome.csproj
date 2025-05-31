@@ -404,8 +404,8 @@
     <None Include="Resources\Alert1.png" />
     <None Include="Resources\Add1.png" />
     <Content Include="Resources\Alert.png" />
-    <Content Include="Resources\Avatar.png" />
     <None Include="Resources\back.png" />
+    <None Include="Resources\Avatar.png" />
     <Content Include="Resources\BaoCao.png" />
     <Content Include="Resources\Cancel.png" />
     <Content Include="Resources\ChiTiet.png" />
@@ -442,6 +442,8 @@
     <None Include="Resources\Panel.png" />
     <None Include="Resources\panelKiemKe_1.png" />
     <None Include="Resources\panelKiemKe_2.png" />
+    <None Include="Resources\panelLSGD_1.png" />
+    <None Include="Resources\panelDonHang_2.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />

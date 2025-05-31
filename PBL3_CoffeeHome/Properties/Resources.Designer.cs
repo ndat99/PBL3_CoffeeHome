@@ -383,6 +383,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap panelDonHang_2 {
+            get {
+                object obj = ResourceManager.GetObject("panelDonHang_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap panelKiemKe_1 {
             get {
                 object obj = ResourceManager.GetObject("panelKiemKe_1", resourceCulture);
@@ -396,6 +406,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap panelKiemKe_2 {
             get {
                 object obj = ResourceManager.GetObject("panelKiemKe_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap panelLSGD_1 {
+            get {
+                object obj = ResourceManager.GetObject("panelLSGD_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

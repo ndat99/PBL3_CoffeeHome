@@ -36,155 +36,48 @@ namespace PBL3_CoffeeHome.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTaoDon));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cBDanhMuc = new System.Windows.Forms.ComboBox();
-            this.cBMon = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.numSoLuong = new System.Windows.Forms.NumericUpDown();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.imageTrangThai = new System.Windows.Forms.ImageList(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.listDaHoanThanh = new System.Windows.Forms.ListView();
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listDonHienCo = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.dgvChiTietDon = new System.Windows.Forms.DataGridView();
             this.cTenMon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.listDonHienCo = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnLichSuDon = new System.Windows.Forms.Button();
-            this.btnThanhToan = new System.Windows.Forms.Button();
+            this.listDaHoanThanh = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
             this.txtThanhTien = new RoundedTextBox();
             this.txtSoBan = new RoundedTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
+            this.cBMon = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnLichSuDon = new System.Windows.Forms.Button();
+            this.cBDanhMuc = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.numSoLuong = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnThanhToan = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 86);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 23);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Danh mục";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Món";
-            // 
-            // cBDanhMuc
-            // 
-            this.cBDanhMuc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cBDanhMuc.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBDanhMuc.FormattingEnabled = true;
-            this.cBDanhMuc.Location = new System.Drawing.Point(43, 111);
-            this.cBDanhMuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cBDanhMuc.Name = "cBDanhMuc";
-            this.cBDanhMuc.Size = new System.Drawing.Size(195, 31);
-            this.cBDanhMuc.TabIndex = 3;
-            this.cBDanhMuc.SelectedIndexChanged += new System.EventHandler(this.cBDanhMuc_SelectedIndexChanged);
-            // 
-            // cBMon
-            // 
-            this.cBMon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cBMon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cBMon.FormattingEnabled = true;
-            this.cBMon.Location = new System.Drawing.Point(260, 111);
-            this.cBMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cBMon.Name = "cBMon";
-            this.cBMon.Size = new System.Drawing.Size(195, 31);
-            this.cBMon.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(473, 86);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 23);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Số lượng";
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThem.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnThem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThem.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(574, 114);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(93, 28);
-            this.btnThem.TabIndex = 7;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = false;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // numSoLuong
-            // 
-            this.numSoLuong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numSoLuong.Location = new System.Drawing.Point(477, 112);
-            this.numSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numSoLuong.Name = "numSoLuong";
-            this.numSoLuong.Size = new System.Drawing.Size(74, 30);
-            this.numSoLuong.TabIndex = 20;
-            this.numSoLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numSoLuong.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.LightSalmon;
-            this.btnXoa.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnXoa.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSalmon;
-            this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(113)))), ((int)(((byte)(74)))));
-            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(685, 114);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(93, 28);
-            this.btnXoa.TabIndex = 24;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // imageTrangThai
             // 
@@ -192,90 +85,6 @@ namespace PBL3_CoffeeHome.GUI
             this.imageTrangThai.TransparentColor = System.Drawing.Color.Transparent;
             this.imageTrangThai.Images.SetKeyName(0, "ChuaHoanThanh.png");
             this.imageTrangThai.Images.SetKeyName(1, "DaHoanThanh.png");
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(256, 611);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 23);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "Số bàn";
-            // 
-            // listDaHoanThanh
-            // 
-            this.listDaHoanThanh.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listDaHoanThanh.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader7,
-            this.columnHeader8});
-            this.listDaHoanThanh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listDaHoanThanh.FullRowSelect = true;
-            this.listDaHoanThanh.HideSelection = false;
-            this.listDaHoanThanh.Location = new System.Drawing.Point(30, 86);
-            this.listDaHoanThanh.Name = "listDaHoanThanh";
-            this.listDaHoanThanh.Size = new System.Drawing.Size(540, 260);
-            this.listDaHoanThanh.SmallImageList = this.imageTrangThai;
-            this.listDaHoanThanh.TabIndex = 128;
-            this.listDaHoanThanh.UseCompatibleStateImageBehavior = false;
-            this.listDaHoanThanh.View = System.Windows.Forms.View.Details;
-            this.listDaHoanThanh.SelectedIndexChanged += new System.EventHandler(this.listDaHoanThanh_SelectedIndexChanged);
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Trạng thái";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 85;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Mã đơn";
-            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader7.Width = 175;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Hoàn thành lúc";
-            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader8.Width = 125;
-            // 
-            // listDonHienCo
-            // 
-            this.listDonHienCo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listDonHienCo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listDonHienCo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listDonHienCo.FullRowSelect = true;
-            this.listDonHienCo.HideSelection = false;
-            this.listDonHienCo.Location = new System.Drawing.Point(27, 86);
-            this.listDonHienCo.Name = "listDonHienCo";
-            this.listDonHienCo.Size = new System.Drawing.Size(540, 260);
-            this.listDonHienCo.SmallImageList = this.imageTrangThai;
-            this.listDonHienCo.TabIndex = 125;
-            this.listDonHienCo.UseCompatibleStateImageBehavior = false;
-            this.listDonHienCo.View = System.Windows.Forms.View.Details;
-            this.listDonHienCo.SelectedIndexChanged += new System.EventHandler(this.listDonHienCo_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Trạng thái";
-            this.columnHeader1.Width = 85;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Mã đơn";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader2.Width = 175;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Giờ tạo";
-            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader3.Width = 125;
             // 
             // dgvChiTietDon
             // 
@@ -354,38 +163,9 @@ namespace PBL3_CoffeeHome.GUI
             this.cThanhTien.ReadOnly = true;
             this.cThanhTien.Width = 130;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(444, 611);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 23);
-            this.label6.TabIndex = 133;
-            this.label6.Text = "Tổng tiền";
-            // 
-            // btnClear
-            // 
-            this.btnClear.BackColor = System.Drawing.Color.Linen;
-            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Linen;
-            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.BurlyWood;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(793, 114);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 28);
-            this.btnClear.TabIndex = 134;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = false;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelDonHang_1;
+            this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelDonHang_2;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.listDonHienCo);
@@ -400,11 +180,47 @@ namespace PBL3_CoffeeHome.GUI
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(220, 22);
+            this.label4.Location = new System.Drawing.Point(220, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(176, 38);
             this.label4.TabIndex = 126;
             this.label4.Text = "Đơn hiện có";
+            // 
+            // listDonHienCo
+            // 
+            this.listDonHienCo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listDonHienCo.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listDonHienCo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listDonHienCo.FullRowSelect = true;
+            this.listDonHienCo.HideSelection = false;
+            this.listDonHienCo.Location = new System.Drawing.Point(27, 86);
+            this.listDonHienCo.Name = "listDonHienCo";
+            this.listDonHienCo.Size = new System.Drawing.Size(540, 260);
+            this.listDonHienCo.SmallImageList = this.imageTrangThai;
+            this.listDonHienCo.TabIndex = 125;
+            this.listDonHienCo.UseCompatibleStateImageBehavior = false;
+            this.listDonHienCo.View = System.Windows.Forms.View.Details;
+            this.listDonHienCo.SelectedIndexChanged += new System.EventHandler(this.listDonHienCo_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Trạng thái";
+            this.columnHeader1.Width = 85;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Mã đơn";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 175;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Giờ tạo";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 125;
             // 
             // panel3
             // 
@@ -423,55 +239,48 @@ namespace PBL3_CoffeeHome.GUI
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(203, 22);
+            this.label5.Location = new System.Drawing.Point(203, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(212, 38);
             this.label5.TabIndex = 129;
             this.label5.Text = "Đã hoàn thành";
             // 
-            // btnLichSuDon
+            // listDaHoanThanh
             // 
-            this.btnLichSuDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(193)))), ((int)(((byte)(248)))));
-            this.btnLichSuDon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLichSuDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLichSuDon.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnLichSuDon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            this.btnLichSuDon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(116)))), ((int)(((byte)(163)))));
-            this.btnLichSuDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLichSuDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLichSuDon.Image = global::PBL3_CoffeeHome.Properties.Resources.LichSu;
-            this.btnLichSuDon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLichSuDon.Location = new System.Drawing.Point(662, 726);
-            this.btnLichSuDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLichSuDon.Name = "btnLichSuDon";
-            this.btnLichSuDon.Size = new System.Drawing.Size(216, 39);
-            this.btnLichSuDon.TabIndex = 47;
-            this.btnLichSuDon.Text = "Lịch sử đơn hàng";
-            this.btnLichSuDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLichSuDon.UseVisualStyleBackColor = false;
-            this.btnLichSuDon.Click += new System.EventHandler(this.btnLichSuDon_Click);
+            this.listDaHoanThanh.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listDaHoanThanh.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.listDaHoanThanh.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listDaHoanThanh.FullRowSelect = true;
+            this.listDaHoanThanh.HideSelection = false;
+            this.listDaHoanThanh.Location = new System.Drawing.Point(30, 86);
+            this.listDaHoanThanh.Name = "listDaHoanThanh";
+            this.listDaHoanThanh.Size = new System.Drawing.Size(540, 260);
+            this.listDaHoanThanh.SmallImageList = this.imageTrangThai;
+            this.listDaHoanThanh.TabIndex = 128;
+            this.listDaHoanThanh.UseCompatibleStateImageBehavior = false;
+            this.listDaHoanThanh.View = System.Windows.Forms.View.Details;
+            this.listDaHoanThanh.SelectedIndexChanged += new System.EventHandler(this.listDaHoanThanh_SelectedIndexChanged);
             // 
-            // btnThanhToan
+            // columnHeader4
             // 
-            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
-            this.btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThanhToan.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThanhToan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
-            this.btnThanhToan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(143)))), ((int)(((byte)(95)))));
-            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThanhToan.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.ForeColor = System.Drawing.Color.Black;
-            this.btnThanhToan.Image = global::PBL3_CoffeeHome.Properties.Resources.In;
-            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThanhToan.Location = new System.Drawing.Point(711, 622);
-            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(167, 70);
-            this.btnThanhToan.TabIndex = 23;
-            this.btnThanhToan.Text = "Tạo đơn \n    và \nThanh toán";
-            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThanhToan.UseVisualStyleBackColor = false;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
+            this.columnHeader4.Text = "Trạng thái";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 85;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Mã đơn";
+            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader7.Width = 175;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Hoàn thành lúc";
+            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader8.Width = 125;
             // 
             // panel2
             // 
@@ -497,18 +306,6 @@ namespace PBL3_CoffeeHome.GUI
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(916, 789);
             this.panel2.TabIndex = 139;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(23, 12);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(304, 45);
-            this.label14.TabIndex = 102;
-            this.label14.Text = "Tạo đơn hàng mới";
             // 
             // txtThanhTien
             // 
@@ -538,6 +335,209 @@ namespace PBL3_CoffeeHome.GUI
             this.txtSoBan.TabIndex = 134;
             this.txtSoBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // cBMon
+            // 
+            this.cBMon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cBMon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBMon.FormattingEnabled = true;
+            this.cBMon.Location = new System.Drawing.Point(260, 111);
+            this.cBMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cBMon.Name = "cBMon";
+            this.cBMon.Size = new System.Drawing.Size(195, 31);
+            this.cBMon.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(256, 86);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 23);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Món";
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.Linen;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Linen;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.BurlyWood;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(793, 114);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(85, 28);
+            this.btnClear.TabIndex = 134;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnLichSuDon
+            // 
+            this.btnLichSuDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(193)))), ((int)(((byte)(248)))));
+            this.btnLichSuDon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLichSuDon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLichSuDon.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnLichSuDon.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            this.btnLichSuDon.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(116)))), ((int)(((byte)(163)))));
+            this.btnLichSuDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLichSuDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLichSuDon.Image = global::PBL3_CoffeeHome.Properties.Resources.LichSu;
+            this.btnLichSuDon.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLichSuDon.Location = new System.Drawing.Point(662, 726);
+            this.btnLichSuDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLichSuDon.Name = "btnLichSuDon";
+            this.btnLichSuDon.Size = new System.Drawing.Size(216, 39);
+            this.btnLichSuDon.TabIndex = 47;
+            this.btnLichSuDon.Text = "Lịch sử đơn hàng";
+            this.btnLichSuDon.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLichSuDon.UseVisualStyleBackColor = false;
+            this.btnLichSuDon.Click += new System.EventHandler(this.btnLichSuDon_Click);
+            // 
+            // cBDanhMuc
+            // 
+            this.cBDanhMuc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cBDanhMuc.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cBDanhMuc.FormattingEnabled = true;
+            this.cBDanhMuc.Location = new System.Drawing.Point(43, 111);
+            this.cBDanhMuc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cBDanhMuc.Name = "cBDanhMuc";
+            this.cBDanhMuc.Size = new System.Drawing.Size(195, 31);
+            this.cBDanhMuc.TabIndex = 3;
+            this.cBDanhMuc.SelectedIndexChanged += new System.EventHandler(this.cBDanhMuc_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(39, 86);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Danh mục";
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnXoa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXoa.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSalmon;
+            this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(113)))), ((int)(((byte)(74)))));
+            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Location = new System.Drawing.Point(685, 114);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(93, 28);
+            this.btnXoa.TabIndex = 24;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(444, 611);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 23);
+            this.label6.TabIndex = 133;
+            this.label6.Text = "Tổng tiền";
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThem.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnThem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThem.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Location = new System.Drawing.Point(574, 114);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(93, 28);
+            this.btnThem.TabIndex = 7;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // numSoLuong
+            // 
+            this.numSoLuong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numSoLuong.Location = new System.Drawing.Point(477, 112);
+            this.numSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numSoLuong.Name = "numSoLuong";
+            this.numSoLuong.Size = new System.Drawing.Size(74, 30);
+            this.numSoLuong.TabIndex = 20;
+            this.numSoLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numSoLuong.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(473, 86);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 23);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Số lượng";
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
+            this.btnThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThanhToan.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThanhToan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(211)))), ((int)(((byte)(110)))));
+            this.btnThanhToan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(143)))), ((int)(((byte)(95)))));
+            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThanhToan.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.ForeColor = System.Drawing.Color.Black;
+            this.btnThanhToan.Image = global::PBL3_CoffeeHome.Properties.Resources.In;
+            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThanhToan.Location = new System.Drawing.Point(711, 622);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(167, 70);
+            this.btnThanhToan.TabIndex = 23;
+            this.btnThanhToan.Text = "Tạo đơn \n    và \nThanh toán";
+            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThanhToan.UseVisualStyleBackColor = false;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click_1);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Gray;
+            this.label14.Location = new System.Drawing.Point(23, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(304, 45);
+            this.label14.TabIndex = 102;
+            this.label14.Text = "Tạo đơn hàng mới";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(256, 611);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 23);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Số bàn";
+            // 
             // ucTaoDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -551,7 +551,6 @@ namespace PBL3_CoffeeHome.GUI
             this.Name = "ucTaoDon";
             this.Size = new System.Drawing.Size(1712, 992);
             this.Load += new System.EventHandler(this.ucTaoDon_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -559,6 +558,7 @@ namespace PBL3_CoffeeHome.GUI
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
             this.ResumeLayout(false);
 
         }
