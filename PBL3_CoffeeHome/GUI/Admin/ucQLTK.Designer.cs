@@ -88,7 +88,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvTaiKhoan.ColumnHeadersHeight = 30;
+            this.dgvTaiKhoan.ColumnHeadersHeight = 35;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,7 +103,7 @@
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowHeadersVisible = false;
             this.dgvTaiKhoan.RowHeadersWidth = 51;
-            this.dgvTaiKhoan.RowTemplate.Height = 30;
+            this.dgvTaiKhoan.RowTemplate.Height = 35;
             this.dgvTaiKhoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTaiKhoan.Size = new System.Drawing.Size(1107, 639);
             this.dgvTaiKhoan.TabIndex = 61;
@@ -263,10 +263,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.btnDoiVaiTro);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.dgvTaiKhoan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cBVaiTro);
@@ -274,7 +275,6 @@
             this.Controls.Add(this.btnXemChiTiet);
             this.Controls.Add(this.btnTaoTK);
             this.Controls.Add(this.btnXoaTK);
-            this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucQLTK";
             this.Size = new System.Drawing.Size(1584, 946);

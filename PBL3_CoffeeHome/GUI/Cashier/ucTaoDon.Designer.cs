@@ -301,7 +301,7 @@ namespace PBL3_CoffeeHome.GUI
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvChiTietDon.DefaultCellStyle = dataGridViewCellStyle2;
@@ -309,6 +309,7 @@ namespace PBL3_CoffeeHome.GUI
             this.dgvChiTietDon.Location = new System.Drawing.Point(63, 224);
             this.dgvChiTietDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvChiTietDon.Name = "dgvChiTietDon";
+            this.dgvChiTietDon.ReadOnly = true;
             this.dgvChiTietDon.RowHeadersVisible = false;
             this.dgvChiTietDon.RowHeadersWidth = 51;
             this.dgvChiTietDon.RowTemplate.Height = 35;
@@ -323,6 +324,7 @@ namespace PBL3_CoffeeHome.GUI
             this.cTenMon.HeaderText = "Tên món";
             this.cTenMon.MinimumWidth = 6;
             this.cTenMon.Name = "cTenMon";
+            this.cTenMon.ReadOnly = true;
             this.cTenMon.Width = 300;
             // 
             // cSoLuong
@@ -331,6 +333,7 @@ namespace PBL3_CoffeeHome.GUI
             this.cSoLuong.HeaderText = "Số lượng";
             this.cSoLuong.MinimumWidth = 6;
             this.cSoLuong.Name = "cSoLuong";
+            this.cSoLuong.ReadOnly = true;
             this.cSoLuong.Width = 130;
             // 
             // cDonGia
@@ -339,6 +342,7 @@ namespace PBL3_CoffeeHome.GUI
             this.cDonGia.HeaderText = "Đơn giá";
             this.cDonGia.MinimumWidth = 6;
             this.cDonGia.Name = "cDonGia";
+            this.cDonGia.ReadOnly = true;
             this.cDonGia.Width = 130;
             // 
             // cThanhTien
@@ -347,6 +351,7 @@ namespace PBL3_CoffeeHome.GUI
             this.cThanhTien.HeaderText = "Thành tiền";
             this.cThanhTien.MinimumWidth = 6;
             this.cThanhTien.Name = "cThanhTien";
+            this.cThanhTien.ReadOnly = true;
             this.cThanhTien.Width = 130;
             // 
             // label6
@@ -369,10 +374,10 @@ namespace PBL3_CoffeeHome.GUI
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.BurlyWood;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(793, 111);
+            this.btnClear.Location = new System.Drawing.Point(793, 114);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 30);
+            this.btnClear.Size = new System.Drawing.Size(85, 28);
             this.btnClear.TabIndex = 134;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -537,6 +542,7 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.dgvChiTietDon);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
