@@ -144,5 +144,12 @@ namespace PBL3_CoffeeHome.GUI.Barista
             txtSearch.Clear();
             LoadLSGD();
         }
+
+        private void ucLichSuHangHoa_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnApDung, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnReset, 10, Color.MediumPurple);
+            MakeButtonRounded(btnThongTinChiTiet, 10, Color.FromArgb(255, 128, 0));
+        }
     }
 }

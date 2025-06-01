@@ -174,7 +174,7 @@ namespace PBL3_CoffeeHome.DAL
                 {
                     return false;
                 }
-                decimal newQuantity = quantityChange + inventoryItem.Quantity;
+                decimal newQuantity = -quantityChange + inventoryItem.Quantity;
                 var transaction = new InventoryTransaction
                 {
                     TransactionID = GenerateTransactionID(),

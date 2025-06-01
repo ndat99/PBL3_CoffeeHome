@@ -12,12 +12,10 @@ namespace PBL3_CoffeeHome.BLL
     public class RevenueBLL
     {
         private readonly RevenueDAL _revenueDAL;
-        private readonly InventoryTransactionBLL _inventoryTransactionBLL;
 
         public RevenueBLL()
         {
             _revenueDAL = new RevenueDAL();
-            _inventoryTransactionBLL = new InventoryTransactionBLL();
         }
         public void AddRevenue(string revenueID, decimal totalRevenue, decimal totalExpense)
         {

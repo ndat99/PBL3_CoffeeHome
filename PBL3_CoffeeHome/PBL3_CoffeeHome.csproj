@@ -239,6 +239,12 @@
     <Compile Include="GUI\Admin\ucKhoHang.Designer.cs">
       <DependentUpon>ucKhoHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UI\RoundedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UI\RoundedTextBox.Designer.cs">
+      <DependentUpon>RoundedTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login\ucTTTK.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -251,9 +257,9 @@
     <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202505201140243_InitialCreate.cs" />
-    <Compile Include="Migrations\202505201140243_InitialCreate.Designer.cs">
-      <DependentUpon>202505201140243_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202505240217214_InitialCreate.cs" />
+    <Compile Include="Migrations\202505240217214_InitialCreate.Designer.cs">
+      <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -325,11 +331,14 @@
     <EmbeddedResource Include="GUI\Login\fDetailTTTK.resx">
       <DependentUpon>fDetailTTTK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UI\RoundedTextBox.resx">
+      <DependentUpon>RoundedTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202505201140243_InitialCreate.resx">
-      <DependentUpon>202505201140243_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202505240217214_InitialCreate.resx">
+      <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -395,8 +404,8 @@
     <None Include="Resources\Alert1.png" />
     <None Include="Resources\Add1.png" />
     <Content Include="Resources\Alert.png" />
-    <Content Include="Resources\Avatar.png" />
     <None Include="Resources\back.png" />
+    <None Include="Resources\Avatar.png" />
     <Content Include="Resources\BaoCao.png" />
     <Content Include="Resources\Cancel.png" />
     <Content Include="Resources\ChiTiet.png" />
@@ -413,6 +422,7 @@
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Filter.png" />
     <None Include="Resources\Frame1.png" />
+    <None Include="Resources\Frame11.png" />
     <Content Include="Resources\icon.png" />
     <Content Include="Resources\In.png" />
     <Content Include="Resources\Key.png" />
@@ -424,8 +434,16 @@
     <Content Include="Resources\logo2.png" />
     <Content Include="Resources\Money.png" />
     <Content Include="Resources\NguyenVatLieu.png" />
-    <Content Include="Resources\Panel.png" />
     <None Include="Resources\Panel_yellow.png" />
+    <None Include="Resources\panelTaoDon_1.png" />
+    <None Include="Resources\panelDonHang_1.png" />
+    <None Include="Resources\panelTTTK_1.png" />
+    <None Include="Resources\panelTTTK_2.png" />
+    <None Include="Resources\Panel.png" />
+    <None Include="Resources\panelKiemKe_1.png" />
+    <None Include="Resources\panelKiemKe_2.png" />
+    <None Include="Resources\panelLSGD_1.png" />
+    <None Include="Resources\panelDonHang_2.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
