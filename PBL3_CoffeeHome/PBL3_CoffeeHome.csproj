@@ -109,6 +109,8 @@
     <Compile Include="DTO\OrderItem.cs" />
     <Compile Include="DTO\Revenue.cs" />
     <Compile Include="DTO\RevenueDetail.cs" />
+    <Compile Include="DTO\Salary.cs" />
+    <Compile Include="DTO\Schedule.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\ViewModel\IngredientView.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
@@ -148,6 +150,12 @@
     </Compile>
     <Compile Include="GUI\Admin\ucDetailNL.Designer.cs">
       <DependentUpon>ucDetailNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\ucNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucNhanVien.Designer.cs">
+      <DependentUpon>ucNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucQLTK.cs">
       <SubType>UserControl</SubType>
@@ -251,9 +259,9 @@
     <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202505201140243_InitialCreate.cs" />
-    <Compile Include="Migrations\202505201140243_InitialCreate.Designer.cs">
-      <DependentUpon>202505201140243_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202505240126241_Create.cs" />
+    <Compile Include="Migrations\202505240126241_Create.Designer.cs">
+      <DependentUpon>202505240126241_Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -282,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucLoiNhuan.resx">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucNhanVien.resx">
+      <DependentUpon>ucNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
@@ -328,8 +339,8 @@
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202505201140243_InitialCreate.resx">
-      <DependentUpon>202505201140243_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202505240126241_Create.resx">
+      <DependentUpon>202505240126241_Create.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

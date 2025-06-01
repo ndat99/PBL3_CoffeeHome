@@ -49,7 +49,7 @@ namespace PBL3_CoffeeHome.GUI
         }
 
         // tab DSNL
-        private void TabDSNL()
+        private void    TabDSNL()
         {
             _listDSNL = new BindingList<InventoryDisplayDTO>();
             dgvDSNL.DataSource = _listDSNL;
@@ -325,8 +325,6 @@ namespace PBL3_CoffeeHome.GUI
             LoadCBB();
             LoadNgayGD();
         }
-
-
 
         private void LoadLSGD()
         {

@@ -18,7 +18,6 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
         public DateTime ExpirationDate { get; set; }
         public decimal CostPrice { get; set; }
 
-        // Thuộc tính mở rộng
         public bool IsLowStock => Quantity <= MinimumQuantity;
         public int DaysUntilExpiration => (ExpirationDate - DateTime.Now).Days;
         public string Status
@@ -29,7 +28,7 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
                     return "Hết hàng";
                 if (Quantity <= MinimumQuantity)
                     return "Sắp hết";
-                if (DaysUntilExpiration >= 0 && DaysUntilExpiration <= 7)
+                if (DaysUntilExpiration >= 0 && DaysUntilExpiration <= 8)
                     return "Sắp hết hạn";
                 if (DaysUntilExpiration < 0)
                     return "Đã hêt hạn";
@@ -106,20 +105,8 @@ namespace PBL3_CoffeeHome.DTO.ViewModel
         public decimal ActualQuantity { get; set; }
         public string Unit { get; set; }
         public string UserID { get; set; }
-        public string Note { get; set; }
-
-        // Thuộc tính mở rộng
+      
         public decimal Difference => ActualQuantity - SystemQuantity;
-        public string Status
-        {
-            get
-            {
-                if (Difference > 0)
-                    return "Thừa";
-                if (Difference < 0)
-                    return "Thiếu";
-                return "Khớp";
-            }
-        }
+        public string Note { get; set; }
     }
 }

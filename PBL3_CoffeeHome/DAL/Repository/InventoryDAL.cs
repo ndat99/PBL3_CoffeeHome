@@ -49,7 +49,7 @@ namespace PBL3_CoffeeHome.DAL
 
         public List<Inventory> GetExpiring(int days)
         {
-            var expiringDate = DateTime.Now.AddDays(days).AddTicks(-1);
+            var expiringDate = DateTime.Now.AddDays(days+1).AddTicks(-1);
             var today = DateTime.Now.Date;
             return _db.Inventory.AsNoTracking().Where(i => i.ExpirationDate <= expiringDate && i.ExpirationDate >= today).OrderBy(c => c.ExpirationDate).ToList();
         }
