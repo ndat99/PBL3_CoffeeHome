@@ -330,9 +330,9 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.panel5.Controls.Add(this.cboType);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(17, 15);
+            this.panel5.Location = new System.Drawing.Point(17, 20);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1716, 856);
+            this.panel5.Size = new System.Drawing.Size(1716, 851);
             this.panel5.TabIndex = 154;
             // 
             // label1

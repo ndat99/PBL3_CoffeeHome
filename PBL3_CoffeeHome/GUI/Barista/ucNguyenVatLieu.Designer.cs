@@ -100,9 +100,9 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(17, 15);
+            this.panel2.Location = new System.Drawing.Point(17, 20);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1716, 856);
+            this.panel2.Size = new System.Drawing.Size(1716, 851);
             this.panel2.TabIndex = 153;
             // 
             // label5
@@ -356,7 +356,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.dgvListKiemKe.RowTemplate.ReadOnly = true;
             this.dgvListKiemKe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvListKiemKe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListKiemKe.Size = new System.Drawing.Size(1235, 469);
+            this.dgvListKiemKe.Size = new System.Drawing.Size(1235, 457);
             this.dgvListKiemKe.TabIndex = 148;
             // 
             // cTen
@@ -441,7 +441,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(925, 195);
+            this.label16.Location = new System.Drawing.Point(920, 195);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(135, 20);
             this.label16.TabIndex = 132;
