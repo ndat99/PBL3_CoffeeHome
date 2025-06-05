@@ -204,7 +204,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(142, 23);
+            this.label3.Location = new System.Drawing.Point(127, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(302, 38);
             this.label3.TabIndex = 122;
@@ -233,7 +233,7 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.Image = global::PBL3_CoffeeHome.Properties.Resources.Save;
             this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLuu.Location = new System.Drawing.Point(333, 629);
+            this.btnLuu.Location = new System.Drawing.Point(319, 629);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(110, 38);
@@ -294,7 +294,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(207, 23);
+            this.label11.Location = new System.Drawing.Point(183, 23);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(174, 38);
             this.label11.TabIndex = 122;

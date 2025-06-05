@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO.ViewModel;
 using PBL3_CoffeeHome.DTO;
+using System.Security.Cryptography;
 
 namespace PBL3_CoffeeHome.GUI.Barista
 {
@@ -18,14 +19,14 @@ namespace PBL3_CoffeeHome.GUI.Barista
         private readonly InventoryTransactionBLL _transactionBLL;
         private readonly InventoryBLL _inventoryBLL;
         private BindingList<InventoryCheckDTO> _listKiemke;
-        private User _barista;
-        public ucNguyenVatLieu(User barista)
+        private User _user;
+        public ucNguyenVatLieu(User user)
         {
             InitializeComponent();
             _transactionBLL = new InventoryTransactionBLL();
             _inventoryBLL = new InventoryBLL();
             _listKiemke = new BindingList<InventoryCheckDTO>();
-            _barista = barista;
+            _user = user;
         }
 
         private void ucNguyenVatLieu_Load(object sender, EventArgs e)
@@ -36,6 +37,15 @@ namespace PBL3_CoffeeHome.GUI.Barista
             MakeButtonRounded(btnThemVaoDS, 10, Color.FromArgb(0, 102, 204));
             MakeButtonRounded(btnHoanTac, 10, Color.OrangeRed);
             MakeButtonRounded(btnLuu, 10, Color.Black);
+            MakeButtonRounded(btnExit, 10, Color.FromArgb(255, 128, 0));
+            if (_user.Role == "Barista")
+            {
+                btnExit.Visible = false;
+            }
+            else
+            {
+                btnExit.Visible = true;
+            }
         }
 
         public void LoadInventoryData(DateTime? filterDate = null)
@@ -107,7 +117,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 SystemQuantity = quantityNL,
                 ActualQuantity = nudQuantityThucTe.Value,
                 Unit = inventoryItem.Unit,
-                UserID = _barista.UserID,
+                UserID = _user.UserID,
                 Note = txtGhiChu.Text
             };
             _listKiemke.Add(newCheckInventory);
@@ -118,7 +128,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 newCheckInventory.SystemQuantity,
                 newCheckInventory.ActualQuantity,
                 newCheckInventory.Unit,
-                _barista.FullName,
+                _user.FullName,
                 newCheckInventory.Note,
                 newCheckInventory.Difference
             );
@@ -163,6 +173,15 @@ namespace PBL3_CoffeeHome.GUI.Barista
             else
             {
                 MessageBox.Show("Kiểm kê kho thất bại. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            if (_user.Role == "Admin")
+            {
+                var AdminForm = (fQuanLy)this.ParentForm;
+                AdminForm.LoadControlToPanel(new ucKhoHang(_user, 0), AdminForm.panelChiTiet);
             }
         }
     }

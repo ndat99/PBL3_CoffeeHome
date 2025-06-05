@@ -32,11 +32,11 @@ namespace PBL3_CoffeeHome.GUI.Barista
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -330,7 +330,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.panel5.Controls.Add(this.cboType);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(17, 20);
+            this.panel5.Location = new System.Drawing.Point(17, 15);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1716, 851);
             this.panel5.TabIndex = 154;
@@ -365,39 +365,39 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.dgvNgayGD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvNgayGD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvNgayGD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(22, 15, 0, 15);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNgayGD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(22, 15, 0, 15);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNgayGD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvNgayGD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNgayGD.ColumnHeadersVisible = false;
             this.dgvNgayGD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNgayGD.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNgayGD.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvNgayGD.EnableHeadersVisualStyles = false;
             this.dgvNgayGD.Location = new System.Drawing.Point(40, 35);
             this.dgvNgayGD.Margin = new System.Windows.Forms.Padding(7, 0, 15, 0);
             this.dgvNgayGD.Name = "dgvNgayGD";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNgayGD.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNgayGD.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvNgayGD.RowHeadersVisible = false;
             this.dgvNgayGD.RowHeadersWidth = 51;
             this.dgvNgayGD.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -443,7 +443,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiemEnd;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(1012, 217);
+            this.pictureBox2.Location = new System.Drawing.Point(1017, 217);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(36, 36);
@@ -468,15 +468,15 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.dgvLSGD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLSGD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvLSGD.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLSGD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLSGD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvLSGD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLSGD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cID,
@@ -487,14 +487,14 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.Column5,
             this.Column6,
             this.Column7});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLSGD.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLSGD.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvLSGD.EnableHeadersVisualStyles = false;
             this.dgvLSGD.Location = new System.Drawing.Point(1, 281);
             this.dgvLSGD.Margin = new System.Windows.Forms.Padding(7, 0, 15, 0);
@@ -576,7 +576,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.btnReset.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.Color.MediumPurple;
             this.btnReset.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReset.Location = new System.Drawing.Point(1266, 212);
+            this.btnReset.Location = new System.Drawing.Point(1271, 212);
             this.btnReset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(123, 41);
@@ -606,10 +606,10 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.btnThongTinChiTiet.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongTinChiTiet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnThongTinChiTiet.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnThongTinChiTiet.Location = new System.Drawing.Point(1483, 213);
+            this.btnThongTinChiTiet.Location = new System.Drawing.Point(1478, 212);
             this.btnThongTinChiTiet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThongTinChiTiet.Name = "btnThongTinChiTiet";
-            this.btnThongTinChiTiet.Size = new System.Drawing.Size(205, 39);
+            this.btnThongTinChiTiet.Size = new System.Drawing.Size(205, 41);
             this.btnThongTinChiTiet.TabIndex = 151;
             this.btnThongTinChiTiet.Text = "Xem chi tiết";
             this.btnThongTinChiTiet.UseVisualStyleBackColor = false;
@@ -658,7 +658,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.btnApDung.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApDung.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnApDung.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnApDung.Location = new System.Drawing.Point(1094, 213);
+            this.btnApDung.Location = new System.Drawing.Point(1098, 213);
             this.btnApDung.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnApDung.Name = "btnApDung";
             this.btnApDung.Size = new System.Drawing.Size(128, 41);
@@ -715,6 +715,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.panel5);
             this.Name = "ucLichSuHangHoa";
             this.Size = new System.Drawing.Size(1824, 887);

@@ -32,10 +32,10 @@ namespace PBL3_CoffeeHome.GUI.Barista
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,6 +69,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cTenNguyenLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSLHeThong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantityThucTe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListKiemKe)).BeginInit();
@@ -80,6 +81,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             // 
             this.panel2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelKiemKe_1;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.btnExit);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
@@ -100,7 +102,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(17, 20);
+            this.panel2.Location = new System.Drawing.Point(17, 15);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1716, 851);
             this.panel2.TabIndex = 153;
@@ -317,15 +319,15 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.dgvListKiemKe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListKiemKe.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListKiemKe.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListKiemKe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListKiemKe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvListKiemKe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListKiemKe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cTen,
@@ -336,14 +338,14 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cNguoiKiemKe,
             this.cGhiChu,
             this.cChenhLech});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListKiemKe.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListKiemKe.DefaultCellStyle = dataGridViewCellStyle14;
             this.dgvListKiemKe.EnableHeadersVisualStyles = false;
             this.dgvListKiemKe.Location = new System.Drawing.Point(481, 362);
             this.dgvListKiemKe.Margin = new System.Windows.Forms.Padding(7, 0, 15, 0);
@@ -486,29 +488,29 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.dgvStockOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvStockOut.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvStockOut.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStockOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(248)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStockOut.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvStockOut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStockOut.ColumnHeadersVisible = false;
             this.dgvStockOut.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cTenNguyenLieu,
             this.cSLHeThong,
             this.cDonVi});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStockOut.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStockOut.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvStockOut.EnableHeadersVisualStyles = false;
             this.dgvStockOut.GridColor = System.Drawing.Color.Silver;
             this.dgvStockOut.Location = new System.Drawing.Point(20, 37);
@@ -548,6 +550,26 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cDonVi.MinimumWidth = 6;
             this.cDonVi.Name = "cDonVi";
             this.cDonVi.Width = 50;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.White;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnExit.Image = global::PBL3_CoffeeHome.Properties.Resources.back;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(1457, 143);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(141, 45);
+            this.btnExit.TabIndex = 154;
+            this.btnExit.Text = "      Quay về";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ucNguyenVatLieu
             // 
@@ -630,5 +652,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             path.CloseFigure();
             return path;
         }
+
+        private Button btnExit;
     }
 }
