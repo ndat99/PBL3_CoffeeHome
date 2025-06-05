@@ -41,12 +41,10 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelChiTiet = new System.Windows.Forms.Panel();
             this.panelChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelChucNang
@@ -75,7 +73,7 @@
             this.btnLoiNhuan.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLoiNhuan.FlatAppearance.BorderSize = 0;
             this.btnLoiNhuan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoiNhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoiNhuan.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoiNhuan.ForeColor = System.Drawing.Color.White;
             this.btnLoiNhuan.Image = global::PBL3_CoffeeHome.Properties.Resources.salary;
             this.btnLoiNhuan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -95,7 +93,7 @@
             this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnDangXuat.FlatAppearance.BorderSize = 0;
             this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangXuat.ForeColor = System.Drawing.Color.White;
             this.btnDangXuat.Image = global::PBL3_CoffeeHome.Properties.Resources.DangXuat;
             this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -115,7 +113,7 @@
             this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnThongKe.FlatAppearance.BorderSize = 0;
             this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThongKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThongKe.ForeColor = System.Drawing.Color.White;
             this.btnThongKe.Image = global::PBL3_CoffeeHome.Properties.Resources.ThongKe;
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -135,7 +133,7 @@
             this.btnKhoHang.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnKhoHang.FlatAppearance.BorderSize = 0;
             this.btnKhoHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKhoHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhoHang.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhoHang.ForeColor = System.Drawing.Color.White;
             this.btnKhoHang.Image = global::PBL3_CoffeeHome.Properties.Resources.KhoHang;
             this.btnKhoHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -155,7 +153,7 @@
             this.btnQLTK.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnQLTK.FlatAppearance.BorderSize = 0;
             this.btnQLTK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLTK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQLTK.ForeColor = System.Drawing.Color.White;
             this.btnQLTK.Image = global::PBL3_CoffeeHome.Properties.Resources.QLTK;
             this.btnQLTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -175,7 +173,7 @@
             this.btnTTTK.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTTTK.FlatAppearance.BorderSize = 0;
             this.btnTTTK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTTTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTTTK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTTK.ForeColor = System.Drawing.Color.White;
             this.btnTTTK.Image = global::PBL3_CoffeeHome.Properties.Resources.TTTK;
             this.btnTTTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -195,7 +193,7 @@
             this.btnThucDon.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnThucDon.FlatAppearance.BorderSize = 0;
             this.btnThucDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThucDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThucDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThucDon.ForeColor = System.Drawing.Color.White;
             this.btnThucDon.Image = global::PBL3_CoffeeHome.Properties.Resources.ThucDon;
             this.btnThucDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -215,7 +213,7 @@
             this.btnTaoDon.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTaoDon.FlatAppearance.BorderSize = 0;
             this.btnTaoDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTaoDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoDon.ForeColor = System.Drawing.Color.White;
             this.btnTaoDon.Image = global::PBL3_CoffeeHome.Properties.Resources.TaoDon;
             this.btnTaoDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,7 +230,6 @@
             // 
             this.picLogo.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.logo2;
             this.picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
             this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -246,20 +243,20 @@
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.panelHeader.Controls.Add(this.txtName);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelHeader.Location = new System.Drawing.Point(3, 2);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(300, 0);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1618, 79);
-            this.panelHeader.TabIndex = 1;
+            this.panelHeader.Size = new System.Drawing.Size(1624, 79);
+            this.panelHeader.TabIndex = 3;
             // 
             // txtName
             // 
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.White;
-            this.txtName.Location = new System.Drawing.Point(1064, 18);
+            this.txtName.Location = new System.Drawing.Point(1385, 23);
             this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
@@ -268,38 +265,21 @@
             this.txtName.Text = "Tên người dùng";
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panelHeader, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panelChiTiet, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(300, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.658009F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.34199F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1624, 963);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
             // panelChiTiet
             // 
             this.panelChiTiet.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panelChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChiTiet.Location = new System.Drawing.Point(3, 86);
+            this.panelChiTiet.Location = new System.Drawing.Point(300, 76);
             this.panelChiTiet.Name = "panelChiTiet";
-            this.panelChiTiet.Size = new System.Drawing.Size(1618, 874);
-            this.panelChiTiet.TabIndex = 2;
-            this.panelChiTiet.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChiTiet_Paint);
+            this.panelChiTiet.Size = new System.Drawing.Size(1824, 910);
+            this.panelChiTiet.TabIndex = 4;
             // 
             // fQuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 963);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.panelChiTiet);
             this.Controls.Add(this.panelChucNang);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -311,7 +291,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -326,10 +305,9 @@
         private System.Windows.Forms.Button btnTTTK;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnDangXuat;
+        private System.Windows.Forms.Button btnLoiNhuan;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.Panel panelChiTiet;
-        private System.Windows.Forms.Button btnLoiNhuan;
     }
 }

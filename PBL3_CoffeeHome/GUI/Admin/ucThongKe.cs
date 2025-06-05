@@ -208,9 +208,9 @@ namespace PBL3_CoffeeHome.GUI
 
                 // Tùy chỉnh hiển thị
                 pieSeries["PieLabelStyle"] = "Inside";
-                pieSeries["PieDrawingStyle"] = "Concave";
-                chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = true;
-                chartSanPham.ChartAreas[0].Area3DStyle.Inclination = 30;
+                //pieSeries["PieDrawingStyle"] = "Concave";
+                chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = false;
+                //chartSanPham.ChartAreas[0].Area3DStyle.Inclination = 30;
                 chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50);
             }
             catch (Exception ex)
@@ -247,6 +247,11 @@ namespace PBL3_CoffeeHome.GUI
             }
 
             CalculateRevenueStatistics(mode, year, month);
+        }
+
+        private void ucThongKe_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnLoc, 10, Color.Black);
         }
     }
 }

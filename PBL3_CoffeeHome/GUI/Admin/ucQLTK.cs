@@ -164,15 +164,6 @@ namespace PBL3_CoffeeHome.GUI
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            if(cBVaiTro.SelectedItem.ToString() == "All")
-            {
-                LoadData(txtTimKiem.Text.Trim());
-            }
-            else LoadData(txtTimKiem.Text.Trim(), cBVaiTro.SelectedItem.ToString());
-        }
-
         private void btnXoaTK_Click(object sender, EventArgs e)
         {
             User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
@@ -227,9 +218,23 @@ namespace PBL3_CoffeeHome.GUI
             f.Show();
         }
 
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            if (cBVaiTro.SelectedItem.ToString() == "All")
+            {
+                LoadData(txtTimKiem.Text.Trim());
+            }
+            else LoadData(txtTimKiem.Text.Trim(), cBVaiTro.SelectedItem.ToString());
+        }
         private void ucQLTK_Load(object sender, EventArgs e)
         {
-
+            MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnTaoTK, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnXemChiTiet, 10, Color.MediumPurple);
+            MakeButtonRounded(btnXoaTK, 10, Color.Red);
+            MakeButtonRounded(btnResetMK, 10, Color.LimeGreen);
+            MakeButtonRounded(btnDoiVaiTro, 10, Color.MidnightBlue);
         }
     }
 }

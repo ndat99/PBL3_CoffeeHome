@@ -68,10 +68,6 @@ namespace PBL3_CoffeeHome.GUI
             this.dgvNhapKho = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.cboDonVi_TabNhapKho = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dtpHSDNL_tabNhapKho = new System.Windows.Forms.DateTimePicker();
@@ -112,6 +108,13 @@ namespace PBL3_CoffeeHome.GUI
             this.dgvLSGD = new System.Windows.Forms.DataGridView();
             this.cboType_tabLSGD = new System.Windows.Forms.ComboBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.roundedTextBox5 = new RoundedTextBox();
+            this.roundedTextBox4 = new RoundedTextBox();
+            this.roundedTextBox3 = new RoundedTextBox();
             this.txtGhiChu_tabNhapKho = new RoundedTextBox();
             this.roundedTextBox1 = new RoundedTextBox();
             this.roundedTextBox2 = new RoundedTextBox();
@@ -125,7 +128,6 @@ namespace PBL3_CoffeeHome.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhapKho)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostPriceNL_tabNhapKho)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantityNL_tabNhapKho)).BeginInit();
             this.tabPageLSGH.SuspendLayout();
@@ -558,6 +560,7 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelLSGD_1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.txtGhiChu_tabNhapKho);
             this.panel1.Controls.Add(this.cboDonVi_TabNhapKho);
@@ -588,54 +591,16 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel5.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelKiemKe_2;
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Controls.Add(this.groupBox4);
-            this.panel5.Location = new System.Drawing.Point(1457, 263);
+            this.panel5.Controls.Add(this.roundedTextBox5);
+            this.panel5.Controls.Add(this.roundedTextBox4);
+            this.panel5.Controls.Add(this.roundedTextBox3);
+            this.panel5.Controls.Add(this.label27);
+            this.panel5.Controls.Add(this.label26);
+            this.panel5.Controls.Add(this.label25);
+            this.panel5.Location = new System.Drawing.Point(1458, 300);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(227, 538);
+            this.panel5.Size = new System.Drawing.Size(227, 337);
             this.panel5.TabIndex = 167;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.BackColor = System.Drawing.Color.White;
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(15, 37);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(197, 260);
-            this.groupBox4.TabIndex = 153;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Thông tin phiếu";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 199);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 23);
-            this.label5.TabIndex = 149;
-            this.label5.Text = "- Tổng chi phí: 0đ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 121);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(179, 23);
-            this.label4.TabIndex = 148;
-            this.label4.Text = "- Thời gian thực hiện: ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 23);
-            this.label1.TabIndex = 150;
-            this.label1.Text = "- Người thực hiện: ";
             // 
             // cboDonVi_TabNhapKho
             // 
@@ -1220,6 +1185,90 @@ namespace PBL3_CoffeeHome.GUI
             this.cboType_tabLSGD.TabIndex = 153;
             this.cboType_tabLSGD.SelectedIndexChanged += new System.EventHandler(this.cboType_tabLSGD_SelectedIndexChanged);
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Gray;
+            this.label24.Location = new System.Drawing.Point(1446, 262);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(233, 35);
+            this.label24.TabIndex = 168;
+            this.label24.Text = "ⓘ Thông tin phiếu";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.White;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(20, 48);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(134, 23);
+            this.label25.TabIndex = 154;
+            this.label25.Text = "Người thực hiện";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.White;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(20, 128);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(158, 23);
+            this.label26.TabIndex = 155;
+            this.label26.Text = "Thời gian thực hiện";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.White;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(20, 215);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(105, 23);
+            this.label27.TabIndex = 156;
+            this.label27.Text = "Tổng chi phí";
+            // 
+            // roundedTextBox5
+            // 
+            this.roundedTextBox5.BackColor = System.Drawing.Color.White;
+            this.roundedTextBox5.BorderColor = System.Drawing.Color.Silver;
+            this.roundedTextBox5.BorderRadius = 10;
+            this.roundedTextBox5.BorderSize = 1;
+            this.roundedTextBox5.Location = new System.Drawing.Point(24, 241);
+            this.roundedTextBox5.Name = "roundedTextBox5";
+            this.roundedTextBox5.Padding = new System.Windows.Forms.Padding(6);
+            this.roundedTextBox5.Size = new System.Drawing.Size(178, 40);
+            this.roundedTextBox5.TabIndex = 166;
+            this.roundedTextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // roundedTextBox4
+            // 
+            this.roundedTextBox4.BackColor = System.Drawing.Color.White;
+            this.roundedTextBox4.BorderColor = System.Drawing.Color.Silver;
+            this.roundedTextBox4.BorderRadius = 10;
+            this.roundedTextBox4.BorderSize = 1;
+            this.roundedTextBox4.Location = new System.Drawing.Point(24, 154);
+            this.roundedTextBox4.Name = "roundedTextBox4";
+            this.roundedTextBox4.Padding = new System.Windows.Forms.Padding(6);
+            this.roundedTextBox4.Size = new System.Drawing.Size(178, 40);
+            this.roundedTextBox4.TabIndex = 166;
+            this.roundedTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // roundedTextBox3
+            // 
+            this.roundedTextBox3.BackColor = System.Drawing.Color.White;
+            this.roundedTextBox3.BorderColor = System.Drawing.Color.Silver;
+            this.roundedTextBox3.BorderRadius = 10;
+            this.roundedTextBox3.BorderSize = 1;
+            this.roundedTextBox3.Location = new System.Drawing.Point(24, 74);
+            this.roundedTextBox3.Name = "roundedTextBox3";
+            this.roundedTextBox3.Padding = new System.Windows.Forms.Padding(6);
+            this.roundedTextBox3.Size = new System.Drawing.Size(178, 40);
+            this.roundedTextBox3.TabIndex = 166;
+            this.roundedTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
             // txtGhiChu_tabNhapKho
             // 
             this.txtGhiChu_tabNhapKho.BackColor = System.Drawing.Color.White;
@@ -1281,8 +1330,7 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCostPriceNL_tabNhapKho)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantityNL_tabNhapKho)).EndInit();
             this.tabPageLSGH.ResumeLayout(false);
@@ -1363,10 +1411,6 @@ namespace PBL3_CoffeeHome.GUI
         private Label label19;
         private ComboBox cboCategoryNL_tabNhapKho;
         private DataGridView dgvNhapKho;
-        private Label label1;
-        private GroupBox groupBox4;
-        private Label label5;
-        private Label label4;
         private Button btnLuuPhieuNhap_tabNhapKho;
         private Button btnHoanTac_tabNhapKho;
         private Panel panel1;
@@ -1397,5 +1441,12 @@ namespace PBL3_CoffeeHome.GUI
         private PictureBox pictureBox4;
         private Label label22;
         private Label label23;
+        private Label label24;
+        private RoundedTextBox roundedTextBox3;
+        private Label label27;
+        private Label label26;
+        private Label label25;
+        private RoundedTextBox roundedTextBox5;
+        private RoundedTextBox roundedTextBox4;
     }
 }

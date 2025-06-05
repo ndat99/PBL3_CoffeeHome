@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fThuNgan));
             this.panelChucNang = new System.Windows.Forms.Panel();
-            this.panelChiTiet = new System.Windows.Forms.Panel();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnTTTK = new System.Windows.Forms.Button();
             this.btnTaoDon = new System.Windows.Forms.Button();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.panelChiTiet = new System.Windows.Forms.Panel();
+            this.panelHeader = new System.Windows.Forms.Panel();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.panelChucNang.SuspendLayout();
-            this.panelHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            this.panelHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelChucNang
@@ -56,39 +56,6 @@
             this.panelChucNang.Size = new System.Drawing.Size(300, 963);
             this.panelChucNang.TabIndex = 0;
             // 
-            // panelChiTiet
-            // 
-            this.panelChiTiet.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panelChiTiet.Location = new System.Drawing.Point(300, 76);
-            this.panelChiTiet.Name = "panelChiTiet";
-            this.panelChiTiet.Size = new System.Drawing.Size(1824, 933);
-            this.panelChiTiet.TabIndex = 3;
-            // 
-            // panelHeader
-            // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.panelHeader.Controls.Add(this.txtName);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(300, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1624, 79);
-            this.panelHeader.TabIndex = 1;
-            // 
-            // txtName
-            // 
-            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.White;
-            this.txtName.Location = new System.Drawing.Point(1385, 23);
-            this.txtName.Multiline = true;
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(203, 32);
-            this.txtName.TabIndex = 1;
-            this.txtName.Text = "Tên người dùng";
-            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // btnDangXuat
             // 
             this.btnDangXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
@@ -96,7 +63,7 @@
             this.btnDangXuat.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnDangXuat.FlatAppearance.BorderSize = 0;
             this.btnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangXuat.ForeColor = System.Drawing.Color.White;
             this.btnDangXuat.Image = global::PBL3_CoffeeHome.Properties.Resources.DangXuat;
             this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -116,7 +83,7 @@
             this.btnTTTK.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTTTK.FlatAppearance.BorderSize = 0;
             this.btnTTTK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTTTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTTTK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTTTK.ForeColor = System.Drawing.Color.White;
             this.btnTTTK.Image = global::PBL3_CoffeeHome.Properties.Resources.TTTK;
             this.btnTTTK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -136,7 +103,7 @@
             this.btnTaoDon.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTaoDon.FlatAppearance.BorderSize = 0;
             this.btnTaoDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTaoDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoDon.ForeColor = System.Drawing.Color.White;
             this.btnTaoDon.Image = global::PBL3_CoffeeHome.Properties.Resources.TaoDon;
             this.btnTaoDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -162,6 +129,39 @@
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             // 
+            // panelChiTiet
+            // 
+            this.panelChiTiet.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panelChiTiet.Location = new System.Drawing.Point(300, 76);
+            this.panelChiTiet.Name = "panelChiTiet";
+            this.panelChiTiet.Size = new System.Drawing.Size(1824, 933);
+            this.panelChiTiet.TabIndex = 3;
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.panelHeader.Controls.Add(this.txtName);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(300, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1624, 79);
+            this.panelHeader.TabIndex = 1;
+            // 
+            // txtName
+            // 
+            this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.ForeColor = System.Drawing.Color.White;
+            this.txtName.Location = new System.Drawing.Point(1385, 23);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(203, 32);
+            this.txtName.TabIndex = 1;
+            this.txtName.Text = "Tên người dùng";
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // fThuNgan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,9 +176,9 @@
             this.Text = "Coffee Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelChucNang.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

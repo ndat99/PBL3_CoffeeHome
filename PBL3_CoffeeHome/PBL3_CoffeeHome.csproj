@@ -407,6 +407,7 @@
     <None Include="Resources\Avatar.png" />
     <Content Include="Resources\BaoCao.png" />
     <Content Include="Resources\Cancel.png" />
+    <None Include="Resources\Change.png" />
     <Content Include="Resources\ChiTiet.png" />
     <Content Include="Resources\ChoPhucVu.png" />
     <Content Include="Resources\ChuaHoanThanh.png" />
@@ -432,6 +433,8 @@
     <Content Include="Resources\logo1.png" />
     <Content Include="Resources\logo2.png" />
     <Content Include="Resources\Money.png" />
+    <None Include="Resources\Money_Red.png" />
+    <None Include="Resources\Money_Green.png" />
     <Content Include="Resources\NguyenVatLieu.png" />
     <None Include="Resources\Panel_yellow.png" />
     <None Include="Resources\panelTaoDon_1.png" />
@@ -443,6 +446,10 @@
     <None Include="Resources\panelKiemKe_2.png" />
     <None Include="Resources\panelLSGD_1.png" />
     <None Include="Resources\panelDonHang_2.png" />
+    <None Include="Resources\panelThucDon1.png" />
+    <None Include="Resources\panelQLTK1.png" />
+    <None Include="Resources\panelThongKe_1.png" />
+    <None Include="Resources\panelThongKe_2.png" />
     <Content Include="Resources\Pen1.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />

@@ -523,9 +523,9 @@ namespace PBL3_CoffeeHome.GUI
             this.label14.ForeColor = System.Drawing.Color.Gray;
             this.label14.Location = new System.Drawing.Point(23, 12);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(304, 45);
+            this.label14.Size = new System.Drawing.Size(359, 45);
             this.label14.TabIndex = 102;
-            this.label14.Text = "Tạo đơn hàng mới";
+            this.label14.Text = "🍵 Tạo đơn hàng mới";
             // 
             // label9
             // 

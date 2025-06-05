@@ -64,7 +64,6 @@ namespace PBL3_CoffeeHome.GUI
             this.txtSDT = new RoundedTextBox();
             this.txtHoTen = new RoundedTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -467,17 +466,6 @@ namespace PBL3_CoffeeHome.GUI
             this.panel3.Size = new System.Drawing.Size(376, 342);
             this.panel3.TabIndex = 126;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.label14.Location = new System.Drawing.Point(5, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(304, 45);
-            this.label14.TabIndex = 103;
-            this.label14.Text = "Thông tin tài khoản";
-            // 
             // ucTTTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -492,7 +480,6 @@ namespace PBL3_CoffeeHome.GUI
             this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -575,6 +562,5 @@ namespace PBL3_CoffeeHome.GUI
         private Label label12;
         private Label label13;
         private Panel panel3;
-        private Label label14;
     }
 }
