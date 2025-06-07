@@ -19,12 +19,17 @@ namespace PBL3_CoffeeHome.GUI
         private User barista;
         private Button activeButton;
         private readonly UserBLL _userBLL;
+        private readonly BaristaQueueBLL _baristaQueueBLL;
         public fPhaChe(User user)
         {
             InitializeComponent();
             barista = user;
             txtName.Text = barista.FullName;
             _userBLL = new UserBLL();
+            _baristaQueueBLL = new BaristaQueueBLL();
+            timerBell.Start();
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
+            hasNewQueue = false;
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -78,6 +83,37 @@ namespace PBL3_CoffeeHome.GUI
             button.BackColor = Color.FromArgb(60, 62, 85);
             button.ForeColor = Color.White;
             activeButton = button;
+        }
+
+        private void btnAvatar_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTTTK(barista), panelChiTiet);
+            HighlightButton(btnTTTK);
+        }
+
+        int oldQueue = 0;
+        private bool hasNewQueue = false;
+        private void timerBell_Tick(object sender, EventArgs e)
+        {
+            int newQueue = _baristaQueueBLL.NewQueueCheck();
+            if (newQueue > oldQueue)
+            {
+                hasNewQueue = true;
+                btnBell.BackgroundImage = Properties.Resources.Bell_2;
+            }
+            else if (!hasNewQueue)
+            {
+                btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            }
+            oldQueue = newQueue;
+        }
+        private void btnBell_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucDonHang(barista), panelChiTiet);
+            HighlightButton(btnDonHang);
+            btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            hasNewQueue = false;
+            oldQueue = _baristaQueueBLL.NewQueueCheck();
         }
     }
 }

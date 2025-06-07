@@ -18,13 +18,17 @@ namespace PBL3_CoffeeHome.GUI
         private Button activeButton;
         private User admin;
         private UserBLL _userBLL;
-
+        private readonly BaristaQueueBLL _baristaQueueBLL;
         public fQuanLy(User user)
         {
             InitializeComponent();
             admin = user;
             txtName.Text = admin.FullName;
             _userBLL = new UserBLL();
+            _baristaQueueBLL = new BaristaQueueBLL();
+            timerBell.Start();
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
+            hasDoneQueue = false;
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -108,6 +112,38 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
             HighlightButton(btnLoiNhuan);
+        }
+
+        int oldQueue = 0;
+        private bool hasDoneQueue = false;
+        private void timerBell_Tick(object sender, EventArgs e)
+        {
+            int doneQueue = _baristaQueueBLL.DoneQueueCheck();
+            if (doneQueue > oldQueue)
+            {
+                hasDoneQueue = true;
+                btnBell.BackgroundImage = Properties.Resources.Bell_2;
+            }
+            else if (!hasDoneQueue)
+            {
+                btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            }
+            oldQueue = doneQueue;
+        }
+
+        private void btnBell_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
+            HighlightButton(btnTaoDon);
+            btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            hasDoneQueue = false;
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
+        }
+
+        private void btnAvatar_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTTTK(admin), panelChiTiet);
+            HighlightButton(btnTTTK);
         }
     }
 }

@@ -43,7 +43,6 @@ namespace PBL3_CoffeeHome.GUI
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
             timerRefresh.Start();
-            timerBell.Start();
             LoadCBBName();
         }
         private void ucTaoDon_Load(object sender, EventArgs e)
@@ -54,8 +53,6 @@ namespace PBL3_CoffeeHome.GUI
             MakeButtonRounded(btnClear, 10, Color.FromArgb(180, 180, 180));
             MakeButtonRounded(btnThanhToan, 10, Color.FromArgb(180, 180, 180));
             MakeButtonRounded(btnLichSuDon, 10, Color.FromArgb(180, 180, 180));
-            oldQueue = _baristaQueueBLL.DoneQueueCheck();
-            hasDoneQueue = false;
         }
 
         public void LoadCBBName()
@@ -403,32 +400,6 @@ namespace PBL3_CoffeeHome.GUI
         private void btnClear_Click(object sender, EventArgs e)
         {
             ReloadData();
-        }
-
-        int oldQueue = 0;
-        private bool hasDoneQueue = false;
-        private void timerBell_Tick(object sender, EventArgs e)
-        {
-            int doneQueue = _baristaQueueBLL.DoneQueueCheck();
-            if (doneQueue > oldQueue)
-            {
-                hasDoneQueue = true;
-                btnBell.BackgroundImage = Properties.Resources.Bell_2;
-            }
-            else if (!hasDoneQueue)
-            {
-                btnBell.BackgroundImage = Properties.Resources.Bell_1;
-            }
-            oldQueue = doneQueue;
-        }
-
-        private void btnBell_Click(object sender, EventArgs e)
-        {
-            LoadOrdersToday();
-            LoadOrderHistory(DateTime.Today);
-            btnBell.BackgroundImage = Properties.Resources.Bell_1;
-            hasDoneQueue = false;
-            oldQueue = _baristaQueueBLL.DoneQueueCheck();
         }
     }
 

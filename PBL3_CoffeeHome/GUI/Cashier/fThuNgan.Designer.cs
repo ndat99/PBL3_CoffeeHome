@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fThuNgan));
             this.panelChucNang = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
@@ -36,7 +37,10 @@
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.panelChiTiet = new System.Windows.Forms.Panel();
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.btnBell = new System.Windows.Forms.Button();
+            this.btnAvatar = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.timerBell = new System.Windows.Forms.Timer(this.components);
             this.panelChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
@@ -140,6 +144,8 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.panelHeader.Controls.Add(this.btnBell);
+            this.panelHeader.Controls.Add(this.btnAvatar);
             this.panelHeader.Controls.Add(this.txtName);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(300, 0);
@@ -148,19 +154,60 @@
             this.panelHeader.Size = new System.Drawing.Size(1624, 79);
             this.panelHeader.TabIndex = 1;
             // 
+            // btnBell
+            // 
+            this.btnBell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.btnBell.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Bell_1;
+            this.btnBell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBell.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBell.FlatAppearance.BorderSize = 0;
+            this.btnBell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBell.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBell.ForeColor = System.Drawing.Color.White;
+            this.btnBell.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBell.Location = new System.Drawing.Point(1351, 17);
+            this.btnBell.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBell.Name = "btnBell";
+            this.btnBell.Size = new System.Drawing.Size(46, 43);
+            this.btnBell.TabIndex = 2;
+            this.btnBell.UseVisualStyleBackColor = false;
+            this.btnBell.Click += new System.EventHandler(this.btnBell_Click);
+            // 
+            // btnAvatar
+            // 
+            this.btnAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.btnAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAvatar.FlatAppearance.BorderSize = 0;
+            this.btnAvatar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAvatar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvatar.ForeColor = System.Drawing.Color.White;
+            this.btnAvatar.Image = global::PBL3_CoffeeHome.Properties.Resources.TTTK;
+            this.btnAvatar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAvatar.Location = new System.Drawing.Point(1400, 19);
+            this.btnAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAvatar.Name = "btnAvatar";
+            this.btnAvatar.Size = new System.Drawing.Size(50, 40);
+            this.btnAvatar.TabIndex = 1;
+            this.btnAvatar.UseVisualStyleBackColor = false;
+            this.btnAvatar.Click += new System.EventHandler(this.btnAvatar_Click);
+            // 
             // txtName
             // 
             this.txtName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.White;
-            this.txtName.Location = new System.Drawing.Point(1385, 23);
+            this.txtName.Location = new System.Drawing.Point(1450, 24);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(203, 32);
+            this.txtName.Size = new System.Drawing.Size(252, 32);
             this.txtName.TabIndex = 1;
             this.txtName.Text = "Tên người dùng";
-            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // timerBell
+            // 
+            this.timerBell.Interval = 2000;
+            this.timerBell.Tick += new System.EventHandler(this.timerBell_Tick);
             // 
             // fThuNgan
             // 
@@ -193,5 +240,8 @@
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnDangXuat;
+        private System.Windows.Forms.Button btnAvatar;
+        private System.Windows.Forms.Timer timerBell;
+        private System.Windows.Forms.Button btnBell;
     }
 }

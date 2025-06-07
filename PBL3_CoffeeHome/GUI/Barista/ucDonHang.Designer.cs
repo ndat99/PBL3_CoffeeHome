@@ -44,8 +44,6 @@ namespace PBL3_CoffeeHome.GUI
             this.label6 = new System.Windows.Forms.Label();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.btnChuyenTrangThai = new System.Windows.Forms.Button();
-            this.timerBell = new System.Windows.Forms.Timer(this.components);
-            this.btnBell = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -143,27 +141,6 @@ namespace PBL3_CoffeeHome.GUI
             this.btnChuyenTrangThai.Text = "Chuyển trạng thái";
             this.btnChuyenTrangThai.UseVisualStyleBackColor = false;
             this.btnChuyenTrangThai.Click += new System.EventHandler(this.btnChuyenTrangThai_Click);
-            // 
-            // timerBell
-            // 
-            this.timerBell.Interval = 2000;
-            this.timerBell.Tick += new System.EventHandler(this.timerBell_Tick);
-            // 
-            // btnBell
-            // 
-            this.btnBell.BackColor = System.Drawing.Color.Transparent;
-            this.btnBell.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Bell_1;
-            this.btnBell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBell.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBell.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLight;
-            this.btnBell.FlatAppearance.BorderSize = 0;
-            this.btnBell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBell.Location = new System.Drawing.Point(110, 43);
-            this.btnBell.Name = "btnBell";
-            this.btnBell.Size = new System.Drawing.Size(70, 65);
-            this.btnBell.TabIndex = 126;
-            this.btnBell.UseVisualStyleBackColor = false;
-            this.btnBell.Click += new System.EventHandler(this.btnBell_Click);
             // 
             // pictureBox3
             // 
@@ -521,7 +498,6 @@ namespace PBL3_CoffeeHome.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Controls.Add(this.btnBell);
             this.Controls.Add(this.btnChuyenTrangThai);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -617,7 +593,5 @@ namespace PBL3_CoffeeHome.GUI
         private Label label10;
         private Label label2;
         private Label label7;
-        private Button btnBell;
-        private Timer timerBell;
     }
 }
