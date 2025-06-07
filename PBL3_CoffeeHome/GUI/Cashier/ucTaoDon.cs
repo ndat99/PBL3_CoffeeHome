@@ -205,19 +205,22 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string tenMon = dgvChiTietDon.SelectedRows[0].Cells[0].Value?.ToString();// nếu null trả về null chứ không lỗi
-            var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name == tenMon);
+            if (dgvChiTietDon.SelectedRows.Count > 0)
+            {
+                string tenMon = dgvChiTietDon.SelectedRows[0].Cells[0].Value?.ToString();// nếu null trả về null chứ không lỗi
+                var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name == tenMon);
 
-            if (monDaCo.Quantity > 1)
-            {
-                monDaCo.Quantity--;
+                if (monDaCo.Quantity > 1)
+                {
+                    monDaCo.Quantity--;
+                }
+                else
+                {
+                    _listChiTietDon.Remove(monDaCo);
+                }
+                UpdateChiTietDon();
+                txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
             }
-            else
-            {
-                _listChiTietDon.Remove(monDaCo);
-            }
-            UpdateChiTietDon();
-            txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
            
         }
 

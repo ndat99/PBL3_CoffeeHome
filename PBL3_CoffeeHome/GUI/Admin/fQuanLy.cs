@@ -73,6 +73,7 @@ namespace PBL3_CoffeeHome.GUI
             {
                 admin.IsActive = false;
                 admin.LastLoginAt = DateTime.Now;
+                admin.PasswordHash = _userBLL.GetUserById(admin.UserID).PasswordHash;
                 _userBLL.UpdateUser(admin);
                 Application.Restart();
             }
