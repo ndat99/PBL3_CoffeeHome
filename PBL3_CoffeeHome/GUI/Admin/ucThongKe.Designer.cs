@@ -32,12 +32,12 @@ namespace PBL3_CoffeeHome.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelTongLuongKhach = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,6 +51,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label1 = new System.Windows.Forms.Label();
             this.txtTongDT = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.cbThongKeTheo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -62,7 +63,6 @@ namespace PBL3_CoffeeHome.GUI
             this.cbThang = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnLoc = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.panelTongLuongKhach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelTongSanPham.SuspendLayout();
@@ -233,6 +233,18 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.Size = new System.Drawing.Size(1716, 851);
             this.panel1.TabIndex = 116;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(22, 19);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(399, 38);
+            this.label10.TabIndex = 166;
+            this.label10.Text = "📊 Doanh thu theo thời gian";
+            // 
             // cbThongKeTheo
             // 
             this.cbThongKeTheo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,18 +269,18 @@ namespace PBL3_CoffeeHome.GUI
             // 
             // chartDoanhThu
             // 
-            chartArea9.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea9);
-            legend9.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend9);
+            chartArea11.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend11);
             this.chartDoanhThu.Location = new System.Drawing.Point(83, 161);
             this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series9.ChartArea = "ChartArea1";
-            series9.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.chartDoanhThu.Series.Add(series9);
+            series11.ChartArea = "ChartArea1";
+            series11.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            this.chartDoanhThu.Series.Add(series11);
             this.chartDoanhThu.Size = new System.Drawing.Size(942, 532);
             this.chartDoanhThu.TabIndex = 1;
             this.chartDoanhThu.Text = "chart1";
@@ -294,17 +306,17 @@ namespace PBL3_CoffeeHome.GUI
             // 
             // chartSanPham
             // 
-            chartArea10.Name = "ChartArea1";
-            this.chartSanPham.ChartAreas.Add(chartArea10);
-            legend10.Name = "Legend1";
-            this.chartSanPham.Legends.Add(legend10);
+            chartArea12.Name = "ChartArea1";
+            this.chartSanPham.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chartSanPham.Legends.Add(legend12);
             this.chartSanPham.Location = new System.Drawing.Point(50, 30);
             this.chartSanPham.Name = "chartSanPham";
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series10.Legend = "Legend1";
-            series10.Name = "Series1";
-            this.chartSanPham.Series.Add(series10);
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.chartSanPham.Series.Add(series12);
             this.chartSanPham.Size = new System.Drawing.Size(486, 541);
             this.chartSanPham.TabIndex = 108;
             this.chartSanPham.Text = "chart1";
@@ -373,18 +385,6 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLoc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoc.UseVisualStyleBackColor = false;
             this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(22, 19);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(399, 38);
-            this.label10.TabIndex = 166;
-            this.label10.Text = "📊 Doanh thu theo thời gian";
             // 
             // ucThongKe
             // 

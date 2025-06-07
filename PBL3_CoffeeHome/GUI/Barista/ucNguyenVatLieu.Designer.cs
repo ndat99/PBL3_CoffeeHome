@@ -42,7 +42,11 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.txtGhiChu = new RoundedTextBox();
             this.nudQuantityThucTe = new System.Windows.Forms.NumericUpDown();
+            this.roundedTextBox1 = new RoundedTextBox();
+            this.txtQuantityNL = new RoundedTextBox();
+            this.txtNameNL = new RoundedTextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnThemVaoDS = new System.Windows.Forms.Button();
             this.btnHoanTac = new System.Windows.Forms.Button();
@@ -66,10 +70,6 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cTenNguyenLieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSLHeThong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDonVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtGhiChu = new RoundedTextBox();
-            this.roundedTextBox1 = new RoundedTextBox();
-            this.txtQuantityNL = new RoundedTextBox();
-            this.txtNameNL = new RoundedTextBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudQuantityThucTe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListKiemKe)).BeginInit();
@@ -175,6 +175,20 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.label14.TabIndex = 158;
             this.label14.Text = "≡";
             // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.BackColor = System.Drawing.Color.White;
+            this.txtGhiChu.BorderColor = System.Drawing.Color.Silver;
+            this.txtGhiChu.BorderRadius = 10;
+            this.txtGhiChu.BorderSize = 1;
+            this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGhiChu.Location = new System.Drawing.Point(581, 291);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.Padding = new System.Windows.Forms.Padding(6);
+            this.txtGhiChu.Size = new System.Drawing.Size(823, 44);
+            this.txtGhiChu.TabIndex = 156;
+            this.txtGhiChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
             // nudQuantityThucTe
             // 
             this.nudQuantityThucTe.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -196,6 +210,45 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.nudQuantityThucTe.Size = new System.Drawing.Size(97, 30);
             this.nudQuantityThucTe.TabIndex = 135;
             this.nudQuantityThucTe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // roundedTextBox1
+            // 
+            this.roundedTextBox1.BackColor = System.Drawing.Color.White;
+            this.roundedTextBox1.BorderColor = System.Drawing.Color.Silver;
+            this.roundedTextBox1.BorderRadius = 10;
+            this.roundedTextBox1.BorderSize = 1;
+            this.roundedTextBox1.Location = new System.Drawing.Point(1092, 220);
+            this.roundedTextBox1.Name = "roundedTextBox1";
+            this.roundedTextBox1.Padding = new System.Windows.Forms.Padding(6);
+            this.roundedTextBox1.Size = new System.Drawing.Size(118, 40);
+            this.roundedTextBox1.TabIndex = 155;
+            this.roundedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // txtQuantityNL
+            // 
+            this.txtQuantityNL.BackColor = System.Drawing.Color.White;
+            this.txtQuantityNL.BorderColor = System.Drawing.Color.Silver;
+            this.txtQuantityNL.BorderRadius = 10;
+            this.txtQuantityNL.BorderSize = 1;
+            this.txtQuantityNL.Location = new System.Drawing.Point(929, 220);
+            this.txtQuantityNL.Name = "txtQuantityNL";
+            this.txtQuantityNL.Padding = new System.Windows.Forms.Padding(6);
+            this.txtQuantityNL.Size = new System.Drawing.Size(118, 40);
+            this.txtQuantityNL.TabIndex = 154;
+            this.txtQuantityNL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtNameNL
+            // 
+            this.txtNameNL.BackColor = System.Drawing.Color.White;
+            this.txtNameNL.BorderColor = System.Drawing.Color.Silver;
+            this.txtNameNL.BorderRadius = 10;
+            this.txtNameNL.BorderSize = 1;
+            this.txtNameNL.Location = new System.Drawing.Point(581, 220);
+            this.txtNameNL.Name = "txtNameNL";
+            this.txtNameNL.Padding = new System.Windows.Forms.Padding(6);
+            this.txtNameNL.Size = new System.Drawing.Size(295, 40);
+            this.txtNameNL.TabIndex = 153;
+            this.txtNameNL.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // btnLuu
             // 
@@ -500,7 +553,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cTenNguyenLieu.HeaderText = "Tên nguyên liệu";
             this.cTenNguyenLieu.MinimumWidth = 6;
             this.cTenNguyenLieu.Name = "cTenNguyenLieu";
-            this.cTenNguyenLieu.Width = 250;
+            this.cTenNguyenLieu.Width = 230;
             // 
             // cSLHeThong
             // 
@@ -508,7 +561,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cSLHeThong.HeaderText = "";
             this.cSLHeThong.MinimumWidth = 6;
             this.cSLHeThong.Name = "cSLHeThong";
-            this.cSLHeThong.Width = 40;
+            this.cSLHeThong.Width = 50;
             // 
             // cDonVi
             // 
@@ -516,60 +569,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             this.cDonVi.HeaderText = "";
             this.cDonVi.MinimumWidth = 6;
             this.cDonVi.Name = "cDonVi";
-            this.cDonVi.Width = 50;
-            // 
-            // txtGhiChu
-            // 
-            this.txtGhiChu.BackColor = System.Drawing.Color.White;
-            this.txtGhiChu.BorderColor = System.Drawing.Color.Silver;
-            this.txtGhiChu.BorderRadius = 10;
-            this.txtGhiChu.BorderSize = 1;
-            this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGhiChu.Location = new System.Drawing.Point(581, 291);
-            this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Padding = new System.Windows.Forms.Padding(6);
-            this.txtGhiChu.Size = new System.Drawing.Size(823, 44);
-            this.txtGhiChu.TabIndex = 156;
-            this.txtGhiChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // roundedTextBox1
-            // 
-            this.roundedTextBox1.BackColor = System.Drawing.Color.White;
-            this.roundedTextBox1.BorderColor = System.Drawing.Color.Silver;
-            this.roundedTextBox1.BorderRadius = 10;
-            this.roundedTextBox1.BorderSize = 1;
-            this.roundedTextBox1.Location = new System.Drawing.Point(1092, 220);
-            this.roundedTextBox1.Name = "roundedTextBox1";
-            this.roundedTextBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.roundedTextBox1.Size = new System.Drawing.Size(118, 40);
-            this.roundedTextBox1.TabIndex = 155;
-            this.roundedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // txtQuantityNL
-            // 
-            this.txtQuantityNL.BackColor = System.Drawing.Color.White;
-            this.txtQuantityNL.BorderColor = System.Drawing.Color.Silver;
-            this.txtQuantityNL.BorderRadius = 10;
-            this.txtQuantityNL.BorderSize = 1;
-            this.txtQuantityNL.Location = new System.Drawing.Point(929, 220);
-            this.txtQuantityNL.Name = "txtQuantityNL";
-            this.txtQuantityNL.Padding = new System.Windows.Forms.Padding(6);
-            this.txtQuantityNL.Size = new System.Drawing.Size(118, 40);
-            this.txtQuantityNL.TabIndex = 154;
-            this.txtQuantityNL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtNameNL
-            // 
-            this.txtNameNL.BackColor = System.Drawing.Color.White;
-            this.txtNameNL.BorderColor = System.Drawing.Color.Silver;
-            this.txtNameNL.BorderRadius = 10;
-            this.txtNameNL.BorderSize = 1;
-            this.txtNameNL.Location = new System.Drawing.Point(581, 220);
-            this.txtNameNL.Name = "txtNameNL";
-            this.txtNameNL.Padding = new System.Windows.Forms.Padding(6);
-            this.txtNameNL.Size = new System.Drawing.Size(295, 40);
-            this.txtNameNL.TabIndex = 153;
-            this.txtNameNL.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.cDonVi.Width = 60;
             // 
             // ucNguyenVatLieu
             // 
@@ -610,9 +610,6 @@ namespace PBL3_CoffeeHome.GUI.Barista
         private RoundedTextBox txtGhiChu;
         private RoundedTextBox roundedTextBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTenNguyenLieu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cSLHeThong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDonVi;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDanhMuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn cSLHT;
@@ -654,5 +651,8 @@ namespace PBL3_CoffeeHome.GUI.Barista
         }
 
         private Button btnExit;
+        private DataGridViewTextBoxColumn cTenNguyenLieu;
+        private DataGridViewTextBoxColumn cSLHeThong;
+        private DataGridViewTextBoxColumn cDonVi;
     }
 }

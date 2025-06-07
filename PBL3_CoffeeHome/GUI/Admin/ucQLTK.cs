@@ -65,9 +65,9 @@ namespace PBL3_CoffeeHome.GUI
             // Không cho phép thêm hàng mới
             dgvTaiKhoan.AllowUserToAddRows = false;
 
-            dgvTaiKhoan.ReadOnly = true;                        
+            dgvTaiKhoan.ReadOnly = true;
             dgvTaiKhoan.AllowUserToDeleteRows = false;
-            dgvTaiKhoan.MultiSelect = false;                    
+            dgvTaiKhoan.MultiSelect = false;
             dgvTaiKhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvTaiKhoan.DataSourceChanged += (s, e) => dgvTaiKhoan.Refresh();
 
@@ -135,14 +135,14 @@ namespace PBL3_CoffeeHome.GUI
         {
             List<User> searchResult;
 
-            searchResult = _userBLL.SearchUsers(searchText,selectedRole);
+            searchResult = _userBLL.SearchUsers(searchText, selectedRole);
             bindingSource.DataSource = searchResult;
             bindingSource.ResetBindings(false);
         }
 
         private void btnTaoTK_Click(object sender, EventArgs e)
         {
-            fDetailTTTK f = new fDetailTTTK(LoadData) ;
+            fDetailTTTK f = new fDetailTTTK(LoadData);
             f.Show();
         }
 
@@ -158,7 +158,7 @@ namespace PBL3_CoffeeHome.GUI
 
         }
 
-        
+
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
 
@@ -182,7 +182,7 @@ namespace PBL3_CoffeeHome.GUI
                 _userBLL.DeleteUser(userSelected.UserID);
                 LoadData();
             }
-                
+
         }
 
         private void btnResetMK_Click(object sender, EventArgs e)
@@ -200,7 +200,7 @@ namespace PBL3_CoffeeHome.GUI
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
             else
             {
-                _userBLL.ChangePassword(userSelected.UserID,userSelected.PasswordHash, "123456");
+                _userBLL.ChangePassword(userSelected.UserID, userSelected.PasswordHash, "123456");
                 LoadData();
             }
         }
@@ -208,24 +208,14 @@ namespace PBL3_CoffeeHome.GUI
         private void btnDoiVaiTro_Click(object sender, EventArgs e)
         {
             User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
-            if(userSelected == null)
+            if (userSelected == null)
             {
                 MessageBox.Show("Vui lòng chọn một tài khoản để thay đổi vai trò!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            fDoiVaiTro f = new fDoiVaiTro(userSelected,LoadData);
+            fDoiVaiTro f = new fDoiVaiTro(userSelected, LoadData);
             f.Show();
-        }
-
-
-        private void btnLoc_Click(object sender, EventArgs e)
-        {
-            if (cBVaiTro.SelectedItem.ToString() == "All")
-            {
-                LoadData(txtTimKiem.Text.Trim());
-            }
-            else LoadData(txtTimKiem.Text.Trim(), cBVaiTro.SelectedItem.ToString());
         }
         private void ucQLTK_Load(object sender, EventArgs e)
         {
@@ -235,6 +225,15 @@ namespace PBL3_CoffeeHome.GUI
             MakeButtonRounded(btnXoaTK, 10, Color.Red);
             MakeButtonRounded(btnResetMK, 10, Color.LimeGreen);
             MakeButtonRounded(btnDoiVaiTro, 10, Color.MidnightBlue);
+        }
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            if (cBVaiTro.SelectedItem.ToString() == "All")
+            {
+                LoadData(txtTimKiem.Text.Trim());
+            }
+            else LoadData(txtTimKiem.Text.Trim(), cBVaiTro.SelectedItem.ToString());
         }
     }
 }

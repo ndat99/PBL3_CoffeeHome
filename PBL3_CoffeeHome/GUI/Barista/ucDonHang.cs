@@ -31,6 +31,7 @@ namespace PBL3_CoffeeHome.GUI
             LoadOrdersToday();
             LoadOrderHistory(datePicker.Value);
             timerRefresh.Start();
+            timerBell.Start();
             datePicker.Value = DateTime.Now.Date;
         }
         // Load danh sách đơn hàng hôm nay
@@ -59,7 +60,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             listLichSuDon.Items.Clear();
             var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
-                        .OrderBy(bq => bq.CompletedAt).ToList();
+                        .OrderByDescending(bq => bq.CompletedAt).ToList();
 
             foreach (var queue in queues)
             {
@@ -169,9 +170,35 @@ namespace PBL3_CoffeeHome.GUI
             LoadOrderHistory(DateTime.Now.Date);
         }
 
+        int oldQueue = 0;
+        private bool hasNewQueue = false;
+        private void timerBell_Tick(object sender, EventArgs e)
+        {
+            int newQueue = _baristaQueueBLL.NewQueueCheck();
+            if (newQueue > oldQueue)
+            {
+                hasNewQueue = true;
+                btnBell.BackgroundImage = Properties.Resources.Bell_2;
+            }
+            else if (!hasNewQueue)
+            {
+                btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            }
+            oldQueue = newQueue;
+        }
+
+        private void btnBell_Click(object sender, EventArgs e)
+        {
+            LoadOrdersToday();
+            btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            hasNewQueue = false;
+            oldQueue = _baristaQueueBLL.NewQueueCheck();
+        }
         private void ucDonHang_Load(object sender, EventArgs e)
         {
             MakeButtonRounded(btnChuyenTrangThai, 10, Color.FromArgb(180, 180, 180));
+            oldQueue = _baristaQueueBLL.NewQueueCheck();
+            hasNewQueue = false;
         }
     }
 }

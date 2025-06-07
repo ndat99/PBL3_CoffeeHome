@@ -72,6 +72,8 @@ namespace PBL3_CoffeeHome.GUI
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnBell = new System.Windows.Forms.Button();
+            this.timerBell = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -85,6 +87,11 @@ namespace PBL3_CoffeeHome.GUI
             this.imageTrangThai.TransparentColor = System.Drawing.Color.Transparent;
             this.imageTrangThai.Images.SetKeyName(0, "ChuaHoanThanh.png");
             this.imageTrangThai.Images.SetKeyName(1, "DaHoanThanh.png");
+            // 
+            // timerRefresh
+            // 
+            this.timerRefresh.Interval = 15000;
+            this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             // 
             // dgvChiTietDon
             // 
@@ -538,18 +545,40 @@ namespace PBL3_CoffeeHome.GUI
             this.label9.TabIndex = 25;
             this.label9.Text = "Số bàn";
             // 
+            // btnBell
+            // 
+            this.btnBell.BackColor = System.Drawing.Color.Transparent;
+            this.btnBell.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Bell_1;
+            this.btnBell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBell.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBell.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlLight;
+            this.btnBell.FlatAppearance.BorderSize = 0;
+            this.btnBell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBell.Location = new System.Drawing.Point(1669, 68);
+            this.btnBell.Name = "btnBell";
+            this.btnBell.Size = new System.Drawing.Size(70, 65);
+            this.btnBell.TabIndex = 140;
+            this.btnBell.UseVisualStyleBackColor = false;
+            this.btnBell.Click += new System.EventHandler(this.btnBell_Click);
+            // 
+            // timerBell
+            // 
+            this.timerBell.Interval = 2000;
+            this.timerBell.Tick += new System.EventHandler(this.timerBell_Tick);
+            // 
             // ucTaoDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.btnBell);
             this.Controls.Add(this.dgvChiTietDon);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ucTaoDon";
-            this.Size = new System.Drawing.Size(1712, 992);
+            this.Size = new System.Drawing.Size(1761, 992);
             this.Load += new System.EventHandler(this.ucTaoDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -627,5 +656,7 @@ namespace PBL3_CoffeeHome.GUI
         private RoundedTextBox txtThanhTien;
         private Label label4;
         private Label label5;
+        private Button btnBell;
+        private Timer timerBell;
     }
 }
