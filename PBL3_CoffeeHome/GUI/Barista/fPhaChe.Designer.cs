@@ -207,7 +207,7 @@
             this.btnAvatar.ForeColor = System.Drawing.Color.White;
             this.btnAvatar.Image = global::PBL3_CoffeeHome.Properties.Resources.TTTK;
             this.btnAvatar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAvatar.Location = new System.Drawing.Point(1400, 19);
+            this.btnAvatar.Location = new System.Drawing.Point(1410, 19);
             this.btnAvatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAvatar.Name = "btnAvatar";
             this.btnAvatar.Size = new System.Drawing.Size(50, 40);
@@ -226,7 +226,7 @@
             this.btnBell.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBell.ForeColor = System.Drawing.Color.White;
             this.btnBell.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBell.Location = new System.Drawing.Point(1351, 17);
+            this.btnBell.Location = new System.Drawing.Point(1361, 17);
             this.btnBell.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBell.Name = "btnBell";
             this.btnBell.Size = new System.Drawing.Size(46, 43);
@@ -240,7 +240,7 @@
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.ForeColor = System.Drawing.Color.White;
-            this.txtName.Location = new System.Drawing.Point(1450, 24);
+            this.txtName.Location = new System.Drawing.Point(1460, 24);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(252, 32);
