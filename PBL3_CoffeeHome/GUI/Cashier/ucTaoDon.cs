@@ -84,8 +84,6 @@ namespace PBL3_CoffeeHome.GUI
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
         }
-
-        // Load danh sách đơn hàng hôm nay
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
@@ -106,7 +104,6 @@ namespace PBL3_CoffeeHome.GUI
                 listDonHienCo.Items.Add(item);
             }
         }
-        // Load lịch sử đơn hàng theo ngày
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDaHoanThanh.Items.Clear();
@@ -223,14 +220,12 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnThanhToan_Click_1(object sender, EventArgs e)
         {
-            // Kiểm tra số bàn  
             if (string.IsNullOrWhiteSpace(txtSoBan.Text) || !int.TryParse(txtSoBan.Text, out int parsedCardNumber) || parsedCardNumber <= 0)
             {
                 MessageBox.Show("Vui lòng nhập số bàn hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Kiểm tra danh sách món  
             if (_listChiTietDon.Count == 0)
             {
                 MessageBox.Show("Vui lòng thêm ít nhất một món để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -263,7 +258,9 @@ namespace PBL3_CoffeeHome.GUI
             }
 
             InBill(orderId);
+
             MessageBox.Show("Tạo đơn thành công", "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             ReloadData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
@@ -277,7 +274,6 @@ namespace PBL3_CoffeeHome.GUI
                 MessageBox.Show("Không tìm thấy đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
             string billFolderPath = Path.Combine(projectPath, "Bill");
             string fileName = "bill_" + order.OrderID + ".txt";
@@ -321,19 +317,18 @@ namespace PBL3_CoffeeHome.GUI
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show($"Lỗi khi lưu hóa đơn vào file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void listDonHienCo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Kiểm tra nếu không có mục nào được chọn
+
             if (listDonHienCo.SelectedItems == null || listDonHienCo.SelectedItems.Count == 0) return;
 
-            // Lấy ID đơn hàng 
             string selectedOrderID = listDonHienCo.SelectedItems[0].SubItems[1].Text;
 
-            // Lấy thông tin chi tiết đơn hàng
             var order = _orderBLL.GetOrderDetails(selectedOrderID);
             if (order == null)
             {
@@ -359,7 +354,6 @@ namespace PBL3_CoffeeHome.GUI
 
             txtThanhTien.Text = tongTien.ToString("N0");
 
-            // Xóa dữ liệu trong _listChiTietDon để tránh xung đột
             _listChiTietDon.Clear();
         }
 
@@ -391,10 +385,9 @@ namespace PBL3_CoffeeHome.GUI
                 tongTien += item.Subtotal;
             }
 
-            // Cập nhật tổng tiền
+
             txtThanhTien.Text = tongTien.ToString("N0");
 
-            // Xóa dữ liệu trong _listChiTietDon để tránh xung đột
             _listChiTietDon.Clear();
         }
         private void btnClear_Click(object sender, EventArgs e)
