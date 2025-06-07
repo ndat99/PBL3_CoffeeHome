@@ -249,9 +249,8 @@ namespace PBL3_CoffeeHome.GUI
             this.label5.Size = new System.Drawing.Size(212, 38);
             this.label5.TabIndex = 129;
             this.label5.Text = "Đã hoàn thành";
-            // 
             // listDaHoanThanh
-            // 
+
             this.listDaHoanThanh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listDaHoanThanh.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,

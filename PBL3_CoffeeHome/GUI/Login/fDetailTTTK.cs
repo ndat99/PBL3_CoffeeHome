@@ -66,7 +66,7 @@ namespace PBL3_CoffeeHome.GUI
                     PhoneNumber = txtSDT.Text,
                     Email = txtGmail.Text,
                     Role = txtVaiTro.Text,
-                    IsActive = false
+                    IsActive = true
                 };
 
                 if (_userSelected == null)
