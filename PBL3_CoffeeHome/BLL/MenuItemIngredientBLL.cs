@@ -50,7 +50,7 @@ namespace PBL3_CoffeeHome.BLL
         }
         public string GenerateNewIngredientId()
         {
-            var all = _menuItemIngredientDAL.GetAllMenuItemIngredients(); // Lấy tất cả nguyên liệu
+            var all = _menuItemIngredientDAL.GetAllMenuItemIngredients();
 
             int maxId = all
                 .Where(i => i.Id.StartsWith("MI") && i.Id.Length == 5 && int.TryParse(i.Id.Substring(2), out _))

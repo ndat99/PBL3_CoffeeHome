@@ -1,10 +1,10 @@
 ﻿namespace PBL3_CoffeeHome.Migrations
 {
+    using PBL3_CoffeeHome.DTO;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using PBL3_CoffeeHome.DTO;
 
     internal sealed class Configuration : DbMigrationsConfiguration<PBL3_CoffeeHome.CoffeeDbContext>
     {

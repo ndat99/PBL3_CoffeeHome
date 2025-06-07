@@ -62,7 +62,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _context.SaveChanges();
             return true;
         }
-
         private string GenerateQueueID()
         {
             string newId = "BQ" + DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -71,6 +70,14 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 newId = "BQ" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
             }
             return newId;
+        }
+        public int GetNewQueue()
+        {
+            return _context.BaristaQueues.Count(q => q.Status == "Incomplete");
+        }
+        public int GetDoneQueue()
+        {
+            return _context.BaristaQueues.Count(q => q.Status == "Complete");
         }
     }
 }

@@ -108,7 +108,7 @@
             this.btnOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
             this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Location = new System.Drawing.Point(329, 432);
+            this.btnOK.Location = new System.Drawing.Point(329, 418);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(93, 28);
@@ -130,7 +130,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(17, 375);
+            this.label4.Location = new System.Drawing.Point(17, 357);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 25);
             this.label4.TabIndex = 119;
@@ -138,14 +138,15 @@
             // 
             // cbVaiTroMoi
             // 
+            this.cbVaiTroMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbVaiTroMoi.FormattingEnabled = true;
             this.cbVaiTroMoi.Items.AddRange(new object[] {
             "Admin",
             "Barista",
             "Cashier"});
-            this.cbVaiTroMoi.Location = new System.Drawing.Point(205, 375);
+            this.cbVaiTroMoi.Location = new System.Drawing.Point(205, 354);
             this.cbVaiTroMoi.Name = "cbVaiTroMoi";
-            this.cbVaiTroMoi.Size = new System.Drawing.Size(217, 24);
+            this.cbVaiTroMoi.Size = new System.Drawing.Size(217, 28);
             this.cbVaiTroMoi.TabIndex = 120;
             // 
             // picAvatar
@@ -163,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 493);
+            this.ClientSize = new System.Drawing.Size(463, 475);
             this.Controls.Add(this.cbVaiTroMoi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);

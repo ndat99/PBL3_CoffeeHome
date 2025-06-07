@@ -21,10 +21,10 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private string _itemID;
         private string _type;
         private DateTime _transactionID;
-        private string _user;
+        private User _user;
         private BindingList<TransactionInformationDTO> _listDetailTransaction;
 
-        public ucDetailLSGD(string Item, DateTime transactionDate, string Type, string user)
+        public ucDetailLSGD(string Item, DateTime transactionDate, string Type, User user)
         {
             InitializeComponent();
             _inventoryTransactionBLL = new InventoryTransactionBLL();
@@ -58,15 +58,15 @@ namespace PBL3_CoffeeHome.GUI.Admin
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
-            if (_user == "admin")
+            if (_user.Role == "Admin")
             {
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucKhoHang(2), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucKhoHang(_user ,2), AdminForm.panelChiTiet);
             }
-            else if (_user == "barista")
+            else if (_user.Role == "Barista")
             {
                 var BaristaForm = (fPhaChe)this.ParentForm;
-                BaristaForm.LoadControlToPanel(new ucLichSuHangHoa(), BaristaForm.panelChiTiet);
+                BaristaForm.LoadControlToPanel(new ucLichSuHangHoa(_user), BaristaForm.panelChiTiet);
             }
         }
     }

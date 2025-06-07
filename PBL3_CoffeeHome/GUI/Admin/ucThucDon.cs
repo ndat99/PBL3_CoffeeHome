@@ -176,5 +176,13 @@ namespace PBL3_CoffeeHome.GUI
             }
 
         }
+
+        private void ucThucDon_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnThemMon, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnSua, 10, Color.Orange);
+            MakeButtonRounded(btnXoa, 10, Color.Red);
+        }
     }
 }

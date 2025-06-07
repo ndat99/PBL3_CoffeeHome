@@ -9,15 +9,9 @@ namespace PBL3_CoffeeHome.BLL
     public class BaristaQueueBLL
     {
         private readonly BaristaQueueDAL _baristaQueueDAL;
-
-       // private readonly OrderBLL _orderBLL;
-
         public BaristaQueueBLL()
         {
             _baristaQueueDAL = new BaristaQueueDAL();
-
-          //  _orderBLL = new OrderBLL();
-
         }
         public List<BaristaQueue> GetQueueAssignedToday(string status)
         {
@@ -31,6 +25,14 @@ namespace PBL3_CoffeeHome.BLL
         public void UpdateQueueStatus(string queueId, string baristaId, string status)
         {
             _baristaQueueDAL.UpdateQueueStatus(queueId, baristaId, status);
+        }
+        public int NewQueueCheck()
+        {
+            return _baristaQueueDAL.GetNewQueue();
+        }
+        public int DoneQueueCheck()
+        {
+            return _baristaQueueDAL.GetDoneQueue();
         }
     }
 }
