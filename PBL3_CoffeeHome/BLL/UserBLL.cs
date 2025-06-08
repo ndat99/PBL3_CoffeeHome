@@ -42,7 +42,6 @@ namespace PBL3_CoffeeHome.BLL
             _userDAL.DeleteUser(_userId);
         }
 
-        // Thêm các phương thức mới
         public User Login(string username, string password)
         {
             var user = _userDAL.GetUserByName(username);
@@ -53,6 +52,10 @@ namespace PBL3_CoffeeHome.BLL
                 return user;
             }
             return null;
+        }
+        public User GetUserById(string userId)
+        {
+            return _userDAL.GetUserByID(userId);
         }
         public User GetUserByUsername(string username)
         {

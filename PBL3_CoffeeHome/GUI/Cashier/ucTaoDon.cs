@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
@@ -37,22 +39,22 @@ namespace PBL3_CoffeeHome.GUI
 
             _allMenuItems = _menuItemBLL.GetAllMenuItems(); 
             _cashier = user;
-            //LoadComboBoxData();
+
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
             timerRefresh.Start();
-            LoadData();
+            LoadCBBName();
         }
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
+            MakeButtonRounded(btnThem, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnXoa, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnClear, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnThanhToan, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLichSuDon, 10, Color.FromArgb(180, 180, 180));
         }
-        public void LoadData()
-        {
-            //LoadMenuItems();
-            //LoadOrderItems();
-            LoadCBBName();
-        }
+
         public void LoadCBBName()
         {
             cBDanhMuc.Items.Clear();
@@ -72,6 +74,7 @@ namespace PBL3_CoffeeHome.GUI
         private void ReloadData()
         {
             _listChiTietDon.Clear();
+            dgvChiTietDon.Rows.Clear();
             txtThanhTien.Text = "0";
             txtSoBan.Text = "0";
             numSoLuong.Value = 1;
@@ -80,15 +83,11 @@ namespace PBL3_CoffeeHome.GUI
             LoadCBBName();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
-            _listChiTietDon.Clear();
-            dgvChiTietDon.Rows.Clear();
         }
-
-        // Load danh sách đơn hàng hôm nay
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderByDescending(bq => bq.AssignedAt);
+            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderBy(bq => bq.AssignedAt);
 
             foreach (var queue in queues)
             {
@@ -105,7 +104,6 @@ namespace PBL3_CoffeeHome.GUI
                 listDonHienCo.Items.Add(item);
             }
         }
-        // Load lịch sử đơn hàng theo ngày
         private void LoadOrderHistory(DateTime selectedDate)
         {
             listDaHoanThanh.Items.Clear();
@@ -118,7 +116,7 @@ namespace PBL3_CoffeeHome.GUI
                 {
                     "",
                     queue.OrderID,
-                    queue.CompletedAt.Value.ToString("HH:mm")
+                    queue.CompletedAt.HasValue ? queue.CompletedAt.Value.ToString("HH:mm") : "N/A"
                 });
                 item.Tag = queue;
                 item.ImageIndex = 1;
@@ -201,32 +199,33 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string tenMon = dgvChiTietDon.SelectedRows[0].Cells[0].Value?.ToString();// nếu null trả về null chứ không lỗi
-            var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name == tenMon);
+            if (dgvChiTietDon.SelectedRows.Count > 0)
+            {
+                string tenMon = dgvChiTietDon.SelectedRows[0].Cells[0].Value?.ToString();// nếu null trả về null chứ không lỗi
+                var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name == tenMon);
 
-            if (monDaCo.Quantity > 1)
-            {
-                monDaCo.Quantity--;
+                if (monDaCo.Quantity > 1)
+                {
+                    monDaCo.Quantity--;
+                }
+                else
+                {
+                    _listChiTietDon.Remove(monDaCo);
+                }
+                UpdateChiTietDon();
+                txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
             }
-            else
-            {
-                _listChiTietDon.Remove(monDaCo);
-            }
-            UpdateChiTietDon();
-            txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
            
         }
 
         private void btnThanhToan_Click_1(object sender, EventArgs e)
         {
-            // Kiểm tra số bàn  
             if (string.IsNullOrWhiteSpace(txtSoBan.Text) || !int.TryParse(txtSoBan.Text, out int parsedCardNumber) || parsedCardNumber <= 0)
             {
                 MessageBox.Show("Vui lòng nhập số bàn hợp lệ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Kiểm tra danh sách món  
             if (_listChiTietDon.Count == 0)
             {
                 MessageBox.Show("Vui lòng thêm ít nhất một món để thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -258,14 +257,16 @@ namespace PBL3_CoffeeHome.GUI
                 _orderItemsBLL.AddOrderItems(orderId, item.Name, item.Quantity, item.CostPrice);
             }
 
-            ShowBill(orderId);
+            InBill(orderId);
 
-            _listChiTietDon.Clear();
+            MessageBox.Show("Tạo đơn thành công", "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            ReloadData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
 
         }
-        private void ShowBill(string orderId)
+        private void InBill(string orderId)
         {
             var order = _orderBLL.GetOrderDetails(orderId);
             if (order == null)
@@ -273,33 +274,61 @@ namespace PBL3_CoffeeHome.GUI
                 MessageBox.Show("Không tìm thấy đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            string billMessage = "===== HÓA ĐƠN =====\n\n" +
-                                 $"Mã đơn hàng: {order.OrderID}\n" +
-                                 $"Ngày tạo: {order.CreatedAt:dd/MM/yyyy HH:mm}\n" +
-                                 $"Số bàn: {order.CardNumber}\n" +
-                                 $"Nhân viên: {_cashier.UserID}\n\n" +
-                                 "----- Danh sách món -----\n";
-            foreach (var item in order.OrderItems)
+            string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+            string billFolderPath = Path.Combine(projectPath, "Bill");
+            string fileName = "bill_" + order.OrderID + ".txt";
+            string filePath = Path.Combine(billFolderPath, fileName);
+            try
             {
-                billMessage += $"{item.MenuItem.Name} x {item.Quantity}: {item.Price * item.Quantity:N0} VNĐ\n";
+                using (StreamWriter writer = new StreamWriter(filePath, true, System.Text.Encoding.UTF8))
+                {
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine("             HÓA ĐƠN THANH TOÁN           ");
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine($"Mã đơn hàng: {order.OrderID}");
+                    writer.WriteLine($"Ngày tạo: {order.CreatedAt:dd/MM/yyyy HH:mm}");
+                    writer.WriteLine($"Số bàn: {order.CardNumber}");
+                    writer.WriteLine($"Nhân viên: {_cashier.FullName}");
+                    writer.WriteLine(new string('-', 45));
+                    writer.WriteLine("Danh sách món:".PadRight(45));
+                    writer.WriteLine(new string('-', 45));
+                    writer.WriteLine($"{"Tên món".PadRight(20)}{"SL".PadRight(5)}{"Đơn giá".PadRight(10)}{"Thành tiền"}");
+
+                    foreach (var item in order.OrderItems)
+                    {
+                        string tenMon = item.MenuItem.Name.Length > 18 ? item.MenuItem.Name.Substring(0, 15) + "..." : item.MenuItem.Name;
+                        string soLuong = item.Quantity.ToString();
+                        string donGia = item.Price.ToString("N0");
+                        string thanhTien = (item.Price * item.Quantity).ToString("N0");
+                        writer.WriteLine($"{tenMon.PadRight(20)}{soLuong.PadRight(5)}{donGia.PadRight(10)}{thanhTien}");
+                    }
+
+                    writer.WriteLine(new string('-', 45));
+                    writer.WriteLine($"Tổng tiền:".PadRight(30) + $"{order.TotalAmount:N0} VNĐ");
+                    writer.WriteLine($"Giảm giá:".PadRight(30) + $"{(order.Discount != null ? order.Discount.Name : "Không")}");
+                    writer.WriteLine($"Tiền giảm:".PadRight(30) + $"{order.DiscountAmount:N0} VNĐ");
+                    writer.WriteLine($"Tiền cuối cùng:".PadRight(30) + $"{order.FinalAmount:N0} VNĐ");
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine("    Cảm ơn quý khách đã sử dụng dịch vụ!");
+                    writer.WriteLine(new string('=', 45));
+                    writer.WriteLine();
+                }
+
             }
-            billMessage += $"\nTổng tiền: {order.TotalAmount:N0} VNĐ\n" +
-                           $"Giảm giá: {(order.Discount != null ? order.Discount.Name : "Không")}\n"+   
-                           $"Tiền giảm: {order.DiscountAmount:N0} VNĐ\n" +
-                           $"Tiền cuối cùng: {order.FinalAmount:N0} VNĐ\n\n" +
-                           "Cảm ơn quý khách đã sử dụng dịch vụ!";
-            // Hiển thị hóa đơn
-            MessageBox.Show(billMessage, "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Lỗi khi lưu hóa đơn vào file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void listDonHienCo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Kiểm tra nếu không có mục nào được chọn
+
             if (listDonHienCo.SelectedItems == null || listDonHienCo.SelectedItems.Count == 0) return;
 
-            // Lấy ID đơn hàng 
             string selectedOrderID = listDonHienCo.SelectedItems[0].SubItems[1].Text;
 
-            // Lấy thông tin chi tiết đơn hàng
             var order = _orderBLL.GetOrderDetails(selectedOrderID);
             if (order == null)
             {
@@ -325,7 +354,6 @@ namespace PBL3_CoffeeHome.GUI
 
             txtThanhTien.Text = tongTien.ToString("N0");
 
-            // Xóa dữ liệu trong _listChiTietDon để tránh xung đột
             _listChiTietDon.Clear();
         }
 
@@ -357,10 +385,9 @@ namespace PBL3_CoffeeHome.GUI
                 tongTien += item.Subtotal;
             }
 
-            // Cập nhật tổng tiền
+
             txtThanhTien.Text = tongTien.ToString("N0");
 
-            // Xóa dữ liệu trong _listChiTietDon để tránh xung đột
             _listChiTietDon.Clear();
         }
         private void btnClear_Click(object sender, EventArgs e)

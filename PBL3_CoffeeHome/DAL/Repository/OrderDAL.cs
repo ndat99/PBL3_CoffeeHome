@@ -19,8 +19,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _baristaQueueDAL = new BaristaQueueDAL();
             _context = new CoffeeDbContext();
         }
-
-        // Giữ nguyên các phương thức hiện có
+      
         public void AddOrder(string OrderID, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId, string discountId)
         {
             List<OrderItem> orderItems = _orderItemsDAL.GetOrderItemsByOrderID(OrderID);
@@ -56,8 +55,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return newId;
         }
 
-
-        // Các phương thức bổ sung
         public Order GetOrderById(string orderId)
         {
             return _context.Orders

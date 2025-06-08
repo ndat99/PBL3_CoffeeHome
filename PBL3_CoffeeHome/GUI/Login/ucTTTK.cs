@@ -28,6 +28,8 @@ namespace PBL3_CoffeeHome.GUI
             _userBLL = new UserBLL();
             _user = updatedUser;
 
+            txtName.Text = _user.FullName;
+
             txtHoTen.Text = _user.FullName;
             txtHoTen.Enabled = false;
 
@@ -42,11 +44,6 @@ namespace PBL3_CoffeeHome.GUI
 
             txtDNCuoi.Text = _user.LastLoginAt.ToString();
             txtDNCuoi.Enabled = false;
-        }
-
-        private void ucTTTK_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -122,6 +119,7 @@ namespace PBL3_CoffeeHome.GUI
                                   "Thông báo",
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Information);
+                    Application.Restart();
                 }
                 else
                 {
@@ -142,6 +140,12 @@ namespace PBL3_CoffeeHome.GUI
                               MessageBoxButtons.OK,
                               MessageBoxIcon.Error);
             }
+        }
+        private void ucTTTK_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnSua, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLuu, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnDoiMK, 10, Color.FromArgb(180, 180, 180));
         }
     }
 }

@@ -37,7 +37,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrdersToday()
         {
             listDonHang.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderByDescending(bq => bq.AssignedAt);
+            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderBy(bq => bq.AssignedAt);
 
             foreach (var queue in queues)
             {
@@ -59,7 +59,7 @@ namespace PBL3_CoffeeHome.GUI
         {
             listLichSuDon.Items.Clear();
             var queues = _baristaQueueBLL.GetQueueCompletedOnDate("Complete", selectedDate)
-                        .OrderByDescending(bq => bq.CompletedAt);
+                        .OrderByDescending(bq => bq.CompletedAt).ToList();
 
             foreach (var queue in queues)
             {
@@ -92,7 +92,7 @@ namespace PBL3_CoffeeHome.GUI
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Vui lòng chọn một đơn hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 LoadOrdersToday();
@@ -167,6 +167,10 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Now.Date);
+        }
+        private void ucDonHang_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnChuyenTrangThai, 10, Color.FromArgb(180, 180, 180));
         }
     }
 }

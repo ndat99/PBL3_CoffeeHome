@@ -18,12 +18,17 @@ namespace PBL3_CoffeeHome.GUI
         private Button activeButton;
         private User cashier;
         private readonly UserBLL _userBLL;
+        private readonly BaristaQueueBLL _baristaQueueBLL;
         public fThuNgan(User user)
         {
             InitializeComponent();
             cashier = user;
             txtName.Text = cashier.FullName;
             _userBLL = new UserBLL();
+            _baristaQueueBLL = new BaristaQueueBLL();
+            timerBell.Start();
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
+            hasDoneQueue = false;
         }
         private void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -44,6 +49,11 @@ namespace PBL3_CoffeeHome.GUI
             HighlightButton(btnTaoDon);
         }
         private void btnTTTK_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTTTK(cashier), panelChiTiet);
+            HighlightButton(btnTTTK);
+        }
+        private void btnAvatar_Click(object sender, EventArgs e)
         {
             LoadControlToPanel(new ucTTTK(cashier), panelChiTiet);
             HighlightButton(btnTTTK);
@@ -70,6 +80,31 @@ namespace PBL3_CoffeeHome.GUI
             button.BackColor = Color.FromArgb(60, 62, 85);
             button.ForeColor = Color.White;
             activeButton = button;
+        }
+
+        int oldQueue = 0;
+        private bool hasDoneQueue = false;
+        private void timerBell_Tick(object sender, EventArgs e)
+        {
+            int doneQueue = _baristaQueueBLL.DoneQueueCheck();
+            if (doneQueue > oldQueue)
+            {
+                hasDoneQueue = true;
+                btnBell.BackgroundImage = Properties.Resources.Bell_2;
+            }
+            else if (!hasDoneQueue)
+            {
+                btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            }
+            oldQueue = doneQueue;
+        }
+        private void btnBell_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTaoDon(cashier), panelChiTiet);
+            HighlightButton(btnTaoDon);
+            btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            hasDoneQueue = false;
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
         }
     }
 }

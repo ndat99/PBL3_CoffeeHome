@@ -45,7 +45,7 @@ namespace PBL3_CoffeeHome.GUI
             Series revenueSeries = new Series("Doanh Thu")
             {
                 ChartType = SeriesChartType.Column,
-                Color = Color.FromArgb(65, 140, 240),
+                Color = Color.DodgerBlue,
                 IsValueShownAsLabel = true,
                 LabelFormat = "#,##0",
                 ["PointWidth"] = "0.3"  // Giảm độ rộng cột
@@ -55,7 +55,7 @@ namespace PBL3_CoffeeHome.GUI
             Series expenseSeries = new Series("Chi Phí")
             {
                 ChartType = SeriesChartType.Column,
-                Color = Color.FromArgb(252, 180, 65),
+                Color = Color.OrangeRed,
                 IsValueShownAsLabel = true,
                 LabelFormat = "#,##0",
                 ["PointWidth"] = "0.3"  // Giảm độ rộng cột
@@ -65,7 +65,7 @@ namespace PBL3_CoffeeHome.GUI
             Series profitSeries = new Series("Lợi Nhuận")
             {
                 ChartType = SeriesChartType.Spline,  // Đổi thành đường cong
-                Color = Color.FromArgb(80, 200, 80),
+                Color = Color.FromArgb(114, 187, 83),
                 BorderWidth = 2,
                 MarkerStyle = MarkerStyle.Circle,
                 MarkerSize = 7,
@@ -175,7 +175,7 @@ namespace PBL3_CoffeeHome.GUI
                 txtTongLoiNhuan.Text = $"{(tongLoiNhuan >= 0 ? "+" : "")}{tongLoiNhuan:#,##0} Đ";
 
                 // Đổi màu theo giá trị lợi nhuận
-                txtTongLoiNhuan.ForeColor = tongLoiNhuan >= 0 ? Color.Green : Color.Red;
+                txtTongLoiNhuan.ForeColor = tongLoiNhuan >= 0 ? Color.FromArgb(114, 187, 83) : Color.Red;
             }
             catch (Exception ex)
             {
@@ -207,15 +207,9 @@ namespace PBL3_CoffeeHome.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ucLoiNhuan_Load(object sender, EventArgs e)
         {
-
+            MakeButtonRounded(btnLoc, 10, Color.Black);
         }
     }
 }
