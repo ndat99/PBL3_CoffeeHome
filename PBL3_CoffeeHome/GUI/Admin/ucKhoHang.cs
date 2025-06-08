@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Web;
@@ -9,6 +10,7 @@ using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DTO.ViewModel;
 using PBL3_CoffeeHome.GUI.Admin;
+using PBL3_CoffeeHome.GUI.Barista;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -17,28 +19,30 @@ namespace PBL3_CoffeeHome.GUI
 
         private readonly InventoryBLL _inventoryBLL;
         private readonly InventoryTransactionBLL _transactionBLL;
-
+        private User admin;
         private BindingList<InventoryDisplayDTO> _listDSNL;
         private BindingList<ImportInventoryDTO> _listPhieuNhap;
         private BindingList<TransactionDisplayDTO> _listLSGD;
 
         string _userID;
-        public ucKhoHang(string userID)
+        public ucKhoHang(User user, int TabIndex)
         {
             InitializeComponent();
-            _inventoryBLL = new InventoryBLL();
-            _transactionBLL = new InventoryTransactionBLL();
-            _userID = userID;
-        }
-
-        public ucKhoHang(int TabIndex)
-        {
-            InitializeComponent();
+            admin = user;
             tabControlMain.SelectedIndex = TabIndex;
-
             _inventoryBLL = new InventoryBLL();
             _transactionBLL = new InventoryTransactionBLL();
+            _userID = user.UserID;
         }
+
+        //public ucKhoHang(int TabIndex)
+        //{
+        //    InitializeComponent();
+        //    tabControlMain.SelectedIndex = TabIndex;
+
+        //    _inventoryBLL = new InventoryBLL();
+        //    _transactionBLL = new InventoryTransactionBLL();
+        //}
 
 
         private void ucKhoHang_Load(object sender, EventArgs e)
@@ -57,6 +61,14 @@ namespace PBL3_CoffeeHome.GUI
             LoadCategory_tabDSNL();
             LoadCountDSNL_tabDSNL();
             LoadDSNL();
+            MakeButtonRounded(btnLowStock_tabDSNL, 10, Color.Red);
+            MakeButtonRounded(btnExpiring_tabDSNL, 10, Color.MediumPurple);
+            MakeButtonRounded(btnSubmit_tabDSNL, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnReset_tabDSNL, 10, Color.MediumPurple);
+            MakeButtonRounded(btnAddNL_TabDSNL, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnDeleteNL_tabDSNL, 10, Color.Red);
+            MakeButtonRounded(btnUpdateNL_tabDSNL, 10, Color.Orange);
+            MakeButtonRounded(btnKiemKeNL_tabDSNL, 10, Color.MediumPurple);
         }
 
 
@@ -70,8 +82,8 @@ namespace PBL3_CoffeeHome.GUI
 
         private void LoadCountDSNL_tabDSNL()
         {
-            btnLowStock_tabDSNL.Text = $"Tồn kho thấp: {_inventoryBLL.GetLowStock().Count}";
-            btnExpiring_tabDSNL.Text = $"Sắp hết hạn: {_inventoryBLL.GetExpiring(7).Count}";
+            btnLowStock_tabDSNL.Text = $"{_inventoryBLL.GetLowStock().Count}";
+            btnExpiring_tabDSNL.Text = $"{_inventoryBLL.GetExpiring(7).Count}";
         }
 
         private void LoadDSNL(string category = "Tất cả", string keyword = null)
@@ -117,7 +129,7 @@ namespace PBL3_CoffeeHome.GUI
         private void btnAddNL_TabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucDetailNL(null, false), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucDetailNL(admin, null, false), AdminForm.panelChiTiet);
         }
 
         private void btnUpdateNL_tabDSNL_Click(object sender, EventArgs e)
@@ -127,7 +139,7 @@ namespace PBL3_CoffeeHome.GUI
                 var selectedItem = (InventoryDisplayDTO)dgvDSNL.SelectedRows[0].DataBoundItem;
                 if (selectedItem == null) return;
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucDetailNL(selectedItem, true), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucDetailNL(admin, selectedItem, true), AdminForm.panelChiTiet);
             }
             else
             {
@@ -163,7 +175,8 @@ namespace PBL3_CoffeeHome.GUI
         private void btnKiemKeNL_tabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucDetailKiemKho(), AdminForm.panelChiTiet);
+            //AdminForm.LoadControlToPanel(new ucDetailKiemKho(), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucNguyenVatLieu(admin), AdminForm.panelChiTiet);
         }
 
         // Tab Nhap Kho
@@ -175,6 +188,9 @@ namespace PBL3_CoffeeHome.GUI
             LoadCategory_TabNhapKho();
             LoadNameInventory_TabNhapKho();
             LoadUnit_tabNhapKho();
+            MakeButtonRounded(btnXacNhan_tabNhapKho, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnHoanTac_tabNhapKho, 10, Color.OrangeRed);
+            MakeButtonRounded(btnLuuPhieuNhap_tabNhapKho, 10, Color.Black);
         }
 
         private void LoadCategory_TabNhapKho()
@@ -324,6 +340,9 @@ namespace PBL3_CoffeeHome.GUI
             LoadLSGD();
             LoadCBB();
             LoadNgayGD();
+            MakeButtonRounded(btnSubmit_tabLSGD, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnReset_tabLSGD, 10, Color.MediumPurple);
+            MakeButtonRounded(btnDetailTransaction_tabLSGD, 10, Color.FromArgb(255, 128, 0));
         }
 
 
@@ -409,13 +428,12 @@ namespace PBL3_CoffeeHome.GUI
                 string user = "admin";
 
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate, type, user), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate, type, admin), AdminForm.panelChiTiet);
             }
             else
             {
                 MessageBox.Show("Vui lòng chọn một giao dịch để xem chi tiết.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
     }
 }

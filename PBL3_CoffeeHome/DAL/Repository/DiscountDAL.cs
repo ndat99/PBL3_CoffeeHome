@@ -19,7 +19,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
         public Discount GetDiscountByEffectiveDate(DateTime effectiveDate)
         {
             return _db.Discounts.AsNoTracking()
-         .FirstOrDefault(d => d.EffectiveDate.HasValue &&
+        .FirstOrDefault(d => d.EffectiveDate.HasValue &&
          d.EffectiveDate.Value.Month == effectiveDate.Month &&
          d.EffectiveDate.Value.Day == effectiveDate.Day);
         }

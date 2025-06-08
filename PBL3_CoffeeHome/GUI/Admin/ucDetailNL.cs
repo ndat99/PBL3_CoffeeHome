@@ -18,14 +18,16 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private readonly InventoryBLL _inventoryBLL;
         private InventoryDisplayDTO _selectedItem;
         private bool _isEdit;
+        private User _user;
 
-        public ucDetailNL(InventoryDisplayDTO selectedItem, bool isEdit = false)
+        public ucDetailNL(User user, InventoryDisplayDTO selectedItem, bool isEdit = false)
         {
             InitializeComponent();
             _inventoryBLL = new InventoryBLL();
             _selectedItem = selectedItem;
             _isEdit = isEdit;
             SetUpForm();
+            _user = user;
         }
 
         private void SetUpForm()
@@ -55,7 +57,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private void btnExit_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            AdminForm.LoadControlToPanel(new ucKhoHang(0), AdminForm.panelChiTiet);
+            AdminForm.LoadControlToPanel(new ucKhoHang(_user,0), AdminForm.panelChiTiet);
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -90,7 +92,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             {
                 MessageBox.Show("Lưu thông tin nguyên liệu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 var AdminForm = (fQuanLy)this.ParentForm;
-                AdminForm.LoadControlToPanel(new ucKhoHang(0), AdminForm.panelChiTiet);
+                AdminForm.LoadControlToPanel(new ucKhoHang(_user, 0), AdminForm.panelChiTiet);
             }
             else
             {

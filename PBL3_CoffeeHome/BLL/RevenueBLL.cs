@@ -16,7 +16,8 @@ namespace PBL3_CoffeeHome.BLL
         public RevenueBLL()
         {
             _revenueDAL = new RevenueDAL();
-        }       
+        }
+
         public void AddRevenue(string revenueID, decimal totalRevenue, decimal totalExpense)
         {
             _revenueDAL.AddRevenue(revenueID, totalRevenue, totalExpense);

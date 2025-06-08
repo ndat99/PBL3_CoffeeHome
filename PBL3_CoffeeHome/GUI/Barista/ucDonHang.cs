@@ -37,7 +37,7 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadOrdersToday()
         {
             listDonHang.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderByDescending(bq => bq.AssignedAt);
+            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderBy(bq => bq.AssignedAt);
 
             foreach (var queue in queues)
             {
@@ -167,6 +167,10 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Now.Date);
+        }
+        private void ucDonHang_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnChuyenTrangThai, 10, Color.FromArgb(180, 180, 180));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,6 +48,11 @@ namespace PBL3_CoffeeHome.GUI
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
+            MakeButtonRounded(btnThem, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnXoa, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnClear, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnThanhToan, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLichSuDon, 10, Color.FromArgb(180, 180, 180));
         }
 
         public void LoadCBBName()
@@ -77,12 +83,11 @@ namespace PBL3_CoffeeHome.GUI
             LoadCBBName();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
-
         }
         private void LoadOrdersToday()
         {
             listDonHienCo.Items.Clear();
-            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderByDescending(bq => bq.AssignedAt);
+            var queues = _baristaQueueBLL.GetQueueAssignedToday("Incomplete").OrderBy(bq => bq.AssignedAt);
 
             foreach (var queue in queues)
             {
@@ -194,19 +199,22 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string tenMon = dgvChiTietDon.SelectedRows[0].Cells[0].Value?.ToString();// nếu null trả về null chứ không lỗi
-            var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name == tenMon);
+            if (dgvChiTietDon.SelectedRows.Count > 0)
+            {
+                string tenMon = dgvChiTietDon.SelectedRows[0].Cells[0].Value?.ToString();// nếu null trả về null chứ không lỗi
+                var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name == tenMon);
 
-            if (monDaCo.Quantity > 1)
-            {
-                monDaCo.Quantity--;
+                if (monDaCo.Quantity > 1)
+                {
+                    monDaCo.Quantity--;
+                }
+                else
+                {
+                    _listChiTietDon.Remove(monDaCo);
+                }
+                UpdateChiTietDon();
+                txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
             }
-            else
-            {
-                _listChiTietDon.Remove(monDaCo);
-            }
-            UpdateChiTietDon();
-            txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
            
         }
 
@@ -251,6 +259,8 @@ namespace PBL3_CoffeeHome.GUI
 
             InBill(orderId);
 
+            MessageBox.Show("Tạo đơn thành công", "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             ReloadData();
             LoadOrdersToday();
             LoadOrderHistory(DateTime.Today);
@@ -264,8 +274,10 @@ namespace PBL3_CoffeeHome.GUI
                 MessageBox.Show("Không tìm thấy đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            string filePath = "C:\\Users\\ADMIN\\source\\repos\\PBL3_CoffeeHomeeeee\\hoadon.txt";
+            string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+            string billFolderPath = Path.Combine(projectPath, "Bill");
+            string fileName = "bill_" + order.OrderID + ".txt";
+            string filePath = Path.Combine(billFolderPath, fileName);
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true, System.Text.Encoding.UTF8))
@@ -299,15 +311,17 @@ namespace PBL3_CoffeeHome.GUI
                     writer.WriteLine(new string('=', 45));
                     writer.WriteLine("    Cảm ơn quý khách đã sử dụng dịch vụ!");
                     writer.WriteLine(new string('=', 45));
-                    writer.WriteLine(); 
+                    writer.WriteLine();
                 }
 
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show($"Lỗi khi lưu hóa đơn vào file: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void listDonHienCo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
