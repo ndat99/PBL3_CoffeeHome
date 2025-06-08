@@ -93,6 +93,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Avatar_small {
+            get {
+                object obj = ResourceManager.GetObject("Avatar_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap back {
             get {
                 object obj = ResourceManager.GetObject("back", resourceCulture);
@@ -386,6 +396,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap NguyenVatLieu {
             get {
                 object obj = ResourceManager.GetObject("NguyenVatLieu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Overview {
+            get {
+                object obj = ResourceManager.GetObject("Overview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -79,5 +79,24 @@ namespace PBL3_CoffeeHome.DAL.Repository
         {
             return _context.BaristaQueues.Count(q => q.Status == "Complete");
         }
+        public List<(string FullName, int CompletedCount)> GetBaristaCompletedCounts(DateTime fromDate, DateTime toDate)
+        {
+            return _context.Users
+                .Where(u => u.Role == "Barista")
+                .Select(u => new
+                {
+                    u.FullName,
+                    CompletedCount = _context.BaristaQueues.Count(q =>
+                        q.BaristaID == u.UserID &&
+                        q.Status == "Complete" &&
+                        q.CompletedAt != null &&
+                        DbFunctions.TruncateTime(q.CompletedAt) >= fromDate.Date &&
+                        DbFunctions.TruncateTime(q.CompletedAt) <= toDate.Date)
+                })
+                .Where(x => x.CompletedCount > 0)
+                .ToList()
+                .Select(x => (x.FullName, x.CompletedCount))
+                .ToList();
+        }
     }
 }

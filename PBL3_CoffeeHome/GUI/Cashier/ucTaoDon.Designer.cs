@@ -34,8 +34,8 @@ namespace PBL3_CoffeeHome.GUI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucTaoDon));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.imageTrangThai = new System.Windows.Forms.ImageList(this.components);
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.dgvChiTietDon = new System.Windows.Forms.DataGridView();
@@ -56,8 +56,6 @@ namespace PBL3_CoffeeHome.GUI
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtThanhTien = new RoundedTextBox();
-            this.txtSoBan = new RoundedTextBox();
             this.cBMon = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
@@ -72,6 +70,8 @@ namespace PBL3_CoffeeHome.GUI
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.txtThanhTien = new RoundedTextBox();
+            this.txtSoBan = new RoundedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietDon)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -97,28 +97,28 @@ namespace PBL3_CoffeeHome.GUI
             this.dgvChiTietDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvChiTietDon.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvChiTietDon.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvChiTietDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(221)))), ((int)(((byte)(148)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvChiTietDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvChiTietDon.ColumnHeadersHeight = 35;
             this.dgvChiTietDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cTenMon,
             this.cSoLuong,
             this.cDonGia,
             this.cThanhTien});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvChiTietDon.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvChiTietDon.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvChiTietDon.EnableHeadersVisualStyles = false;
             this.dgvChiTietDon.Location = new System.Drawing.Point(63, 224);
             this.dgvChiTietDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -249,8 +249,9 @@ namespace PBL3_CoffeeHome.GUI
             this.label5.Size = new System.Drawing.Size(212, 38);
             this.label5.TabIndex = 129;
             this.label5.Text = "Đã hoàn thành";
+            // 
             // listDaHoanThanh
-
+            // 
             this.listDaHoanThanh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listDaHoanThanh.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader4,
@@ -310,34 +311,6 @@ namespace PBL3_CoffeeHome.GUI
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(916, 789);
             this.panel2.TabIndex = 139;
-            // 
-            // txtThanhTien
-            // 
-            this.txtThanhTien.BackColor = System.Drawing.Color.White;
-            this.txtThanhTien.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtThanhTien.BorderRadius = 10;
-            this.txtThanhTien.BorderSize = 1;
-            this.txtThanhTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtThanhTien.Location = new System.Drawing.Point(448, 637);
-            this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Padding = new System.Windows.Forms.Padding(6);
-            this.txtThanhTien.Size = new System.Drawing.Size(219, 44);
-            this.txtThanhTien.TabIndex = 135;
-            this.txtThanhTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtSoBan
-            // 
-            this.txtSoBan.BackColor = System.Drawing.Color.White;
-            this.txtSoBan.BorderColor = System.Drawing.Color.DarkGray;
-            this.txtSoBan.BorderRadius = 10;
-            this.txtSoBan.BorderSize = 1;
-            this.txtSoBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoBan.Location = new System.Drawing.Point(260, 637);
-            this.txtSoBan.Name = "txtSoBan";
-            this.txtSoBan.Padding = new System.Windows.Forms.Padding(6);
-            this.txtSoBan.Size = new System.Drawing.Size(75, 44);
-            this.txtSoBan.TabIndex = 134;
-            this.txtSoBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cBMon
             // 
@@ -541,6 +514,34 @@ namespace PBL3_CoffeeHome.GUI
             this.label9.Size = new System.Drawing.Size(63, 23);
             this.label9.TabIndex = 25;
             this.label9.Text = "Số bàn";
+            // 
+            // txtThanhTien
+            // 
+            this.txtThanhTien.BackColor = System.Drawing.Color.White;
+            this.txtThanhTien.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtThanhTien.BorderRadius = 10;
+            this.txtThanhTien.BorderSize = 1;
+            this.txtThanhTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtThanhTien.Location = new System.Drawing.Point(448, 637);
+            this.txtThanhTien.Name = "txtThanhTien";
+            this.txtThanhTien.Padding = new System.Windows.Forms.Padding(6);
+            this.txtThanhTien.Size = new System.Drawing.Size(219, 44);
+            this.txtThanhTien.TabIndex = 135;
+            this.txtThanhTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtSoBan
+            // 
+            this.txtSoBan.BackColor = System.Drawing.Color.White;
+            this.txtSoBan.BorderColor = System.Drawing.Color.DarkGray;
+            this.txtSoBan.BorderRadius = 10;
+            this.txtSoBan.BorderSize = 1;
+            this.txtSoBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoBan.Location = new System.Drawing.Point(260, 637);
+            this.txtSoBan.Name = "txtSoBan";
+            this.txtSoBan.Padding = new System.Windows.Forms.Padding(6);
+            this.txtSoBan.Size = new System.Drawing.Size(75, 44);
+            this.txtSoBan.TabIndex = 134;
+            this.txtSoBan.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ucTaoDon
             // 

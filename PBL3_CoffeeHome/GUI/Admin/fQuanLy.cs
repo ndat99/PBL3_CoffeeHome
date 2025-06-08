@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PBL3_CoffeeHome.DAL;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.GUI.Admin;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -68,6 +69,16 @@ namespace PBL3_CoffeeHome.GUI
             LoadControlToPanel(new ucKhoHang(admin, 0), panelChiTiet);
             HighlightButton(btnKhoHang);
         }
+        private void btnLoiNhuan_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
+            HighlightButton(btnLoiNhuan);
+        }
+        private void btnTongQuan_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTongQuan(), panelChiTiet);
+            HighlightButton(btnTongQuan);
+        }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
@@ -106,12 +117,6 @@ namespace PBL3_CoffeeHome.GUI
         private void panelChiTiet_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-
-        private void btnLoiNhuan_Click(object sender, EventArgs e)
-        {
-            LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
-            HighlightButton(btnLoiNhuan);
         }
 
         int oldQueue = 0;
