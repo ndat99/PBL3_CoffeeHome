@@ -174,12 +174,6 @@
     <Compile Include="GUI\Barista\ucLichSuHangHoa.Designer.cs">
       <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Cashier\ucCardThucDon.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Cashier\ucCardThucDon.Designer.cs">
-      <DependentUpon>ucCardThucDon.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,9 +298,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Barista\ucLichSuHangHoa.resx">
       <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Cashier\ucCardThucDon.resx">
-      <DependentUpon>ucCardThucDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
