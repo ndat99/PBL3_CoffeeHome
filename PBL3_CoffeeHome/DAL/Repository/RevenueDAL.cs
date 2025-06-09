@@ -205,5 +205,49 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
             return result;
         }
+
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .GroupBy(rd => rd.RevenueDetailDate.Date)
+                .Select(g => (Date: g.Key, Total: g.Sum(rd => rd.RevenueAmount)))
+                .OrderBy(g => g.Date)
+                .ToList();
+        }
+
+        public decimal GetTotalRevenueByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .Sum(rd => rd.RevenueAmount);
+        }
+
+        public int GetTotalProductsSoldByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .Sum(rd => rd.Quantity);
+        }
+
+        public int GetTotalCustomersByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .Select(rd => rd.OrderID)
+                .Distinct()
+                .Count();
+        }
+
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .SelectMany(rd => rd.Order.OrderItems)
+                .GroupBy(oi => oi.MenuItem.Name)
+                .Select(g => (ItemName: g.Key, TotalQuantity: g.Sum(oi => oi.Quantity)))
+                .OrderByDescending(x => x.TotalQuantity)
+                .ToList();
+        }
     }
 }

@@ -257,7 +257,7 @@ namespace PBL3_CoffeeHome.GUI
                 _orderItemsBLL.AddOrderItems(orderId, item.Name, item.Quantity, item.CostPrice);
             }
 
-            InBill(orderId);
+           // InBill(orderId);
 
             MessageBox.Show("Tạo đơn thành công", "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

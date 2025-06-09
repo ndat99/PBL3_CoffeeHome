@@ -128,6 +128,12 @@
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\fDiscountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fDiscountDetail.Designer.cs">
+      <DependentUpon>fDiscountDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Admin\fThemMon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +167,12 @@
     </Compile>
     <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\ucDiscounts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucDiscounts.Designer.cs">
+      <DependentUpon>ucDiscounts.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucTongQuan.cs">
       <SubType>UserControl</SubType>
@@ -274,6 +286,9 @@
     <EmbeddedResource Include="GUI\Admin\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\fDiscountDetail.resx">
+      <DependentUpon>fDiscountDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fThemMon.resx">
       <DependentUpon>fThemMon.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +307,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucDiscounts.resx">
+      <DependentUpon>ucDiscounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucTongQuan.resx">
       <DependentUpon>ucTongQuan.cs</DependentUpon>

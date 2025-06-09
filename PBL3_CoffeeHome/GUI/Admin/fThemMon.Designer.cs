@@ -156,7 +156,6 @@
             this.Text = "Thông tin tài khoản";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

@@ -99,5 +99,30 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
         }
+
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetDailyRevenueInDateRange(startDate, endDate);
+        }
+
+        public decimal GetTotalRevenueByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetTotalRevenueByDateRange(startDate, endDate);
+        }
+
+        public int GetTotalProductsSoldByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetTotalProductsSoldByDateRange(startDate, endDate);
+        }
+
+        public int GetTotalCustomersByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetTotalCustomersByDateRange(startDate, endDate);
+        }
+
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetTopSellingProductsByDateRange(startDate, endDate);
+        }
     }
 }
