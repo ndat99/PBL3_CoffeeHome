@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PBL3_CoffeeHome.DAL.Repository;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.BLL
 {
@@ -15,7 +16,7 @@ namespace PBL3_CoffeeHome.BLL
         {
             _salaryDAL = new SalaryDAL();
         }
-        public List<Salary> GetAllSalaries()
+        public List<SalaryDTO> GetAllSalaries()
         {
             return _salaryDAL.GetAllSalary();
         }
@@ -24,7 +25,7 @@ namespace PBL3_CoffeeHome.BLL
             return _salaryDAL.GetYearBySalary();
         }
    
-        public List<Salary> SearchSalary(string thang, string nam, string txtsearch)
+        public List<SalaryDTO> SearchSalary(string thang, string nam, string txtsearch)
         {
             return _salaryDAL.SearchSalary(thang, nam, txtsearch);
         }

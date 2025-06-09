@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PBL3_CoffeeHome.DAL.Repository;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.BLL
 {
@@ -16,17 +17,12 @@ namespace PBL3_CoffeeHome.BLL
             _scheduleDAL = new ScheduleDAL();
         }
 
-        public List<Schedule> GetAllSchedule()
+        public List<ScheduleDTO> GetSheduleByRole(string role)
         {
-            return _scheduleDAL.GetAllShedule();
+            return _scheduleDAL.GetSheduleByRole(role);
         }
-
-        public List<Schedule> GetScheduleByType(string type)
-        {
-            return _scheduleDAL.GetSheduleByType(type);
-        }
-
-        public List<Schedule> SearchShedule(string txtsearch,string cbbType)
+         
+        public List<ScheduleDTO> SearchShedule(string txtsearch,string cbbType)
         {
             return _scheduleDAL.SearchSchedule(txtsearch, cbbType);
         }

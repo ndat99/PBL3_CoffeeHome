@@ -122,6 +122,7 @@
     <Compile Include="DTO\ViewModel\IngredientView.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
     <Compile Include="DTO\ViewModel\OrderDTO.cs" />
+    <Compile Include="DTO\ViewModel\ScheduleDTO.cs" />
     <Compile Include="GUI\Admin\fCongThuc.cs">
       <SubType>Form</SubType>
     </Compile>

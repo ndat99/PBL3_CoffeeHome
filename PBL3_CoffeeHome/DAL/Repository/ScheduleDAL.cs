@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.DAL.Repository
 {
@@ -19,31 +21,56 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _salaryDAL = new SalaryDAL();
         }
 
-        public List<Schedule> GetAllShedule()
+        public List<ScheduleDTO> GetAllShedule()
         {
-            return _db.Schedules.AsNoTracking().ToList();
+            return _db.Schedules
+                .AsNoTracking()
+                .Include(s => s.User)
+                .Select(s => new ScheduleDTO
+                {
+                    ScheduleID = s.ScheduleID,
+                    FullName = s.User.FullName,
+                    TypeSchedule = s.TypeSchedule,
+                    Date = s.Date
+                })
+                .ToList();
         }
 
-        public List<Schedule> GetSheduleByType(string type)
+        public List<ScheduleDTO> GetSheduleByRole(string role)
         {
-            return _db.Schedules.AsNoTracking().Where(s => s.TypeSchedule == type).ToList();
+            var query = _db.Schedules.AsNoTracking().Include(s => s.User).AsQueryable();
+            if (!string.IsNullOrEmpty(role) && role != "Tất cả")
+            {
+                query = query.Where(s => s.User.Role == role);
+            }
+            return query.Select(s => new ScheduleDTO
+            {
+                ScheduleID = s.ScheduleID,
+                FullName = s.User.FullName,
+                TypeSchedule = s.TypeSchedule,
+                Date = s.Date
+            }).ToList();
         }
-        public List<Schedule> SearchSchedule(string txtSearch, string typeTypeSchedule)
+
+        public List<ScheduleDTO> SearchSchedule(string txtSearch, string typeTypeSchedule)
         {
-            var query = _db.Schedules.AsNoTracking().AsQueryable();
+            var query = _db.Schedules.AsNoTracking().Include(s => s.User).AsQueryable();
             if (!string.IsNullOrEmpty(typeTypeSchedule) && typeTypeSchedule != "Tất cả")
             {
                 query = query.Where(s => s.TypeSchedule == typeTypeSchedule);
             }
-
-
             if (!string.IsNullOrEmpty(txtSearch))
             {
                 txtSearch = txtSearch.ToLower().Trim();
-                query = query.Where(s => s.UserID.ToLower().Contains(txtSearch) || s.ScheduleID.ToLower().Contains(txtSearch));
+                query = query.Where(s => s.User.FullName.ToLower().Contains(txtSearch) || s.ScheduleID.ToLower().Contains(txtSearch));
             }
-
-            return query.ToList();
+            return query.Select(s => new ScheduleDTO
+            {
+                ScheduleID = s.ScheduleID,
+                FullName = s.User.FullName,
+                TypeSchedule = s.TypeSchedule,
+                Date = s.Date
+            }).ToList();
         }
 
         public void AddSchedule(string userID, string typeSchedule, DateTime date, decimal hourlyRate)
@@ -66,10 +93,17 @@ namespace PBL3_CoffeeHome.DAL.Repository
         public void DeleteShedule(string scheduleId)
         {
             var schedule = _db.Schedules.Find(scheduleId);
+            var salaries = _db.Salaries.Where(s => s.ScheduleID == scheduleId);
+
             if (schedule != null)
             {
                 _db.Schedules.Remove(schedule);
                 _db.SaveChanges();
+
+                if (salaries != null)
+                {
+                    _salaryDAL.DeleteSalary(scheduleId);
+                }
             }
             else
             {
