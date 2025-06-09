@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -56,6 +55,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             cbbTypeSchedule_tabLich.SelectedIndex = 0;
         }
 
+        
         private void LoadUser_tabLich()
         {
             List<string> listNameUser = _userBLL.GetALlUsers()
@@ -67,7 +67,20 @@ namespace PBL3_CoffeeHome.GUI.Admin
             cbbUser_TabLich.Items.AddRange(listNameUser.ToArray());
             cbbUser_TabLich.SelectedIndex = 0;
         }
-      
+
+        private void SetupDGVLichLamViec()
+        {
+            dgvLichLamViec_tabLich.Columns["ScheduleID"].HeaderText = "Mã lịch";
+            dgvLichLamViec_tabLich.Columns["UserID"].HeaderText = "Mã NV";
+            dgvLichLamViec_tabLich.Columns["TypeSchedule"].HeaderText = "Ca làm";
+            dgvLichLamViec_tabLich.Columns["Date"].HeaderText = "Ngày làm";
+           
+            if (dgvLichLamViec_tabLich.Columns.Contains("User"))
+                dgvLichLamViec_tabLich.Columns["User"].Visible = false;
+            if (dgvLichLamViec_tabLich.Columns.Contains("Salaries"))
+                dgvLichLamViec_tabLich.Columns["Salaries"].Visible = false;
+        }
+
         private void LoadDGVLich_tabLich(string txtsearch =  null, string cbb = "Tất cả")
         {
             _listLich.Clear();
@@ -76,6 +89,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
             {
                 _listLich.Add(item);
             }
+
+            SetupDGVLichLamViec();
         }
         private void cbbTypeSchedule_tabLich_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,10 +154,43 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void LoadYear()
         {
-            cbbNam_tabLuong.Items.Clear();
-            cbbNam_tabLuong.Items.AddRange(_salaryBLL.GetYearBySalary().ToArray());
-        }
+            string currentYear = DateTime.Now.Year.ToString();
+            var years = _salaryBLL.GetYearBySalary();
 
+            cbbNam_tabLuong.Items.Clear();
+
+            if (years == null || years.Count == 0)
+            {
+                // Không có dữ liệu, chỉ add năm hiện tại
+                cbbNam_tabLuong.Items.Add(currentYear);
+                cbbNam_tabLuong.SelectedIndex = 0;
+            }
+            else
+            {
+                cbbNam_tabLuong.Items.AddRange(years.ToArray());
+                int idx = cbbNam_tabLuong.Items.IndexOf(currentYear);
+                if (idx >= 0)
+                    cbbNam_tabLuong.SelectedIndex = idx;
+                else
+                    cbbNam_tabLuong.SelectedIndex = 0;
+            }
+        }
+        private void SetupDGVLuong()
+        {
+            dgvLuong_tabLuong.Columns["SalaryID"].HeaderText = "Mã lương";
+            dgvLuong_tabLuong.Columns["ScheduleID"].HeaderText = "Mã lịch";
+            dgvLuong_tabLuong.Columns["UserID"].HeaderText = "Mã NV";
+            dgvLuong_tabLuong.Columns["HoursWorked"].HeaderText = "Giờ làm";
+            dgvLuong_tabLuong.Columns["HourlyRate"].HeaderText = "Lương/giờ";
+            dgvLuong_tabLuong.Columns["TotalSalary"].HeaderText = "Tổng lương";
+            dgvLuong_tabLuong.Columns["PaymentDate"].HeaderText = "Ngày trả";
+            dgvLuong_tabLuong.Columns["Status"].HeaderText = "Trạng thái";
+            
+            if (dgvLuong_tabLuong.Columns.Contains("Schedule"))
+                dgvLuong_tabLuong.Columns["Schedule"].Visible = false;
+            if (dgvLuong_tabLuong.Columns.Contains("User"))
+                dgvLuong_tabLuong.Columns["User"].Visible = false;
+        }
         private void LoadDGVLuong_tabLuong(string month = "Tất cả", string year = null, string txtSearch = null)
         {
             if (string.IsNullOrEmpty(year))
@@ -157,6 +205,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     _listLuong.Add(item);
                 }
             }
+
+            SetupDGVLuong();
 
             decimal tongQuyLuong = _listLuong.Sum(s => s.TotalSalary);
             decimal tongGioLamViec = _listLuong.Sum(s => s.HoursWorked);
