@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
@@ -125,15 +128,19 @@
     <Compile Include="GUI\Admin\fQuanLy.Designer.cs">
       <DependentUpon>fQuanLy.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\fDiscountDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\fDiscountDetail.Designer.cs">
+      <DependentUpon>fDiscountDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Admin\fThemMon.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Admin\fThemMon.Designer.cs">
       <DependentUpon>fThemMon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailKiemKho.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="GUI\Admin\ucDetailKiemKho.cs" />
     <Compile Include="GUI\Admin\ucDetailKiemKho.Designer.cs">
       <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </Compile>
@@ -161,6 +168,12 @@
     <Compile Include="GUI\Admin\fDoiVaiTro.Designer.cs">
       <DependentUpon>fDoiVaiTro.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Admin\ucDiscounts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucDiscounts.Designer.cs">
+      <DependentUpon>ucDiscounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Admin\ucTongQuan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +185,12 @@
     </Compile>
     <Compile Include="GUI\Barista\ucLichSuHangHoa.Designer.cs">
       <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Cashier\ucCardThucDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Cashier\ucCardThucDon.Designer.cs">
+      <DependentUpon>ucCardThucDon.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
@@ -239,6 +258,12 @@
     <Compile Include="GUI\Admin\ucKhoHang.Designer.cs">
       <DependentUpon>ucKhoHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UI\RoundedTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UI\RoundedTextBox.Designer.cs">
+      <DependentUpon>RoundedTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login\ucTTTK.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -255,6 +280,14 @@
     <Compile Include="Migrations\202505240217214_InitialCreate.Designer.cs">
       <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506090324141_Create.cs" />
+    <Compile Include="Migrations\202506090324141_Create.Designer.cs">
+      <DependentUpon>202506090324141_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506090642034_fix.cs" />
+    <Compile Include="Migrations\202506090642034_fix.Designer.cs">
+      <DependentUpon>202506090642034_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -266,6 +299,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fQuanLy.resx">
       <DependentUpon>fQuanLy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\fDiscountDetail.resx">
+      <DependentUpon>fDiscountDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fThemMon.resx">
       <DependentUpon>fThemMon.cs</DependentUpon>
@@ -286,17 +322,24 @@
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucDiscounts.resx">
+      <DependentUpon>ucDiscounts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucTongQuan.resx">
       <DependentUpon>ucTongQuan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Barista\ucLichSuHangHoa.resx">
       <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Cashier\ucCardThucDon.resx">
+      <DependentUpon>ucCardThucDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucKhoHang.resx">
       <DependentUpon>ucKhoHang.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucThongKe.resx">
       <DependentUpon>ucThongKe.cs</DependentUpon>
@@ -321,15 +364,25 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Cashier\ucTaoDon.resx">
       <DependentUpon>ucTaoDon.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDetailTTTK.resx">
       <DependentUpon>fDetailTTTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UI\RoundedTextBox.resx">
+      <DependentUpon>RoundedTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505240217214_InitialCreate.resx">
       <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506090324141_Create.resx">
+      <DependentUpon>202506090324141_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506090642034_fix.resx">
+      <DependentUpon>202506090642034_fix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -356,6 +409,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icon.ico" />
     <Content Include="Resources\Add.png" />
     <None Include="Resources\Xem1.png" />
     <None Include="Resources\WhiteKey1.png" />
@@ -395,10 +449,14 @@
     <None Include="Resources\Alert1.png" />
     <None Include="Resources\Add1.png" />
     <Content Include="Resources\Alert.png" />
-    <Content Include="Resources\Avatar.png" />
     <None Include="Resources\back.png" />
+    <None Include="Resources\Avatar.png" />
+    <None Include="Resources\Avatar_small.png" />
     <Content Include="Resources\BaoCao.png" />
+    <None Include="Resources\Bell_1.png" />
+    <None Include="Resources\Bell_2.png" />
     <Content Include="Resources\Cancel.png" />
+    <None Include="Resources\Change.png" />
     <Content Include="Resources\ChiTiet.png" />
     <Content Include="Resources\ChoPhucVu.png" />
     <Content Include="Resources\ChuaHoanThanh.png" />
@@ -409,11 +467,15 @@
     <Content Include="Resources\DangXuat.png" />
     <Content Include="Resources\DaPhucVu.png" />
     <None Include="Resources\dollar.png" />
+    <None Include="Resources\DefaultImage.png" />
     <Content Include="Resources\DonHang.png" />
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Filter.png" />
     <None Include="Resources\Frame1.png" />
+    <None Include="Resources\Frame11.png" />
+    <None Include="Resources\GiamGia.png" />
     <Content Include="Resources\icon.png" />
+    <None Include="Resources\image.png" />
     <Content Include="Resources\In.png" />
     <Content Include="Resources\Key.png" />
     <Content Include="Resources\KhachHang.png" />
@@ -422,11 +484,29 @@
     <None Include="Resources\line.png" />
     <Content Include="Resources\logo1.png" />
     <Content Include="Resources\logo2.png" />
+    <None Include="Resources\MenuItemCard.png" />
     <Content Include="Resources\Money.png" />
+    <None Include="Resources\Money_Red.png" />
+    <None Include="Resources\Money_Green.png" />
     <Content Include="Resources\NguyenVatLieu.png" />
-    <Content Include="Resources\Panel.png" />
     <None Include="Resources\Panel_yellow.png" />
+    <None Include="Resources\panelTaoDon_1.png" />
+    <None Include="Resources\panelDonHang_1.png" />
+    <None Include="Resources\panelTTTK_1.png" />
+    <None Include="Resources\panelTTTK_2.png" />
+    <None Include="Resources\Panel.png" />
+    <None Include="Resources\panelKiemKe_1.png" />
+    <None Include="Resources\panelKiemKe_2.png" />
+    <None Include="Resources\panelLSGD_1.png" />
+    <None Include="Resources\panelDonHang_2.png" />
+    <None Include="Resources\panelThucDon1.png" />
+    <None Include="Resources\panelQLTK1.png" />
+    <None Include="Resources\panelThongKe_1.png" />
+    <None Include="Resources\panelThongKe_2.png" />
+    <None Include="Resources\Overview.png" />
+    <None Include="Resources\panelDiscount_1.png" />
     <Content Include="Resources\Pen1.png" />
+    <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
     <Content Include="Resources\Reset.png" />
@@ -439,16 +519,21 @@
     <None Include="Resources\tag.png" />
     <Content Include="Resources\TaoDon.png" />
     <None Include="Resources\ThongKe.png" />
+    <None Include="Resources\ThemMon.png" />
     <Content Include="Resources\ThucDon.png" />
     <Content Include="Resources\ThucDon1.png" />
     <Content Include="Resources\TimKiem.png" />
     <Content Include="Resources\TimKiemEnd.png" />
     <None Include="Resources\transaction.png" />
     <Content Include="Resources\TTTK.png" />
+    <None Include="Resources\upload.png" />
     <Content Include="Resources\WhiteKey.png" />
     <Content Include="Resources\Xem.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\MenuItems\" />
+    <Folder Include="Resources\MenuImages\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -458,4 +543,8 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

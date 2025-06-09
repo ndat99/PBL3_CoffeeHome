@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DTO.ViewModel;
 using PBL3_CoffeeHome.GUI.Admin;
 using PBL3_CoffeeHome.BLL;
@@ -18,7 +19,8 @@ namespace PBL3_CoffeeHome.GUI.Barista
         private InventoryTransactionBLL _transactionBLL;
         private UserBLL _userBLL;
         private BindingList<TransactionDisplayDTO> _listLSGD;
-        public ucLichSuHangHoa()
+        private User barista;
+        public ucLichSuHangHoa(User user)
         {
             _transactionBLL = new InventoryTransactionBLL();
             _userBLL = new UserBLL();
@@ -29,6 +31,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
             LoadLSGD();
             LoadCBB();
             LoadNgayGD();
+            barista = user;
         }
         private void LoadLSGD()
         {
@@ -109,7 +112,7 @@ namespace PBL3_CoffeeHome.GUI.Barista
                 string user = "barista";
 
                 var BaristaForm = (fPhaChe)this.ParentForm;
-                BaristaForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate, type, user), BaristaForm.panelChiTiet);
+                BaristaForm.LoadControlToPanel(new ucDetailLSGD(itemID, transactionDate, type, barista), BaristaForm.panelChiTiet);
             }
             else
             {
@@ -143,6 +146,13 @@ namespace PBL3_CoffeeHome.GUI.Barista
         {
             txtSearch.Clear();
             LoadLSGD();
+        }
+
+        private void ucLichSuHangHoa_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnApDung, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnReset, 10, Color.MediumPurple);
+            MakeButtonRounded(btnThongTinChiTiet, 10, Color.FromArgb(255, 128, 0));
         }
     }
 }

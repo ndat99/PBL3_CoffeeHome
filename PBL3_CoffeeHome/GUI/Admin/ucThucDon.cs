@@ -11,6 +11,7 @@ using PBL3_CoffeeHome.DAL;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.GUI.Admin;
+using System.IO;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -32,51 +33,106 @@ namespace PBL3_CoffeeHome.GUI
 
             SetupDataGridView();
             dgvThucDon.DataSource = bindingSource;
-
-            LoadData();
-        }
-
-        public void LoadData()
-        {
-            try
-            {
-                List<MenuItems> menuItems = _menuItemBLL.GetAllMenuItems();
-                if (menuItems != null && menuItems.Any())
-                {
-                    bindingSource.DataSource = menuItems;
-                    bindingSource.ResetBindings(true);
-                }
-                else
-                {
-                    MessageBox.Show("Không có dữ liệu người dùng!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    bindingSource.DataSource = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Timer timer = new Timer();
+            timer.Interval = 100;
+            timer.Tick += (s, e) => {
+                timer.Stop();
+                LoadData(""); // ← Bị delay 100ms
+            };
+            timer.Start();
         }
 
         public void LoadData(string searchTerm)
         {
-
-            List<MenuItems> searchResult;
-            string searchText = txtTimKiem.Text.Trim();
-            searchResult = _menuItemBLL.SearchMenuItems(searchText);
-            bindingSource.DataSource = searchResult;
-            bindingSource.ResetBindings(false);
+            try
+            {
+                List<MenuItems> searchResult = _menuItemBLL.SearchMenuItems(searchTerm);
+                LoadDataFromList(searchResult);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void LoadData(string searchTerm, string category)
         {
-            List<MenuItems> searchResult;
+            try
+            {
+                List<MenuItems> searchResult = _menuItemBLL.SearchMenuItems(searchTerm, category);
+                LoadDataFromList(searchResult);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lọc dữ liệu: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-            searchResult = _menuItemBLL.SearchMenuItems(searchTerm, category);
-            bindingSource.DataSource = searchResult;
-            bindingSource.ResetBindings(false);
+        // Phương thức helper để tránh lặp code
+        private void LoadDataFromList(List<MenuItems> items)
+        {
+            CleanupImages();
+            if (items != null && items.Any())
+            {
+                var displayData = items.Select(item => new
+                {
+                    item.MenuItemID,
+                    item.Name,
+                    item.Category,
+                    item.Price,
+                    item.IsAvailable,
+                    MenuItem = item
+                }).ToList();
+
+                bindingSource.DataSource = displayData;
+                bindingSource.ResetBindings(false);
+
+                foreach (DataGridViewRow row in dgvThucDon.Rows)
+                {
+                    var menuItem = (row.DataBoundItem as dynamic).MenuItem as MenuItems;
+                    if (menuItem != null && !string.IsNullOrEmpty(menuItem.ImagePath))
+                    {
+                        try
+                        {
+                            string fullPath = _menuItemBLL.GetFullImagePath(menuItem.ImagePath);
+                            if (File.Exists(fullPath))
+                            {
+                                using (var originalImage = Image.FromFile(fullPath))
+                                {
+                                    row.Cells["Image"].Value = new Bitmap(originalImage);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Lỗi load ảnh: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                bindingSource.DataSource = null;
+            }
+
+        }
+
+
+
+
+        // Thêm phương thức để giải phóng tài nguyên hình ảnh
+        private void CleanupImages()
+        {
+            if (dgvThucDon.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvThucDon.Rows)
+                {
+                    var img = row.Cells["Image"].Value as Image;
+                    img?.Dispose();
+                }
+            }
         }
 
         private void btnThemMon_Click(object sender, EventArgs e)
@@ -98,7 +154,7 @@ namespace PBL3_CoffeeHome.GUI
             dgvThucDon.MultiSelect = false;
             dgvThucDon.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvThucDon.DataSourceChanged += (s, e) => dgvThucDon.Refresh();
-
+            dgvThucDon.RowTemplate.Height = 100;
 
             // Thiết lập các cột cho DataGridView
             dgvThucDon.Columns.AddRange(new DataGridViewColumn[]
@@ -132,12 +188,37 @@ namespace PBL3_CoffeeHome.GUI
                 Width = 100
             },
             });
+
+            var imageColumn = new DataGridViewImageColumn
+            {
+                Name = "Image",
+                HeaderText = "Hình ảnh",
+                DataPropertyName = "ImagePath",
+                Width = 100,
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            };
+
+            imageColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvThucDon.Columns.Add(imageColumn);
         }
 
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            MenuItems menuItems = dgvThucDon.CurrentRow.DataBoundItem as MenuItems;
+
+            MenuItems menuItems = new MenuItems();
+            menuItems.MenuItemID = dgvThucDon.CurrentRow.Cells["MenuItemID"].Value?.ToString();
+            menuItems.Name = dgvThucDon.CurrentRow.Cells["Name"].Value?.ToString();
+            menuItems.Category = dgvThucDon.CurrentRow.Cells["Category"].Value?.ToString();
+            menuItems.Price = decimal.Parse(dgvThucDon.CurrentRow.Cells["Price"].Value?.ToString() ?? "0");
+            menuItems.IsAvailable = _menuItemBLL.isAvailable(menuItems.MenuItemID);
+            menuItems.ImagePath = _menuItemBLL.getImagePath(menuItems.MenuItemID);
+            if (menuItems.MenuItemID == null)
+            {
+                MessageBox.Show("Vui lòng chọn một món để sửa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             fCongThuc f = new fCongThuc(menuItems);
             f.Show();
         }
@@ -158,22 +239,40 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            MenuItems menuItemSelected = dgvThucDon.CurrentRow.DataBoundItem as MenuItems;
+            String menuItemSelectedId = dgvThucDon.CurrentRow.Cells["MenuItemID"].Value?.ToString();
+            String menuItemSelectedName = dgvThucDon.CurrentRow.Cells["Name"].Value?.ToString();
+            String menuItemSelectedImagePath = _menuItemBLL.getImagePath(menuItemSelectedId);
 
-            if (menuItemSelected == null)
+            if (menuItemSelectedId == null)
             {
                 MessageBox.Show("Vui lòng chọn một món để xóa!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (DialogResult.No == MessageBox.Show($"Bạn có chắc chắn muốn xóa món {menuItemSelected.Name} không?", "Thông báo",
+            if (DialogResult.No == MessageBox.Show($"Bạn có chắc chắn muốn xóa món {menuItemSelectedName} không?", "Thông báo",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
-            else
+            else 
             {
-                _menuItemBLL.DeleteMenuItem(menuItemSelected.MenuItemID);
-                LoadData();
+                string oldImagePath = Path.Combine(Application.StartupPath, menuItemSelectedImagePath);
+                if (File.Exists(oldImagePath))
+                    File.Delete(oldImagePath);
+                _menuItemBLL.DeleteMenuItem(menuItemSelectedId);
+                LoadData("");
             }
+
+        }
+
+        private void ucThucDon_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnThemMon, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnSua, 10, Color.Orange);
+            MakeButtonRounded(btnXoa, 10, Color.Red);
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
 
         }
     }

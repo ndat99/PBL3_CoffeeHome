@@ -123,6 +123,28 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return revenueDetails.Sum(rd => rd.RevenueAmount);
         }
 
+        public decimal GetRevenueByDate(DateTime date)
+        {
+            DateTime start = date.Date;
+            DateTime end = start.AddDays(1);
+
+            return GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= start &&
+                             rd.Revenue.RevenueDate < end)
+                .Sum(r => (decimal?)r.RevenueAmount) ?? 0m;
+        }
+
+        public decimal GetExpenseByDate(DateTime date)
+        {
+            DateTime start = date.Date;
+            DateTime end = start.AddDays(1);
+
+            return _context.Revenues
+                .Where(r => r.RevenueDate >= start && r.RevenueDate < end)
+                .Sum(r => (decimal?)r.TotalExpense) ?? 0m;
+        }
+
         public int GetTotalProductsSold()
         {
             return GetAllRevenueDetails().Sum(rd => rd.Quantity);
@@ -204,6 +226,74 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .ToList();
 
             return result;
+        }
+      
+        //TongQuan
+        public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .Sum(rd => rd.RevenueAmount);
+        }
+
+        public int GetTotalProductsSoldByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .Sum(rd => rd.Quantity);
+        }
+
+        public int GetTotalCustomersByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.OrderID) &&
+                             rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .Select(rd => rd.OrderID)
+                .Distinct()
+                .Count();
+        }
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            var grouped = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .GroupBy(rd => rd.Order.OrderItems.FirstOrDefault().MenuItem.Name)
+                .Select(g => new
+                {
+                    ItemName = g.Key,
+                    TotalQuantity = g.Sum(rd => rd.Quantity)
+                })
+                .OrderByDescending(x => x.TotalQuantity)
+                .ToList();
+
+            var top7 = grouped.Take(7).ToList();
+
+            // Nếu còn sản phẩm khác, gộp lại thành "Khác"
+            if (grouped.Count > 7)
+            {
+                int otherTotal = grouped.Skip(7).Sum(x => x.TotalQuantity);
+                top7.Add(new { ItemName = "Khác", TotalQuantity = otherTotal });
+            }
+
+            // Chuyển về List<(string, int)>
+            return top7.Select(x => (x.ItemName, x.TotalQuantity)).ToList();
+        }
+
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .GroupBy(rd => rd.RevenueDetailDate.Date)
+                .Select(g => (Date: g.Key, Total: g.Sum(rd => rd.RevenueAmount)))
+                .OrderBy(g => g.Date)
+                .ToList();
         }
     }
 }

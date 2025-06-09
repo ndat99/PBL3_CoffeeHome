@@ -19,7 +19,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _baristaQueueDAL = new BaristaQueueDAL();
             _context = new CoffeeDbContext();
         }
-
+      
         public void AddOrder(string OrderID, DateTime createdAt, int cardNumber, decimal totalAmount, decimal discountAmount, decimal finalAmount, string userId, string discountId)
         {
             List<OrderItem> orderItems = _orderItemsDAL.GetOrderItemsByOrderID(OrderID);
@@ -55,7 +55,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return newId;
         }
 
-
         public Order GetOrderById(string orderId)
         {
             return _context.Orders
@@ -72,6 +71,22 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Where(oi => oi.OrderID == orderId)
                 .ToList();
         }
-        
+        public List<(string FullName, int OrderCount)> GetCashierOrderCounts(DateTime fromDate, DateTime toDate)
+        {
+            return _context.Users
+                .Where (u => u.Role == "Cashier")
+                .Select(u => new
+                {
+                    u.FullName,
+                    OrderCount = _context.Orders.Count(o =>
+                        o.UserID == u.UserID &&
+                        DbFunctions.TruncateTime(o.CreatedAt) >= fromDate.Date &&
+                        DbFunctions.TruncateTime(o.CreatedAt) <= toDate.Date)
+                })
+                .Where(x => x.OrderCount > 0)
+                .ToList()
+                .Select(x => (x.FullName, x.OrderCount))
+                .ToList();
+        }
     }
 }

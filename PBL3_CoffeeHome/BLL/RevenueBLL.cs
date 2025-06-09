@@ -17,26 +17,23 @@ namespace PBL3_CoffeeHome.BLL
         {
             _revenueDAL = new RevenueDAL();
         }
+
         public void AddRevenue(string revenueID, decimal totalRevenue, decimal totalExpense)
         {
             _revenueDAL.AddRevenue(revenueID, totalRevenue, totalExpense);
         }
-        // Lấy dữ liệu doanh thu hàng ngày trong tháng
         public List<(int Day, decimal Total)> GetDailyRevenueInMonth(int year, int month)
         {
             return _revenueDAL.GetDailyRevenueInMonth(year, month);
         }
-        // doanh thu 1 tháng
         public decimal GetTotalRevenueByMonth(int year, int month)
         {
             return _revenueDAL.GetTotalRevenueByMonth(year, month);
         }
-        // Lấy dữ liệu doanh thu hàng tháng trong năm
         public List<(int Month, decimal Total)> GetMonthlyRevenueInYear(int year)
         {
             return _revenueDAL.GetMonthlyRevenueInYear(year);
         }
-        // doanh thu 1 năm
         public decimal GetTotalRevenueByYear(int year)
         {
             return _revenueDAL.GetTotalRevenueByYear(year);
@@ -46,13 +43,11 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _revenueDAL.GetTotalCustomersByMonth(year, month);
         }
-        // Tính tổng lượng khách trong năm
         public int GetTotalCustomersByYear(int year)
         {
             return _revenueDAL.GetTotalCustomersByYear(year);
         }
 
-        // Lấy dữ liệu lợi nhuận theo tháng trong năm
         public List<(string ThoiGian, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>
             GetProfitByMonths(int year)
         {
@@ -75,7 +70,41 @@ namespace PBL3_CoffeeHome.BLL
             return result;
         }
 
-        //Tìm năm có doanh thu
+        // Hàm lấy lợi nhuận theo ngày trong khoảng thời gian
+        public List<(String Date, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>
+        GetProfitByDateRange(DateTime startDate, DateTime endDate)
+        {
+            var result = new List<(String Date, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>();
+
+            for (DateTime date = startDate.Date; date <= endDate.Date; date = date.AddDays(1))
+            {
+                decimal doanhThu = _revenueDAL.GetRevenueByDate(date);
+
+                decimal chiPhi = _revenueDAL.GetExpenseByDate(date);
+
+                decimal loiNhuan = doanhThu - chiPhi;
+
+                string dateString = date.ToString("dd");
+
+                result.Add((dateString, doanhThu, chiPhi, loiNhuan));
+            }
+
+            return result;
+        }
+
+        // Hàm tính tổng lợi nhuận trong khoảng thời gian
+        public (decimal TongDoanhThu, decimal TongChiPhi, decimal TongLoiNhuan)
+            GetTotalProfitByDateRange(DateTime startDate, DateTime endDate)
+        {
+            var dailyProfits = GetProfitByDateRange(startDate, endDate);
+
+            decimal tongDoanhThu = dailyProfits.Sum(p => p.DoanhThu);
+            decimal tongChiPhi = dailyProfits.Sum(p => p.ChiPhi);
+            decimal tongLoiNhuan = tongDoanhThu - tongChiPhi;
+
+            return (tongDoanhThu, tongChiPhi, tongLoiNhuan);
+        }
+
         public List<int> GetAllYearsWithData()
         {
             return _revenueDAL.GetAllRevenueDetails()
@@ -104,6 +133,27 @@ namespace PBL3_CoffeeHome.BLL
         public int GetTotalProductsSoldByMonth(int year, int month)
         {
             return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
+        }
+
+        public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _revenueDAL.GetTotalRevenueByDateRange(fromDate, toDate);
+        }
+        public int GetTotalProductsSoldByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _revenueDAL.GetTotalProductsSoldByDateRange(fromDate, toDate);
+        }
+        public int GetTotalCustomersByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _revenueDAL.GetTotalCustomersByDateRange(fromDate, toDate);
+        }
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return _revenueDAL.GetTopSellingProductsByDateRange(fromDate, toDate);
+        }
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetDailyRevenueInDateRange(startDate, endDate);
         }
     }
 }

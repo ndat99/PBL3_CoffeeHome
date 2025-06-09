@@ -38,7 +38,6 @@ namespace PBL3_CoffeeHome.BLL
             return _orderDAL.GenerateOrderID();
         }
 
-        // Lấy chi tiết đơn hàng để in hóa đơn
         public Order GetOrderDetails(string orderId)
         {
             try
@@ -50,13 +49,11 @@ namespace PBL3_CoffeeHome.BLL
                 throw new Exception($"Lỗi khi lấy chi tiết đơn hàng {orderId}: " + ex.Message, ex);
             }
         }
-        // Lấy chi tiết các món trong đơn hàng
         public List<OrderItem> GetOrderItemsByOrderId(string orderId)
         {
             return _orderDAL.GetOrderItemsByOrderId(orderId);
         }
         
-        // Cập nhật trạng thái đơn hàng
         public void CompleteOrder(string orderId, string queueID, string baristaId)
         {
             var orderItems = _orderDAL.GetOrderItemsByOrderId(orderId);
@@ -78,6 +75,11 @@ namespace PBL3_CoffeeHome.BLL
                 _revenueDetailsBLL.AddRevenueDetails(orderItem, revenueId, orderItem.MenuItemID, orderItem.Subtotal);
             }
             _baristaQueueBLL.UpdateQueueStatus(queueID, baristaId, "Complete");
+        }
+
+        public List<(string FullName, int OrderCount)> GetCashierOrderCounts(DateTime fromDate, DateTime toDate)
+        {
+            return _orderDAL.GetCashierOrderCounts(fromDate, toDate);
         }
     }
 

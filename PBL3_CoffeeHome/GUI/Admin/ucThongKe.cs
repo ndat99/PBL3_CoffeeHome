@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -21,9 +17,8 @@ namespace PBL3_CoffeeHome.GUI
             InitializeComponent();
             _revenueBLL = new RevenueBLL();
 
-            // Khởi tạo dữ liệu cho các combobox
             cbThongKeTheo.Items.Clear();
-            cbThongKeTheo.Items.AddRange(new string[] { "Ngày", "Tháng" });
+            cbThongKeTheo.Items.AddRange(new string[] { "Ngày", "Tháng", "Khoảng thời gian" });
             cbThongKeTheo.SelectedIndex = -1;
 
             cbNam.Items.Clear();
@@ -43,6 +38,20 @@ namespace PBL3_CoffeeHome.GUI
             cbThang.SelectedIndex = -1;
             cbThang.Enabled = false;
 
+            // Thiết lập DateTimePicker
+            dtpBatDau.Format = DateTimePickerFormat.Custom;
+            dtpBatDau.CustomFormat = "dd/MM/yyyy";
+            dtpKetThuc.Format = DateTimePickerFormat.Custom;
+            dtpKetThuc.CustomFormat = "dd/MM/yyyy";
+
+            // Đặt ngày mặc định: đầu tháng đến hiện tại
+            dtpBatDau.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dtpKetThuc.Value = DateTime.Now;
+            dtpBatDau.Enabled = false;
+            dtpKetThuc.Enabled = false;
+
+            // Cấu hình biểu đồ
+            chartDoanhThu.Series["DoanhThu"].ChartType = SeriesChartType.Column;
         }
 
         private void cbThongKeTheo_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,60 +62,95 @@ namespace PBL3_CoffeeHome.GUI
             cbThang.SelectedIndex = -1;
             cbNam.Enabled = true;
             cbThang.Enabled = false;
+            dtpBatDau.Enabled = false;
+            dtpKetThuc.Enabled = false;
 
             string mode = cbThongKeTheo.SelectedItem.ToString();
             if (mode == "Tháng")
             {
                 cbThang.Items.Clear();
                 cbThang.Enabled = false;
-
             }
             else if (mode == "Ngày")
             {
                 cbThang.Items.Clear();
                 cbThang.Enabled = true;
-                for (int month = 1; month <= 12; month++)
-                {
-                    cbThang.Items.Add(month.ToString());
-                }
+                cbThang.Items.AddRange(Enumerable.Range(1, 12).Select(m => m.ToString()).ToArray());
+            }
+            else if (mode == "Khoảng thời gian")
+            {
+                cbThang.Items.Clear();
+                cbNam.Enabled = false;
+                cbThang.Enabled = false;
+                dtpBatDau.Enabled = true;
+                dtpKetThuc.Enabled = true;
             }
         }
 
         private void cbNam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbThongKeTheo.SelectedItem == null) return;
-
-            if (cbThongKeTheo.SelectedItem.ToString() == "Ngày" && cbNam.SelectedItem != null)
-            {
-                cbThang.Enabled = true;
-            }
+            if (cbThongKeTheo.SelectedItem == null || cbThongKeTheo.SelectedItem.ToString() != "Ngày") return;
+            cbThang.Enabled = cbNam.SelectedIndex != -1;
         }
 
-        public void CalculateRevenueStatistics(string mode, int year, int? month = null)
+        private int GetDayInterval(int totalDays)
+        {
+            if (totalDays <= 7) return 1;
+            else if (totalDays <= 14) return 2;
+            else if (totalDays <= 30) return 3;
+            else if (totalDays <= 60) return 5;
+            else if (totalDays <= 90) return 7;
+            else if (totalDays <= 180) return 15;
+            else if (totalDays <= 365) return 30;
+            else if (totalDays <= 730) return 60;
+            else if (totalDays <= 1460) return 90;
+            else return 180;
+        }
+
+        public void CalculateRevenueStatistics(string mode, DateTime? startDate = null, DateTime? endDate = null, int year = 0, int? month = null)
         {
             try
             {
                 txtTongDT.Text = "$0";
                 txtTongSP.Text = "0";
                 txtTongKH.Text = "0";
-                // Xóa dữ liệu cũ trong biểu đồ
-                chartDoanhThu.Series["Series1"].Points.Clear();
+
+                chartDoanhThu.Series["DoanhThu"].Points.Clear();
                 chartSanPham.Series.Clear();
                 chartSanPham.Legends.Clear();
 
-                // Cập nhật tổng doanh thu, sản phẩm đã bán, và lượng khách theo thời gian đã chọn
+                // Reset trục X để tránh lỗi khi chuyển mode
+                var axisX = chartDoanhThu.ChartAreas[0].AxisX;
+                axisX.CustomLabels.Clear();
+                axisX.Interval = 1;
+                axisX.IntervalType = DateTimeIntervalType.Number;
+                axisX.LabelStyle.Format = "";
+                axisX.LabelStyle.Angle = 0;
+                axisX.LabelStyle.IsStaggered = false;
+
                 decimal totalRevenue;
                 int totalProductsSold;
                 int totalCustomers;
                 List<(string ItemName, int TotalQuantity)> topProducts;
-
                 if (mode == "Ngày" && month.HasValue)
                 {
                     totalRevenue = _revenueBLL.GetTotalRevenueByMonth(year, month.Value);
                     totalProductsSold = _revenueBLL.GetTotalProductsSoldByMonth(year, month.Value);
                     totalCustomers = _revenueBLL.GetTotalCustomersByMonth(year, month.Value);
                     topProducts = _revenueBLL.GetTopSellingProductsByMonth(year, month.Value);
+                    var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
 
+                    // Vẽ cột cho tất cả các ngày với doanh thu thực tế
+                    foreach (var data in dailyRevenue.OrderBy(d => d.Day))
+                    {
+                        chartDoanhThu.Series["DoanhThu"].Points.AddXY(data.Day, data.Total);
+                    }
+                    chartDoanhThu.ChartAreas[0].AxisX.Interval = 2;
+
+                    // Tìm doanh thu lớn nhất trong tháng để điều chỉnh trục Y
+                    var maxRevenueDay = dailyRevenue.Any() ? dailyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueDay * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueDay * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else if (mode == "Tháng")
                 {
@@ -114,38 +158,65 @@ namespace PBL3_CoffeeHome.GUI
                     totalProductsSold = _revenueBLL.GetTotalProductsSoldByYear(year);
                     totalCustomers = _revenueBLL.GetTotalCustomersByYear(year);
                     topProducts = _revenueBLL.GetTopSellingProductsByYear(year);
+                    var monthlyRevenue = _revenueBLL.GetMonthlyRevenueInYear(year);
 
+                    // Vẽ cột cho tất cả các tháng với doanh thu thực tế
+                    foreach (var data in monthlyRevenue)
+                    {
+                        chartDoanhThu.Series["DoanhThu"].Points.AddXY(data.Month, data.Total);
+                    }
+                    chartDoanhThu.ChartAreas[0].AxisX.Interval = 1;
+
+                    // Tìm doanh thu lớn nhất trong năm để điều chỉnh trục Y
+                    var maxRevenueMonth = monthlyRevenue.Any() ? monthlyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueMonth * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueMonth * 1.2m) / 5 / 50000m) * 50000m) / 5;
+                }
+                else if (mode == "Khoảng thời gian" && startDate.HasValue && endDate.HasValue)
+                {
+                    totalRevenue = _revenueBLL.GetTotalRevenueByDateRange(startDate.Value, endDate.Value);
+                    totalProductsSold = _revenueBLL.GetTotalProductsSoldByDateRange(startDate.Value, endDate.Value);
+                    totalCustomers = _revenueBLL.GetTotalCustomersByDateRange(startDate.Value, endDate.Value);
+                    topProducts = _revenueBLL.GetTopSellingProductsByDateRange(startDate.Value, endDate.Value);
+                    var dailyRevenue = _revenueBLL.GetDailyRevenueInDateRange(startDate.Value, endDate.Value) ?? new List<(DateTime Date, decimal Total)>();
+
+                    // Tạo danh sách tất cả các ngày trong khoảng thời gian
+                    var allDates = Enumerable.Range(0, (endDate.Value - startDate.Value).Days + 1)
+                        .Select(d => startDate.Value.AddDays(d))
+                        .ToList();
+                    var revenueDict = dailyRevenue?.ToDictionary(x => x.Date.Date, x => x.Total) ?? new Dictionary<DateTime, decimal>();
+
+                    // Vẽ cột cho tất cả các ngày với doanh thu thực tế
+                    foreach (var date in allDates)
+                    {
+                        decimal revenue = revenueDict.ContainsKey(date.Date) ? revenueDict[date.Date] : 0m;
+                        chartDoanhThu.Series["DoanhThu"].Points.AddXY(date.ToString("dd/MM/yyyy"), revenue);
+                    }
+
+                    int totalDays = (endDate.Value - startDate.Value).Days + 1;
+                    int dayInterval = GetDayInterval(totalDays);
+                    chartDoanhThu.ChartAreas[0].AxisX.Interval = dayInterval;
+                    chartDoanhThu.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+                    chartDoanhThu.ChartAreas[0].AxisX.LabelStyle.Angle = -45;
+                    if (totalDays > 30)
+                    {
+                        chartDoanhThu.ChartAreas[0].AxisX.IntervalOffset = dayInterval / 2;
+                    }
+
+                    // Tìm doanh thu lớn nhất trong khoảng thời gian để điều chỉnh trục Y
+                    var maxRevenueDay = dailyRevenue.Any() ? dailyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueDay * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueDay * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else
                 {
                     throw new ArgumentException("Chế độ thống kê không hợp lệ.");
                 }
 
-                //// Hiển thị trên giao diện trong các panel
                 txtTongDT.Text = $"${totalRevenue:N0}";
                 txtTongSP.Text = totalProductsSold.ToString();
                 txtTongKH.Text = totalCustomers.ToString();
 
-                // Xử lý biểu đồ doanh thu theo ngày hoặc tháng
-                if (mode == "Ngày" && month.HasValue)
-                {
-                    var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
-                    foreach (var data in dailyRevenue)
-                    {
-                        chartDoanhThu.Series["Series1"].Points.AddXY(data.Day, data.Total);
-                    }
-                }
-                else if (mode == "Tháng")
-                {
-                    var monthlyRevenue = _revenueBLL.GetMonthlyRevenueInYear(year);
-                    foreach (var data in monthlyRevenue)
-                    {
-                        chartDoanhThu.Series["Series1"].Points.AddXY(data.Month, data.Total);
-                    }
-                }
-
-                // Xử lý sản phẩm bán chạy nhất - Biểu đồ tròn
-                // Tạo legend (chú thích) ở phía dưới
                 Legend legend = new Legend
                 {
                     Name = "ProductLegend",
@@ -161,7 +232,6 @@ namespace PBL3_CoffeeHome.GUI
                 };
                 chartSanPham.Legends.Add(legend);
 
-                // Tạo series biểu đồ tròn
                 Series pieSeries = new Series
                 {
                     Name = "TopProducts",
@@ -174,15 +244,13 @@ namespace PBL3_CoffeeHome.GUI
                     Legend = "ProductLegend"
                 };
 
-
-                // Màu sắc cho các phần
                 Color[] colors = {
-            Color.FromArgb(65, 140, 240),   // Xanh dương
-            Color.FromArgb(252, 180, 65),   // Cam
-            Color.FromArgb(70, 190, 100),   // Xanh lá
-            Color.FromArgb(240, 80, 110),   // Đỏ
-            Color.FromArgb(170, 110, 210),  // Tím
-            Color.FromArgb(150, 150, 150)   // Xám (cho phần Khác)
+            Color.FromArgb(65, 140, 240),
+            Color.FromArgb(252, 180, 65),
+            Color.FromArgb(70, 190, 100),
+            Color.FromArgb(240, 80, 110),
+            Color.FromArgb(170, 110, 210),
+            Color.FromArgb(150, 150, 150)
         };
 
                 int colorIndex = 0;
@@ -194,7 +262,6 @@ namespace PBL3_CoffeeHome.GUI
                     point.LegendText = $"{product.ItemName} ({product.TotalQuantity})";
                     point.ToolTip = product.ItemName;
 
-                    // Định dạng đặc biệt cho phần "Khác"
                     if (product.ItemName == "Khác")
                     {
                         point.Color = Color.LightGray;
@@ -206,11 +273,8 @@ namespace PBL3_CoffeeHome.GUI
 
                 chartSanPham.Series.Add(pieSeries);
 
-                // Tùy chỉnh hiển thị
                 pieSeries["PieLabelStyle"] = "Inside";
-                pieSeries["PieDrawingStyle"] = "Concave";
-                chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = true;
-                chartSanPham.ChartAreas[0].Area3DStyle.Inclination = 30;
+                chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = false;
                 chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50);
             }
             catch (Exception ex)
@@ -223,30 +287,47 @@ namespace PBL3_CoffeeHome.GUI
         {
             if (cbThongKeTheo.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn kiểu thống kê (Ngày hoặc Tháng).", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn kiểu thống kê (Ngày, Tháng hoặc Khoảng thời gian).", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             string mode = cbThongKeTheo.SelectedItem.ToString();
 
-            if (!int.TryParse(cbNam.SelectedItem?.ToString(), out int year))
+            if (mode == "Khoảng thời gian")
             {
-                MessageBox.Show("Vui lòng chọn năm hợp lệ.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            int? month = null;
-            if (mode == "Ngày")
-            {
-                if (!int.TryParse(cbThang.SelectedItem?.ToString(), out int selectedMonth))
+                if (dtpBatDau.Value > dtpKetThuc.Value)
                 {
-                    MessageBox.Show("Vui lòng chọn tháng hợp lệ.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                month = selectedMonth;
+                CalculateRevenueStatistics(mode, startDate: dtpBatDau.Value, endDate: dtpKetThuc.Value);
             }
+            else
+            {
+                if (!int.TryParse(cbNam.SelectedItem?.ToString(), out int year))
+                {
+                    MessageBox.Show("Vui lòng chọn năm hợp lệ.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            CalculateRevenueStatistics(mode, year, month);
+                int? month = null;
+                if (mode == "Ngày")
+                {
+                    if (!int.TryParse(cbThang.SelectedItem?.ToString(), out int selectedMonth) || selectedMonth < 1 || selectedMonth > 12)
+                    {
+                        MessageBox.Show("Vui lòng chọn tháng hợp lệ (1-12).", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    month = selectedMonth;
+                }
+
+                CalculateRevenueStatistics(mode, year: year, month: month);
+            }
+        }
+
+        private void ucThongKe_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnLoc, 10, Color.Black);
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PBL3_CoffeeHome.DAL;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.GUI.Admin;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -18,13 +19,17 @@ namespace PBL3_CoffeeHome.GUI
         private Button activeButton;
         private User admin;
         private UserBLL _userBLL;
-
+        private readonly BaristaQueueBLL _baristaQueueBLL;
         public fQuanLy(User user)
         {
             InitializeComponent();
             admin = user;
             txtName.Text = admin.FullName;
             _userBLL = new UserBLL();
+            _baristaQueueBLL = new BaristaQueueBLL();
+            timerBell.Start();
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
+            hasDoneQueue = false;
         }
         public void LoadControlToPanel(UserControl control, Panel panel)
         {
@@ -33,10 +38,10 @@ namespace PBL3_CoffeeHome.GUI
             panel.Controls.Add(control);
             control.BringToFront();
         }
-        private void btnTaoDon_Click(object sender, EventArgs e)
+        private void btnGiamGia_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
-            HighlightButton(btnTaoDon);
+            LoadControlToPanel(new ucDiscounts(), panelChiTiet);
+            HighlightButton(btnGiamGia);
         }
         private void btnThucDon_Click(object sender, EventArgs e)
         {
@@ -61,8 +66,18 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnKhoHang_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucKhoHang(admin.UserID), panelChiTiet);
+            LoadControlToPanel(new ucKhoHang(admin, 0), panelChiTiet);
             HighlightButton(btnKhoHang);
+        }
+        private void btnLoiNhuan_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
+            HighlightButton(btnLoiNhuan);
+        }
+        private void btnTongQuan_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTongQuan(), panelChiTiet);
+            HighlightButton(btnTongQuan);
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -73,6 +88,7 @@ namespace PBL3_CoffeeHome.GUI
             {
                 admin.IsActive = false;
                 admin.LastLoginAt = DateTime.Now;
+                admin.PasswordHash = _userBLL.GetUserById(admin.UserID).PasswordHash;
                 _userBLL.UpdateUser(admin);
                 Application.Restart();
             }
@@ -103,10 +119,42 @@ namespace PBL3_CoffeeHome.GUI
 
         }
 
-        private void btnLoiNhuan_Click(object sender, EventArgs e)
+        int oldQueue = 0;
+        private bool hasDoneQueue = false;
+        private void timerBell_Tick(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
-            HighlightButton(btnLoiNhuan);
+            int doneQueue = _baristaQueueBLL.DoneQueueCheck();
+            if (doneQueue > oldQueue)
+            {
+                hasDoneQueue = true;
+                btnBell.BackgroundImage = Properties.Resources.Bell_2;
+            }
+            else if (!hasDoneQueue)
+            {
+                btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            }
+            oldQueue = doneQueue;
+        }
+
+        private void btnBell_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
+            HighlightButton(btnGiamGia);
+            btnBell.BackgroundImage = Properties.Resources.Bell_1;
+            hasDoneQueue = false;
+            oldQueue = _baristaQueueBLL.DoneQueueCheck();
+        }
+
+        private void btnAvatar_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucTTTK(admin), panelChiTiet);
+            HighlightButton(btnTTTK);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucDiscounts(), panelChiTiet);
+            HighlightButton(btnQLTK);
         }
     }
 }
