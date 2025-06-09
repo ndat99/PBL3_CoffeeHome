@@ -140,13 +140,17 @@ namespace PBL3_CoffeeHome.GUI
                     topProducts = _revenueBLL.GetTopSellingProductsByMonth(year, month.Value);
                     var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
 
-                    // Vẽ cột cho tất cả các ngày có dữ liệu
+                    // Vẽ cột cho tất cả các ngày với doanh thu thực tế
                     foreach (var data in dailyRevenue.OrderBy(d => d.Day))
                     {
                         chartDoanhThu.Series["DoanhThu"].Points.AddXY(data.Day, data.Total);
                     }
                     chartDoanhThu.ChartAreas[0].AxisX.Interval = 2;
 
+                    // Tìm doanh thu lớn nhất trong tháng để điều chỉnh trục Y
+                    var maxRevenueDay = dailyRevenue.Any() ? dailyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueDay * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueDay * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else if (mode == "Tháng")
                 {
@@ -156,12 +160,17 @@ namespace PBL3_CoffeeHome.GUI
                     topProducts = _revenueBLL.GetTopSellingProductsByYear(year);
                     var monthlyRevenue = _revenueBLL.GetMonthlyRevenueInYear(year);
 
-
+                    // Vẽ cột cho tất cả các tháng với doanh thu thực tế
                     foreach (var data in monthlyRevenue)
                     {
                         chartDoanhThu.Series["DoanhThu"].Points.AddXY(data.Month, data.Total);
                     }
-                    chartDoanhThu.ChartAreas[0].AxisX.Interval = 1; // Hiển thị tất cả số tháng
+                    chartDoanhThu.ChartAreas[0].AxisX.Interval = 1;
+
+                    // Tìm doanh thu lớn nhất trong năm để điều chỉnh trục Y
+                    var maxRevenueMonth = monthlyRevenue.Any() ? monthlyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueMonth * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueMonth * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else if (mode == "Khoảng thời gian" && startDate.HasValue && endDate.HasValue)
                 {
@@ -169,7 +178,7 @@ namespace PBL3_CoffeeHome.GUI
                     totalProductsSold = _revenueBLL.GetTotalProductsSoldByDateRange(startDate.Value, endDate.Value);
                     totalCustomers = _revenueBLL.GetTotalCustomersByDateRange(startDate.Value, endDate.Value);
                     topProducts = _revenueBLL.GetTopSellingProductsByDateRange(startDate.Value, endDate.Value);
-                    var dailyRevenue = _revenueBLL.GetDailyRevenueInDateRange(startDate.Value, endDate.Value);
+                    var dailyRevenue = _revenueBLL.GetDailyRevenueInDateRange(startDate.Value, endDate.Value) ?? new List<(DateTime Date, decimal Total)>();
 
                     // Tạo danh sách tất cả các ngày trong khoảng thời gian
                     var allDates = Enumerable.Range(0, (endDate.Value - startDate.Value).Days + 1)
@@ -177,7 +186,7 @@ namespace PBL3_CoffeeHome.GUI
                         .ToList();
                     var revenueDict = dailyRevenue?.ToDictionary(x => x.Date.Date, x => x.Total) ?? new Dictionary<DateTime, decimal>();
 
-                    // Vẽ cột cho tất cả các ngày, giá trị 0 nếu không có doanh thu
+                    // Vẽ cột cho tất cả các ngày với doanh thu thực tế
                     foreach (var date in allDates)
                     {
                         decimal revenue = revenueDict.ContainsKey(date.Date) ? revenueDict[date.Date] : 0m;
@@ -193,6 +202,11 @@ namespace PBL3_CoffeeHome.GUI
                     {
                         chartDoanhThu.ChartAreas[0].AxisX.IntervalOffset = dayInterval / 2;
                     }
+
+                    // Tìm doanh thu lớn nhất trong khoảng thời gian để điều chỉnh trục Y
+                    var maxRevenueDay = dailyRevenue.Any() ? dailyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueDay * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueDay * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else
                 {
@@ -262,9 +276,6 @@ namespace PBL3_CoffeeHome.GUI
                 pieSeries["PieLabelStyle"] = "Inside";
                 chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = false;
                 chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50);
-
-                chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(totalRevenue * 1.2m / 50000m) * 50000m);
-                chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((totalRevenue * 1.2m) / 5 / 50000m) * 50000m) / 5;
             }
             catch (Exception ex)
             {
