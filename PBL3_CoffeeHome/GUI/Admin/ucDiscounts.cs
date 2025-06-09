@@ -24,13 +24,6 @@ namespace PBL3_CoffeeHome.GUI
             LoadDiscountsData();
         }
 
-        private void ucDiscounts_Load(object sender, EventArgs e)
-        {
-            MakeButtonRounded(btnAddDiscount, 10, Color.FromArgb(0, 102, 204));
-            MakeButtonRounded(btnEditDiscount, 10, Color.Orange);
-            MakeButtonRounded(btnDeleteDiscount, 10, Color.Red);
-        }
-
         private void LoadDiscountsData()
         {
             try
@@ -206,7 +199,15 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadDiscountsData();
         }
+
+        private void ucDiscounts_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnHienThiTatCa, 10, Color.Black);
+            MakeButtonRounded(btnAddDiscount, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnEditDiscount, 10, Color.Orange);
+            MakeButtonRounded(btnDeleteDiscount, 10, Color.Red);
+        }
     }
 
-    
 }

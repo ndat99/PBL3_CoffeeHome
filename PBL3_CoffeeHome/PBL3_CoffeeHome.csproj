@@ -473,6 +473,7 @@
     <Content Include="Resources\Filter.png" />
     <None Include="Resources\Frame1.png" />
     <None Include="Resources\Frame11.png" />
+    <None Include="Resources\GiamGia.png" />
     <Content Include="Resources\icon.png" />
     <None Include="Resources\image.png" />
     <Content Include="Resources\In.png" />
@@ -503,6 +504,7 @@
     <None Include="Resources\panelThongKe_1.png" />
     <None Include="Resources\panelThongKe_2.png" />
     <None Include="Resources\Overview.png" />
+    <None Include="Resources\panelDiscount_1.png" />
     <Content Include="Resources\Pen1.png" />
     <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />

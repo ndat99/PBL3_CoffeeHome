@@ -209,9 +209,9 @@ namespace PBL3_CoffeeHome.GUI
                     Docking = Docking.Bottom,
                     Alignment = StringAlignment.Center,
                     LegendStyle = LegendStyle.Table,
-                    Font = new Font("Arial", 9, FontStyle.Regular),
+                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
                     Title = "TOP SẢN PHẨM BÁN CHẠY",
-                    TitleFont = new Font("Arial", 10, FontStyle.Bold),
+                    TitleFont = new Font("Segoe UI", 10, FontStyle.Bold),
                     BorderColor = Color.LightGray,
                     IsTextAutoFit = false,
                     MaximumAutoSize = 60
@@ -221,23 +221,24 @@ namespace PBL3_CoffeeHome.GUI
                 Series pieSeries = new Series
                 {
                     Name = "TopProducts",
-                    ChartType = SeriesChartType.Pie,
+                    ChartType = SeriesChartType.Doughnut,
                     IsValueShownAsLabel = true,
                     Label = "#PERCENT{P0}",
-                    Font = new Font("Arial", 9, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
                     LabelForeColor = Color.White,
                     BorderWidth = 1,
                     Legend = "ProductLegend"
                 };
 
                 Color[] colors = {
-            Color.FromArgb(65, 140, 240),
-            Color.FromArgb(252, 180, 65),
-            Color.FromArgb(70, 190, 100),
-            Color.FromArgb(240, 80, 110),
-            Color.FromArgb(170, 110, 210),
-            Color.FromArgb(150, 150, 150)
-        };
+                    Color.FromArgb(74, 144, 226),
+                    Color.FromArgb(126, 211, 33),
+                    Color.FromArgb(245, 166, 35),
+                    Color.FromArgb(144, 19, 254),
+                    Color.FromArgb(255, 107, 107),
+                    Color.FromArgb(80, 227, 194),
+                    Color.FromArgb(255, 217, 61)
+                };
 
                 int colorIndex = 0;
                 foreach (var product in topProducts)
@@ -251,7 +252,7 @@ namespace PBL3_CoffeeHome.GUI
                     if (product.ItemName == "Khác")
                     {
                         point.Color = Color.LightGray;
-                        point.Font = new Font("Arial", 8, FontStyle.Italic);
+                        point.Font = new Font("Segoe UI", 8);
                     }
 
                     pieSeries.Points.Add(point);
