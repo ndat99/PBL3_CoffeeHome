@@ -13,6 +13,8 @@ namespace PBL3_CoffeeHome.DTO
             Orders = new HashSet<Order>();
             BaristaQueues = new HashSet<BaristaQueue>();
             InventoryTransactions = new HashSet<InventoryTransaction>();
+            Salaries = new HashSet<Salary>();
+            Schedules = new HashSet<Schedule>();
         }
 
         [Key]
@@ -48,5 +50,8 @@ namespace PBL3_CoffeeHome.DTO
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<BaristaQueue> BaristaQueues { get; set; }
         public virtual ICollection<InventoryTransaction> InventoryTransactions { get; set; }
+        public virtual ICollection<Salary> Salaries { get; set; }
+        public virtual ICollection<Schedule> Schedules { get; set; }
+
     }
 }

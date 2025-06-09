@@ -89,11 +89,14 @@
     <Compile Include="BLL\OrderItemsBLL.cs" />
     <Compile Include="BLL\RevenueBLL.cs" />
     <Compile Include="BLL\RevenueDetailsBLL.cs" />
+    <Compile Include="BLL\ScheduleBLL.cs" />
     <Compile Include="BLL\UserBLL.cs" />
+    <Compile Include="DAL\CoffeeDbContext.cs" />
     <Compile Include="DAL\Repository\OrderItemsDAL.cs" />
     <Compile Include="DAL\Repository\RevenueDetailsDAL.cs" />
+    <Compile Include="DAL\Repository\SalaryDAL.cs" />
+    <Compile Include="DAL\Repository\ScheduleDAL.cs" />
     <Compile Include="DAL\Repository\UserDAL.cs" />
-    <Compile Include="DAL\CoffeeDbContext.cs" />
     <Compile Include="DAL\Repository\BaristaQueueDAL.cs" />
     <Compile Include="DAL\Repository\DiscountDAL.cs" />
     <Compile Include="DAL\Repository\InventoryDAL.cs" />
@@ -112,6 +115,8 @@
     <Compile Include="DTO\OrderItem.cs" />
     <Compile Include="DTO\Revenue.cs" />
     <Compile Include="DTO\RevenueDetail.cs" />
+    <Compile Include="DTO\Salary.cs" />
+    <Compile Include="DTO\Schedule.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="DTO\ViewModel\IngredientView.cs" />
     <Compile Include="DTO\ViewModel\InventoryDTO.cs" />
@@ -155,6 +160,12 @@
     </Compile>
     <Compile Include="GUI\Admin\ucDetailNL.Designer.cs">
       <DependentUpon>ucDetailNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Admin\ucNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Admin\ucNhanVien.Designer.cs">
+      <DependentUpon>ucNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Admin\ucQLTK.cs">
       <SubType>UserControl</SubType>
@@ -318,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucLoiNhuan.resx">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Admin\ucNhanVien.resx">
+      <DependentUpon>ucNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucQLTK.resx">
       <DependentUpon>ucQLTK.cs</DependentUpon>
