@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PBL3_CoffeeHome.DTO;
-
+using PBL3_CoffeeHome.DTO.ViewModel;
 namespace PBL3_CoffeeHome.DAL.Repository
 {
     public class SalaryDAL
@@ -15,9 +16,19 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _db = new CoffeeDbContext();
         }
 
-        public List<Salary> GetAllSalary()
+        public List<SalaryDTO> GetAllSalary()
         {
-            return _db.Salaries.AsNoTracking().ToList();
+            return _db.Salaries.AsNoTracking().Include(s => s.User)
+                .Select(s => new SalaryDTO
+                {
+                    SalaryID = s.SalaryID,
+                    FullName = s.User.FullName,
+                    HoursWorked = s.HoursWorked,
+                    HourlyRate = s.HourlyRate,
+                    TotalSalary = s.TotalSalary,
+                    PaymentDate = s.PaymentDate,
+                    Status = s.Status
+                }).ToList();
         }
 
         public List<string> GetYearBySalary()
@@ -26,9 +37,10 @@ namespace PBL3_CoffeeHome.DAL.Repository
                                .Distinct().OrderByDescending(y => y).ToList();
         }
 
-        public List<Salary> SearchSalary(String thang, String nam, string txtsearch)
+        public List<SalaryDTO> SearchSalary(string thang, string nam, string txtsearch)
         {
-            var query = _db.Salaries.AsNoTracking().AsQueryable();
+            var query = _db.Salaries.AsNoTracking().Include(s => s.User).AsQueryable();
+
             if (!string.IsNullOrEmpty(thang) && thang != "Tất cả")
             {
                 int month = int.Parse(thang);
@@ -42,9 +54,19 @@ namespace PBL3_CoffeeHome.DAL.Repository
             if (!string.IsNullOrEmpty(txtsearch))
             {
                 txtsearch = txtsearch.ToLower().Trim();
-                query = query.Where(s => s.UserID.ToLower().Contains(txtsearch));
+                query = query.Where(s => s.User.FullName.ToLower().Contains(txtsearch) || s.User.FullName.ToLower().Contains(txtsearch));
             }
-            return query.ToList();
+
+            return query.Select(s => new SalaryDTO
+            {
+                SalaryID = s.SalaryID,
+                FullName = s.User.FullName,
+                HoursWorked = s.HoursWorked,
+                HourlyRate = s.HourlyRate,
+                TotalSalary = s.TotalSalary,
+                PaymentDate = s.PaymentDate,
+                Status = s.Status
+            }).ToList();
         }
 
         public void AddSalary(string scheduleId, string userId, decimal hoursWorked, decimal hourlyRate)
@@ -59,7 +81,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 HourlyRate = hourlyRate,
                 TotalSalary = hoursWorked * hourlyRate,
                 PaymentDate = DateTime.Now,  
-                //
                 Status = "Pending"
             };
             _db.Salaries.Add(salary);
@@ -68,10 +89,25 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
         public void UpdateStatusSalary(string salaryId)
         {
+            
             var salary = _db.Salaries.Find(salaryId);
+            
+
             if (salary != null)
             {
                 salary.Status = "Paid";
+                salary.PaymentDate = DateTime.Now; 
+
+                _db.SaveChanges();
+            }
+        }
+
+        public void DeleteSalary(string ScheduleId)
+        {
+            Salary salary = _db.Salaries.FirstOrDefault(t => t.ScheduleID == ScheduleId);
+            if (salary != null)
+            {
+                _db.Salaries.Remove(salary);
                 _db.SaveChanges();
             }
         }

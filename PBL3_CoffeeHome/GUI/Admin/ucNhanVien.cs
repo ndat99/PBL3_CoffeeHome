@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
+using PBL3_CoffeeHome.DTO.ViewModel;
 
 namespace PBL3_CoffeeHome.GUI.Admin
 {
@@ -18,8 +19,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private readonly SalaryBLL _salaryBLL;
         private readonly UserBLL _userBLL;
 
-        private BindingList<Schedule> _listLich;
-        private BindingList<Salary> _listLuong;
+        private BindingList<ScheduleDTO> _listLich;
+        private BindingList<SalaryDTO> _listLuong;
 
         private readonly string _userId;
         private BindingSource bindingSource;
@@ -76,10 +77,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void SetupDataGridView()
         {
-            // Tắt tự động tạo cột
             dgvTaiKhoan.AutoGenerateColumns = false;
 
-            // Không cho phép thêm hàng mới
             dgvTaiKhoan.AllowUserToAddRows = false;
 
             dgvTaiKhoan.ReadOnly = true;
@@ -89,7 +88,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
             dgvTaiKhoan.DataSourceChanged += (s, e) => dgvTaiKhoan.Refresh();
 
 
-            // Thiết lập các cột cho DataGridView
             dgvTaiKhoan.Columns.AddRange(new DataGridViewColumn[]
             {
             new DataGridViewTextBoxColumn
@@ -249,16 +247,18 @@ namespace PBL3_CoffeeHome.GUI.Admin
             else LoadData(txtTimKiem.Text.Trim(), cBVaiTro.SelectedItem.ToString());
         }
 
+
         // tabLuong 
         private void TabLich()
         {
-            _listLich = new BindingList<Schedule>();
+            _listLich = new BindingList<ScheduleDTO>();
             dgvLichLamViec_tabLich.DataSource = _listLich;
 
             LoadUser_tabLich();
             LoadDGVLich_tabLich();
             cbbCaLamViec_tabLich.SelectedIndex = 0;
             cbbTypeSchedule_tabLich.SelectedIndex = 0;
+            cbbRole_tabLich.SelectedIndex = 0;
         }
 
         private void LoadUser_tabLich()
@@ -276,14 +276,9 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private void SetupDGVLichLamViec()
         {
             dgvLichLamViec_tabLich.Columns["ScheduleID"].HeaderText = "Mã lịch";
-            dgvLichLamViec_tabLich.Columns["UserID"].HeaderText = "Mã NV";
+            dgvLichLamViec_tabLich.Columns["FullName"].HeaderText = "Họ và tên";
             dgvLichLamViec_tabLich.Columns["TypeSchedule"].HeaderText = "Ca làm";
             dgvLichLamViec_tabLich.Columns["Date"].HeaderText = "Ngày làm";
-           
-            if (dgvLichLamViec_tabLich.Columns.Contains("User"))
-                dgvLichLamViec_tabLich.Columns["User"].Visible = false;
-            if (dgvLichLamViec_tabLich.Columns.Contains("Salaries"))
-                dgvLichLamViec_tabLich.Columns["Salaries"].Visible = false;
         }
 
         private void LoadDGVLich_tabLich(string txtsearch =  null, string cbb = "Tất cả")
@@ -304,6 +299,19 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
             LoadDGVLich_tabLich(txtsearch, selectedType);
         }
+
+        private void cbbRole_tabLich_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedRole = cbbRole_tabLich.SelectedItem.ToString();
+
+            var item = _scheduleBLL.GetSheduleByRole(selectedRole);
+            _listLich.Clear();
+            foreach (var schedule in item)
+            {
+                _listLich.Add(schedule);
+            }
+        }
+
         private void txtTimKiem_tabLich_TextChanged(object sender, EventArgs e)
         {
             string txtsearch = txtTimKiem_tabLich.Text.ToLower().Trim();
@@ -311,6 +319,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
             LoadDGVLich_tabLich(txtsearch, selectedType);
         }
+
         private void btnAddLich_tabLich_Click(object sender, EventArgs e)
         {
             string userID = _userBLL.GetALlUsers()
@@ -324,6 +333,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
             _listLich.Clear();
             LoadDGVLich_tabLich();
+            LoadDGVLuong_tabLuong();
         }
 
         private void btnDeleteNL_tabDSNL_Click(object sender, EventArgs e)
@@ -342,13 +352,15 @@ namespace PBL3_CoffeeHome.GUI.Admin
                 _listLich.Clear();
                 LoadDGVLich_tabLich();
             }
+
+            LoadDGVLuong_tabLuong();
         }
+
+
         // tabLuong
-
-
         private void TabLuong()
         {
-            _listLuong = new BindingList<Salary>();
+            _listLuong = new BindingList<SalaryDTO>();
             dgvLuong_tabLuong.DataSource = _listLuong;
 
             LoadYear();
@@ -383,19 +395,14 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private void SetupDGVLuong()
         {
             dgvLuong_tabLuong.Columns["SalaryID"].HeaderText = "Mã lương";
-            dgvLuong_tabLuong.Columns["ScheduleID"].HeaderText = "Mã lịch";
-            dgvLuong_tabLuong.Columns["UserID"].HeaderText = "Mã NV";
+            dgvLuong_tabLuong.Columns["FullName"].HeaderText = "Họ tên";
             dgvLuong_tabLuong.Columns["HoursWorked"].HeaderText = "Giờ làm";
             dgvLuong_tabLuong.Columns["HourlyRate"].HeaderText = "Lương/giờ";
             dgvLuong_tabLuong.Columns["TotalSalary"].HeaderText = "Tổng lương";
             dgvLuong_tabLuong.Columns["PaymentDate"].HeaderText = "Ngày trả";
-            dgvLuong_tabLuong.Columns["Status"].HeaderText = "Trạng thái";
-            
-            if (dgvLuong_tabLuong.Columns.Contains("Schedule"))
-                dgvLuong_tabLuong.Columns["Schedule"].Visible = false;
-            if (dgvLuong_tabLuong.Columns.Contains("User"))
-                dgvLuong_tabLuong.Columns["User"].Visible = false;
+            dgvLuong_tabLuong.Columns["Status"].HeaderText = "Trạng thái";        
         }
+
         private void LoadDGVLuong_tabLuong(string month = "Tất cả", string year = null, string txtSearch = null)
         {
             if (string.IsNullOrEmpty(year))
@@ -466,9 +473,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
             }
         }
 
-        private void cbbTypeSchedule_tabLich_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }

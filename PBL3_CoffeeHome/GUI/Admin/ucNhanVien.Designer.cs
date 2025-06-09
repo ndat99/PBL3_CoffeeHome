@@ -32,14 +32,14 @@ namespace PBL3_CoffeeHome.GUI.Admin
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabNhanVien = new System.Windows.Forms.TabPage();
             this.panelChiTiet = new System.Windows.Forms.Panel();
@@ -62,18 +62,9 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabLichLamViec = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnDeleteNL_tabDSNL = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.dgvLichLamViec_tabLich = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbbTypeSchedule_tabLich = new System.Windows.Forms.ComboBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtTimKiem_tabLich = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.dtpDate_tabLich = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.btnAddLich_tabLich = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -83,6 +74,18 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtTimKiem_tabLich = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbbRole_tabLich = new System.Windows.Forms.ComboBox();
+            this.btnDeleteNL_tabDSNL = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dgvLichLamViec_tabLich = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbbTypeSchedule_tabLich = new System.Windows.Forms.ComboBox();
             this.tabLuong = new System.Windows.Forms.TabPage();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblTongGioLamViec_tabLuong = new System.Windows.Forms.Label();
@@ -103,7 +106,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.txtSearch_TabLuong = new System.Windows.Forms.TextBox();
-            this.dtpDate_tabLich = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabNhanVien.SuspendLayout();
             this.panelChiTiet.SuspendLayout();
@@ -114,14 +116,14 @@ namespace PBL3_CoffeeHome.GUI.Admin
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabLichLamViec.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLichLamViec_tabLich)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHourlyRate_tabLich)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichLamViec_tabLich)).BeginInit();
             this.tabLuong.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -223,23 +225,23 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.dgvTaiKhoan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTaiKhoan.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvTaiKhoan.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle57.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle57.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTaiKhoan.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle58.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle58.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTaiKhoan.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTaiKhoan.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTaiKhoan.EnableHeadersVisualStyles = false;
             this.dgvTaiKhoan.Location = new System.Drawing.Point(1, 248);
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -460,24 +462,24 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle59.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle59.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle60.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle60.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -508,8 +510,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.63327F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.36673F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 27.2677F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 72.7323F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -522,166 +524,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1822, 880);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelKiemKe_2;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.btnDeleteNL_tabDSNL);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.cbbTypeSchedule_tabLich);
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.txtTimKiem_tabLich);
-            this.panel2.Location = new System.Drawing.Point(527, 10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1148, 790);
-            this.panel2.TabIndex = 169;
-            // 
-            // btnDeleteNL_tabDSNL
-            // 
-            this.btnDeleteNL_tabDSNL.BackColor = System.Drawing.Color.White;
-            this.btnDeleteNL_tabDSNL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeleteNL_tabDSNL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.btnDeleteNL_tabDSNL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.btnDeleteNL_tabDSNL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteNL_tabDSNL.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteNL_tabDSNL.ForeColor = System.Drawing.Color.Red;
-            this.btnDeleteNL_tabDSNL.Image = global::PBL3_CoffeeHome.Properties.Resources.Cancel;
-            this.btnDeleteNL_tabDSNL.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDeleteNL_tabDSNL.Location = new System.Drawing.Point(927, 144);
-            this.btnDeleteNL_tabDSNL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteNL_tabDSNL.Name = "btnDeleteNL_tabDSNL";
-            this.btnDeleteNL_tabDSNL.Size = new System.Drawing.Size(132, 41);
-            this.btnDeleteNL_tabDSNL.TabIndex = 171;
-            this.btnDeleteNL_tabDSNL.Text = "Xóa lịch";
-            this.btnDeleteNL_tabDSNL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDeleteNL_tabDSNL.UseVisualStyleBackColor = false;
-            this.btnDeleteNL_tabDSNL.Click += new System.EventHandler(this.btnDeleteNL_tabDSNL_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dgvLichLamViec_tabLich);
-            this.panel3.Location = new System.Drawing.Point(86, 215);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(973, 496);
-            this.panel3.TabIndex = 170;
-            // 
-            // dgvLichLamViec_tabLich
-            // 
-            this.dgvLichLamViec_tabLich.AllowUserToAddRows = false;
-            this.dgvLichLamViec_tabLich.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLichLamViec_tabLich.BackgroundColor = System.Drawing.Color.White;
-            this.dgvLichLamViec_tabLich.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvLichLamViec_tabLich.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvLichLamViec_tabLich.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle61.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle61.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle61.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle61.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLichLamViec_tabLich.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle61;
-            this.dgvLichLamViec_tabLich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle62.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle62.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle62.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLichLamViec_tabLich.DefaultCellStyle = dataGridViewCellStyle62;
-            this.dgvLichLamViec_tabLich.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLichLamViec_tabLich.EnableHeadersVisualStyles = false;
-            this.dgvLichLamViec_tabLich.Location = new System.Drawing.Point(0, 0);
-            this.dgvLichLamViec_tabLich.Margin = new System.Windows.Forms.Padding(7, 0, 15, 0);
-            this.dgvLichLamViec_tabLich.Name = "dgvLichLamViec_tabLich";
-            this.dgvLichLamViec_tabLich.RowHeadersVisible = false;
-            this.dgvLichLamViec_tabLich.RowHeadersWidth = 51;
-            this.dgvLichLamViec_tabLich.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgvLichLamViec_tabLich.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(1);
-            this.dgvLichLamViec_tabLich.RowTemplate.Height = 44;
-            this.dgvLichLamViec_tabLich.RowTemplate.ReadOnly = true;
-            this.dgvLichLamViec_tabLich.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLichLamViec_tabLich.Size = new System.Drawing.Size(973, 496);
-            this.dgvLichLamViec_tabLich.TabIndex = 93;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(441, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(283, 31);
-            this.label8.TabIndex = 169;
-            this.label8.Text = "LỊCH PHÂN CA LÀM VIỆC";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(420, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 31);
-            this.label2.TabIndex = 168;
-            // 
-            // cbbTypeSchedule_tabLich
-            // 
-            this.cbbTypeSchedule_tabLich.FormattingEnabled = true;
-            this.cbbTypeSchedule_tabLich.Items.AddRange(new object[] {
-            "Tất cả",
-            "Ca 1 (6h - 12h)",
-            "Ca 2 (12h - 18h)",
-            "Ca 3 (18h - 23h)"});
-            this.cbbTypeSchedule_tabLich.Location = new System.Drawing.Point(120, 147);
-            this.cbbTypeSchedule_tabLich.Margin = new System.Windows.Forms.Padding(4);
-            this.cbbTypeSchedule_tabLich.Name = "cbbTypeSchedule_tabLich";
-            this.cbbTypeSchedule_tabLich.Size = new System.Drawing.Size(187, 33);
-            this.cbbTypeSchedule_tabLich.TabIndex = 94;
-            this.cbbTypeSchedule_tabLich.SelectedIndexChanged += new System.EventHandler(this.cbbTypeSchedule_tabLich_SelectedIndexChanged_1);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiemEnd;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(826, 145);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(36, 36);
-            this.pictureBox2.TabIndex = 93;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiem;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(583, 145);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 36);
-            this.pictureBox1.TabIndex = 92;
-            this.pictureBox1.TabStop = false;
-            // 
-            // txtTimKiem_tabLich
-            // 
-            this.txtTimKiem_tabLich.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTimKiem_tabLich.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem_tabLich.Location = new System.Drawing.Point(615, 145);
-            this.txtTimKiem_tabLich.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTimKiem_tabLich.Name = "txtTimKiem_tabLich";
-            this.txtTimKiem_tabLich.Size = new System.Drawing.Size(215, 34);
-            this.txtTimKiem_tabLich.TabIndex = 91;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -690,7 +532,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.panel1.Location = new System.Drawing.Point(10, 9);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(511, 862);
+            this.panel1.Size = new System.Drawing.Size(487, 862);
             this.panel1.TabIndex = 1;
             // 
             // panel4
@@ -711,6 +553,16 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(416, 533);
             this.panel4.TabIndex = 126;
+            // 
+            // dtpDate_tabLich
+            // 
+            this.dtpDate_tabLich.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate_tabLich.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDate_tabLich.Location = new System.Drawing.Point(192, 351);
+            this.dtpDate_tabLich.Name = "dtpDate_tabLich";
+            this.dtpDate_tabLich.Size = new System.Drawing.Size(172, 31);
+            this.dtpDate_tabLich.TabIndex = 168;
+            this.dtpDate_tabLich.Value = new System.DateTime(2025, 6, 10, 0, 0, 0, 0);
             // 
             // label7
             // 
@@ -818,6 +670,193 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.label6.Size = new System.Drawing.Size(99, 25);
             this.label6.TabIndex = 9;
             this.label6.Text = "Lương /1h:";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelKiemKe_2;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.txtTimKiem_tabLich);
+            this.panel2.Controls.Add(this.label18);
+            this.panel2.Controls.Add(this.cbbRole_tabLich);
+            this.panel2.Controls.Add(this.btnDeleteNL_tabDSNL);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.cbbTypeSchedule_tabLich);
+            this.panel2.Location = new System.Drawing.Point(503, 10);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1148, 790);
+            this.panel2.TabIndex = 169;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiemEnd;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(854, 141);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 36);
+            this.pictureBox1.TabIndex = 176;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.TimKiem;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(622, 141);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 36);
+            this.pictureBox2.TabIndex = 175;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txtTimKiem_tabLich
+            // 
+            this.txtTimKiem_tabLich.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTimKiem_tabLich.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem_tabLich.Location = new System.Drawing.Point(651, 141);
+            this.txtTimKiem_tabLich.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTimKiem_tabLich.Name = "txtTimKiem_tabLich";
+            this.txtTimKiem_tabLich.Size = new System.Drawing.Size(207, 34);
+            this.txtTimKiem_tabLich.TabIndex = 174;
+            this.txtTimKiem_tabLich.TextChanged += new System.EventHandler(this.txtTimKiem_tabLich_TextChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(96, 150);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(80, 25);
+            this.label18.TabIndex = 173;
+            this.label18.Text = "Chức vụ:";
+            // 
+            // cbbRole_tabLich
+            // 
+            this.cbbRole_tabLich.FormattingEnabled = true;
+            this.cbbRole_tabLich.Items.AddRange(new object[] {
+            "Tất cả",
+            "Cashier",
+            "Barista"});
+            this.cbbRole_tabLich.Location = new System.Drawing.Point(192, 147);
+            this.cbbRole_tabLich.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbRole_tabLich.Name = "cbbRole_tabLich";
+            this.cbbRole_tabLich.Size = new System.Drawing.Size(121, 33);
+            this.cbbRole_tabLich.TabIndex = 172;
+            this.cbbRole_tabLich.SelectedIndexChanged += new System.EventHandler(this.cbbRole_tabLich_SelectedIndexChanged);
+            // 
+            // btnDeleteNL_tabDSNL
+            // 
+            this.btnDeleteNL_tabDSNL.BackColor = System.Drawing.Color.White;
+            this.btnDeleteNL_tabDSNL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteNL_tabDSNL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnDeleteNL_tabDSNL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnDeleteNL_tabDSNL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteNL_tabDSNL.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteNL_tabDSNL.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteNL_tabDSNL.Image = global::PBL3_CoffeeHome.Properties.Resources.Cancel;
+            this.btnDeleteNL_tabDSNL.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDeleteNL_tabDSNL.Location = new System.Drawing.Point(936, 139);
+            this.btnDeleteNL_tabDSNL.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteNL_tabDSNL.Name = "btnDeleteNL_tabDSNL";
+            this.btnDeleteNL_tabDSNL.Size = new System.Drawing.Size(132, 41);
+            this.btnDeleteNL_tabDSNL.TabIndex = 171;
+            this.btnDeleteNL_tabDSNL.Text = "Xóa lịch";
+            this.btnDeleteNL_tabDSNL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDeleteNL_tabDSNL.UseVisualStyleBackColor = false;
+            this.btnDeleteNL_tabDSNL.Click += new System.EventHandler(this.btnDeleteNL_tabDSNL_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgvLichLamViec_tabLich);
+            this.panel3.Location = new System.Drawing.Point(86, 215);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(973, 496);
+            this.panel3.TabIndex = 170;
+            // 
+            // dgvLichLamViec_tabLich
+            // 
+            this.dgvLichLamViec_tabLich.AllowUserToAddRows = false;
+            this.dgvLichLamViec_tabLich.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLichLamViec_tabLich.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLichLamViec_tabLich.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLichLamViec_tabLich.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvLichLamViec_tabLich.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLichLamViec_tabLich.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvLichLamViec_tabLich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLichLamViec_tabLich.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvLichLamViec_tabLich.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLichLamViec_tabLich.EnableHeadersVisualStyles = false;
+            this.dgvLichLamViec_tabLich.Location = new System.Drawing.Point(0, 0);
+            this.dgvLichLamViec_tabLich.Margin = new System.Windows.Forms.Padding(7, 0, 15, 0);
+            this.dgvLichLamViec_tabLich.Name = "dgvLichLamViec_tabLich";
+            this.dgvLichLamViec_tabLich.RowHeadersVisible = false;
+            this.dgvLichLamViec_tabLich.RowHeadersWidth = 51;
+            this.dgvLichLamViec_tabLich.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvLichLamViec_tabLich.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(1);
+            this.dgvLichLamViec_tabLich.RowTemplate.Height = 44;
+            this.dgvLichLamViec_tabLich.RowTemplate.ReadOnly = true;
+            this.dgvLichLamViec_tabLich.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLichLamViec_tabLich.Size = new System.Drawing.Size(973, 496);
+            this.dgvLichLamViec_tabLich.TabIndex = 93;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Gray;
+            this.label8.Location = new System.Drawing.Point(441, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(283, 31);
+            this.label8.TabIndex = 169;
+            this.label8.Text = "LỊCH PHÂN CA LÀM VIỆC";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(420, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 31);
+            this.label2.TabIndex = 168;
+            // 
+            // cbbTypeSchedule_tabLich
+            // 
+            this.cbbTypeSchedule_tabLich.FormattingEnabled = true;
+            this.cbbTypeSchedule_tabLich.Items.AddRange(new object[] {
+            "Tất cả",
+            "Ca 1 (6h - 12h)",
+            "Ca 2 (12h - 18h)",
+            "Ca 3 (18h - 23h)"});
+            this.cbbTypeSchedule_tabLich.Location = new System.Drawing.Point(416, 144);
+            this.cbbTypeSchedule_tabLich.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbTypeSchedule_tabLich.Name = "cbbTypeSchedule_tabLich";
+            this.cbbTypeSchedule_tabLich.Size = new System.Drawing.Size(187, 33);
+            this.cbbTypeSchedule_tabLich.TabIndex = 94;
+            this.cbbTypeSchedule_tabLich.SelectedIndexChanged += new System.EventHandler(this.cbbTypeSchedule_tabLich_SelectedIndexChanged);
             // 
             // tabLuong
             // 
@@ -988,24 +1027,24 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.dgvLuong_tabLuong.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvLuong_tabLuong.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvLuong_tabLuong.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle63.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle63.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle63.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle63.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
-            dataGridViewCellStyle63.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle63.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLuong_tabLuong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 15, 0, 15);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLuong_tabLuong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvLuong_tabLuong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle64.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle64.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle64.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLuong_tabLuong.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLuong_tabLuong.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvLuong_tabLuong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLuong_tabLuong.EnableHeadersVisualStyles = false;
             this.dgvLuong_tabLuong.Location = new System.Drawing.Point(0, 0);
@@ -1103,16 +1142,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
             this.txtSearch_TabLuong.TabIndex = 91;
             this.txtSearch_TabLuong.TextChanged += new System.EventHandler(this.txtSearch_TabLuong_TextChanged);
             // 
-            // dtpDate_tabLich
-            // 
-            this.dtpDate_tabLich.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDate_tabLich.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate_tabLich.Location = new System.Drawing.Point(192, 351);
-            this.dtpDate_tabLich.Name = "dtpDate_tabLich";
-            this.dtpDate_tabLich.Size = new System.Drawing.Size(172, 31);
-            this.dtpDate_tabLich.TabIndex = 168;
-            this.dtpDate_tabLich.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
-            // 
             // ucNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1133,16 +1162,16 @@ namespace PBL3_CoffeeHome.GUI.Admin
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabLichLamViec.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLichLamViec_tabLich)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudHourlyRate_tabLich)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLichLamViec_tabLich)).EndInit();
             this.tabLuong.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
@@ -1181,9 +1210,6 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbbTypeSchedule_tabLich;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtTimKiem_tabLich;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panelChiTiet;
         private System.Windows.Forms.TabPage tabLuong;
@@ -1252,5 +1278,10 @@ namespace PBL3_CoffeeHome.GUI.Admin
         }
 
         private DateTimePicker dtpDate_tabLich;
+        private ComboBox cbbRole_tabLich;
+        private Label label18;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private TextBox txtTimKiem_tabLich;
     }
 }

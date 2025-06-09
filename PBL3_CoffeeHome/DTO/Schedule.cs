@@ -24,7 +24,7 @@ namespace PBL3_CoffeeHome.DTO
         [StringLength(20)]
         public string UserID { get; set; }
 
-        public string TypeSchedule { get; set; } // Ca1, 2, 3
+        public string TypeSchedule { get; set; } 
 
         [Required]
         public DateTime Date { get; set; }
