@@ -31,7 +31,7 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         public bool IsAvailable { get; set; }
-
+      
         [StringLength(255)]        
         public string ImagePath { get; set; }
 
