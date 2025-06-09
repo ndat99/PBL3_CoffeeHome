@@ -123,6 +123,28 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return revenueDetails.Sum(rd => rd.RevenueAmount);
         }
 
+        public decimal GetRevenueByDate(DateTime date)
+        {
+            DateTime start = date.Date;
+            DateTime end = start.AddDays(1);
+
+            return GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= start &&
+                             rd.Revenue.RevenueDate < end)
+                .Sum(r => (decimal?)r.RevenueAmount) ?? 0m;
+        }
+
+        public decimal GetExpenseByDate(DateTime date)
+        {
+            DateTime start = date.Date;
+            DateTime end = start.AddDays(1);
+
+            return _context.Revenues
+                .Where(r => r.RevenueDate >= start && r.RevenueDate < end)
+                .Sum(r => (decimal?)r.TotalExpense) ?? 0m;
+        }
+
         public int GetTotalProductsSold()
         {
             return GetAllRevenueDetails().Sum(rd => rd.Quantity);

@@ -431,6 +431,7 @@
     <None Include="Resources\Frame1.png" />
     <None Include="Resources\Frame11.png" />
     <Content Include="Resources\icon.png" />
+    <None Include="Resources\image.png" />
     <Content Include="Resources\In.png" />
     <Content Include="Resources\Key.png" />
     <Content Include="Resources\KhachHang.png" />
@@ -458,6 +459,7 @@
     <None Include="Resources\panelThongKe_1.png" />
     <None Include="Resources\panelThongKe_2.png" />
     <Content Include="Resources\Pen1.png" />
+    <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />
     <Content Include="Resources\QuanLyBan.png" />
     <Content Include="Resources\Reset.png" />
@@ -479,7 +481,10 @@
     <Content Include="Resources\WhiteKey.png" />
     <Content Include="Resources\Xem.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\MenuItems\" />
+    <Folder Include="Resources\MenuImages\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

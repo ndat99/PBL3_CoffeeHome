@@ -15,7 +15,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
 {
     public partial class fThemMon : Form
     {
-        public delegate void MyDel();
+        public delegate void MyDel(string searchTerm);
         public MyDel d { get; set; }
         private readonly MenuItemBLL _menuItemBLL;
         public fThemMon(MyDel d)
@@ -38,7 +38,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     IsAvailable = true,
                 };
                 _menuItemBLL.AddMenuItem(menuItem);
-                d();
+                d("");
                 this.Close();
             }
             catch (FormatException fe)
