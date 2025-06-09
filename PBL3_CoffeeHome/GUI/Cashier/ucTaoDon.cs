@@ -366,6 +366,8 @@ namespace PBL3_CoffeeHome.GUI
         private void LoadMenuItems()
         {
             flpMenu.Controls.Clear();
+            string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+
             if (cBDanhMuc.SelectedItem.ToString() == "Tất cả")
             {
                 var menuItems = _menuItemBLL.GetAllMenuItems();
@@ -375,7 +377,7 @@ namespace PBL3_CoffeeHome.GUI
                     card.ItemName = item.Name;
                     card.Price = item.Price;
 
-                    string fullImagePath = Path.Combine(Application.StartupPath, "MenuImages", item.ImagePath ?? "");
+                    string fullImagePath = Path.Combine(projectPath, "MenuImages", item.ImagePath ?? "");
                     if (File.Exists(fullImagePath))
                     {
                         card.ItemImage = Image.FromFile(fullImagePath);

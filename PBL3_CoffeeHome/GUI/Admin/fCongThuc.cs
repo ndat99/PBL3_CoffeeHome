@@ -220,30 +220,43 @@ namespace PBL3_CoffeeHome.GUI.Admin
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif";
+                ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif;*.bmp";
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     string selectedFile = ofd.FileName;
                     string fileName = Path.GetFileName(selectedFile);
-                    string destFolder = Path.Combine(Application.StartupPath, "MenuImages");
+                    string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                    string destFolder = Path.Combine(projectPath, "MenuImages");
 
                     if (!Directory.Exists(destFolder))
                         Directory.CreateDirectory(destFolder);
 
+                    // Xử lý trùng tên file
                     string destFile = Path.Combine(destFolder, fileName);
+                    int counter = 1;
+                    string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+                    string extension = Path.GetExtension(fileName);
 
-                    File.Copy(selectedFile, destFile, overwrite: true);
+                    while (File.Exists(destFile))
+                    {
+                        fileName = $"{nameWithoutExt}_{counter}{extension}";
+                        destFile = Path.Combine(destFolder, fileName);
+                        counter++;
+                    }
 
-                    // Lưu tên file (tương đối) vào DB
-                    string relativePath = fileName;
-
-                    // Gán lại cho đối tượng _menuItem
-                    _menuItem.ImagePath = relativePath;
-
-                    // Update vào database
-                    _menuItemBLL.UpdateMenuItem(_menuItem);
-
-                    MessageBox.Show("Đã lưu ảnh thành công!", "OK");
+                    try
+                    {
+                        File.Copy(selectedFile, destFile);
+                        _menuItem.ImagePath = fileName;
+                        _menuItemBLL.UpdateMenuItem(_menuItem);
+                        MessageBox.Show("Đã lưu ảnh thành công!", "Thành công",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi lưu ảnh: {ex.Message}", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
