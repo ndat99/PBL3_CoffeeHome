@@ -31,6 +31,8 @@ namespace PBL3_CoffeeHome.DTO
 
         [Required]
         public bool IsAvailable { get; set; }
+        
+        public string ImagePath { get; set; }
 
         public virtual ICollection<MenuItemIngredient> MenuItemIngredients { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }

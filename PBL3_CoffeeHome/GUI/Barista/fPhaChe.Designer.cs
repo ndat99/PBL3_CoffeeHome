@@ -201,7 +201,7 @@
             // 
             this.btnAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.btnAvatar.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Avatar_small;
-            this.btnAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAvatar.FlatAppearance.BorderSize = 0;
             this.btnAvatar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -220,7 +220,7 @@
             // 
             this.btnBell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
             this.btnBell.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.Bell_1;
-            this.btnBell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBell.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBell.FlatAppearance.BorderSize = 0;
             this.btnBell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

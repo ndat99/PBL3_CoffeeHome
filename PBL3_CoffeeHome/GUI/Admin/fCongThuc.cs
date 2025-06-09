@@ -12,6 +12,7 @@ using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DTO.ViewModel;
 using PBL3_CoffeeHome.DAL.Repository;
+using System.IO;
 
 namespace PBL3_CoffeeHome.GUI.Admin
 {
@@ -47,6 +48,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
             txtGia.Text = _menuItem.Price.ToString();
             txtGia.Enabled = false;
+
+            btnUpLoad.Enabled = false;
         }
 
         private void SetUpComboBox()
@@ -121,6 +124,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             txtTenMon.Enabled = true;
             txtGia.Enabled = true;
             txtDanhMuc.Enabled = true;
+            btnUpLoad.Enabled = true;
             dgvNguyenLieu.Columns["QuantityRequired"].ReadOnly = false;
         }
 
@@ -209,6 +213,38 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     currentIngredients[dgvNguyenLieu.CurrentRow.Index].Id.ToString()
                 );
                 LoadIngredients();
+            }
+        }
+
+        private void btnUpLoad_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFile = ofd.FileName;
+                    string fileName = Path.GetFileName(selectedFile);
+                    string destFolder = Path.Combine(Application.StartupPath, "MenuImages");
+
+                    if (!Directory.Exists(destFolder))
+                        Directory.CreateDirectory(destFolder);
+
+                    string destFile = Path.Combine(destFolder, fileName);
+
+                    File.Copy(selectedFile, destFile, overwrite: true);
+
+                    // Lưu tên file (tương đối) vào DB
+                    string relativePath = fileName;
+
+                    // Gán lại cho đối tượng _menuItem
+                    _menuItem.ImagePath = relativePath;
+
+                    // Update vào database
+                    _menuItemBLL.UpdateMenuItem(_menuItem);
+
+                    MessageBox.Show("Đã lưu ảnh thành công!", "OK");
+                }
             }
         }
     }
