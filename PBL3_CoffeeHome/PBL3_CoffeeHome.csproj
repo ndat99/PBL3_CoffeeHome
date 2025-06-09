@@ -272,6 +272,10 @@
     <Compile Include="Migrations\202506090324141_Create.Designer.cs">
       <DependentUpon>202506090324141_Create.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506090642034_fix.cs" />
+    <Compile Include="Migrations\202506090642034_fix.Designer.cs">
+      <DependentUpon>202506090642034_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -358,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202506090324141_Create.resx">
       <DependentUpon>202506090324141_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506090642034_fix.resx">
+      <DependentUpon>202506090642034_fix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -501,9 +508,7 @@
     <Content Include="Resources\WhiteKey.png" />
     <Content Include="Resources\Xem.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MenuImages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
