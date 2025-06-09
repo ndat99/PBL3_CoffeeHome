@@ -108,7 +108,20 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void btnDeleteNL_tabDSNL_Click(object sender, EventArgs e)
         {
-
+            if(dgvLichLamViec_tabLich.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn lịch làm việc để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa lịch làm việc này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                var selectedRow = dgvLichLamViec_tabLich.SelectedRows[0];
+                var scheduleId = selectedRow.Cells["ScheduleID"].Value.ToString();
+                _scheduleBLL.DeleteSchedule(scheduleId);
+                _listLich.Clear();
+                LoadDGVLich_tabLich();
+            }
         }
         // tabLuong
 
@@ -135,6 +148,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             if (string.IsNullOrEmpty(year))
                 year = DateTime.Now.Year.ToString();
 
+            _listLuong.Clear();
             var itemLuong = _salaryBLL.SearchSalary(month, year, txtSearch);
             if (itemLuong != null)
             {
@@ -143,6 +157,12 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     _listLuong.Add(item);
                 }
             }
+
+            decimal tongQuyLuong = _listLuong.Sum(s => s.TotalSalary);
+            decimal tongGioLamViec = _listLuong.Sum(s => s.HoursWorked);
+
+            lblTongQuyLuong_tabLuong.Text = $" {tongQuyLuong:N0} VNĐ";
+            lblTongGioLamViec_tabLuong.Text = $" {tongGioLamViec:N2} giờ";
         }
 
         private void cbbThang_tabLuong_SelectedIndexChanged(object sender, EventArgs e)
@@ -172,6 +192,24 @@ namespace PBL3_CoffeeHome.GUI.Admin
             LoadDGVLuong_tabLuong(month, year, search);
         }
 
-       
+        private void btnThanhToan_tabLuong_Click(object sender, EventArgs e)
+        {
+            if (dgvLuong_tabLuong.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn lương để thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thanh toán lương này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                var selectedRow = dgvLuong_tabLuong.SelectedRows[0];
+                var salaryId = selectedRow.Cells["SalaryID"].Value.ToString();
+                _salaryBLL.UpdateStatusSalary(salaryId);
+                _listLuong.Clear();
+                LoadDGVLuong_tabLuong();
+                MessageBox.Show("Thanh toán lương thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

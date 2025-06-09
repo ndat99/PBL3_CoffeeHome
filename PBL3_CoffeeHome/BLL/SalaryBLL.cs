@@ -28,5 +28,10 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _salaryDAL.SearchSalary(thang, nam, txtsearch);
         }
+
+        public void UpdateStatusSalary(string salaryId)
+        {
+            _salaryDAL.UpdateStatusSalary(salaryId);
+        }
     }
 }

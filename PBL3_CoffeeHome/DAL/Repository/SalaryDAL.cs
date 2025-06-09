@@ -66,6 +66,16 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _db.SaveChanges();
         }
 
+        public void UpdateStatusSalary(string salaryId)
+        {
+            var salary = _db.Salaries.Find(salaryId);
+            if (salary != null)
+            {
+                salary.Status = "Paid";
+                _db.SaveChanges();
+            }
+        }
+
         public string GenerateSalaryId()
         {
             string prefix = "SAL" + DateTime.Now.ToString("yyyyMMdd");

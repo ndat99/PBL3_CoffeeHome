@@ -63,6 +63,19 @@ namespace PBL3_CoffeeHome.DAL.Repository
             _salaryDAL.AddSalary(scheduleId, userID, 6, hourlyRate);
         }
 
+        public void DeleteShedule(string scheduleId)
+        {
+            var schedule = _db.Schedules.Find(scheduleId);
+            if (schedule != null)
+            {
+                _db.Schedules.Remove(schedule);
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Lịch làm việc không tồn tại");
+            }
+        }
 
         public string GenerateScheduleId()
         {

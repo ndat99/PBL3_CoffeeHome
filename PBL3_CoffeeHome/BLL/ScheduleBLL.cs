@@ -36,5 +36,9 @@ namespace PBL3_CoffeeHome.BLL
             _scheduleDAL.AddSchedule(userId, typeSchedule, date, hourlyRate);
         }
 
+        public void DeleteSchedule(string scheduleId)
+        {
+            _scheduleDAL.DeleteShedule(scheduleId);
+        }   
     }
 }
