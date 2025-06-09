@@ -7,13 +7,13 @@ namespace PBL3_CoffeeHome.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class Salary : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Salary));
         
         string IMigrationMetadata.Id
         {
-            get { return "202505240217214_InitialCreate"; }
+            get { return "202506091643497_Salary"; }
         }
         
         string IMigrationMetadata.Source
