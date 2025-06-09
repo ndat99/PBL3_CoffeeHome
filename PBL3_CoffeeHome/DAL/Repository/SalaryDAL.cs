@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PBL3_CoffeeHome.DTO;
 
 namespace PBL3_CoffeeHome.DAL.Repository
 {
@@ -12,6 +13,38 @@ namespace PBL3_CoffeeHome.DAL.Repository
         public SalaryDAL()
         {
             _db = new CoffeeDbContext();
+        }
+
+        public List<Salary> GetAllSalary()
+        {
+            return _db.Salaries.AsNoTracking().ToList();
+        }
+
+        public List<string> GetYearBySalary()
+        {
+            return _db.Salaries.AsNoTracking().Select(s => s.PaymentDate.Year.ToString())
+                               .Distinct().OrderByDescending(y => y).ToList();
+        }
+
+        public List<Salary> SearchSalary(String thang, String nam, string txtsearch)
+        {
+            var query = _db.Salaries.AsNoTracking().AsQueryable();
+            if (!string.IsNullOrEmpty(thang) && thang != "Tất cả")
+            {
+                int month = int.Parse(thang);
+                query = query.Where(s => s.PaymentDate.Month == month);
+            }
+            if (!string.IsNullOrEmpty(nam))
+            {
+                int year = int.Parse(nam);
+                query = query.Where(s => s.PaymentDate.Year == year);
+            }
+            if (!string.IsNullOrEmpty(txtsearch))
+            {
+                txtsearch = txtsearch.ToLower().Trim();
+                query = query.Where(s => s.UserID.ToLower().Contains(txtsearch));
+            }
+            return query.ToList();
         }
 
         public void AddSalary(string scheduleId, string userId, decimal hoursWorked, decimal hourlyRate)

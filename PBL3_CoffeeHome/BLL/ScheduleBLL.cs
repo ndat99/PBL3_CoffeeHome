@@ -21,6 +21,11 @@ namespace PBL3_CoffeeHome.BLL
             return _scheduleDAL.GetAllShedule();
         }
 
+        public List<Schedule> GetScheduleByType(string type)
+        {
+            return _scheduleDAL.GetSheduleByType(type);
+        }
+
         public List<Schedule> SearchShedule(string txtsearch,string cbbType)
         {
             return _scheduleDAL.SearchSchedule(txtsearch, cbbType);

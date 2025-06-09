@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,15 +16,18 @@ namespace PBL3_CoffeeHome.GUI.Admin
     public partial class ucNhanVien : UserControl
     {
         private readonly ScheduleBLL _scheduleBLL;
+        private readonly SalaryBLL _salaryBLL;
         private readonly UserBLL _userBLL;
 
         private BindingList<Schedule> _listLich;
+        private BindingList<Salary> _listLuong;
 
         private readonly string _userId;
         public ucNhanVien()
         {
             InitializeComponent();
             _scheduleBLL = new ScheduleBLL();
+            _salaryBLL = new SalaryBLL();
             _userBLL = new UserBLL();
         }
 
@@ -31,6 +35,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
         {
             TabNhanVien();
             TabLich();
+            TabLuong();
         }
 
         // tabNhanVien
@@ -62,23 +67,29 @@ namespace PBL3_CoffeeHome.GUI.Admin
             cbbUser_TabLich.Items.AddRange(listNameUser.ToArray());
             cbbUser_TabLich.SelectedIndex = 0;
         }
-
-        private void LoadDGVLich_tabLich()
+      
+        private void LoadDGVLich_tabLich(string txtsearch =  null, string cbb = "Tất cả")
         {
-            var itemLich = _scheduleBLL.GetAllSchedule();
-            foreach(var item in itemLich)
+            _listLich.Clear();
+            var itemLich = _scheduleBLL.SearchShedule(txtsearch, cbb);
+            foreach (var item in itemLich)
             {
                 _listLich.Add(item);
             }
         }
         private void cbbTypeSchedule_tabLich_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string selectedType = cbbTypeSchedule_tabLich.SelectedItem?.ToString() ?? "";
+            string txtsearch = txtTimKiem_tabLich.Text.ToLower().Trim();
 
+            LoadDGVLich_tabLich(txtsearch, selectedType);
         }
         private void txtTimKiem_tabLich_TextChanged(object sender, EventArgs e)
         {
             string txtsearch = txtTimKiem_tabLich.Text.ToLower().Trim();
-            string txtCbbitemTypeSchedule = cbbTypeSchedule_tabLich.SelectedItem.ToString();
+            string selectedType = cbbTypeSchedule_tabLich.SelectedItem?.ToString() ?? "";
+
+            LoadDGVLich_tabLich(txtsearch, selectedType);
         }
         private void btnAddLich_tabLich_Click(object sender, EventArgs e)
         {
@@ -95,6 +106,72 @@ namespace PBL3_CoffeeHome.GUI.Admin
             LoadDGVLich_tabLich();
         }
 
-        
+        private void btnDeleteNL_tabDSNL_Click(object sender, EventArgs e)
+        {
+
+        }
+        // tabLuong
+
+
+        private void TabLuong()
+        {
+            _listLuong = new BindingList<Salary>();
+            dgvLuong_tabLuong.DataSource = _listLuong;
+
+            LoadYear();
+            LoadDGVLuong_tabLuong();
+            cbbThang_tabLuong.SelectedIndex = 0;
+            cbbNam_tabLuong.SelectedIndex = 0;
+        }
+
+        private void LoadYear()
+        {
+            cbbNam_tabLuong.Items.Clear();
+            cbbNam_tabLuong.Items.AddRange(_salaryBLL.GetYearBySalary().ToArray());
+        }
+
+        private void LoadDGVLuong_tabLuong(string month = "Tất cả", string year = null, string txtSearch = null)
+        {
+            if (string.IsNullOrEmpty(year))
+                year = DateTime.Now.Year.ToString();
+
+            var itemLuong = _salaryBLL.SearchSalary(month, year, txtSearch);
+            if (itemLuong != null)
+            {
+                foreach (var item in itemLuong)
+                {
+                    _listLuong.Add(item);
+                }
+            }
+        }
+
+        private void cbbThang_tabLuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string month = cbbThang_tabLuong.SelectedItem?.ToString() ?? "Tất cả";
+            string year = cbbNam_tabLuong.SelectedItem?.ToString() ?? DateTime.Now.Year.ToString();
+            string search = txtSearch_TabLuong.Text.Trim();
+            _listLuong.Clear();
+            LoadDGVLuong_tabLuong(month, year, search);
+        }
+
+        private void cbbNam_tabLuong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string month = cbbThang_tabLuong.SelectedItem?.ToString() ?? "Tất cả";
+            string year = cbbNam_tabLuong.SelectedItem?.ToString() ?? DateTime.Now.Year.ToString();
+            string search = txtSearch_TabLuong.Text.Trim();
+            _listLuong.Clear();
+            LoadDGVLuong_tabLuong(month, year, search);
+        }
+
+        private void txtSearch_TabLuong_TextChanged(object sender, EventArgs e)
+        {
+            string month = cbbThang_tabLuong.SelectedItem?.ToString() ?? "Tất cả";
+            string year = cbbNam_tabLuong.SelectedItem?.ToString() ?? DateTime.Now.Year.ToString();
+            string search = txtSearch_TabLuong.Text.Trim();
+            _listLuong.Clear();
+            LoadDGVLuong_tabLuong(month, year, search);
+        }
+
+       
     }
 }

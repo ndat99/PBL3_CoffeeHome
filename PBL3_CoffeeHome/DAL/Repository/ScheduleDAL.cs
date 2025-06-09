@@ -24,13 +24,18 @@ namespace PBL3_CoffeeHome.DAL.Repository
             return _db.Schedules.AsNoTracking().ToList();
         }
 
+        public List<Schedule> GetSheduleByType(string type)
+        {
+            return _db.Schedules.AsNoTracking().Where(s => s.TypeSchedule == type).ToList();
+        }
         public List<Schedule> SearchSchedule(string txtSearch, string typeTypeSchedule)
         {
             var query = _db.Schedules.AsNoTracking().AsQueryable();
-            if (!string.IsNullOrEmpty(typeTypeSchedule) || typeTypeSchedule != "Tất cả")
+            if (!string.IsNullOrEmpty(typeTypeSchedule) && typeTypeSchedule != "Tất cả")
             {
                 query = query.Where(s => s.TypeSchedule == typeTypeSchedule);
             }
+
 
             if (!string.IsNullOrEmpty(txtSearch))
             {
@@ -72,5 +77,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
             if (attempt >= 999) throw new Exception("Không thể tạo mã lịch làm việc");
             return newId;
         }
+
     }
 }

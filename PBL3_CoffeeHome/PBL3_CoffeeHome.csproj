@@ -89,6 +89,7 @@
     <Compile Include="BLL\OrderItemsBLL.cs" />
     <Compile Include="BLL\RevenueBLL.cs" />
     <Compile Include="BLL\RevenueDetailsBLL.cs" />
+    <Compile Include="BLL\SalaryBLL.cs" />
     <Compile Include="BLL\ScheduleBLL.cs" />
     <Compile Include="BLL\UserBLL.cs" />
     <Compile Include="DAL\CoffeeDbContext.cs" />
