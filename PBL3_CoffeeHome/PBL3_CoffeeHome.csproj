@@ -140,10 +140,6 @@
     <Compile Include="GUI\Admin\fThemMon.Designer.cs">
       <DependentUpon>fThemMon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailKiemKho.cs" />
-    <Compile Include="GUI\Admin\ucDetailKiemKho.Designer.cs">
-      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Admin\ucDetailLSGD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -305,9 +301,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fThemMon.resx">
       <DependentUpon>fThemMon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Admin\ucDetailKiemKho.resx">
-      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailLSGD.resx">
       <DependentUpon>ucDetailLSGD.cs</DependentUpon>
@@ -473,6 +466,7 @@
     <Content Include="Resources\Filter.png" />
     <None Include="Resources\Frame1.png" />
     <None Include="Resources\Frame11.png" />
+    <None Include="Resources\GiamGia.png" />
     <Content Include="Resources\icon.png" />
     <None Include="Resources\image.png" />
     <Content Include="Resources\In.png" />
@@ -503,6 +497,7 @@
     <None Include="Resources\panelThongKe_1.png" />
     <None Include="Resources\panelThongKe_2.png" />
     <None Include="Resources\Overview.png" />
+    <None Include="Resources\panelDiscount_1.png" />
     <Content Include="Resources\Pen1.png" />
     <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />

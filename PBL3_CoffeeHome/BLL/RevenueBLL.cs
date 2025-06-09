@@ -151,5 +151,9 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _revenueDAL.GetTopSellingProductsByDateRange(fromDate, toDate);
         }
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetDailyRevenueInDateRange(startDate, endDate);
+        }
     }
 }

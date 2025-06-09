@@ -109,6 +109,10 @@ namespace PBL3_CoffeeHome.GUI
             // Thêm padding cho chart
             chartLoiNhuan.ChartAreas[0].Position.Auto = false;
             chartLoiNhuan.ChartAreas[0].Position = new ElementPosition(5, 10, 90, 85);
+
+            chartLoiNhuan.Series["Lợi Nhuận"].IsValueShownAsLabel = false;
+            chartLoiNhuan.Series["Doanh Thu"].IsValueShownAsLabel = false;
+            chartLoiNhuan.Series["Chi Phí"].IsValueShownAsLabel = false;
         }
 
         
