@@ -211,6 +211,7 @@ namespace PBL3_CoffeeHome.GUI
             menuItems.Name = dgvThucDon.CurrentRow.Cells["Name"].Value?.ToString();
             menuItems.Category = dgvThucDon.CurrentRow.Cells["Category"].Value?.ToString();
             menuItems.Price = decimal.Parse(dgvThucDon.CurrentRow.Cells["Price"].Value?.ToString() ?? "0");
+            menuItems.IsAvailable = _menuItemBLL.isAvailable(menuItems.MenuItemID);
             menuItems.ImagePath = _menuItemBLL.getImagePath(menuItems.MenuItemID);
             if (menuItems.MenuItemID == null)
             {
@@ -272,64 +273,7 @@ namespace PBL3_CoffeeHome.GUI
 
         private void btnChonAnh_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Kiểm tra xem có hàng nào được chọn không
-                if (dgvThucDon.CurrentRow == null)
-                {
-                    MessageBox.Show("Vui lòng chọn món cần thêm/sửa ảnh!", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
 
-                // Lấy MenuItemID từ dòng được chọn
-                var menuItemId = dgvThucDon.CurrentRow.Cells["MenuItemID"].Value?.ToString();
-                if (string.IsNullOrEmpty(menuItemId))
-                {
-                    MessageBox.Show("Không thể xác định mã món!", "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
-                {
-                    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
-                    openFileDialog.Title = "Chọn ảnh món";
-
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        string selectedImage = openFileDialog.FileName;
-
-                        // Lưu ảnh và cập nhật đường dẫn trong database
-                        string savedImagePath = _menuItemBLL.SaveImage(menuItemId, selectedImage);
-                        if (savedImagePath != null)
-                        {
-                            bool updated = _menuItemBLL.UpdateMenuItemImage(menuItemId, savedImagePath);
-                            if (updated)
-                            {
-                                LoadData("");
-                                MessageBox.Show("Cập nhật ảnh thành công!", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Không thể cập nhật ảnh trong cơ sở dữ liệu!", "Lỗi",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không thể lưu file ảnh!", "Lỗi",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }
