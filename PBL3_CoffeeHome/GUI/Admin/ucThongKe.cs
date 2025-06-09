@@ -5,6 +5,7 @@ using PBL3_CoffeeHome.BLL;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Collections.Generic;
 using System.Linq;
+using PBL3_CoffeeHome.GUI.Barista;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -328,6 +329,13 @@ namespace PBL3_CoffeeHome.GUI
         private void ucThongKe_Load(object sender, EventArgs e)
         {
             MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnLoiNhuan, 10, Color.Goldenrod);
+        }
+
+        private void btnLoiNhuan_Click(object sender, EventArgs e)
+        {
+            var AdminForm = (fQuanLy)this.ParentForm;
+            AdminForm.LoadControlToPanel(new ucLoiNhuan(), AdminForm.panelChiTiet);
         }
     }
 }
