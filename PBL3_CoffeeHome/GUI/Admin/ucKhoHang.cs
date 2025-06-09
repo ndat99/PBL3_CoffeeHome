@@ -175,7 +175,6 @@ namespace PBL3_CoffeeHome.GUI
         private void btnKiemKeNL_tabDSNL_Click(object sender, EventArgs e)
         {
             var AdminForm = (fQuanLy)this.ParentForm;
-            //AdminForm.LoadControlToPanel(new ucDetailKiemKho(), AdminForm.panelChiTiet);
             AdminForm.LoadControlToPanel(new ucNguyenVatLieu(admin), AdminForm.panelChiTiet);
         }
 

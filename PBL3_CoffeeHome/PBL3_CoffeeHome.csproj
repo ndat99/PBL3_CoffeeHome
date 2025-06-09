@@ -140,10 +140,6 @@
     <Compile Include="GUI\Admin\fThemMon.Designer.cs">
       <DependentUpon>fThemMon.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Admin\ucDetailKiemKho.cs" />
-    <Compile Include="GUI\Admin\ucDetailKiemKho.Designer.cs">
-      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Admin\ucDetailLSGD.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -305,9 +301,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\fThemMon.resx">
       <DependentUpon>fThemMon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Admin\ucDetailKiemKho.resx">
-      <DependentUpon>ucDetailKiemKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Admin\ucDetailLSGD.resx">
       <DependentUpon>ucDetailLSGD.cs</DependentUpon>
