@@ -492,12 +492,12 @@
     <None Include="Resources\panelKiemKe_2.png" />
     <None Include="Resources\panelLSGD_1.png" />
     <None Include="Resources\panelDonHang_2.png" />
-    <None Include="Resources\panelThucDon1.png" />
     <None Include="Resources\panelQLTK1.png" />
     <None Include="Resources\panelThongKe_1.png" />
     <None Include="Resources\panelThongKe_2.png" />
     <None Include="Resources\Overview.png" />
     <None Include="Resources\panelDiscount_1.png" />
+    <None Include="Resources\panelThucDon1.png" />
     <Content Include="Resources\Pen1.png" />
     <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />
