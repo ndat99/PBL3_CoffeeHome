@@ -134,6 +134,7 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
         }
+
         public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
         {
             return _revenueDAL.GetTotalRevenueByDateRange(fromDate, toDate);
@@ -149,6 +150,10 @@ namespace PBL3_CoffeeHome.BLL
         public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
         {
             return _revenueDAL.GetTopSellingProductsByDateRange(fromDate, toDate);
+        }
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return _revenueDAL.GetDailyRevenueInDateRange(startDate, endDate);
         }
     }
 }

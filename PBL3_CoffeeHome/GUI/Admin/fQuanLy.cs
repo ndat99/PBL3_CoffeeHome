@@ -38,10 +38,10 @@ namespace PBL3_CoffeeHome.GUI
             panel.Controls.Add(control);
             control.BringToFront();
         }
-        private void btnTaoDon_Click(object sender, EventArgs e)
+        private void btnGiamGia_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
-            HighlightButton(btnTaoDon);
+            LoadControlToPanel(new ucDiscounts(), panelChiTiet);
+            HighlightButton(btnGiamGia);
         }
         private void btnThucDon_Click(object sender, EventArgs e)
         {
@@ -139,7 +139,7 @@ namespace PBL3_CoffeeHome.GUI
         private void btnBell_Click(object sender, EventArgs e)
         {
             LoadControlToPanel(new ucTaoDon(admin), panelChiTiet);
-            HighlightButton(btnTaoDon);
+            HighlightButton(btnGiamGia);
             btnBell.BackgroundImage = Properties.Resources.Bell_1;
             hasDoneQueue = false;
             oldQueue = _baristaQueueBLL.DoneQueueCheck();
@@ -149,6 +149,12 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadControlToPanel(new ucTTTK(admin), panelChiTiet);
             HighlightButton(btnTTTK);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucDiscounts(), panelChiTiet);
+            HighlightButton(btnQLTK);
         }
     }
 }

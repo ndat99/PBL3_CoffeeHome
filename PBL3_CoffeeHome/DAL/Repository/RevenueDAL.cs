@@ -227,7 +227,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
             return result;
         }
-
+      
         //TongQuan
         public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
         {
@@ -258,7 +258,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Distinct()
                 .Count();
         }
-
         public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
         {
             var grouped = GetAllRevenueDetails()
@@ -285,6 +284,16 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
             // Chuyển về List<(string, int)>
             return top7.Select(x => (x.ItemName, x.TotalQuantity)).ToList();
+        }
+
+        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.RevenueDetailDate >= startDate.Date && rd.RevenueDetailDate <= endDate.Date)
+                .GroupBy(rd => rd.RevenueDetailDate.Date)
+                .Select(g => (Date: g.Key, Total: g.Sum(rd => rd.RevenueAmount)))
+                .OrderBy(g => g.Date)
+                .ToList();
         }
     }
 }

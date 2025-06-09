@@ -89,7 +89,6 @@ namespace PBL3_CoffeeHome.GUI
             this.btnChonAnh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChonAnh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChonAnh.ForeColor = System.Drawing.Color.HotPink;
-            this.btnChonAnh.Image = global::PBL3_CoffeeHome.Properties.Resources.photo;
             this.btnChonAnh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnChonAnh.Location = new System.Drawing.Point(1498, 504);
             this.btnChonAnh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

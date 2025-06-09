@@ -218,47 +218,97 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void btnUpLoad_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            try
             {
-                ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif;*.bmp";
-                if (ofd.ShowDialog() == DialogResult.OK)
+                // Lấy MenuItemID từ đối tượng _menuItem
+                var menuItemId = _menuItem.MenuItemID;
+                if (string.IsNullOrEmpty(menuItemId))
                 {
-                    string selectedFile = ofd.FileName;
-                    string fileName = Path.GetFileName(selectedFile);
-                    string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
-                    string destFolder = Path.Combine(projectPath, "MenuImages");
+                    MessageBox.Show("Không thể xác định mã món!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-                    if (!Directory.Exists(destFolder))
-                        Directory.CreateDirectory(destFolder);
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+                    openFileDialog.Title = "Chọn ảnh món";
 
-                    // Xử lý trùng tên file
-                    string destFile = Path.Combine(destFolder, fileName);
-                    int counter = 1;
-                    string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
-                    string extension = Path.GetExtension(fileName);
-
-                    while (File.Exists(destFile))
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        fileName = $"{nameWithoutExt}_{counter}{extension}";
-                        destFile = Path.Combine(destFolder, fileName);
-                        counter++;
-                    }
+                        string selectedImage = openFileDialog.FileName;
 
-                    try
-                    {
-                        File.Copy(selectedFile, destFile);
-                        _menuItem.ImagePath = fileName;
-                        _menuItemBLL.UpdateMenuItem(_menuItem);
-                        MessageBox.Show("Đã lưu ảnh thành công!", "Thành công",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi khi lưu ảnh: {ex.Message}", "Lỗi",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Lưu ảnh và cập nhật đường dẫn trong database
+                        string savedImagePath = _menuItemBLL.SaveImage(menuItemId, selectedImage);
+                        if (savedImagePath != null)
+                        {
+                            bool updated = _menuItemBLL.UpdateMenuItemImage(menuItemId, savedImagePath);
+                            if (updated)
+                            {
+                                _menuItem.ImagePath = savedImagePath;
+                                MessageBox.Show("Cập nhật ảnh thành công!", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không thể cập nhật ảnh trong cơ sở dữ liệu!", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không thể lưu file ảnh!", "Lỗi",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+        //using (OpenFileDialog ofd = new OpenFileDialog())
+        //{
+        //    ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif;*.bmp";
+        //    if (ofd.ShowDialog() == DialogResult.OK)
+        //    {
+        //        string selectedFile = ofd.FileName;
+        //        string fileName = Path.GetFileName(selectedFile);
+        //        string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+        //        string destFolder = Path.Combine(projectPath, "MenuImages");
+
+        //        if (!Directory.Exists(destFolder))
+        //            Directory.CreateDirectory(destFolder);
+
+        //        // Xử lý trùng tên file
+        //        string destFile = Path.Combine(destFolder, fileName);
+        //        int counter = 1;
+        //        string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+        //        string extension = Path.GetExtension(fileName);
+
+        //        while (File.Exists(destFile))
+        //        {
+        //            fileName = $"{nameWithoutExt}_{counter}{extension}";
+        //            destFile = Path.Combine(destFolder, fileName);
+        //            counter++;
+        //        }
+
+        //        try
+        //        {
+        //            File.Copy(selectedFile, destFile);
+        //            _menuItem.ImagePath = fileName;
+        //            _menuItemBLL.UpdateMenuItem(_menuItem);
+        //            MessageBox.Show("Đã lưu ảnh thành công!", "Thành công",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show($"Lỗi khi lưu ảnh: {ex.Message}", "Lỗi",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
     }
 }

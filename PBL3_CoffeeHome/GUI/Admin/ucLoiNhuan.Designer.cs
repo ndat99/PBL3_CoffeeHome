@@ -33,14 +33,12 @@ namespace PBL3_CoffeeHome.GUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucLoiNhuan));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePickerKetThuc = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerBatDau = new System.Windows.Forms.DateTimePicker();
             this.cbThongKeTheo = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbNam = new System.Windows.Forms.ComboBox();
@@ -61,6 +59,8 @@ namespace PBL3_CoffeeHome.GUI
             this.txtTongDT = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chartLoiNhuan = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dateTimePickerKetThuc = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerBatDau = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panelTongSanPham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -76,10 +76,10 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelThongKe_1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.dateTimePickerKetThuc);
             this.panel1.Controls.Add(this.dateTimePickerBatDau);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.cbThongKeTheo);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbNam);
@@ -100,36 +100,22 @@ namespace PBL3_CoffeeHome.GUI
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(897, 38);
+            this.label7.Location = new System.Drawing.Point(899, 34);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 23);
+            this.label7.Size = new System.Drawing.Size(83, 23);
             this.label7.TabIndex = 174;
-            this.label7.Text = "Ngày kết thúc";
+            this.label7.Text = "Đến ngày";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(658, 38);
+            this.label4.Location = new System.Drawing.Point(706, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 23);
+            this.label4.Size = new System.Drawing.Size(71, 23);
             this.label4.TabIndex = 173;
-            this.label4.Text = "Ngày bắt đầu";
-            // 
-            // dateTimePickerKetThuc
-            // 
-            this.dateTimePickerKetThuc.Location = new System.Drawing.Point(857, 64);
-            this.dateTimePickerKetThuc.Name = "dateTimePickerKetThuc";
-            this.dateTimePickerKetThuc.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePickerKetThuc.TabIndex = 172;
-            // 
-            // dateTimePickerBatDau
-            // 
-            this.dateTimePickerBatDau.Location = new System.Drawing.Point(620, 64);
-            this.dateTimePickerBatDau.Name = "dateTimePickerBatDau";
-            this.dateTimePickerBatDau.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePickerBatDau.TabIndex = 171;
+            this.label4.Text = "Từ ngày";
             // 
             // cbThongKeTheo
             // 
@@ -138,7 +124,7 @@ namespace PBL3_CoffeeHome.GUI
             this.cbThongKeTheo.Items.AddRange(new object[] {
             "Năm",
             "Khoảng thời gian"});
-            this.cbThongKeTheo.Location = new System.Drawing.Point(436, 61);
+            this.cbThongKeTheo.Location = new System.Drawing.Point(496, 61);
             this.cbThongKeTheo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbThongKeTheo.Name = "cbThongKeTheo";
             this.cbThongKeTheo.Size = new System.Drawing.Size(163, 31);
@@ -150,7 +136,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(456, 31);
+            this.label2.Location = new System.Drawing.Point(492, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 23);
             this.label2.TabIndex = 169;
@@ -289,16 +275,16 @@ namespace PBL3_CoffeeHome.GUI
             this.label10.ForeColor = System.Drawing.Color.Gray;
             this.label10.Location = new System.Drawing.Point(22, 19);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(399, 38);
+            this.label10.Size = new System.Drawing.Size(195, 38);
             this.label10.TabIndex = 167;
-            this.label10.Text = "💰 Doanh thu theo thời gian";
+            this.label10.Text = "💰 Lợi nhuận";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1118, 36);
+            this.label6.Location = new System.Drawing.Point(1091, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 23);
             this.label6.TabIndex = 116;
@@ -362,21 +348,41 @@ namespace PBL3_CoffeeHome.GUI
             // 
             // chartLoiNhuan
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartLoiNhuan.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartLoiNhuan.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartLoiNhuan.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartLoiNhuan.Legends.Add(legend2);
             this.chartLoiNhuan.Location = new System.Drawing.Point(52, 36);
             this.chartLoiNhuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartLoiNhuan.Name = "chartLoiNhuan";
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartLoiNhuan.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartLoiNhuan.Series.Add(series2);
             this.chartLoiNhuan.Size = new System.Drawing.Size(1217, 610);
             this.chartLoiNhuan.TabIndex = 1;
             this.chartLoiNhuan.Text = "chart1";
+            // 
+            // dateTimePickerKetThuc
+            // 
+            this.dateTimePickerKetThuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerKetThuc.Location = new System.Drawing.Point(903, 61);
+            this.dateTimePickerKetThuc.Name = "dateTimePickerKetThuc";
+            this.dateTimePickerKetThuc.Size = new System.Drawing.Size(132, 31);
+            this.dateTimePickerKetThuc.TabIndex = 176;
+            this.dateTimePickerKetThuc.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
+            // 
+            // dateTimePickerBatDau
+            // 
+            this.dateTimePickerBatDau.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerBatDau.Location = new System.Drawing.Point(710, 61);
+            this.dateTimePickerBatDau.Name = "dateTimePickerBatDau";
+            this.dateTimePickerBatDau.Size = new System.Drawing.Size(132, 31);
+            this.dateTimePickerBatDau.TabIndex = 175;
+            this.dateTimePickerBatDau.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
             // 
             // ucLoiNhuan
             // 
@@ -454,9 +460,9 @@ namespace PBL3_CoffeeHome.GUI
         private Panel panel2;
         private ComboBox cbThongKeTheo;
         private Label label2;
-        private DateTimePicker dateTimePickerKetThuc;
-        private DateTimePicker dateTimePickerBatDau;
         private Label label7;
         private Label label4;
+        private DateTimePicker dateTimePickerKetThuc;
+        private DateTimePicker dateTimePickerBatDau;
     }
 }

@@ -217,6 +217,10 @@ namespace PBL3_CoffeeHome.BLL
             return _menuItemDAL.UpdateImage(menuItemId, imagePath);
         }
 
+        public bool isAvailable(string menuItemId)
+        {
+            return _menuItemDAL.isAvailable(menuItemId);
+        }
         public String getImagePath(string menuItemId)
         {
             String imagePath = _menuItemDAL.getImagePath(menuItemId);

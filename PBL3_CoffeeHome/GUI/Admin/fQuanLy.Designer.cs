@@ -39,7 +39,7 @@
             this.btnQLTK = new System.Windows.Forms.Button();
             this.btnTTTK = new System.Windows.Forms.Button();
             this.btnThucDon = new System.Windows.Forms.Button();
-            this.btnTaoDon = new System.Windows.Forms.Button();
+            this.btnGiamGia = new System.Windows.Forms.Button();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btnBell = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             // panelChucNang
             // 
             this.panelChucNang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.panelChucNang.Controls.Add(this.btnTongQuan);
+            this.panelChucNang.Controls.Add(this.btnGiamGia);
             this.panelChucNang.Controls.Add(this.btnLoiNhuan);
             this.panelChucNang.Controls.Add(this.btnDangXuat);
             this.panelChucNang.Controls.Add(this.btnThongKe);
@@ -63,7 +63,7 @@
             this.panelChucNang.Controls.Add(this.btnQLTK);
             this.panelChucNang.Controls.Add(this.btnTTTK);
             this.panelChucNang.Controls.Add(this.btnThucDon);
-            this.panelChucNang.Controls.Add(this.btnTaoDon);
+            this.panelChucNang.Controls.Add(this.btnTongQuan);
             this.panelChucNang.Controls.Add(this.picLogo);
             this.panelChucNang.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelChucNang.Location = new System.Drawing.Point(0, 0);
@@ -83,7 +83,7 @@
             this.btnTongQuan.ForeColor = System.Drawing.Color.White;
             this.btnTongQuan.Image = global::PBL3_CoffeeHome.Properties.Resources.Overview;
             this.btnTongQuan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTongQuan.Location = new System.Drawing.Point(0, 771);
+            this.btnTongQuan.Location = new System.Drawing.Point(0, 113);
             this.btnTongQuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTongQuan.Name = "btnTongQuan";
             this.btnTongQuan.Size = new System.Drawing.Size(300, 94);
@@ -232,25 +232,25 @@
             this.btnThucDon.UseVisualStyleBackColor = false;
             this.btnThucDon.Click += new System.EventHandler(this.btnThucDon_Click);
             // 
-            // btnTaoDon
+            // btnGiamGia
             // 
-            this.btnTaoDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
-            this.btnTaoDon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTaoDon.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTaoDon.FlatAppearance.BorderSize = 0;
-            this.btnTaoDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTaoDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaoDon.ForeColor = System.Drawing.Color.White;
-            this.btnTaoDon.Image = global::PBL3_CoffeeHome.Properties.Resources.TaoDon;
-            this.btnTaoDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTaoDon.Location = new System.Drawing.Point(0, 113);
-            this.btnTaoDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTaoDon.Name = "btnTaoDon";
-            this.btnTaoDon.Size = new System.Drawing.Size(300, 94);
-            this.btnTaoDon.TabIndex = 0;
-            this.btnTaoDon.Text = "Tạo đơn";
-            this.btnTaoDon.UseVisualStyleBackColor = false;
-            this.btnTaoDon.Click += new System.EventHandler(this.btnTaoDon_Click);
+            this.btnGiamGia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(45)))), ((int)(((byte)(66)))));
+            this.btnGiamGia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGiamGia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGiamGia.FlatAppearance.BorderSize = 0;
+            this.btnGiamGia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGiamGia.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGiamGia.ForeColor = System.Drawing.Color.White;
+            this.btnGiamGia.Image = global::PBL3_CoffeeHome.Properties.Resources.GiamGia;
+            this.btnGiamGia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGiamGia.Location = new System.Drawing.Point(0, 771);
+            this.btnGiamGia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGiamGia.Name = "btnGiamGia";
+            this.btnGiamGia.Size = new System.Drawing.Size(300, 94);
+            this.btnGiamGia.TabIndex = 0;
+            this.btnGiamGia.Text = "Giảm giá";
+            this.btnGiamGia.UseVisualStyleBackColor = false;
+            this.btnGiamGia.Click += new System.EventHandler(this.btnGiamGia_Click);
             // 
             // picLogo
             // 
@@ -372,7 +372,7 @@
         private System.Windows.Forms.Button btnKhoHang;
         private System.Windows.Forms.Panel panelChucNang;
         private System.Windows.Forms.PictureBox picLogo;
-        private System.Windows.Forms.Button btnTaoDon;
+        private System.Windows.Forms.Button btnGiamGia;
         private System.Windows.Forms.Button btnTTTK;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnDangXuat;

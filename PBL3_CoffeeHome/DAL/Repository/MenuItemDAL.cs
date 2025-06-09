@@ -149,6 +149,18 @@ namespace PBL3_CoffeeHome.DAL.Repository
             }
         }
 
+        public bool isAvailable(string menuItemId)
+        {
+            using (var context = new CoffeeDbContext())
+            {
+                var menuItem = context.MenuItems.Find(menuItemId);
+                if (menuItem != null)
+                {
+                    return menuItem.IsAvailable;
+                }
+                return false;
+            }
+        }
         public String getImagePath(string menuItemId)
         {
             using (var context = new CoffeeDbContext())
