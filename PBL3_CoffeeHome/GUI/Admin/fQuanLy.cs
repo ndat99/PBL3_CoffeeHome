@@ -55,7 +55,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnQLTK_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucQLTK(), panelChiTiet);
+            LoadControlToPanel(new ucNhanVien(), panelChiTiet);
             HighlightButton(btnQLTK);
         }
         private void btnThongKe_Click(object sender, EventArgs e)

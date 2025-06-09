@@ -23,6 +23,8 @@ namespace PBL3_CoffeeHome
         public virtual DbSet<Revenue> Revenues { get; set; }
         public virtual DbSet<RevenueDetail> RevenueDetails { get; set; }
         public virtual DbSet<BaristaQueue> BaristaQueues { get; set; }
+        public virtual DbSet<Schedule> Schedules { get; set; }
+        public virtual DbSet<Salary> Salaries { get; set; }
 
         public override int SaveChanges()
         {
