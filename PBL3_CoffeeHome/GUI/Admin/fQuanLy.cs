@@ -20,6 +20,7 @@ namespace PBL3_CoffeeHome.GUI
         private User admin;
         private UserBLL _userBLL;
         private readonly BaristaQueueBLL _baristaQueueBLL;
+        private BindingSource bindingSource;
         public fQuanLy(User user)
         {
             InitializeComponent();
