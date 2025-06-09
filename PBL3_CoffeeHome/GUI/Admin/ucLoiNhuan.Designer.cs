@@ -37,6 +37,12 @@ namespace PBL3_CoffeeHome.GUI
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePickerKetThuc = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerBatDau = new System.Windows.Forms.DateTimePicker();
+            this.cbThongKeTheo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cbNam = new System.Windows.Forms.ComboBox();
             this.panelTongSanPham = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -70,6 +76,12 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelThongKe_1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.dateTimePickerKetThuc);
+            this.panel1.Controls.Add(this.dateTimePickerBatDau);
+            this.panel1.Controls.Add(this.cbThongKeTheo);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbNam);
             this.panel1.Controls.Add(this.panelTongSanPham);
             this.panel1.Controls.Add(this.btnLoc);
@@ -83,11 +95,73 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.Size = new System.Drawing.Size(1716, 851);
             this.panel1.TabIndex = 116;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(897, 38);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(117, 23);
+            this.label7.TabIndex = 174;
+            this.label7.Text = "Ngày kết thúc";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(658, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 23);
+            this.label4.TabIndex = 173;
+            this.label4.Text = "Ngày bắt đầu";
+            // 
+            // dateTimePickerKetThuc
+            // 
+            this.dateTimePickerKetThuc.Location = new System.Drawing.Point(857, 64);
+            this.dateTimePickerKetThuc.Name = "dateTimePickerKetThuc";
+            this.dateTimePickerKetThuc.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerKetThuc.TabIndex = 172;
+            // 
+            // dateTimePickerBatDau
+            // 
+            this.dateTimePickerBatDau.Location = new System.Drawing.Point(620, 64);
+            this.dateTimePickerBatDau.Name = "dateTimePickerBatDau";
+            this.dateTimePickerBatDau.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePickerBatDau.TabIndex = 171;
+            // 
+            // cbThongKeTheo
+            // 
+            this.cbThongKeTheo.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbThongKeTheo.FormattingEnabled = true;
+            this.cbThongKeTheo.Items.AddRange(new object[] {
+            "Năm",
+            "Khoảng thời gian"});
+            this.cbThongKeTheo.Location = new System.Drawing.Point(436, 61);
+            this.cbThongKeTheo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbThongKeTheo.Name = "cbThongKeTheo";
+            this.cbThongKeTheo.Size = new System.Drawing.Size(163, 31);
+            this.cbThongKeTheo.TabIndex = 170;
+            this.cbThongKeTheo.SelectedIndexChanged += new System.EventHandler(this.cbThongKeTheo_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(456, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 23);
+            this.label2.TabIndex = 169;
+            this.label2.Text = "Thống kê theo";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // cbNam
             // 
             this.cbNam.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNam.FormattingEnabled = true;
-            this.cbNam.Location = new System.Drawing.Point(1025, 57);
+            this.cbNam.Location = new System.Drawing.Point(1095, 61);
             this.cbNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbNam.Name = "cbNam";
             this.cbNam.Size = new System.Drawing.Size(112, 31);
@@ -151,7 +225,7 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLoc.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoc.Image = global::PBL3_CoffeeHome.Properties.Resources.Filter;
             this.btnLoc.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLoc.Location = new System.Drawing.Point(1194, 57);
+            this.btnLoc.Location = new System.Drawing.Point(1245, 60);
             this.btnLoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoc.Name = "btnLoc";
             this.btnLoc.Size = new System.Drawing.Size(95, 32);
@@ -224,7 +298,7 @@ namespace PBL3_CoffeeHome.GUI
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1021, 32);
+            this.label6.Location = new System.Drawing.Point(1118, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 23);
             this.label6.TabIndex = 116;
@@ -378,5 +452,11 @@ namespace PBL3_CoffeeHome.GUI
         private Label label6;
         private Label label10;
         private Panel panel2;
+        private ComboBox cbThongKeTheo;
+        private Label label2;
+        private DateTimePicker dateTimePickerKetThuc;
+        private DateTimePicker dateTimePickerBatDau;
+        private Label label7;
+        private Label label4;
     }
 }

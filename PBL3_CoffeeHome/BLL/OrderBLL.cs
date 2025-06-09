@@ -76,6 +76,11 @@ namespace PBL3_CoffeeHome.BLL
             }
             _baristaQueueBLL.UpdateQueueStatus(queueID, baristaId, "Complete");
         }
+
+        public List<(string FullName, int OrderCount)> GetCashierOrderCounts(DateTime fromDate, DateTime toDate)
+        {
+            return _orderDAL.GetCashierOrderCounts(fromDate, toDate);
+        }
     }
 
 }
