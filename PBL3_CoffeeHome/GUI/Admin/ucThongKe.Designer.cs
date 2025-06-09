@@ -257,9 +257,9 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLoiNhuan.Location = new System.Drawing.Point(63, 69);
             this.btnLoiNhuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoiNhuan.Name = "btnLoiNhuan";
-            this.btnLoiNhuan.Size = new System.Drawing.Size(190, 50);
+            this.btnLoiNhuan.Size = new System.Drawing.Size(168, 50);
             this.btnLoiNhuan.TabIndex = 175;
-            this.btnLoiNhuan.Text = "Tạo tài khoản";
+            this.btnLoiNhuan.Text = "Lợi nhuận";
             this.btnLoiNhuan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoiNhuan.UseVisualStyleBackColor = false;
             this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);

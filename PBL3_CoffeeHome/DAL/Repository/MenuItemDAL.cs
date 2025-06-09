@@ -26,7 +26,13 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 return db.MenuItems.FirstOrDefault(m => m.Name == name && m.IsAvailable);
             }
         }
-        
+        public MenuItems GetMenuItemByID(string ID)
+        {
+            using (var db = new CoffeeDbContext())
+            {
+                return db.MenuItems.FirstOrDefault(m => m.MenuItemID == ID && m.IsAvailable);
+            }
+        }
         public List<MenuItems> GetAllMenuItems()
         {
             using (var db = new CoffeeDbContext())
@@ -75,9 +81,9 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
         public List<MenuItems> SearchMenuItems(string searchTerm, string category)
         {
-            using(var db = new CoffeeDbContext())
+            using (var db = new CoffeeDbContext())
             {
-                if (string.IsNullOrEmpty(searchTerm) && string.IsNullOrEmpty(category))
+                if (string.IsNullOrEmpty(searchTerm) && (string.IsNullOrEmpty(category) || category == "Tất cả"))
                 {
                     return db.MenuItems.ToList();
                 }
@@ -86,7 +92,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
                         (string.IsNullOrEmpty(searchTerm) ||
                          u.Name.Contains(searchTerm) ||
                          u.Category.Contains(searchTerm)) &&
-                        (string.IsNullOrEmpty(category) || u.Category == category))
+                        (string.IsNullOrEmpty(category) || category == "Tất cả" || u.Category == category))
                     .ToList();
             }
         }
