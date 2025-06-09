@@ -20,6 +20,8 @@ namespace PBL3_CoffeeHome.GUI
             if (disposing && (components != null))
             {
                 components.Dispose();
+                CleanupImages();
+
             }
             base.Dispose(disposing);
         }
@@ -35,6 +37,7 @@ namespace PBL3_CoffeeHome.GUI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnChonAnh = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnThemMon = new System.Windows.Forms.Button();
@@ -58,6 +61,7 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelThucDon1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btnChonAnh);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnThemMon);
@@ -75,6 +79,27 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1716, 851);
             this.panel1.TabIndex = 104;
+            // 
+            // btnChonAnh
+            // 
+            this.btnChonAnh.BackColor = System.Drawing.Color.White;
+            this.btnChonAnh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChonAnh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnChonAnh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnChonAnh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChonAnh.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChonAnh.ForeColor = System.Drawing.Color.HotPink;
+            this.btnChonAnh.Image = global::PBL3_CoffeeHome.Properties.Resources.photo;
+            this.btnChonAnh.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnChonAnh.Location = new System.Drawing.Point(1498, 504);
+            this.btnChonAnh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnChonAnh.Name = "btnChonAnh";
+            this.btnChonAnh.Size = new System.Drawing.Size(176, 44);
+            this.btnChonAnh.TabIndex = 167;
+            this.btnChonAnh.Text = "Chọn ảnh";
+            this.btnChonAnh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChonAnh.UseVisualStyleBackColor = false;
+            this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
             // 
             // label10
             // 
@@ -349,5 +374,7 @@ namespace PBL3_CoffeeHome.GUI
             path.CloseFigure();
             return path;
         }
+
+        private Button btnChonAnh;
     }
 }

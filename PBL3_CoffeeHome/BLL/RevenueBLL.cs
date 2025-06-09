@@ -70,6 +70,41 @@ namespace PBL3_CoffeeHome.BLL
             return result;
         }
 
+        // Hàm lấy lợi nhuận theo ngày trong khoảng thời gian
+        public List<(String Date, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>
+        GetProfitByDateRange(DateTime startDate, DateTime endDate)
+        {
+            var result = new List<(String Date, decimal DoanhThu, decimal ChiPhi, decimal LoiNhuan)>();
+
+            for (DateTime date = startDate.Date; date <= endDate.Date; date = date.AddDays(1))
+            {
+                decimal doanhThu = _revenueDAL.GetRevenueByDate(date);
+
+                decimal chiPhi = _revenueDAL.GetExpenseByDate(date);
+
+                decimal loiNhuan = doanhThu - chiPhi;
+
+                string dateString = date.ToString("dd");
+
+                result.Add((dateString, doanhThu, chiPhi, loiNhuan));
+            }
+
+            return result;
+        }
+
+        // Hàm tính tổng lợi nhuận trong khoảng thời gian
+        public (decimal TongDoanhThu, decimal TongChiPhi, decimal TongLoiNhuan)
+            GetTotalProfitByDateRange(DateTime startDate, DateTime endDate)
+        {
+            var dailyProfits = GetProfitByDateRange(startDate, endDate);
+
+            decimal tongDoanhThu = dailyProfits.Sum(p => p.DoanhThu);
+            decimal tongChiPhi = dailyProfits.Sum(p => p.ChiPhi);
+            decimal tongLoiNhuan = tongDoanhThu - tongChiPhi;
+
+            return (tongDoanhThu, tongChiPhi, tongLoiNhuan);
+        }
+
         public List<int> GetAllYearsWithData()
         {
             return _revenueDAL.GetAllRevenueDetails()
@@ -100,29 +135,21 @@ namespace PBL3_CoffeeHome.BLL
             return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
         }
 
-        public List<(DateTime Date, decimal Total)> GetDailyRevenueInDateRange(DateTime startDate, DateTime endDate)
+        public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
         {
-            return _revenueDAL.GetDailyRevenueInDateRange(startDate, endDate);
+            return _revenueDAL.GetTotalRevenueByDateRange(fromDate, toDate);
         }
-
-        public decimal GetTotalRevenueByDateRange(DateTime startDate, DateTime endDate)
+        public int GetTotalProductsSoldByDateRange(DateTime fromDate, DateTime toDate)
         {
-            return _revenueDAL.GetTotalRevenueByDateRange(startDate, endDate);
+            return _revenueDAL.GetTotalProductsSoldByDateRange(fromDate, toDate);
         }
-
-        public int GetTotalProductsSoldByDateRange(DateTime startDate, DateTime endDate)
+        public int GetTotalCustomersByDateRange(DateTime fromDate, DateTime toDate)
         {
-            return _revenueDAL.GetTotalProductsSoldByDateRange(startDate, endDate);
+            return _revenueDAL.GetTotalCustomersByDateRange(fromDate, toDate);
         }
-
-        public int GetTotalCustomersByDateRange(DateTime startDate, DateTime endDate)
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
         {
-            return _revenueDAL.GetTotalCustomersByDateRange(startDate, endDate);
-        }
-
-        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime startDate, DateTime endDate)
-        {
-            return _revenueDAL.GetTopSellingProductsByDateRange(startDate, endDate);
+            return _revenueDAL.GetTopSellingProductsByDateRange(fromDate, toDate);
         }
     }
 }

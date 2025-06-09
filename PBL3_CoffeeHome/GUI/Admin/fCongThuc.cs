@@ -12,6 +12,7 @@ using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.DTO.ViewModel;
 using PBL3_CoffeeHome.DAL.Repository;
+using System.IO;
 
 namespace PBL3_CoffeeHome.GUI.Admin
 {
@@ -47,6 +48,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
             txtGia.Text = _menuItem.Price.ToString();
             txtGia.Enabled = false;
+
+            btnUpLoad.Enabled = false;
         }
 
         private void SetUpComboBox()
@@ -121,6 +124,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
             txtTenMon.Enabled = true;
             txtGia.Enabled = true;
             txtDanhMuc.Enabled = true;
+            btnUpLoad.Enabled = true;
             dgvNguyenLieu.Columns["QuantityRequired"].ReadOnly = false;
         }
 
@@ -209,6 +213,51 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     currentIngredients[dgvNguyenLieu.CurrentRow.Index].Id.ToString()
                 );
                 LoadIngredients();
+            }
+        }
+
+        private void btnUpLoad_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files|*.jpg;*.png;*.jpeg;*.gif;*.bmp";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFile = ofd.FileName;
+                    string fileName = Path.GetFileName(selectedFile);
+                    string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                    string destFolder = Path.Combine(projectPath, "MenuImages");
+
+                    if (!Directory.Exists(destFolder))
+                        Directory.CreateDirectory(destFolder);
+
+                    // Xử lý trùng tên file
+                    string destFile = Path.Combine(destFolder, fileName);
+                    int counter = 1;
+                    string nameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
+                    string extension = Path.GetExtension(fileName);
+
+                    while (File.Exists(destFile))
+                    {
+                        fileName = $"{nameWithoutExt}_{counter}{extension}";
+                        destFile = Path.Combine(destFolder, fileName);
+                        counter++;
+                    }
+
+                    try
+                    {
+                        File.Copy(selectedFile, destFile);
+                        _menuItem.ImagePath = fileName;
+                        _menuItemBLL.UpdateMenuItem(_menuItem);
+                        MessageBox.Show("Đã lưu ảnh thành công!", "Thành công",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi lưu ảnh: {ex.Message}", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }
