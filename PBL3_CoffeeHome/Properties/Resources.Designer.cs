@@ -93,6 +93,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Avatar_small {
+            get {
+                object obj = ResourceManager.GetObject("Avatar_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap back {
             get {
                 object obj = ResourceManager.GetObject("back", resourceCulture);
@@ -196,6 +206,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap DangXuat {
             get {
                 object obj = ResourceManager.GetObject("DangXuat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DefaultImage {
+            get {
+                object obj = ResourceManager.GetObject("DefaultImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,6 +383,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MenuItemCard {
+            get {
+                object obj = ResourceManager.GetObject("MenuItemCard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Money {
             get {
                 object obj = ResourceManager.GetObject("Money", resourceCulture);
@@ -396,6 +426,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap NguyenVatLieu {
             get {
                 object obj = ResourceManager.GetObject("NguyenVatLieu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Overview {
+            get {
+                object obj = ResourceManager.GetObject("Overview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -653,6 +693,16 @@ namespace PBL3_CoffeeHome.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ThemMon {
+            get {
+                object obj = ResourceManager.GetObject("ThemMon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ThongKe {
             get {
                 object obj = ResourceManager.GetObject("ThongKe", resourceCulture);
@@ -716,6 +766,16 @@ namespace PBL3_CoffeeHome.Properties {
         internal static System.Drawing.Bitmap TTTK {
             get {
                 object obj = ResourceManager.GetObject("TTTK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap upload {
+            get {
+                object obj = ResourceManager.GetObject("upload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

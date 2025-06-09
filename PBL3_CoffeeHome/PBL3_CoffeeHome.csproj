@@ -174,6 +174,12 @@
     <Compile Include="GUI\Barista\ucLichSuHangHoa.Designer.cs">
       <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Cashier\ucCardThucDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Cashier\ucCardThucDon.Designer.cs">
+      <DependentUpon>ucCardThucDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Login\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,14 @@
     <Compile Include="Migrations\202505240217214_InitialCreate.Designer.cs">
       <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202506090324141_Create.cs" />
+    <Compile Include="Migrations\202506090324141_Create.Designer.cs">
+      <DependentUpon>202506090324141_Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202506090642034_fix.cs" />
+    <Compile Include="Migrations\202506090642034_fix.Designer.cs">
+      <DependentUpon>202506090642034_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -298,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Barista\ucLichSuHangHoa.resx">
       <DependentUpon>ucLichSuHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Cashier\ucCardThucDon.resx">
+      <DependentUpon>ucCardThucDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Login\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
@@ -342,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505240217214_InitialCreate.resx">
       <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506090324141_Create.resx">
+      <DependentUpon>202506090324141_Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202506090642034_fix.resx">
+      <DependentUpon>202506090642034_fix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -410,6 +433,7 @@
     <Content Include="Resources\Alert.png" />
     <None Include="Resources\back.png" />
     <None Include="Resources\Avatar.png" />
+    <None Include="Resources\Avatar_small.png" />
     <Content Include="Resources\BaoCao.png" />
     <None Include="Resources\Bell_1.png" />
     <None Include="Resources\Bell_2.png" />
@@ -425,6 +449,7 @@
     <Content Include="Resources\DangXuat.png" />
     <Content Include="Resources\DaPhucVu.png" />
     <None Include="Resources\dollar.png" />
+    <None Include="Resources\DefaultImage.png" />
     <Content Include="Resources\DonHang.png" />
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Filter.png" />
@@ -440,6 +465,7 @@
     <None Include="Resources\line.png" />
     <Content Include="Resources\logo1.png" />
     <Content Include="Resources\logo2.png" />
+    <None Include="Resources\MenuItemCard.png" />
     <Content Include="Resources\Money.png" />
     <None Include="Resources\Money_Red.png" />
     <None Include="Resources\Money_Green.png" />
@@ -458,6 +484,7 @@
     <None Include="Resources\panelQLTK1.png" />
     <None Include="Resources\panelThongKe_1.png" />
     <None Include="Resources\panelThongKe_2.png" />
+    <None Include="Resources\Overview.png" />
     <Content Include="Resources\Pen1.png" />
     <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />
@@ -472,12 +499,14 @@
     <None Include="Resources\tag.png" />
     <Content Include="Resources\TaoDon.png" />
     <None Include="Resources\ThongKe.png" />
+    <None Include="Resources\ThemMon.png" />
     <Content Include="Resources\ThucDon.png" />
     <Content Include="Resources\ThucDon1.png" />
     <Content Include="Resources\TimKiem.png" />
     <Content Include="Resources\TimKiemEnd.png" />
     <None Include="Resources\transaction.png" />
     <Content Include="Resources\TTTK.png" />
+    <None Include="Resources\upload.png" />
     <Content Include="Resources\WhiteKey.png" />
     <Content Include="Resources\Xem.png" />
   </ItemGroup>
@@ -494,4 +523,8 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

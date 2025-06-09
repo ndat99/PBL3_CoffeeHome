@@ -37,7 +37,16 @@ namespace PBL3_CoffeeHome.DAL.Repository
                     .ToList();
             }
         }
-
+        public List<MenuItems> GetMenuItemsByCategory(string category)
+        {
+            using (var db = new CoffeeDbContext())
+            {
+                return db.MenuItems
+                    .Include(m => m.MenuItemIngredients.Select(mi => mi.Inventory))
+                    .Where(m => m.IsAvailable && m.Category == category)
+                    .ToList();
+            }
+        }
         public List<String> GetAllMenuCategory()
         {
             using (var db = new CoffeeDbContext())
@@ -107,6 +116,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 existingItem.Category = updatedItem.Category;
                 existingItem.Price = updatedItem.Price;
                 existingItem.IsAvailable = updatedItem.IsAvailable;
+                existingItem.ImagePath = updatedItem.ImagePath;
 
                 _context.SaveChanges();
             }

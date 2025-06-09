@@ -34,5 +34,9 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _baristaQueueDAL.GetDoneQueue();
         }
+        public List<(string FullName, int CompletedCount)> GetBaristaCompletedCounts(DateTime fromDate, DateTime toDate)
+        {
+            return _baristaQueueDAL.GetBaristaCompletedCounts(fromDate, toDate);
+        }
     }
 }

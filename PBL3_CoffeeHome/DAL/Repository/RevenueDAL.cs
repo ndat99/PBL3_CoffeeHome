@@ -227,5 +227,64 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
             return result;
         }
+
+        //TongQuan
+        public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .Sum(rd => rd.RevenueAmount);
+        }
+
+        public int GetTotalProductsSoldByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .Sum(rd => rd.Quantity);
+        }
+
+        public int GetTotalCustomersByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            return GetAllRevenueDetails()
+                .Where(rd => !string.IsNullOrEmpty(rd.OrderID) &&
+                             rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .Select(rd => rd.OrderID)
+                .Distinct()
+                .Count();
+        }
+
+        public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
+        {
+            var grouped = GetAllRevenueDetails()
+                .Where(rd => rd.Revenue != null &&
+                             rd.Revenue.RevenueDate >= fromDate.Date &&
+                             rd.Revenue.RevenueDate <= toDate.Date)
+                .GroupBy(rd => rd.Order.OrderItems.FirstOrDefault().MenuItem.Name)
+                .Select(g => new
+                {
+                    ItemName = g.Key,
+                    TotalQuantity = g.Sum(rd => rd.Quantity)
+                })
+                .OrderByDescending(x => x.TotalQuantity)
+                .ToList();
+
+            var top7 = grouped.Take(7).ToList();
+
+            // Nếu còn sản phẩm khác, gộp lại thành "Khác"
+            if (grouped.Count > 7)
+            {
+                int otherTotal = grouped.Skip(7).Sum(x => x.TotalQuantity);
+                top7.Add(new { ItemName = "Khác", TotalQuantity = otherTotal });
+            }
+
+            // Chuyển về List<(string, int)>
+            return top7.Select(x => (x.ItemName, x.TotalQuantity)).ToList();
+        }
     }
 }
