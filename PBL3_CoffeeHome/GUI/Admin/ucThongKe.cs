@@ -119,6 +119,15 @@ namespace PBL3_CoffeeHome.GUI
                 chartSanPham.Series.Clear();
                 chartSanPham.Legends.Clear();
 
+                // Reset trục X để tránh lỗi khi chuyển mode
+                var axisX = chartDoanhThu.ChartAreas[0].AxisX;
+                axisX.CustomLabels.Clear();
+                axisX.Interval = 1;
+                axisX.IntervalType = DateTimeIntervalType.Number;
+                axisX.LabelStyle.Format = "";
+                axisX.LabelStyle.Angle = 0;
+                axisX.LabelStyle.IsStaggered = false;
+
                 decimal totalRevenue;
                 int totalProductsSold;
                 int totalCustomers;
@@ -130,14 +139,6 @@ namespace PBL3_CoffeeHome.GUI
                     totalCustomers = _revenueBLL.GetTotalCustomersByMonth(year, month.Value);
                     topProducts = _revenueBLL.GetTopSellingProductsByMonth(year, month.Value);
                     var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
-
-                    //// Reset và cấu hình trục X
-                    var axisX = chartDoanhThu.ChartAreas[0].AxisX;
-                    axisX.CustomLabels.Clear();
-                    axisX.IntervalType = DateTimeIntervalType.Number;
-                    axisX.LabelStyle.Format = "";
-                    axisX.LabelStyle.Angle = 0; // Không nghiêng nhãn
-                    axisX.LabelStyle.IsStaggered = false; // Tắt chế độ ngắt dòng
 
                     // Vẽ cột cho tất cả các ngày có dữ liệu
                     foreach (var data in dailyRevenue.OrderBy(d => d.Day))
@@ -155,12 +156,6 @@ namespace PBL3_CoffeeHome.GUI
                     topProducts = _revenueBLL.GetTopSellingProductsByYear(year);
                     var monthlyRevenue = _revenueBLL.GetMonthlyRevenueInYear(year);
 
-                    var axisX = chartDoanhThu.ChartAreas[0].AxisX;
-                    axisX.CustomLabels.Clear();
-                    axisX.IntervalType = DateTimeIntervalType.Number;
-                    axisX.LabelStyle.Format = "";
-                    axisX.LabelStyle.Angle = 0; // Không nghiêng nhãn
-                    axisX.LabelStyle.IsStaggered = false; // Tắt chế độ ngắt dòng
 
                     foreach (var data in monthlyRevenue)
                     {

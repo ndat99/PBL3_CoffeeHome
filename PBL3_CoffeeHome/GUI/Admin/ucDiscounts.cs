@@ -202,7 +202,10 @@ namespace PBL3_CoffeeHome.GUI
             LoadDiscountsData(startDate, endDate);
         }
 
-
+        private void btnHienThiTatCa_Click(object sender, EventArgs e)
+        {
+            LoadDiscountsData();
+        }
     }
 
     

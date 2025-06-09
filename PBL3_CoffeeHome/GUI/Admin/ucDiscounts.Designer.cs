@@ -32,8 +32,8 @@ namespace PBL3_CoffeeHome.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@ namespace PBL3_CoffeeHome.GUI
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLoc = new System.Windows.Forms.Button();
             this.dgvDiscounts = new System.Windows.Forms.DataGridView();
+            this.btnHienThiTatCa = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscounts)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +55,7 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btnHienThiTatCa);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.dtpKetThuc);
@@ -222,6 +224,7 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLoc.Text = "Lọc";
             this.btnLoc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoc.UseVisualStyleBackColor = false;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
             // 
             // dgvDiscounts
             // 
@@ -230,23 +233,23 @@ namespace PBL3_CoffeeHome.GUI
             this.dgvDiscounts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDiscounts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDiscounts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(58)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDiscounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(58)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDiscounts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDiscounts.ColumnHeadersHeight = 45;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDiscounts.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDiscounts.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDiscounts.EnableHeadersVisualStyles = false;
             this.dgvDiscounts.Location = new System.Drawing.Point(4, 296);
             this.dgvDiscounts.Margin = new System.Windows.Forms.Padding(4);
@@ -257,6 +260,28 @@ namespace PBL3_CoffeeHome.GUI
             this.dgvDiscounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDiscounts.Size = new System.Drawing.Size(1460, 580);
             this.dgvDiscounts.TabIndex = 62;
+            // 
+            // btnHienThiTatCa
+            // 
+            this.btnHienThiTatCa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.btnHienThiTatCa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHienThiTatCa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHienThiTatCa.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(217)))));
+            this.btnHienThiTatCa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(217)))));
+            this.btnHienThiTatCa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(136)))), ((int)(((byte)(255)))));
+            this.btnHienThiTatCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHienThiTatCa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHienThiTatCa.ForeColor = System.Drawing.Color.White;
+            this.btnHienThiTatCa.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHienThiTatCa.Location = new System.Drawing.Point(1245, 192);
+            this.btnHienThiTatCa.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHienThiTatCa.Name = "btnHienThiTatCa";
+            this.btnHienThiTatCa.Size = new System.Drawing.Size(184, 45);
+            this.btnHienThiTatCa.TabIndex = 177;
+            this.btnHienThiTatCa.Text = "Hiển thị tất cả";
+            this.btnHienThiTatCa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHienThiTatCa.UseVisualStyleBackColor = false;
+            this.btnHienThiTatCa.Click += new System.EventHandler(this.btnHienThiTatCa_Click);
             // 
             // ucDiscounts
             // 
@@ -318,5 +343,6 @@ namespace PBL3_CoffeeHome.GUI
         private Button btnThemMon;
         private Button btnXoa;
         private Button btnSua;
+        private Button btnHienThiTatCa;
     }
 }
