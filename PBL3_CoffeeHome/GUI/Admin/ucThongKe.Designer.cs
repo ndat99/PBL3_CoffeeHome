@@ -32,12 +32,12 @@ namespace PBL3_CoffeeHome.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panelTongLuongKhach = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,6 +51,9 @@ namespace PBL3_CoffeeHome.GUI
             this.label1 = new System.Windows.Forms.Label();
             this.txtTongDT = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLoiNhuan = new System.Windows.Forms.Button();
+            this.dtpKetThuc = new System.Windows.Forms.DateTimePicker();
+            this.dtpBatDau = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -65,8 +68,6 @@ namespace PBL3_CoffeeHome.GUI
             this.cbThang = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnLoc = new System.Windows.Forms.Button();
-            this.dtpBatDau = new System.Windows.Forms.DateTimePicker();
-            this.dtpKetThuc = new System.Windows.Forms.DateTimePicker();
             this.panelTongLuongKhach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelTongSanPham.SuspendLayout();
@@ -221,6 +222,7 @@ namespace PBL3_CoffeeHome.GUI
             // 
             this.panel1.BackgroundImage = global::PBL3_CoffeeHome.Properties.Resources.panelThongKe_1;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btnLoiNhuan);
             this.panel1.Controls.Add(this.dtpKetThuc);
             this.panel1.Controls.Add(this.dtpBatDau);
             this.panel1.Controls.Add(this.label8);
@@ -240,6 +242,47 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1716, 851);
             this.panel1.TabIndex = 116;
+            // 
+            // btnLoiNhuan
+            // 
+            this.btnLoiNhuan.BackColor = System.Drawing.Color.White;
+            this.btnLoiNhuan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoiNhuan.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnLoiNhuan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnLoiNhuan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoiNhuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoiNhuan.ForeColor = System.Drawing.Color.Goldenrod;
+            this.btnLoiNhuan.Image = global::PBL3_CoffeeHome.Properties.Resources.salary;
+            this.btnLoiNhuan.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLoiNhuan.Location = new System.Drawing.Point(63, 69);
+            this.btnLoiNhuan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoiNhuan.Name = "btnLoiNhuan";
+            this.btnLoiNhuan.Size = new System.Drawing.Size(168, 50);
+            this.btnLoiNhuan.TabIndex = 175;
+            this.btnLoiNhuan.Text = "Lợi nhuận";
+            this.btnLoiNhuan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoiNhuan.UseVisualStyleBackColor = false;
+            this.btnLoiNhuan.Click += new System.EventHandler(this.btnLoiNhuan_Click);
+            // 
+            // dtpKetThuc
+            // 
+            this.dtpKetThuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpKetThuc.Location = new System.Drawing.Point(863, 58);
+            this.dtpKetThuc.Name = "dtpKetThuc";
+            this.dtpKetThuc.Size = new System.Drawing.Size(132, 31);
+            this.dtpKetThuc.TabIndex = 174;
+            this.dtpKetThuc.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
+            // 
+            // dtpBatDau
+            // 
+            this.dtpBatDau.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpBatDau.Location = new System.Drawing.Point(696, 58);
+            this.dtpBatDau.Name = "dtpBatDau";
+            this.dtpBatDau.Size = new System.Drawing.Size(132, 31);
+            this.dtpBatDau.TabIndex = 173;
+            this.dtpBatDau.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
             // 
             // label8
             // 
@@ -299,18 +342,18 @@ namespace PBL3_CoffeeHome.GUI
             // 
             // chartDoanhThu
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartDoanhThu.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartDoanhThu.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chartDoanhThu.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartDoanhThu.Legends.Add(legend5);
             this.chartDoanhThu.Location = new System.Drawing.Point(83, 161);
             this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDoanhThu.Name = "chartDoanhThu";
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
-            series1.Legend = "Legend1";
-            series1.Name = "DoanhThu";
-            this.chartDoanhThu.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(198)))), ((int)(((byte)(250)))));
+            series5.Legend = "Legend1";
+            series5.Name = "DoanhThu";
+            this.chartDoanhThu.Series.Add(series5);
             this.chartDoanhThu.Size = new System.Drawing.Size(942, 532);
             this.chartDoanhThu.TabIndex = 1;
             this.chartDoanhThu.Text = "chart1";
@@ -336,17 +379,17 @@ namespace PBL3_CoffeeHome.GUI
             // 
             // chartSanPham
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartSanPham.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSanPham.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chartSanPham.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartSanPham.Legends.Add(legend6);
             this.chartSanPham.Location = new System.Drawing.Point(50, 30);
             this.chartSanPham.Name = "chartSanPham";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "DoanhThu";
-            this.chartSanPham.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Legend = "Legend1";
+            series6.Name = "DoanhThu";
+            this.chartSanPham.Series.Add(series6);
             this.chartSanPham.Size = new System.Drawing.Size(486, 541);
             this.chartSanPham.TabIndex = 108;
             this.chartSanPham.Text = "chart1";
@@ -415,26 +458,6 @@ namespace PBL3_CoffeeHome.GUI
             this.btnLoc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoc.UseVisualStyleBackColor = false;
             this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
-            // 
-            // dtpBatDau
-            // 
-            this.dtpBatDau.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpBatDau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBatDau.Location = new System.Drawing.Point(696, 58);
-            this.dtpBatDau.Name = "dtpBatDau";
-            this.dtpBatDau.Size = new System.Drawing.Size(132, 31);
-            this.dtpBatDau.TabIndex = 173;
-            this.dtpBatDau.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
-            // 
-            // dtpKetThuc
-            // 
-            this.dtpKetThuc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpKetThuc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpKetThuc.Location = new System.Drawing.Point(863, 58);
-            this.dtpKetThuc.Name = "dtpKetThuc";
-            this.dtpKetThuc.Size = new System.Drawing.Size(132, 31);
-            this.dtpKetThuc.TabIndex = 174;
-            this.dtpKetThuc.Value = new System.DateTime(2025, 5, 16, 0, 0, 0, 0);
             // 
             // ucThongKe
             // 
@@ -525,5 +548,6 @@ namespace PBL3_CoffeeHome.GUI
         private Label label8;
         private DateTimePicker dtpBatDau;
         private DateTimePicker dtpKetThuc;
+        private Button btnLoiNhuan;
     }
 }

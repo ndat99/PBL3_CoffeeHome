@@ -12,6 +12,7 @@ using PBL3_CoffeeHome.BLL;
 using PBL3_CoffeeHome.DTO;
 using PBL3_CoffeeHome.GUI.Admin;
 using System.IO;
+using PBL3_CoffeeHome.GUI.Cashier;
 
 namespace PBL3_CoffeeHome.GUI
 {
@@ -25,255 +26,108 @@ namespace PBL3_CoffeeHome.GUI
             _menuItemBLL = new MenuItemBLL();
             List<string> danhMuc = _menuItemBLL.GetAllMenuCategory();
 
-            // Thêm "Tất cả" vào đầu danh sách
-            danhMuc.Insert(0, "All");
-
+            danhMuc.Insert(0, "Tất cả");
             cBDanhMuc1.DataSource = danhMuc;
-            bindingSource = new BindingSource();
 
-            SetupDataGridView();
-            dgvThucDon.DataSource = bindingSource;
-            Timer timer = new Timer();
-            timer.Interval = 100;
-            timer.Tick += (s, e) => {
-                timer.Stop();
-                LoadData(""); // ← Bị delay 100ms
-            };
-            timer.Start();
-        }
-
-        public void LoadData(string searchTerm)
-        {
-            try
-            {
-                List<MenuItems> searchResult = _menuItemBLL.SearchMenuItems(searchTerm);
-                LoadDataFromList(searchResult);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void LoadData(string searchTerm, string category)
-        {
-            try
-            {
-                List<MenuItems> searchResult = _menuItemBLL.SearchMenuItems(searchTerm, category);
-                LoadDataFromList(searchResult);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lọc dữ liệu: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // Phương thức helper để tránh lặp code
-        private void LoadDataFromList(List<MenuItems> items)
-        {
-            CleanupImages();
-            if (items != null && items.Any())
-            {
-                var displayData = items.Select(item => new
-                {
-                    item.MenuItemID,
-                    item.Name,
-                    item.Category,
-                    item.Price,
-                    item.IsAvailable,
-                    MenuItem = item
-                }).ToList();
-
-                bindingSource.DataSource = displayData;
-                bindingSource.ResetBindings(false);
-
-                foreach (DataGridViewRow row in dgvThucDon.Rows)
-                {
-                    var menuItem = (row.DataBoundItem as dynamic).MenuItem as MenuItems;
-                    if (menuItem != null && !string.IsNullOrEmpty(menuItem.ImagePath))
-                    {
-                        try
-                        {
-                            string fullPath = _menuItemBLL.GetFullImagePath(menuItem.ImagePath);
-                            if (File.Exists(fullPath))
-                            {
-                                using (var originalImage = Image.FromFile(fullPath))
-                                {
-                                    row.Cells["Image"].Value = new Bitmap(originalImage);
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Lỗi load ảnh: {ex.Message}");
-                        }
-                    }
-                }
-            }
-            else
-            {
-                bindingSource.DataSource = null;
-            }
-
-        }
-
-
-
-
-        // Thêm phương thức để giải phóng tài nguyên hình ảnh
-        private void CleanupImages()
-        {
-            if (dgvThucDon.Rows.Count > 0)
-            {
-                foreach (DataGridViewRow row in dgvThucDon.Rows)
-                {
-                    var img = row.Cells["Image"].Value as Image;
-                    img?.Dispose();
-                }
-            }
+            LoadMenuItems(txtTimKiem.Text.Trim());
         }
 
         private void btnThemMon_Click(object sender, EventArgs e)
         {
-            fThemMon f = new fThemMon(LoadData);
+            fThemMon f = new fThemMon(LoadMenuItems);
             f.Show();
-        }
-
-        private void SetupDataGridView()
-        {
-            // Tắt tự động tạo cột
-            dgvThucDon.AutoGenerateColumns = false;
-
-            // Không cho phép thêm hàng mới
-            dgvThucDon.AllowUserToAddRows = false;
-
-            dgvThucDon.ReadOnly = true;
-            dgvThucDon.AllowUserToDeleteRows = false;
-            dgvThucDon.MultiSelect = false;
-            dgvThucDon.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvThucDon.DataSourceChanged += (s, e) => dgvThucDon.Refresh();
-            dgvThucDon.RowTemplate.Height = 100;
-
-            // Thiết lập các cột cho DataGridView
-            dgvThucDon.Columns.AddRange(new DataGridViewColumn[]
-            {
-            new DataGridViewTextBoxColumn
-            {
-                Name = "MenuItemID",
-                HeaderText = "Mã món",
-                DataPropertyName = "MenuItemID",
-                Width = 80
-            },
-            new DataGridViewTextBoxColumn
-            {
-                Name = "Name",
-                HeaderText = "Tên món",
-                DataPropertyName = "Name",
-                Width = 120
-            },
-            new DataGridViewTextBoxColumn
-            {
-                Name = "Category",
-                HeaderText = "Danh mục",
-                DataPropertyName = "Category",
-                Width = 150
-            },
-            new DataGridViewTextBoxColumn
-            {
-                Name = "Price",
-                HeaderText = "Giá",
-                DataPropertyName = "Price",
-                Width = 100
-            },
-            });
-
-            var imageColumn = new DataGridViewImageColumn
-            {
-                Name = "Image",
-                HeaderText = "Hình ảnh",
-                DataPropertyName = "ImagePath",
-                Width = 100,
-                ImageLayout = DataGridViewImageCellLayout.Zoom
-            };
-
-            imageColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvThucDon.Columns.Add(imageColumn);
-        }
-
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-
-            MenuItems menuItems = new MenuItems();
-            menuItems.MenuItemID = dgvThucDon.CurrentRow.Cells["MenuItemID"].Value?.ToString();
-            menuItems.Name = dgvThucDon.CurrentRow.Cells["Name"].Value?.ToString();
-            menuItems.Category = dgvThucDon.CurrentRow.Cells["Category"].Value?.ToString();
-            menuItems.Price = decimal.Parse(dgvThucDon.CurrentRow.Cells["Price"].Value?.ToString() ?? "0");
-            menuItems.IsAvailable = _menuItemBLL.isAvailable(menuItems.MenuItemID);
-            menuItems.ImagePath = _menuItemBLL.getImagePath(menuItems.MenuItemID);
-            if (menuItems.MenuItemID == null)
-            {
-                MessageBox.Show("Vui lòng chọn một món để sửa!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            fCongThuc f = new fCongThuc(menuItems);
-            f.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnLoc_Click(object sender, EventArgs e)
         {
-            if (cBDanhMuc1.SelectedItem.ToString() == "All")
+            if (cBDanhMuc1.SelectedItem.ToString() == "Tất cả")
             {
-                LoadData(txtTimKiem.Text.Trim());
+                LoadMenuItems(txtTimKiem.Text.Trim());
             }
-            else LoadData(txtTimKiem.Text.Trim(), cBDanhMuc1.SelectedItem.ToString());
+            else
+                LoadMenuItems(txtTimKiem.Text.Trim());
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
+        private void LoadMenuItems(string searchTerm = "")
         {
-            String menuItemSelectedId = dgvThucDon.CurrentRow.Cells["MenuItemID"].Value?.ToString();
-            String menuItemSelectedName = dgvThucDon.CurrentRow.Cells["Name"].Value?.ToString();
-            String menuItemSelectedImagePath = _menuItemBLL.getImagePath(menuItemSelectedId);
+            flpMenu.Visible = false;
+            flpMenu.Controls.Clear();
 
-            if (menuItemSelectedId == null)
+            string selectedCategory = cBDanhMuc1.SelectedItem?.ToString();
+
+            var menuItems = _menuItemBLL.SearchMenuItems(searchTerm, selectedCategory);
+
+            foreach (var item in menuItems)
             {
-                MessageBox.Show("Vui lòng chọn một món để xóa!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var card = new ucCardThucDon();
+                card.ItemId = item.MenuItemID;
+                card.ItemName = item.Name;
+                card.Price = item.Price;
+
+                string fullImagePath = _menuItemBLL.GetFullImagePath(item.ImagePath);
+                if (File.Exists(fullImagePath))
+                {
+                    using (var img = Image.FromFile(fullImagePath))
+                    {
+                        card.ItemImage = new Bitmap(img);
+                    }
+                }
+                else
+                {
+                    card.ItemImage = Properties.Resources.DefaultImage;
+                }
+
+                card.Margin = new Padding(3);
+                card.Width = 150;
+                card.Height = 160;
+                card.btnXoaMonClick += (s, e) => RemoveMenuItem(card.ItemId);
+                card.btnSuaMonClick += (s, e) => EditMenuItem(card.ItemId);
+                card.btnThemMon.Visible = false;
+                flpMenu.Controls.Add(card);
             }
 
-            if (DialogResult.No == MessageBox.Show($"Bạn có chắc chắn muốn xóa món {menuItemSelectedName} không?", "Thông báo",
+            flpMenu.Visible = true;
+        }
+
+        public void RemoveMenuItem(string ID)
+        {
+            var menuItem = _menuItemBLL.GetMenuItemByID(ID);
+            if (DialogResult.No == MessageBox.Show($"Bạn có chắc chắn muốn xóa món {menuItem.Name} không?", "Thông báo",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
-            else 
+            else
             {
-                string oldImagePath = Path.Combine(Application.StartupPath, menuItemSelectedImagePath);
-                if (File.Exists(oldImagePath))
-                    File.Delete(oldImagePath);
-                _menuItemBLL.DeleteMenuItem(menuItemSelectedId);
-                LoadData("");
+                if(menuItem.ImagePath == null)
+                {
+                    _menuItemBLL.DeleteMenuItem(menuItem.MenuItemID);
+                }
+                else
+                {
+                    string oldImagePath = Path.Combine(Application.StartupPath, menuItem.ImagePath);
+                    if (File.Exists(oldImagePath))
+                        File.Delete(oldImagePath);
+                    _menuItemBLL.DeleteMenuItem(menuItem.MenuItemID);
+                }
             }
+            LoadMenuItems(txtTimKiem.Text.Trim());
+        }
 
+        public void EditMenuItem(string ID)
+        {
+            var menuItem = _menuItemBLL.GetMenuItemByID(ID);
+            fCongThuc f = new fCongThuc(menuItem);
+            f.Show();
         }
 
         private void ucThucDon_Load(object sender, EventArgs e)
         {
             MakeButtonRounded(btnLoc, 10, Color.Black);
             MakeButtonRounded(btnThemMon, 10, Color.FromArgb(0, 102, 204));
-            MakeButtonRounded(btnSua, 10, Color.Orange);
-            MakeButtonRounded(btnXoa, 10, Color.Red);
         }
 
-        private void btnChonAnh_Click(object sender, EventArgs e)
+        private void cBDanhMuc1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            LoadMenuItems(txtTimKiem.Text.Trim());
         }
+
     }
 }

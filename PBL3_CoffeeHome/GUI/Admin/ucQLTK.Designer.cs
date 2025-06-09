@@ -34,8 +34,6 @@ namespace PBL3_CoffeeHome.GUI
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,13 +49,11 @@ namespace PBL3_CoffeeHome.GUI
             this.btnTaoTK = new System.Windows.Forms.Button();
             this.btnXoaTK = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.dgvThucDon = new System.Windows.Forms.DataGridView();
             this.cBVaiTro = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -78,7 +74,6 @@ namespace PBL3_CoffeeHome.GUI
             this.panel1.Controls.Add(this.btnTaoTK);
             this.panel1.Controls.Add(this.btnXoaTK);
             this.panel1.Controls.Add(this.txtTimKiem);
-            this.panel1.Controls.Add(this.dgvThucDon);
             this.panel1.Controls.Add(this.cBVaiTro);
             this.panel1.Location = new System.Drawing.Point(15, 20);
             this.panel1.Name = "panel1";
@@ -327,41 +322,6 @@ namespace PBL3_CoffeeHome.GUI
             this.txtTimKiem.Size = new System.Drawing.Size(272, 34);
             this.txtTimKiem.TabIndex = 79;
             // 
-            // dgvThucDon
-            // 
-            this.dgvThucDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvThucDon.BackgroundColor = System.Drawing.Color.White;
-            this.dgvThucDon.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvThucDon.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvThucDon.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvThucDon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvThucDon.ColumnHeadersHeight = 40;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvThucDon.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvThucDon.EnableHeadersVisualStyles = false;
-            this.dgvThucDon.Location = new System.Drawing.Point(1, 262);
-            this.dgvThucDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvThucDon.Name = "dgvThucDon";
-            this.dgvThucDon.RowHeadersVisible = false;
-            this.dgvThucDon.RowHeadersWidth = 51;
-            this.dgvThucDon.RowTemplate.Height = 40;
-            this.dgvThucDon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvThucDon.Size = new System.Drawing.Size(1453, 549);
-            this.dgvThucDon.TabIndex = 62;
-            // 
             // cBVaiTro
             // 
             this.cBVaiTro.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -392,7 +352,6 @@ namespace PBL3_CoffeeHome.GUI
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvThucDon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -411,7 +370,6 @@ namespace PBL3_CoffeeHome.GUI
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dgvThucDon;
         private System.Windows.Forms.Button btnLoc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;

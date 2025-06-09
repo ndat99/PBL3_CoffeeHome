@@ -20,6 +20,7 @@ namespace PBL3_CoffeeHome.GUI
         private User admin;
         private UserBLL _userBLL;
         private readonly BaristaQueueBLL _baristaQueueBLL;
+        private BindingSource bindingSource;
         public fQuanLy(User user)
         {
             InitializeComponent();
@@ -55,7 +56,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void btnQLTK_Click(object sender, EventArgs e)
         {
-            LoadControlToPanel(new ucQLTK(), panelChiTiet);
+            LoadControlToPanel(new ucNhanVien(), panelChiTiet);
             HighlightButton(btnQLTK);
         }
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -68,11 +69,6 @@ namespace PBL3_CoffeeHome.GUI
         {
             LoadControlToPanel(new ucKhoHang(admin, 0), panelChiTiet);
             HighlightButton(btnKhoHang);
-        }
-        private void btnLoiNhuan_Click(object sender, EventArgs e)
-        {
-            LoadControlToPanel(new ucLoiNhuan(), panelChiTiet);
-            HighlightButton(btnLoiNhuan);
         }
         private void btnTongQuan_Click(object sender, EventArgs e)
         {

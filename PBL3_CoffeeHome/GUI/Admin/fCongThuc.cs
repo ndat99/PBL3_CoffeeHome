@@ -238,6 +238,14 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     {
                         string selectedImage = openFileDialog.FileName;
 
+                        // Kiểm tra kích thước file
+                        FileInfo fileInfo = new FileInfo(selectedImage);
+                        if (fileInfo.Length > 204800) // 200KB = 204800 bytes
+                        {
+                            MessageBox.Show("Ảnh vượt quá dung lượng cho phép (200KB). Vui lòng chọn ảnh nhỏ hơn.", "Lỗi",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
                         // Lưu ảnh và cập nhật đường dẫn trong database
                         string savedImagePath = _menuItemBLL.SaveImage(menuItemId, selectedImage);
                         if (savedImagePath != null)

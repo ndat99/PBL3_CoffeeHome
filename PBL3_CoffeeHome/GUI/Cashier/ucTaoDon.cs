@@ -45,16 +45,17 @@ namespace PBL3_CoffeeHome.GUI
             LoadOrderHistory(DateTime.Today);
             timerRefresh.Start();
             LoadCBBName();
-            LoadMenuItems();
+            LoadMenuItems(txtTimKiem.Text.Trim());
         }
         private void ucTaoDon_Load(object sender, EventArgs e)
         {
             _listChiTietDon = new BindingList<OrderDetailDTO>();
-            MakeButtonRounded(btnThem, 10, Color.FromArgb(180, 180, 180));
-            MakeButtonRounded(btnXoa, 10, Color.FromArgb(180, 180, 180));
-            MakeButtonRounded(btnClear, 10, Color.FromArgb(180, 180, 180));
-            MakeButtonRounded(btnThanhToan, 10, Color.FromArgb(180, 180, 180));
-            MakeButtonRounded(btnLichSuDon, 10, Color.FromArgb(180, 180, 180));
+            MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnThem, 10, Color.Black);
+            MakeButtonRounded(btnXoa, 10, Color.Black);
+            MakeButtonRounded(btnClear, 10, Color.Black);
+            MakeButtonRounded(btnThanhToan, 10, Color.Black);
+            MakeButtonRounded(btnLichSuDon, 10, Color.Black);
         }
 
         public void LoadCBBName()
@@ -66,7 +67,7 @@ namespace PBL3_CoffeeHome.GUI
         }
         private void cBDanhMuc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMenuItems();
+            LoadMenuItems(txtTimKiem.Text.Trim());
         }
 
         private void ReloadData()
@@ -228,7 +229,7 @@ namespace PBL3_CoffeeHome.GUI
                 _orderItemsBLL.AddOrderItems(orderId, item.Name, item.Quantity, item.CostPrice);
             }
 
-           // InBill(orderId);
+            InBill(orderId);
 
             MessageBox.Show("Tạo đơn thành công", "Hóa đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -364,73 +365,56 @@ namespace PBL3_CoffeeHome.GUI
             ReloadData();
         }
 
-        private void LoadMenuItems()
+        private void LoadMenuItems(string searchTerm = "")
         {
+            flpMenu.Visible = false;
             flpMenu.Controls.Clear();
 
-            if (cBDanhMuc.SelectedItem.ToString() == "Tất cả")
+            flpMenu.Visible = false;
+            flpMenu.Controls.Clear();
+
+            string selectedCategory = cBDanhMuc.SelectedItem?.ToString();
+
+            var menuItems = _menuItemBLL.SearchMenuItems(searchTerm, selectedCategory);
+
+            foreach (var item in menuItems)
             {
-                var menuItems = _menuItemBLL.GetAllMenuItems();
-                foreach (var item in menuItems)
+                var card = new ucCardThucDon();
+                card.lbID.Visible = false;
+                card.ItemName = item.Name;
+                card.Price = item.Price;
+
+                string fullImagePath = _menuItemBLL.GetFullImagePath(item.ImagePath);
+                if (File.Exists(fullImagePath))
                 {
-                    var card = new ucCardThucDon();
-                    card.ItemName = item.Name;
-                    card.Price = item.Price;
-
-                    string fullImagePath = _menuItemBLL.GetFullImagePath(item.ImagePath);
-                    if (File.Exists(fullImagePath))
-                    {
-                        card.ItemImage = Image.FromFile(fullImagePath);
-                    }
-                    else
-                    {
-                        card.ItemImage = Properties.Resources.DefaultImage;
-                    }
-
-                    card.Margin = new Padding(4);
-                    card.Width = 150;
-                    card.Height = 160;
-                    card.btnThemMonClick += (s, e) => AddMenuItemToOrder(card.ItemName);
-                    flpMenu.Controls.Add(card);
+                    card.ItemImage = Image.FromFile(fullImagePath);
                 }
-            }
-            else
-            {
-                var menuItems = _menuItemBLL.GetMenuItemsByCategory(cBDanhMuc.SelectedItem.ToString());
-                foreach (var item in menuItems)
+                else
                 {
-                    var card = new ucCardThucDon();
-                    card.ItemName = item.Name;
-                    card.Price = item.Price;
-
-                    string fullImagePath = _menuItemBLL.GetFullImagePath(item.ImagePath);
-                    if (File.Exists(fullImagePath))
-                    {
-                        card.ItemImage = Image.FromFile(fullImagePath);
-                    }
-                    else
-                    {
-                        card.ItemImage = Properties.Resources.DefaultImage;
-                    }
-
-                    card.Margin = new Padding(4);
-                    card.Width = 150;
-                    card.Height = 160;
-                    card.btnThemMonClick += (s, e) => AddMenuItemToOrder(card.ItemName);
-                    flpMenu.Controls.Add(card);
+                    card.ItemImage = Properties.Resources.DefaultImage;
                 }
+
+                card.Margin = new Padding(4);
+                card.Width = 150;
+                card.Height = 160;
+                card.btnThemMonClick += (s, e) => AddMenuItemToOrder(item.MenuItemID);
+                card.btnXoaMon.Visible = false;
+                card.btnSuaMon.Visible = false;
+                flpMenu.Controls.Add(card);
             }
+
+            flpMenu.Visible = true;
         }
-        private void AddMenuItemToOrder(string tenMon)
+        private void AddMenuItemToOrder(string ID)
         {
-            var selectedItem = _menuItemBLL.GetMenuItemByName(tenMon);
+            var selectedItem = _menuItemBLL.GetMenuItemByID(ID);
             bool khoDu = CheckKhoDu(selectedItem.MenuItemID, 1);
             if (!khoDu)
             {
-                MessageBox.Show($"Không đủ nguyên liệu để thêm món {tenMon}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Không đủ nguyên liệu để thêm món {ID}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name.Trim() == tenMon);
+            var monDaCo = _listChiTietDon.FirstOrDefault(x => x.Name.Trim() == ID);
             if (monDaCo != null)
             {
                 monDaCo.Quantity += 1;
@@ -439,7 +423,7 @@ namespace PBL3_CoffeeHome.GUI
             {
                 var item = new OrderDetailDTO
                 {
-                    Name = tenMon,
+                    Name = selectedItem.Name,
                     //Quantity = soLuong,
                     Quantity = 1,
                     CostPrice = selectedItem.Price,
@@ -449,6 +433,11 @@ namespace PBL3_CoffeeHome.GUI
 
             UpdateChiTietDon();
             txtThanhTien.Text = _listChiTietDon.Sum(x => x.CostPrice * x.Quantity).ToString("N0");
+        }
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            LoadMenuItems(txtTimKiem.Text.Trim());
         }
     }
 
