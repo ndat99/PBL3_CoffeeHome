@@ -41,15 +41,10 @@
             this.btnThucDon = new System.Windows.Forms.Button();
             this.btnTaoDon = new System.Windows.Forms.Button();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.btnBell = new System.Windows.Forms.Button();
-            this.btnAvatar = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.panelChiTiet = new System.Windows.Forms.Panel();
-            this.timerBell = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.panelChucNang.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelChucNang
@@ -359,9 +354,9 @@
             this.Text = "Coffee Management";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelChucNang.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

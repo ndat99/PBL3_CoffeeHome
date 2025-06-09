@@ -150,5 +150,11 @@ namespace PBL3_CoffeeHome.GUI
             LoadControlToPanel(new ucTTTK(admin), panelChiTiet);
             HighlightButton(btnTTTK);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadControlToPanel(new ucDiscounts(), panelChiTiet);
+            HighlightButton(btnQLTK);
+        }
     }
 }

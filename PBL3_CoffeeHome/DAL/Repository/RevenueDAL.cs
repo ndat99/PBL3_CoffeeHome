@@ -227,7 +227,7 @@ namespace PBL3_CoffeeHome.DAL.Repository
 
             return result;
         }
-
+      
         //TongQuan
         public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
         {
@@ -258,7 +258,6 @@ namespace PBL3_CoffeeHome.DAL.Repository
                 .Distinct()
                 .Count();
         }
-
         public List<(string ItemName, int TotalQuantity)> GetTopSellingProductsByDateRange(DateTime fromDate, DateTime toDate)
         {
             var grouped = GetAllRevenueDetails()

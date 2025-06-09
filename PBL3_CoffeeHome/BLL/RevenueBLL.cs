@@ -134,6 +134,7 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _revenueDAL.GetTotalProductsSoldByMonth(year, month);
         }
+
         public decimal GetTotalRevenueByDateRange(DateTime fromDate, DateTime toDate)
         {
             return _revenueDAL.GetTotalRevenueByDateRange(fromDate, toDate);
