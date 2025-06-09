@@ -18,15 +18,14 @@ namespace PBL3_CoffeeHome.DAL.Repository
         // Phương thức tạo mã mới cho Discount
         public string GenerateNewDiscountID()
         {
-            string prefix = "DISC";
+            string prefix = "DIS";
             string newId;
             int attempt = 0;
-            int maxNumber = 9999; // Giới hạn số tối đa là 9999 (DISC9999)
+            int maxNumber = 9999;
 
             do
             {
                 attempt++;
-                // Tạo mã mới với số thứ tự tăng dần, định dạng D4 (0001 đến 9999)
                 newId = prefix + attempt.ToString("D4");
             }
             while (_db.Discounts.AsNoTracking().Any(d => d.DiscountID == newId) && attempt < maxNumber);

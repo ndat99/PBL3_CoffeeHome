@@ -33,7 +33,10 @@ namespace PBL3_CoffeeHome.BLL
         {
             return _menuItemDAL.GetMenuItemByName(name);
         }
-
+        public MenuItems GetMenuItemByID(string ID)
+        {
+            return _menuItemDAL.GetMenuItemByID(ID);
+        }
         public List<MenuItems> GetAllMenuItems()
         {
             return _menuItemDAL.GetAllMenuItems();

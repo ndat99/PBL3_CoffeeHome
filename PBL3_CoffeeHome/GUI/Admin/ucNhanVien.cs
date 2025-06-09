@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +22,7 @@ namespace PBL3_CoffeeHome.GUI.Admin
         private BindingList<Salary> _listLuong;
 
         private readonly string _userId;
+        private BindingSource bindingSource;
         public ucNhanVien()
         {
             InitializeComponent();
@@ -41,7 +41,212 @@ namespace PBL3_CoffeeHome.GUI.Admin
         // tabNhanVien
         private void TabNhanVien()
         {
+            bindingSource = new BindingSource();
 
+            SetupDataGridView();
+            dgvTaiKhoan.DataSource = bindingSource;
+
+            cBVaiTro.SelectedIndex = 0;
+
+            LoadData();
+        }
+        public void LoadData()
+        {
+            try
+            {
+                List<User> users = _userBLL.GetALlUsers();
+                if (users != null && users.Any())
+                {
+                    bindingSource.DataSource = users;
+                    bindingSource.ResetBindings(true);
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu người dùng!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bindingSource.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void SetupDataGridView()
+        {
+            // Tắt tự động tạo cột
+            dgvTaiKhoan.AutoGenerateColumns = false;
+
+            // Không cho phép thêm hàng mới
+            dgvTaiKhoan.AllowUserToAddRows = false;
+
+            dgvTaiKhoan.ReadOnly = true;
+            dgvTaiKhoan.AllowUserToDeleteRows = false;
+            dgvTaiKhoan.MultiSelect = false;
+            dgvTaiKhoan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvTaiKhoan.DataSourceChanged += (s, e) => dgvTaiKhoan.Refresh();
+
+
+            // Thiết lập các cột cho DataGridView
+            dgvTaiKhoan.Columns.AddRange(new DataGridViewColumn[]
+            {
+            new DataGridViewTextBoxColumn
+            {
+                Name = "UserID",
+                HeaderText = "Mã NV",
+                DataPropertyName = "UserID",
+                Width = 80
+            },
+            new DataGridViewTextBoxColumn
+            {
+                Name = "UserName",
+                HeaderText = "Tên đăng nhập",
+                DataPropertyName = "UserName",
+                Width = 120
+            },
+            new DataGridViewTextBoxColumn
+            {
+                Name = "FullName",
+                HeaderText = "Họ và tên",
+                DataPropertyName = "FullName",
+                Width = 150
+            },
+            new DataGridViewTextBoxColumn
+            {
+                Name = "Role",
+                HeaderText = "Chức vụ",
+                DataPropertyName = "Role",
+                Width = 100
+            },
+            new DataGridViewTextBoxColumn
+            {
+                Name = "PhoneNumber",
+                HeaderText = "Số điện thoại",
+                DataPropertyName = "PhoneNumber",
+                Width = 100
+            },
+            new DataGridViewCheckBoxColumn
+            {
+                Name = "IsActive",
+                HeaderText = "Hoạt động",
+                DataPropertyName = "IsActive",
+                Width = 70
+            }
+            });
+        }
+
+        private void LoadData(string searchText)
+        {
+            string selectedRole = cBVaiTro.SelectedItem.ToString();
+
+            List<User> searchResult;
+
+            searchResult = _userBLL.SearchUsers(searchText);
+            bindingSource.DataSource = searchResult;
+            bindingSource.ResetBindings(false);
+        }
+
+        private void LoadData(string searchText, string selectedRole)
+        {
+            List<User> searchResult;
+
+            searchResult = _userBLL.SearchUsers(searchText, selectedRole);
+            bindingSource.DataSource = searchResult;
+            bindingSource.ResetBindings(false);
+        }
+
+        private void btnTaoTK_Click(object sender, EventArgs e)
+        {
+            fDetailTTTK f = new fDetailTTTK(LoadData);
+            f.Show();
+        }
+
+        private void btnXemChiTiet_Click(object sender, EventArgs e)
+        {
+            User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
+            fDetailTTTK f = new fDetailTTTK(userSelected);
+            f.Show();
+        }
+
+        private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+        private void btnXoaTK_Click(object sender, EventArgs e)
+        {
+            User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
+
+            if (userSelected == null)
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản để xóa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (DialogResult.No == MessageBox.Show($"Bạn có chắc chắn muốn xóa tài khoản {userSelected.UserName} không?", "Thông báo",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
+            else
+            {
+                _userBLL.DeleteUser(userSelected.UserID);
+                LoadData();
+            }
+
+        }
+
+        private void btnResetMK_Click(object sender, EventArgs e)
+        {
+            User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
+
+            if (userSelected == null)
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản để reset mật khẩu!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (DialogResult.No == MessageBox.Show($"Bạn có chắc chắn muốn reset mật khẩu của {userSelected.UserName} không?", "Thông báo",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question)) return;
+            else
+            {
+                _userBLL.ChangePassword(userSelected.UserID, userSelected.PasswordHash, "123456");
+                _userBLL.UpdateUser(userSelected);
+                LoadData();
+            }
+        }
+
+        private void btnDoiVaiTro_Click(object sender, EventArgs e)
+        {
+            User userSelected = dgvTaiKhoan.CurrentRow.DataBoundItem as User;
+            if (userSelected == null)
+            {
+                MessageBox.Show("Vui lòng chọn một tài khoản để thay đổi vai trò!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            fDoiVaiTro f = new fDoiVaiTro(userSelected, LoadData);
+            f.Show();
+        }
+        private void ucQLTK_Load(object sender, EventArgs e)
+        {
+            MakeButtonRounded(btnLoc, 10, Color.Black);
+            MakeButtonRounded(btnTaoTK, 10, Color.FromArgb(0, 102, 204));
+            MakeButtonRounded(btnXemChiTiet, 10, Color.MediumPurple);
+            MakeButtonRounded(btnXoaTK, 10, Color.Red);
+            MakeButtonRounded(btnResetMK, 10, Color.LimeGreen);
+            MakeButtonRounded(btnDoiVaiTro, 10, Color.MidnightBlue);
+        }
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            if (cBVaiTro.SelectedItem.ToString() == "All")
+            {
+                LoadData(txtTimKiem.Text.Trim());
+            }
+            else LoadData(txtTimKiem.Text.Trim(), cBVaiTro.SelectedItem.ToString());
         }
 
         // tabLuong 
@@ -67,7 +272,20 @@ namespace PBL3_CoffeeHome.GUI.Admin
             cbbUser_TabLich.Items.AddRange(listNameUser.ToArray());
             cbbUser_TabLich.SelectedIndex = 0;
         }
-      
+
+        private void SetupDGVLichLamViec()
+        {
+            dgvLichLamViec_tabLich.Columns["ScheduleID"].HeaderText = "Mã lịch";
+            dgvLichLamViec_tabLich.Columns["UserID"].HeaderText = "Mã NV";
+            dgvLichLamViec_tabLich.Columns["TypeSchedule"].HeaderText = "Ca làm";
+            dgvLichLamViec_tabLich.Columns["Date"].HeaderText = "Ngày làm";
+           
+            if (dgvLichLamViec_tabLich.Columns.Contains("User"))
+                dgvLichLamViec_tabLich.Columns["User"].Visible = false;
+            if (dgvLichLamViec_tabLich.Columns.Contains("Salaries"))
+                dgvLichLamViec_tabLich.Columns["Salaries"].Visible = false;
+        }
+
         private void LoadDGVLich_tabLich(string txtsearch =  null, string cbb = "Tất cả")
         {
             _listLich.Clear();
@@ -76,6 +294,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
             {
                 _listLich.Add(item);
             }
+
+            SetupDGVLichLamViec();
         }
         private void cbbTypeSchedule_tabLich_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,10 +359,43 @@ namespace PBL3_CoffeeHome.GUI.Admin
 
         private void LoadYear()
         {
-            cbbNam_tabLuong.Items.Clear();
-            cbbNam_tabLuong.Items.AddRange(_salaryBLL.GetYearBySalary().ToArray());
-        }
+            string currentYear = DateTime.Now.Year.ToString();
+            var years = _salaryBLL.GetYearBySalary();
 
+            cbbNam_tabLuong.Items.Clear();
+
+            if (years == null || years.Count == 0)
+            {
+                // Không có dữ liệu, chỉ add năm hiện tại
+                cbbNam_tabLuong.Items.Add(currentYear);
+                cbbNam_tabLuong.SelectedIndex = 0;
+            }
+            else
+            {
+                cbbNam_tabLuong.Items.AddRange(years.ToArray());
+                int idx = cbbNam_tabLuong.Items.IndexOf(currentYear);
+                if (idx >= 0)
+                    cbbNam_tabLuong.SelectedIndex = idx;
+                else
+                    cbbNam_tabLuong.SelectedIndex = 0;
+            }
+        }
+        private void SetupDGVLuong()
+        {
+            dgvLuong_tabLuong.Columns["SalaryID"].HeaderText = "Mã lương";
+            dgvLuong_tabLuong.Columns["ScheduleID"].HeaderText = "Mã lịch";
+            dgvLuong_tabLuong.Columns["UserID"].HeaderText = "Mã NV";
+            dgvLuong_tabLuong.Columns["HoursWorked"].HeaderText = "Giờ làm";
+            dgvLuong_tabLuong.Columns["HourlyRate"].HeaderText = "Lương/giờ";
+            dgvLuong_tabLuong.Columns["TotalSalary"].HeaderText = "Tổng lương";
+            dgvLuong_tabLuong.Columns["PaymentDate"].HeaderText = "Ngày trả";
+            dgvLuong_tabLuong.Columns["Status"].HeaderText = "Trạng thái";
+            
+            if (dgvLuong_tabLuong.Columns.Contains("Schedule"))
+                dgvLuong_tabLuong.Columns["Schedule"].Visible = false;
+            if (dgvLuong_tabLuong.Columns.Contains("User"))
+                dgvLuong_tabLuong.Columns["User"].Visible = false;
+        }
         private void LoadDGVLuong_tabLuong(string month = "Tất cả", string year = null, string txtSearch = null)
         {
             if (string.IsNullOrEmpty(year))
@@ -157,6 +410,8 @@ namespace PBL3_CoffeeHome.GUI.Admin
                     _listLuong.Add(item);
                 }
             }
+
+            SetupDGVLuong();
 
             decimal tongQuyLuong = _listLuong.Sum(s => s.TotalSalary);
             decimal tongGioLamViec = _listLuong.Sum(s => s.HoursWorked);
@@ -211,5 +466,9 @@ namespace PBL3_CoffeeHome.GUI.Admin
             }
         }
 
+        private void cbbTypeSchedule_tabLich_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

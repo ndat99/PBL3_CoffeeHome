@@ -284,17 +284,9 @@
     <Compile Include="GUI\Admin\ucLoiNhuan.Designer.cs">
       <DependentUpon>ucLoiNhuan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202505240217214_InitialCreate.cs" />
-    <Compile Include="Migrations\202505240217214_InitialCreate.Designer.cs">
-      <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202506090324141_Create.cs" />
-    <Compile Include="Migrations\202506090324141_Create.Designer.cs">
-      <DependentUpon>202506090324141_Create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202506090642034_fix.cs" />
-    <Compile Include="Migrations\202506090642034_fix.Designer.cs">
-      <DependentUpon>202506090642034_fix.cs</DependentUpon>
+    <Compile Include="Migrations\202506091643497_Salary.cs" />
+    <Compile Include="Migrations\202506091643497_Salary.Designer.cs">
+      <DependentUpon>202506091643497_Salary.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -383,14 +375,8 @@
     <EmbeddedResource Include="GUI\Login\ucTTTK.resx">
       <DependentUpon>ucTTTK.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202505240217214_InitialCreate.resx">
-      <DependentUpon>202505240217214_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202506090324141_Create.resx">
-      <DependentUpon>202506090324141_Create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202506090642034_fix.resx">
-      <DependentUpon>202506090642034_fix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202506091643497_Salary.resx">
+      <DependentUpon>202506091643497_Salary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -507,12 +493,12 @@
     <None Include="Resources\panelKiemKe_2.png" />
     <None Include="Resources\panelLSGD_1.png" />
     <None Include="Resources\panelDonHang_2.png" />
-    <None Include="Resources\panelThucDon1.png" />
     <None Include="Resources\panelQLTK1.png" />
     <None Include="Resources\panelThongKe_1.png" />
     <None Include="Resources\panelThongKe_2.png" />
     <None Include="Resources\Overview.png" />
     <None Include="Resources\panelDiscount_1.png" />
+    <None Include="Resources\panelThucDon1.png" />
     <Content Include="Resources\Pen1.png" />
     <None Include="Resources\photo.png" />
     <Content Include="Resources\QLTK.png" />
