@@ -140,13 +140,17 @@ namespace PBL3_CoffeeHome.GUI
                     topProducts = _revenueBLL.GetTopSellingProductsByMonth(year, month.Value);
                     var dailyRevenue = _revenueBLL.GetDailyRevenueInMonth(year, month.Value);
 
-                    // Vẽ cột cho tất cả các ngày có dữ liệu
+                    // Vẽ cột cho tất cả các ngày với doanh thu thực tế
                     foreach (var data in dailyRevenue.OrderBy(d => d.Day))
                     {
                         chartDoanhThu.Series["DoanhThu"].Points.AddXY(data.Day, data.Total);
                     }
                     chartDoanhThu.ChartAreas[0].AxisX.Interval = 2;
 
+                    // Tìm doanh thu lớn nhất trong tháng để điều chỉnh trục Y
+                    var maxRevenueDay = dailyRevenue.Any() ? dailyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueDay * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueDay * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else if (mode == "Tháng")
                 {
@@ -156,12 +160,17 @@ namespace PBL3_CoffeeHome.GUI
                     topProducts = _revenueBLL.GetTopSellingProductsByYear(year);
                     var monthlyRevenue = _revenueBLL.GetMonthlyRevenueInYear(year);
 
-
+                    // Vẽ cột cho tất cả các tháng với doanh thu thực tế
                     foreach (var data in monthlyRevenue)
                     {
                         chartDoanhThu.Series["DoanhThu"].Points.AddXY(data.Month, data.Total);
                     }
-                    chartDoanhThu.ChartAreas[0].AxisX.Interval = 1; // Hiển thị tất cả số tháng
+                    chartDoanhThu.ChartAreas[0].AxisX.Interval = 1;
+
+                    // Tìm doanh thu lớn nhất trong năm để điều chỉnh trục Y
+                    var maxRevenueMonth = monthlyRevenue.Any() ? monthlyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueMonth * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueMonth * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else if (mode == "Khoảng thời gian" && startDate.HasValue && endDate.HasValue)
                 {
@@ -169,7 +178,7 @@ namespace PBL3_CoffeeHome.GUI
                     totalProductsSold = _revenueBLL.GetTotalProductsSoldByDateRange(startDate.Value, endDate.Value);
                     totalCustomers = _revenueBLL.GetTotalCustomersByDateRange(startDate.Value, endDate.Value);
                     topProducts = _revenueBLL.GetTopSellingProductsByDateRange(startDate.Value, endDate.Value);
-                    var dailyRevenue = _revenueBLL.GetDailyRevenueInDateRange(startDate.Value, endDate.Value);
+                    var dailyRevenue = _revenueBLL.GetDailyRevenueInDateRange(startDate.Value, endDate.Value) ?? new List<(DateTime Date, decimal Total)>();
 
                     // Tạo danh sách tất cả các ngày trong khoảng thời gian
                     var allDates = Enumerable.Range(0, (endDate.Value - startDate.Value).Days + 1)
@@ -177,7 +186,7 @@ namespace PBL3_CoffeeHome.GUI
                         .ToList();
                     var revenueDict = dailyRevenue?.ToDictionary(x => x.Date.Date, x => x.Total) ?? new Dictionary<DateTime, decimal>();
 
-                    // Vẽ cột cho tất cả các ngày, giá trị 0 nếu không có doanh thu
+                    // Vẽ cột cho tất cả các ngày với doanh thu thực tế
                     foreach (var date in allDates)
                     {
                         decimal revenue = revenueDict.ContainsKey(date.Date) ? revenueDict[date.Date] : 0m;
@@ -193,6 +202,11 @@ namespace PBL3_CoffeeHome.GUI
                     {
                         chartDoanhThu.ChartAreas[0].AxisX.IntervalOffset = dayInterval / 2;
                     }
+
+                    // Tìm doanh thu lớn nhất trong khoảng thời gian để điều chỉnh trục Y
+                    var maxRevenueDay = dailyRevenue.Any() ? dailyRevenue.Max(d => d.Total) : 0m;
+                    chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(maxRevenueDay * 1.2m / 50000m) * 50000m);
+                    chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((maxRevenueDay * 1.2m) / 5 / 50000m) * 50000m) / 5;
                 }
                 else
                 {
@@ -209,9 +223,9 @@ namespace PBL3_CoffeeHome.GUI
                     Docking = Docking.Bottom,
                     Alignment = StringAlignment.Center,
                     LegendStyle = LegendStyle.Table,
-                    Font = new Font("Segoe UI", 9, FontStyle.Regular),
+                    Font = new Font("Arial", 9, FontStyle.Regular),
                     Title = "TOP SẢN PHẨM BÁN CHẠY",
-                    TitleFont = new Font("Segoe UI", 10, FontStyle.Bold),
+                    TitleFont = new Font("Arial", 10, FontStyle.Bold),
                     BorderColor = Color.LightGray,
                     IsTextAutoFit = false,
                     MaximumAutoSize = 60
@@ -221,24 +235,23 @@ namespace PBL3_CoffeeHome.GUI
                 Series pieSeries = new Series
                 {
                     Name = "TopProducts",
-                    ChartType = SeriesChartType.Doughnut,
+                    ChartType = SeriesChartType.Pie,
                     IsValueShownAsLabel = true,
                     Label = "#PERCENT{P0}",
-                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    Font = new Font("Arial", 9, FontStyle.Bold),
                     LabelForeColor = Color.White,
                     BorderWidth = 1,
                     Legend = "ProductLegend"
                 };
 
                 Color[] colors = {
-                    Color.FromArgb(74, 144, 226),
-                    Color.FromArgb(126, 211, 33),
-                    Color.FromArgb(245, 166, 35),
-                    Color.FromArgb(144, 19, 254),
-                    Color.FromArgb(255, 107, 107),
-                    Color.FromArgb(80, 227, 194),
-                    Color.FromArgb(255, 217, 61)
-                };
+            Color.FromArgb(65, 140, 240),
+            Color.FromArgb(252, 180, 65),
+            Color.FromArgb(70, 190, 100),
+            Color.FromArgb(240, 80, 110),
+            Color.FromArgb(170, 110, 210),
+            Color.FromArgb(150, 150, 150)
+        };
 
                 int colorIndex = 0;
                 foreach (var product in topProducts)
@@ -252,7 +265,7 @@ namespace PBL3_CoffeeHome.GUI
                     if (product.ItemName == "Khác")
                     {
                         point.Color = Color.LightGray;
-                        point.Font = new Font("Segoe UI", 8);
+                        point.Font = new Font("Arial", 8, FontStyle.Italic);
                     }
 
                     pieSeries.Points.Add(point);
@@ -263,9 +276,6 @@ namespace PBL3_CoffeeHome.GUI
                 pieSeries["PieLabelStyle"] = "Inside";
                 chartSanPham.ChartAreas[0].Area3DStyle.Enable3D = false;
                 chartSanPham.ChartAreas[0].Position = new ElementPosition(5, 5, 90, 50);
-
-                chartDoanhThu.ChartAreas[0].AxisY.Maximum = (double)(Math.Ceiling(totalRevenue * 1.2m / 50000m) * 50000m);
-                chartDoanhThu.ChartAreas[0].AxisY.Interval = (double)(Math.Ceiling((totalRevenue * 1.2m) / 5 / 50000m) * 50000m) / 5;
             }
             catch (Exception ex)
             {
